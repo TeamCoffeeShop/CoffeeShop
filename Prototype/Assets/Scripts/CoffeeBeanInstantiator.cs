@@ -10,8 +10,8 @@ public class CoffeeBeanInstantiator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        CoffeeBean1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/CoffeeBean1.prefab");
-        CoffeeBean2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/CoffeeBean2.prefab");
+        CoffeeBean1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeBean1.prefab");
+        CoffeeBean2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeBean2.prefab");
     }
 	
 	// Update is called once per frame

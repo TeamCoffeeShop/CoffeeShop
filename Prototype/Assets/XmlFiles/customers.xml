@@ -10,33 +10,17 @@
       </Order>
     </Customer>
     <Customer Name="Customer3">
-      <PosX>380.7578</PosX>
+      <PosX>382.560272</PosX>
       <PosY>224.7</PosY>
-      <PosZ>-3.38937664</PosZ>
+      <PosZ>-10.6421785</PosZ>
       <Order>
         <coffeeName>Americano</coffeeName>
       </Order>
     </Customer>
     <Customer Name="Customer3">
-      <PosX>400.029144</PosX>
+      <PosX>404.554779</PosX>
       <PosY>224.7</PosY>
-      <PosZ>2.669385</PosZ>
-      <Order>
-        <coffeeName>Americano</coffeeName>
-      </Order>
-    </Customer>
-    <Customer Name="Customer3">
-      <PosX>393.123535</PosX>
-      <PosY>224.7</PosY>
-      <PosZ>-24.6322746</PosZ>
-      <Order>
-        <coffeeName>Americano</coffeeName>
-      </Order>
-    </Customer>
-    <Customer Name="Customer3">
-      <PosX>417.755646</PosX>
-      <PosY>224.7</PosY>
-      <PosZ>-5.85822964</PosZ>
+      <PosZ>-5.58198833</PosZ>
       <Order>
         <coffeeName>Americano</coffeeName>
       </Order>
