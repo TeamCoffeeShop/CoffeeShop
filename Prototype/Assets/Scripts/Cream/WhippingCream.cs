@@ -24,7 +24,6 @@ public class WhippingCream : MonoBehaviour
     {
         CreamEmitter = gameObject.GetComponent<ParticleSystem>();
         Cream = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/Cream.prefab");
-        Debug.Log(Cream);
         CreamEmitter.Stop();
     }
 

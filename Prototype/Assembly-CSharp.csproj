@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\CameraLogic.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\Cream\WhippingCream.cs" />
      <Compile Include="Assets\Scripts\Customer\Customer.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
+     <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
      <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\Scripts\DragandDrop.cs" />
      <Compile Include="Assets\Scripts\HandGrinderScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\OrderingBallonLogic.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\UI\BarScript.cs" />
