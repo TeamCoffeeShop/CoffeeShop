@@ -50,7 +50,8 @@ public class CustomerSystem : MonoBehaviour {
         //counts up
         time += Time.deltaTime;
 
-        Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + 6.0f, Floor.transform.position.z);
+        //setting customer's position. change this after getting real model.
+        Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
         float new_customer_pos_random_range = Floor.transform.localScale.x * 0.5f;
         new_customer_pos.x += Random.Range(-new_customer_pos_random_range, new_customer_pos_random_range);
         new_customer_pos.z += Random.Range(-new_customer_pos_random_range, new_customer_pos_random_range);
