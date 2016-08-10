@@ -6,13 +6,13 @@ public class Customer : MonoBehaviour {
 
     public CustomerData data = new CustomerData();
 
-    public string name;
+    public string _name;
 
     public Coffee order = new Coffee();
 
     public void StoreData()
     {
-        data.name = name;
+        data.name = _name;
         Vector3 pos = transform.position;
         data.posx = pos.x;
         data.posy = pos.y;
@@ -22,7 +22,7 @@ public class Customer : MonoBehaviour {
 
     public void LoadData()
     {
-        name = data.name;
+        _name = data.name;
         transform.position = new Vector3(data.posx, data.posy, data.posz);
         order = data.order;
     }

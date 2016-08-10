@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
     Vector3 StartPosition;
     Vector3 CoffeeMakingPosition;
     Vector3 CoffeeSpawnPosition;
-    Vector3 DrawingPosition;
+    //Vector3 DrawingPosition;
 
     //variable to access coffeeCup
     GameObject coffeeCup;
@@ -32,7 +32,7 @@ public class CameraManager : MonoBehaviour
         StartPosition = new Vector3(-18f, 13f, -10f);
         CoffeeMakingPosition = new Vector3(3f, 13f, -10f);
         CoffeeSpawnPosition = new Vector3(5f, 1f, -1f);
-        DrawingPosition = new Vector3(26f, 13f, -10f);
+        //DrawingPosition = new Vector3(26f, 13f, -10f);
     }
 	
 	// Update is called once per frame

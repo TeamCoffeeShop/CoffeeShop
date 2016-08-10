@@ -15,7 +15,6 @@ public class WhippingCream : MonoBehaviour
     public float CreamDelay = 0.1f;
     private float CurrentCreamDelay = 0;
 
-    CameraLogic MainCamera;
     ParticleSystem CreamEmitter;
     bool Grab = false;
     bool Spray = false;
@@ -23,7 +22,6 @@ public class WhippingCream : MonoBehaviour
 
     void Awake()
     {
-        MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
         CreamEmitter = gameObject.GetComponent<ParticleSystem>();
         Cream = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/Cream.prefab");
         Debug.Log(Cream);
