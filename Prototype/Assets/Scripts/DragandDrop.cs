@@ -24,9 +24,6 @@ public class DragandDrop : MonoBehaviour {
     //variable to access coffeeCup
     GameObject coffeeCup;
 
-    //camera
-    CameraLogic MainCamera;
-
     //material to insert
     public Material CoffeeMaterial;
 
@@ -36,7 +33,6 @@ public class DragandDrop : MonoBehaviour {
         coffeeMachine = GameObject.Find("CoffeeMachine");
         hGrinderScript = handGrinder.GetComponent<HandGrinderScript>();
         cMachineScript = coffeeMachine.GetComponent<CoffeeDrop>();
-        MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
     }
 
     void FixedUpdate()

@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour {
 	void Start () {
 
         player = load_player("Assets/Resources/PlayerInfo/" + PlayerDataFilePath);
-        var canvas = GameObject.Find("Canvas");
+        //var canvas = GameObject.Find("Canvas");
 
         money_text.GetComponent<Text>().text = player.money.ToString();
         

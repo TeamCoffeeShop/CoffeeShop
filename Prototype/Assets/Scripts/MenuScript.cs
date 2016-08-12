@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class MenuScript : MonoBehaviour {
 
     public void GotoLevel(int level)
     {
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
+        //Application.LoadLevel(level);
     }
 
 }

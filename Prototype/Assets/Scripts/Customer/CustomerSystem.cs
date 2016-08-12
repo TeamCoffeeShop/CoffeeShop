@@ -18,7 +18,7 @@ public class CustomerSystem : MonoBehaviour {
     public GameObject Floor;
 
     //Customer Prefab
-    public const string customerPath = "Prefab/Customer";
+    public const string customerPath = "Prefab/Customer2";
 
     //Data Path
     private static string dataPath = string.Empty;
@@ -37,9 +37,9 @@ public class CustomerSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SelectMenu();
-        Customer customerClone;
-        customerClone = CreateCustomer(customerPath, new Vector3(Floor.transform.position.x, Floor.transform.position.y + 6.0f, Floor.transform.position.z), Quaternion.identity);
-        customerClone.order.coffeeName = menuText;
+        //Customer customerClone;
+        //customerClone = CreateCustomer(customerPath, new Vector3(Floor.transform.position.x, Floor.transform.position.y + 6.0f, Floor.transform.position.z), Quaternion.identity);
+        //customerClone.order.coffeeName = menuText;
         SetRandomTime();
         time = minTime;
 
@@ -50,10 +50,16 @@ public class CustomerSystem : MonoBehaviour {
         //counts up
         time += Time.deltaTime;
 
-        Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + 6.0f, Floor.transform.position.z);
-        float new_customer_pos_random_range = Floor.transform.localScale.x * 0.5f;
-        new_customer_pos.x += Random.Range(-new_customer_pos_random_range, new_customer_pos_random_range);
-        new_customer_pos.z += Random.Range(-new_customer_pos_random_range, new_customer_pos_random_range);
+        //setting customer's position. change this after getting real model.
+        Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
+        Vector2 new_customer_pos_random_range = new Vector2(Floor.transform.localScale.x * 0.5f, Floor.transform.localScale.z * 0.5f);
+        const float new_customer_pos_range_offset = 1;
+        new_customer_pos_random_range.x -= new_customer_pos_range_offset;
+        new_customer_pos_random_range.y -= new_customer_pos_range_offset;
+
+        //set random position based on floor's scale and offset
+        new_customer_pos.x += Random.Range(-new_customer_pos_random_range.x, new_customer_pos_random_range.x);
+        new_customer_pos.z += Random.Range(-new_customer_pos_random_range.y, new_customer_pos_random_range.y);
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
