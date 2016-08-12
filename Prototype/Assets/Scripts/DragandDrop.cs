@@ -45,6 +45,7 @@ public class DragandDrop : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log(Grab);
         if (coffeeCup == null)
         {
             coffeeCup = GameObject.FindGameObjectWithTag("CoffeeCup");
@@ -62,13 +63,7 @@ public class DragandDrop : MonoBehaviour {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
          offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         
-        //camera zoom in
-        if (gameObject.tag == "WhippingCream")
-        {
-        }
-    
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
     }
 
     void OnMouseDrag()
@@ -84,9 +79,6 @@ public class DragandDrop : MonoBehaviour {
 
     void OnMouseUp()
     {
-        //reset camera zoom
-        if (gameObject.tag == "WhippingCream")
-
         //grab check
         Grab = false;   
         //cursor visible

@@ -25,7 +25,7 @@ public class WhippingCream : MonoBehaviour
     {
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
         CreamEmitter = gameObject.GetComponent<ParticleSystem>();
-        Cream = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Cream.prefab");
+        Cream = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/Cream.prefab");
         CreamEmitter.Stop();
     }
 
