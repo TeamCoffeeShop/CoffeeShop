@@ -41,7 +41,6 @@ public class DragandDrop : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(Grab);
         if (coffeeCup == null)
         {
             coffeeCup = GameObject.FindGameObjectWithTag("CoffeeCup");
