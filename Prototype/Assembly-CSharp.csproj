@@ -49,6 +49,9 @@
      <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\CameraLogic.cs" />
+     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
+     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
+     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\Coffee.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
@@ -69,12 +72,17 @@
      <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
      <Compile Include="Assets\Scripts\Dialogue\NPCDialogue.cs" />
      <Compile Include="Assets\Scripts\DragandDrop.cs" />
+     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\OrderingBallonLogic.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\UI\BarScript.cs" />
      <Compile Include="Assets\Scripts\UI\MoneyUIScript.cs" />
+     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
+     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
+     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
      <None Include="Assets\XmlFiles\customers.xml" />
      <None Include="Assets\Resources\DialogueText\DialogueEx.xml" />
      <None Include="Assets\Resources\PlayerInfo\PlayerInfo.xml" />
