@@ -13,9 +13,10 @@ public class CustomerSystem : MonoBehaviour {
     public float spawnTime;
     //current time
     public float time;
-    //
-
+    
+    //object links
     public GameObject Floor;
+    public GameObject CustomerSeats;
 
     //Customer Prefab
     public const string customerPath = "Prefab/Customer2";
@@ -46,29 +47,9 @@ public class CustomerSystem : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        //counts up
-        time += Time.deltaTime;
-
-        //setting customer's position. change this after getting real model.
-        Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
-        Vector2 new_customer_pos_random_range = new Vector2(Floor.transform.localScale.x * 0.5f, Floor.transform.localScale.z * 0.5f);
-        const float new_customer_pos_range_offset = 1;
-        new_customer_pos_random_range.x -= new_customer_pos_range_offset;
-        new_customer_pos_random_range.y -= new_customer_pos_range_offset;
-
-        //set random position based on floor's scale and offset
-        new_customer_pos.x += Random.Range(-new_customer_pos_random_range.x, new_customer_pos_random_range.x);
-        new_customer_pos.z += Random.Range(-new_customer_pos_random_range.y, new_customer_pos_random_range.y);
-
-        // Check whether it's time to spawn the customer
-        if (time >= spawnTime)
-        {
-            CreateCustomer(customerPath, new_customer_pos , Quaternion.identity).order.coffeeName = menuText;
-            SetRandomTime();
-            time = minTime;
-            //SpawnCustomer();
-        }
+	void Update ()
+    {
+        SpawnCustomer();
     }
 
     void SetRandomTime()
@@ -125,5 +106,54 @@ public class CustomerSystem : MonoBehaviour {
     void OnDisable()
     {
         MiniGameButton.onClick.RemoveListener(delegate { CustomerSaveLoad.save(dataPath, CustomerSaveLoad.customerContainer); });
+    }
+
+    void SpawnCustomer()
+    {
+        //counts up
+        time += Time.deltaTime;
+
+        // Check whether it's time to spawn the customer
+        if (time >= spawnTime)
+        {
+            //setting customer's position. change this after getting real model.
+            Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
+
+            //SpawnInRandomPos(ref new_customer_pos);
+            SpawnInRandomDefinedPos(ref new_customer_pos);
+
+            CreateCustomer(customerPath, new_customer_pos, Quaternion.identity).order.coffeeName = menuText;
+            SetRandomTime();
+            time = minTime;
+        }
+    }
+
+    void SpawnInRandomPos(ref Vector3 pos)
+    {
+        Vector2 new_customer_pos_random_range = new Vector2(Floor.transform.localScale.x * 0.5f, Floor.transform.localScale.z * 0.5f);
+        const float new_customer_pos_range_offset = 1;
+
+        new_customer_pos_random_range.x -= new_customer_pos_range_offset;
+        new_customer_pos_random_range.y -= new_customer_pos_range_offset;
+
+        //set random position based on floor's scale and offset
+        pos.x += Random.Range(-new_customer_pos_random_range.x, new_customer_pos_random_range.x);
+        pos.z += Random.Range(-new_customer_pos_random_range.y, new_customer_pos_random_range.y);
+    }
+
+    void SpawnInRandomDefinedPos(ref Vector3 pos)
+    {
+        int size = CustomerSeats.transform.childCount;
+
+        //if there's no seat, return
+        if(size == 0)
+            return;
+
+        int spawnseat = Random.Range(0,size);
+
+        //set position to the seat
+        Vector3 newpos = CustomerSeats.transform.GetChild(spawnseat).transform.position;
+        pos.x = newpos.x;
+        pos.z = newpos.z;
     }
 }
