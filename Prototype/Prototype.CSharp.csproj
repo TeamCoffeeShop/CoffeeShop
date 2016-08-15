@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
+    <Compile Include="Assets\Scripts\NPCManager.cs" />
     <Compile Include="Assets\Scripts\OrderingBallonLogic.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />

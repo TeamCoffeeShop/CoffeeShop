@@ -22,11 +22,11 @@
             <options>
                 <DialogueOption>
                   <tempText> My name is ~ </tempText>
-                  <destinationNodeID>1</destinationNodeID>
+                  <destinationNodeID>2</destinationNodeID>
                 </DialogueOption>
                 <DialogueOption>
                   <tempText> Bye :)</tempText>
-                  <destinationNodeID>1</destinationNodeID>
+                  <destinationNodeID>2</destinationNodeID>
                 </DialogueOption>
             </options>
         </DialogueNode>
@@ -37,11 +37,11 @@
             <options>
                 <DialogueOption>
                   <tempText> ... </tempText>
-                  <destinationNodeID>1</destinationNodeID>
+                  <destinationNodeID>-1</destinationNodeID>
                 </DialogueOption>
                 <DialogueOption>
                   <tempText> Bye </tempText>
-                  <destinationNodeID>1</destinationNodeID>
+                  <destinationNodeID>-1</destinationNodeID>
                 </DialogueOption>
             </options>
         </DialogueNode>

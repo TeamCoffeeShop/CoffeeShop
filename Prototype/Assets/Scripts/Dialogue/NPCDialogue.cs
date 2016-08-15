@@ -3,16 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Xml.Serialization;
 using System.IO;
+using UnityEngine.SceneManagement;
 
-    public class NPCDialogue : MonoBehaviour
+public class NPCDialogue : MonoBehaviour
     {
-        //private
-        public Dialogue dia;
-        public GameObject dialogue_window; //Dialogue Panel
-        public GameObject npc_text; //NPC Dialogue
-    public GameObject character_text; //Character Dialogue
-        public GameObject option1; //Option 1
-        public GameObject option2; //Option 2
+        private Dialogue dia;
+    private GameObject dialogue_window; //Dialogue Panel
+    private GameObject npc_text; //NPC Dialogue
+    private GameObject character_text; //Character Dialogue
+    private GameObject option1; //Option 1
+    private GameObject option2; //Option 2
                                    //////////////////////////////////
 
     public string option1Text;
@@ -24,11 +24,13 @@ using System.IO;
         public string DialogueDataFilePath; //Xml file
         public GameObject DialogueWindowPrefab; //Dialogue Panel Prefab
 
+    public int gameLevel;
+
         //Use this for initialization
         void Start()
         {
 
-            dia = load_dialogue("Assets/DialogueText/" + DialogueDataFilePath);
+            dia = load_dialogue("Assets/Resources/DialogueText/" + DialogueDataFilePath);
             var canvas = GameObject.Find("Canvas");
 
             dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);
@@ -76,7 +78,8 @@ using System.IO;
                 node_id = selected_option;
             }
             dialogue_window.SetActive(false);
-        }
+        SceneManager.LoadScene(gameLevel);
+    }
 
         private void display_node(DialogueNode node)
         {
