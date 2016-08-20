@@ -3,38 +3,33 @@ using System.Collections;
 using System.Xml.Serialization;
 using System.IO;
 
-public class CustomerSaveLoad : MonoBehaviour
+public class CustomerSaveLoad
 {
-    public GameObject customerList;
-
     public static CustomerContainer customerContainer = new CustomerContainer();
 
     public delegate void SerializaAction();
     public static event SerializaAction OnLoaded;
     public static event SerializaAction OnBeforeSave;
 
-
-
-    public void Load(string path)
+    public static void Load(string path)
     {
-        //customerContainer = LoadCustomers(path);
+        customerContainer = LoadCustomers(path);
 
-        //foreach(CustomerData data in customerContainer.customers)
-        //{
-        //    CustomerSystem.CreateCustomer(data, CustomerSystem.customerPath,
-        //        new Vector3(data.posx, data.posy, data.posz), Quaternion.identity);
-        //}
+        foreach(CustomerData data in customerContainer.customers)
+        {
+            CustomerSystem.CreateCustomer(data, CustomerSystem.customerPath,
+                new Vector3(data.posx, data.posy, data.posz), Quaternion.identity);
+        }
 
         OnLoaded();
 
     }
 
-    public void save(string path, CustomerContainer customers)
+    public static void save(string path, CustomerContainer customers)
     {
         OnBeforeSave();
 
-        DontDestroyOnLoad(customerList);
-        //SaveCustomers(path, customers);
+        SaveCustomers(path, customers);
 
         ClearCustomers();
     }
@@ -49,28 +44,28 @@ public class CustomerSaveLoad : MonoBehaviour
         customerContainer.customers.Clear();
     }
 
-    //private static CustomerContainer LoadCustomers(string path)
-    //{
-    //    XmlSerializer serializer = new XmlSerializer(typeof(CustomerContainer));
+    private static CustomerContainer LoadCustomers(string path)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(CustomerContainer));
 
-    //    FileStream stream = new FileStream(path, FileMode.Open);
+        FileStream stream = new FileStream(path, FileMode.Open);
 
-    //    CustomerContainer customers = serializer.Deserialize(stream) as CustomerContainer;
+        CustomerContainer customers = serializer.Deserialize(stream) as CustomerContainer;
 
-    //    stream.Close();
+        stream.Close();
 
-    //    return customers;
-    //}
+        return customers;
+    }
 
-    //private static void SaveCustomers(string path, CustomerContainer customers)
-    //{
-    //    XmlSerializer serializer = new XmlSerializer(typeof(CustomerContainer));
+    private static void SaveCustomers(string path, CustomerContainer customers)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(CustomerContainer));
 
-    //    FileStream stream = new FileStream(path, FileMode.Truncate);
+        FileStream stream = new FileStream(path, FileMode.Truncate);
 
-    //    serializer.Serialize(stream, customers);
+        serializer.Serialize(stream, customers);
 
-    //    stream.Close();
-    //}
+        stream.Close();
+    }
 
 }

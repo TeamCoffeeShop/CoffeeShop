@@ -6,7 +6,7 @@ public class Customer : MonoBehaviour {
 
     public CustomerData data = new CustomerData();
 
-    public string _name = "Customer";
+    public string _name;
 
     public Coffee order = new Coffee();
 
@@ -19,22 +19,43 @@ public class Customer : MonoBehaviour {
         data.posz = pos.z;
         data.order = order;   
     }
+
+    public void LoadData()
+    {
+        _name = data.name;
+        transform.position = new Vector3(data.posx, data.posy, data.posz);
+        order = data.order;
+    }
+
+    void OnEnable()
+    {
+        CustomerSaveLoad.OnLoaded += delegate { LoadData(); };
+        CustomerSaveLoad.OnBeforeSave += delegate { StoreData(); };
+        CustomerSaveLoad.OnBeforeSave += delegate { CustomerSaveLoad.AddCustomerData(data); };
+    }
+
+    void OnDisable()
+    {
+        CustomerSaveLoad.OnLoaded -= delegate { LoadData(); };
+        CustomerSaveLoad.OnBeforeSave -= delegate { StoreData(); };
+        CustomerSaveLoad.OnBeforeSave -= delegate { CustomerSaveLoad.AddCustomerData(data); };
+    }
 }
 
 public class CustomerData
 {
-    //[XmlAttribute("Name")]
+    [XmlAttribute("Name")]
     public string name;
 
-    //[XmlElement("PosX")]
+    [XmlElement("PosX")]
     public float posx;
 
-    //[XmlElement("PosY")]
+    [XmlElement("PosY")]
     public float posy;
 
-    //[XmlElement("PosZ")]
+    [XmlElement("PosZ")]
     public float posz;
 
-    //[XmlElement("Order")]
+    [XmlElement("Order")]
     public Coffee order;
 }

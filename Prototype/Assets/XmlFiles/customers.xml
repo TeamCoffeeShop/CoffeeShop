@@ -2,22 +2,20 @@
 <CutomerCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Customer>
     <Customer Name="">
-      <PosX>-33.46691</PosX>
+      <PosX>-0.3</PosX>
       <PosY>6.5</PosY>
-      <PosZ>29.4812088</PosZ>
-      <Order />
+      <PosZ>9.7</PosZ>
+      <Order>
+        <coffeeName>Caffe latte</coffeeName>
+      </Order>
     </Customer>
     <Customer Name="">
-      <PosX>12.9358425</PosX>
+      <PosX>20</PosX>
       <PosY>6.5</PosY>
-      <PosZ>-34.6700668</PosZ>
-      <Order />
-    </Customer>
-    <Customer Name="">
-      <PosX>-33.7081451</PosX>
-      <PosY>6.5</PosY>
-      <PosZ>-28.8041534</PosZ>
-      <Order />
+      <PosZ>30</PosZ>
+      <Order>
+        <coffeeName>Caffe latte</coffeeName>
+      </Order>
     </Customer>
   </Customer>
 </CutomerCollection>

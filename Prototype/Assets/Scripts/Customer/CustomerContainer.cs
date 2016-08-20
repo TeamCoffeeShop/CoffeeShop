@@ -3,9 +3,10 @@ using System.Collections;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
+[XmlRoot("CutomerCollection")]
+public class CustomerContainer{
 
-public class CustomerContainer : MonoBehaviour{
-
+    [XmlArray("Customer")]
+    [XmlArrayItem("Customer")]
     public List<CustomerData> customers = new List<CustomerData>();
-
 }
