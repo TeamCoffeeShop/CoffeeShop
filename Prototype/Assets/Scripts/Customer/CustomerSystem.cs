@@ -103,7 +103,7 @@ public class CustomerSystem : MonoBehaviour {
 
     }
 
-    void CreateCustomer(CustomerData data, string path, Vector3 position, Quaternion rotation)
+    public static void CreateCustomer(CustomerData data, string path, Vector3 position, Quaternion rotation)
     {
         GameObject prefab = Resources.Load<GameObject>(path);
 
@@ -133,7 +133,7 @@ public class CustomerSystem : MonoBehaviour {
 
             CreateCustomer(customerPath, new_customer_pos, Quaternion.identity).order.coffeeName = menuText;
             SetRandomTime();
-            time = minTime;
+            time = 0;
         }
     }
 
