@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class CustomerSystem : MonoBehaviour {
 
+    //customer List
+    public GameObject CustomerListObj;
+
     public Button MiniGameButton;
 
     //For Random Time
@@ -15,31 +18,39 @@ public class CustomerSystem : MonoBehaviour {
     public float time;
     //
 
+    //Coffee Shop Floor
     public GameObject Floor;
 
     //Customer Prefab
     public const string customerPath = "Prefab/Customer2";
-
-    //Data Path
-    private static string dataPath = string.Empty;
+    //Customer List Prefab
+    public GameObject CustomerListPrefab; 
 
     //UI
     private string menuText;
 
     void Awake()
     {
-        //if (Application.platform == RuntimePlatform.IPhonePlayer)
-        //    dataPath = System.IO.Path.Combine(Application.persistentDataPath, "XmlFiles/customers.xml");
-        //else
-            dataPath = System.IO.Path.Combine(Application.dataPath, "XmlFiles/customers.xml");
+        CustomerListObj = GameObject.Find("CustomerList(Clone)");
+        if (CustomerListObj == null)
+        {
+            CustomerListObj = Instantiate<GameObject>(CustomerListPrefab);
+        }
+        else
+        {
+            foreach (CustomerData data in CustomerListObj.GetComponent<CustomerContainer>().customers)
+            {
+                CreateCustomer(data, CustomerSystem.customerPath,
+                    new Vector3(data.posx, data.posy, data.posz), Quaternion.identity);
+            }
+        }
+
     }
 
 	// Use this for initialization
 	void Start () {
+        DontDestroyOnLoad(CustomerListObj);
         SelectMenu();
-        //Customer customerClone;
-        //customerClone = CreateCustomer(customerPath, new Vector3(Floor.transform.position.x, Floor.transform.position.y + 6.0f, Floor.transform.position.z), Quaternion.identity);
-        //customerClone.order.coffeeName = menuText;
         SetRandomTime();
         time = minTime;
 
@@ -64,10 +75,9 @@ public class CustomerSystem : MonoBehaviour {
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
         {
-            CreateCustomer(customerPath, new_customer_pos , Quaternion.identity).order.coffeeName = menuText;
+            CreateCustomer(customerPath, new_customer_pos , Quaternion.identity);
             SetRandomTime();
             time = minTime;
-            //SpawnCustomer();
         }
     }
 
@@ -94,36 +104,29 @@ public class CustomerSystem : MonoBehaviour {
         }
     }
 
-    public static Customer CreateCustomer(string path, Vector3 position, Quaternion rotation)
+    void CreateCustomer(string path, Vector3 position, Quaternion rotation)
     {
         GameObject prefab = Resources.Load<GameObject>(path);
 
         GameObject go = GameObject.Instantiate(prefab, position, rotation) as GameObject;
 
         Customer customer = go.GetComponent<Customer>() ?? go.AddComponent<Customer>();
+
+        customer.StoreData();
+
+        CustomerListObj.GetComponent<CustomerContainer>().customers.Add(customer.data);
+
+    }
+
+    void CreateCustomer(CustomerData data, string path, Vector3 position, Quaternion rotation)
+    {
+        GameObject prefab = Resources.Load<GameObject>(path);
+
+        GameObject go = GameObject.Instantiate(prefab, position, rotation) as GameObject;
+
+        Customer customer = go.GetComponent<Customer>() ?? go.AddComponent<Customer>();
+        customer.StoreData();
         
-        return customer;
-    }
-
-    public static Customer CreateCustomer(CustomerData data, string path, Vector3 position, Quaternion rotation)
-    {
-        GameObject prefab = Resources.Load<GameObject>(path);
-
-        GameObject go = GameObject.Instantiate(prefab, position, rotation) as GameObject;
-
-        Customer customer = go.GetComponent<Customer>() ?? go.AddComponent<Customer>();
-
         customer.data = data;
-        return customer;
-    }
-
-    void OnEnable()
-    {
-        MiniGameButton.onClick.AddListener(delegate { CustomerSaveLoad.save(dataPath, CustomerSaveLoad.customerContainer); });
-    }
-
-    void OnDisable()
-    {
-        MiniGameButton.onClick.RemoveListener(delegate { CustomerSaveLoad.save(dataPath, CustomerSaveLoad.customerContainer); });
     }
 }

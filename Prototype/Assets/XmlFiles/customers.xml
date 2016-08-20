@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="ks_c_5601-1987"?>
 <CutomerCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Customer>
-    <Customer Name="Customer3">
-      <PosX>400.2</PosX>
-      <PosY>224.7</PosY>
-      <PosZ>-6.2</PosZ>
-      <Order>
-        <coffeeName>Americano</coffeeName>
-      </Order>
+    <Customer Name="">
+      <PosX>-33.46691</PosX>
+      <PosY>6.5</PosY>
+      <PosZ>29.4812088</PosZ>
+      <Order />
     </Customer>
-    <Customer Name="Customer3">
-      <PosX>382.560272</PosX>
-      <PosY>224.7</PosY>
-      <PosZ>-10.6421785</PosZ>
-      <Order>
-        <coffeeName>Americano</coffeeName>
-      </Order>
+    <Customer Name="">
+      <PosX>12.9358425</PosX>
+      <PosY>6.5</PosY>
+      <PosZ>-34.6700668</PosZ>
+      <Order />
     </Customer>
-    <Customer Name="Customer3">
-      <PosX>404.554779</PosX>
-      <PosY>224.7</PosY>
-      <PosZ>-5.58198833</PosZ>
-      <Order>
-        <coffeeName>Americano</coffeeName>
-      </Order>
+    <Customer Name="">
+      <PosX>-33.7081451</PosX>
+      <PosY>6.5</PosY>
+      <PosZ>-28.8041534</PosZ>
+      <Order />
     </Customer>
   </Customer>
 </CutomerCollection>
