@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Billboard.cs" />
-    <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
+    <Compile Include="Assets\Scripts\CalculateScene.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
     <Compile Include="Assets\Scripts\CameraLogic.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
     <Compile Include="Assets\Scripts\Dialogue\NPCDialogue.cs" />
     <Compile Include="Assets\Scripts\DragandDrop.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScene.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
@@ -104,10 +105,9 @@
     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Resources\DialogueText\DialogueEx.xml" />
-    <None Include="Assets\Resources\DialogueText\FirstDialogue.txt" />
-    <None Include="Assets\Resources\PlayerInfo\PlayerInfo.xml" />
-    <None Include="Assets\XmlFiles\customers.xml" />
+    <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
+    <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />
+    <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

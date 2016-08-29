@@ -17,7 +17,6 @@ public class MenuScript : MonoBehaviour {
     public void GotoLevel(int level)
     {
         SceneManager.LoadScene(level);
-        //Application.LoadLevel(level);
     }
 
 }
