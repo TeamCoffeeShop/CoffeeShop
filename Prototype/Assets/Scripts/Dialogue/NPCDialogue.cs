@@ -30,7 +30,7 @@ public class NPCDialogue : MonoBehaviour
         void Start()
         {
 
-            dia = load_dialogue("Assets/Resources/DialogueText/" + DialogueDataFilePath);
+            dia = load_dialogue("Assets/Resources/Xmls/" + DialogueDataFilePath);
             var canvas = GameObject.Find("Canvas");
 
             dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);

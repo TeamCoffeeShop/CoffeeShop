@@ -8,7 +8,10 @@ public class FinishedOrderList : MonoBehaviour
     {
         //if duplicate, erase this
         if (GameObject.Find("[[Finished Orders]]") != null)
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
+
+        //create saved orders
+        OnLevelWasLoaded(Scenes.MainLevel);
     }
 
     void Start ()
@@ -25,10 +28,14 @@ public class FinishedOrderList : MonoBehaviour
         //if main level, create lists
         if (level == Scenes.MainLevel)
         {
-            GameObject cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/cup"));
-            cup.transform.SetParent(GameObject.Find("UI").transform, false);
-
-            Debug.Log("created!");
+            //create cups as much as childrens
+            Transform[] allChildren = GetComponentsInChildren<Transform>();
+            foreach (Transform child in allChildren)
+            {
+                Debug.Log(child);
+                GameObject cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/cup"));
+                cup.transform.SetParent(GameObject.Find("UI").transform, false);
+            }
         }
     }
 }
