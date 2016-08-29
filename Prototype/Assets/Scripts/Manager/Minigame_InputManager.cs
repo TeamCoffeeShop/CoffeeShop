@@ -14,9 +14,9 @@ public class Minigame_InputManager : MonoBehaviour
         }
 
         //temporary. erase this code after creating correct order creation
-        //if(Input.GetKeyDown("space"))
-        //{
-        //    GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Cup"), new Vector3(0, 0, 0), Quaternion.identity);
-        //}
+        if(Input.GetKeyDown("space"))
+        {
+            new GameObject().transform.parent = GameObject.Find("[[Finished Orders]]").transform;
+        }
 	}
 }

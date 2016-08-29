@@ -11,7 +11,7 @@ public class FinishedOrderList : MonoBehaviour
             DestroyImmediate(gameObject);
 
         //create saved orders
-        OnLevelWasLoaded(Scenes.MainLevel);
+        //OnLevelWasLoaded(Scenes.MainLevel);
     }
 
     void Start ()
@@ -29,12 +29,22 @@ public class FinishedOrderList : MonoBehaviour
         if (level == Scenes.MainLevel)
         {
             //create cups as much as childrens
-            Transform[] allChildren = GetComponentsInChildren<Transform>();
-            foreach (Transform child in allChildren)
+            int size = transform.childCount;
+            float xPos = 0;
+            for (int i = 0; i < size; ++i)
             {
-                Debug.Log(child);
+                //create cup
                 GameObject cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/cup"));
                 cup.transform.SetParent(GameObject.Find("UI").transform, false);
+
+                //set cup details here
+
+
+                //set Transform (to not stack in one place)
+                RectTransform rt = cup.GetComponent<RectTransform>();
+
+                rt.Translate(xPos,0,0);
+                xPos += (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
             }
         }
     }
