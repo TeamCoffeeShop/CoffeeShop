@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 
 public class WhippingCream : MonoBehaviour
@@ -23,7 +22,7 @@ public class WhippingCream : MonoBehaviour
     void Awake()
     {
         CreamEmitter = gameObject.GetComponent<ParticleSystem>();
-        Cream = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/Cream.prefab");
+        Cream = Resources.Load<GameObject>("Prefab/Cream");
         CreamEmitter.Stop();
     }
 

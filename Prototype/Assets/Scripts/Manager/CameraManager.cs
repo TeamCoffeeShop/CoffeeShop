@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor; //for assetdatabase
 using System.Collections;
 
 public class CameraManager : MonoBehaviour
@@ -13,26 +12,26 @@ public class CameraManager : MonoBehaviour
     public Vector3 NextPos;
     public Vector3 NextCoffeeCupPos;
 
-    Vector3 StartPosition;
+    //Vector3 StartPosition;
     Vector3 CoffeeMakingPosition;
     Vector3 CoffeeSpawnPosition;
-    Vector3 DrawingPosition;
+    //Vector3 DrawingPosition;
 
     //variable to access coffeeCup
     GameObject coffeeCup;
 
     void Awake()
     {
-        CoffeeCup1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup1.prefab");
-        CoffeeCup2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup2.prefab");
-        CoffeeCup3 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup3.prefab");
+        CoffeeCup1 = Resources.Load<GameObject>("Prefab/CoffeeCup1");
+        CoffeeCup2 = Resources.Load<GameObject>("Prefab/CoffeeCup2");
+        CoffeeCup3 = Resources.Load<GameObject>("Prefab/CoffeeCup3");
 
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
 
-        StartPosition = new Vector3(-18f, 13f, -10f);
+        //StartPosition = new Vector3(-18f, 13f, -10f);
         CoffeeMakingPosition = new Vector3(3f, 13f, -10f);
         CoffeeSpawnPosition = new Vector3(3f, 1f, 1f);
-        DrawingPosition = new Vector3(24f, 13f, -10f);
+        //DrawingPosition = new Vector3(24f, 13f, -10f);
     }
 	
 	// Update is called once per frame

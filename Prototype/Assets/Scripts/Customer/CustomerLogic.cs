@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 
 public class CustomerLogic : MonoBehaviour
@@ -11,7 +10,7 @@ public class CustomerLogic : MonoBehaviour
     {
         //the default ballon
         if(OrderingBallon == null)
-            OrderingBallon = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/OrderingBallon.prefab");
+            OrderingBallon = Resources.Load<GameObject>("Prefab/OrderingBallon");
 
         Instantiate(OrderingBallon, transform.position + new Vector3(0,transform.localScale.y * 2,0), Quaternion.identity);
 	}
