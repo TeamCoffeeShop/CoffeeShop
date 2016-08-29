@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor; //for assetdatabase
+//using UnityEditor; //for assetdatabase
 using System.Collections;
 
 public class CoffeeBeanInstantiator : MonoBehaviour {
@@ -10,8 +10,8 @@ public class CoffeeBeanInstantiator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        CoffeeBean1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeBean1.prefab");
-        CoffeeBean2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeBean2.prefab");
+        CoffeeBean1 = Resources.Load<GameObject>("Prefab/CoffeeBean1");
+        CoffeeBean2 = Resources.Load<GameObject>("Prefab/CoffeeBean2");
     }
 	
 	// Update is called once per frame

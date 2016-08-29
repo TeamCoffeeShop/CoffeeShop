@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor; //for assetdatabase
 using System.Collections;
 
 public class CameraManager : MonoBehaviour
@@ -23,9 +22,9 @@ public class CameraManager : MonoBehaviour
 
     void Awake()
     {
-        CoffeeCup1 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup1.prefab");
-        CoffeeCup2 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup2.prefab");
-        CoffeeCup3 = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Prefab/CoffeeCup3.prefab");
+        CoffeeCup1 = Resources.Load<GameObject>("Prefab/CoffeeCup1");
+        CoffeeCup2 = Resources.Load<GameObject>("Prefab/CoffeeCup2");
+        CoffeeCup3 = Resources.Load<GameObject>("Prefab/CoffeeCup3");
 
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
 
