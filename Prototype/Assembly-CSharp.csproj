@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Minigame_CoffeeManager.cs" />
      <Compile Include="Assets\Scripts\CalculateScene.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
@@ -76,6 +75,7 @@
      <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
      <Compile Include="Assets\Scripts\MainMenuScene.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />

@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
                 MainCamera.TargetPosition = CameraPos;
                 CM.SelectedCoffee = Instantiate(CoffeeCup, CoffeeCupPos, Quaternion.identity) as GameObject;
                 CM.SelectedCoffee.name = "CoffeeCup";
-                CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>().type = NewCoffeeCupType;
+                CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>().CupType = NewCoffeeCupType;
                 CoffeeBehaviourSetup.SetCoffeeCup(ref CM.SelectedCoffee);
                 break;
 

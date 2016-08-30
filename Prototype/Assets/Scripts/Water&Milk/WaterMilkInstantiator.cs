@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum WaterMilkType
+{
+    None, HotWater, IcedWater, HotMilk, IcedMilk
+}
+
 public class WaterMilkInstantiator : MonoBehaviour
 {
-    public bool HotWater = false;
-    public bool IcedWater = false;
-    public bool HotMilk = false;
-    public bool IcedMilk = false;
+    public WaterMilkType WaterMilkType;
 
     public bool Ready = false;
 
@@ -14,38 +16,25 @@ public class WaterMilkInstantiator : MonoBehaviour
     public float CurrentAmount = 0;
     public float IncreaseAmount = 1;
 
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnMouseDrag()
     {
-        if (HotWater == true)
+        switch(WaterMilkType)
         {
-            CurrentAmount += IncreaseAmount;
-        }
+            case WaterMilkType.HotWater:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.IcedWater:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.HotMilk:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.IcedMilk:
+                CurrentAmount += IncreaseAmount;
+                break;
+            default:
+                break;
 
-        if (IcedWater == true)
-        {
-            CurrentAmount += IncreaseAmount;
         }
-
-        if (HotMilk == true)
-        {
-            CurrentAmount += IncreaseAmount;
-        }
-
-        if (IcedMilk == true)
-        {
-            CurrentAmount += IncreaseAmount;
-        }
-
     }
 }

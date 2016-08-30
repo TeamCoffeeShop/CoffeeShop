@@ -60,10 +60,7 @@ public class ResetManager : MonoBehaviour
         //reset status of water/milk
         //See WaterMilkInstantiator.cs and WaterMilkStatusChecker.cs for more details
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().CurrentAmount = 0;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().HotWater = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().IcedWater = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().HotMilk = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().IcedMilk = false;
+        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().WaterMilkType = WaterMilkType.None;
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
 
         //reset camera to original position

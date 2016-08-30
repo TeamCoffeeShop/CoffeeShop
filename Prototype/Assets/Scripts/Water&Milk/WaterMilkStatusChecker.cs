@@ -22,47 +22,37 @@ public class WaterMilkStatusChecker : MonoBehaviour
         //when the player clicks one of 4 water/milk while it's the first time,
         //then ready for instantiate the liquid
 
-        if (gameObject.name == "HotWater" && Instantiator.Ready == false)
+        if(!Instantiator.Ready)
         {
-            Debug.Log("Hot Water Selected");
-            Instantiator.HotWater = true;
-            Instantiator.IcedWater = false;
-            Instantiator.HotMilk = false;
-            Instantiator.IcedMilk = false;
-            Instantiator.Ready = true;
-        }
+            if (gameObject.name == "HotWater")
+            {
+                Debug.Log("Hot Water Selected");
+                Instantiator.WaterMilkType = WaterMilkType.HotWater;
+                Instantiator.Ready = true;
+            }
 
-        else if(gameObject.name == "IcedWater" && Instantiator.Ready == false)
-        {
-            Debug.Log("Iced Water Selected");
-            Instantiator.HotWater = false;
-            Instantiator.IcedWater = true;
-            Instantiator.HotMilk = false;
-            Instantiator.IcedMilk = false;
-            Instantiator.Ready = true;
-        }
+            else if (gameObject.name == "IcedWater")
+            {
+                Debug.Log("Iced Water Selected");
+                Instantiator.WaterMilkType = WaterMilkType.IcedWater;
+                Instantiator.Ready = true;
+            }
 
-        else if(gameObject.name == "HotMilk" && Instantiator.Ready == false)
-        {
-            Debug.Log("Hot Milk Selected");
-            Instantiator.HotWater = false;
-            Instantiator.IcedWater = false;
-            Instantiator.HotMilk = true;
-            Instantiator.IcedMilk = false;
-            Instantiator.Ready = true;
-        }
+            else if (gameObject.name == "HotMilk")
+            {
+                Debug.Log("Hot Milk Selected");
+                Instantiator.WaterMilkType = WaterMilkType.HotMilk;
+                Instantiator.Ready = true;
+            }
 
-        else if(gameObject.name == "IcedMilk" && Instantiator.Ready == false)
-        {
-            Debug.Log("Iced Milk Selected");
-            Instantiator.HotWater = false;
-            Instantiator.IcedWater = false;
-            Instantiator.HotMilk = false;
-            Instantiator.IcedMilk = true;
-            Instantiator.Ready = true;
+            else if (gameObject.name == "IcedMilk")
+            {
+                Debug.Log("Iced Milk Selected");
+                Instantiator.WaterMilkType = WaterMilkType.IcedMilk;
+                Instantiator.Ready = true;
+            }
         }
-
-        else if (Instantiator.Ready == true)
+        else
         {
             Debug.Log("Already filled with liquid. Go to the first stage if you want to fill another");
         }

@@ -25,12 +25,19 @@ public enum CoffeeCupType
     CoffeeCup3
 }
 
+public enum CoffeeDropType
+{
+    CoffeeDrop1,
+    CoffeeDrop2
+}
+
 //the static class that sets behaviours of the coffee cup
 public static class CoffeeBehaviourSetup
 {
+    //sets the coffeecup model
     public static void SetCoffeeCup(ref GameObject cup)
     {
-        switch(cup.GetComponent<CoffeeCupBehavior>().type)
+        switch(cup.GetComponent<CoffeeCupBehavior>().CupType)
         {
             case CoffeeCupType.CoffeeCup1:
                 cup.transform.localScale = new Vector3(1.5f, 0.6f, 1.5f);
@@ -44,6 +51,23 @@ public static class CoffeeBehaviourSetup
             default:
                 break;
         }
+    }
+
+    //sets the material (or mesh) of the coffee
+    public static void SetCoffee(ref GameObject cup)
+    {
+        switch(cup.GetComponent<CoffeeCupBehavior>().DropType)
+        {
+            case CoffeeDropType.CoffeeDrop1:
+                cup.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/Coffee");
+                break;
+            case CoffeeDropType.CoffeeDrop2:
+                cup.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/Coffee2");
+                break;
+            default:
+                break;
+        }
+
     }
 }
 

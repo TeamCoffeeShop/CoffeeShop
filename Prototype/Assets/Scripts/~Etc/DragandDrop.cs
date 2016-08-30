@@ -24,9 +24,6 @@ public class DragandDrop : MonoBehaviour {
     //variable to access coffeeCup
     GameObject coffeeCup;
 
-    //material to insert
-    public Material CoffeeMaterial;
-
     void Awake()
     {
         handGrinder = GameObject.Find("HandGrinder");
@@ -147,8 +144,13 @@ public class DragandDrop : MonoBehaviour {
                 switch(gameObject.name)
                 {
                     case "CoffeeDrop1":
+                        coffeeCup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop1;
+                        CoffeeBehaviourSetup.SetCoffee(ref coffeeCup);
+                        Destroy(gameObject);
+                        break;
                     case "CoffeeDrop2":
-                        coffeeCup.GetComponent<Renderer>().material = CoffeeMaterial;
+                        coffeeCup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop2;
+                        CoffeeBehaviourSetup.SetCoffee(ref coffeeCup);
                         Destroy(gameObject);
                         break;
                     default:
