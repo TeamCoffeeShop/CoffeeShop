@@ -1,43 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Calendar
-{
-    public int month;
-    public int day;
-}
-
 public class TimeOfDay : MonoBehaviour {
 
-    //Visual clock and calendar
-    public Transform hourHand;
-    public Transform minuteHand;
-
-    public Text MonthText;
-    public Text DayText;
+    public Text TimeText;
 
     //Set time , day and month
     public float currentHour;
     public float currentMin;
 
-    public int month;
-    public int day;
-
-    public Calendar calendar = new Calendar();
-
-    public int CalculateSceneLevel;
-
-    //The number of degrees per hour
-    private float hoursToDegrees = 360.0f / 12.0f;
-    //The number of degrees per minute
-    private float minToDegrees = 360.0f / 60.0f;
-
     //How long is a full day going to be in-game
     public float secondInFullDay;
 
+    public int month;
+    public int day;
+
+    public int CalculateSceneLevel;
+
+    public Calendar calendar = new Calendar();
 
     //This is what we use to set at which time our game starts 
     [Range(0, 1)]
@@ -46,10 +28,20 @@ public class TimeOfDay : MonoBehaviour {
     //This is so we can control the speed of our time of day
     private float timeMultiplier = 1.0f;
 
+    // Time object
+    GameObject timeobj;
+    GameObject timetxtobj;
+
 	// Use this for initialization
 	void Start ()
     {
-        if(PlayerPrefs.GetInt("Month") == 0)
+        timeobj = GameObject.Find("TimeOfDay");
+        DontDestroyOnLoad(timeobj);
+
+        timetxtobj = GameObject.Find("time");
+        DontDestroyOnLoad(timetxtobj);
+
+        if (PlayerPrefs.GetInt("Month") == 0)
         {
             calendar.month = month;
         }
@@ -58,7 +50,7 @@ public class TimeOfDay : MonoBehaviour {
             calendar.month = PlayerPrefs.GetInt("Month");
         }
 
-        if(PlayerPrefs.GetInt("Day") == 0)
+        if (PlayerPrefs.GetInt("Day") == 0)
         {
             calendar.day = day;
         }
@@ -66,9 +58,6 @@ public class TimeOfDay : MonoBehaviour {
         {
             calendar.day = PlayerPrefs.GetInt("Day");
         }
-
-        MonthText.text = calendar.month + " Month";
-        DayText.text = calendar.day + " Day";
     }
 	
 	// Update is called once per frame
@@ -89,8 +78,8 @@ public class TimeOfDay : MonoBehaviour {
             PlayerPrefs.SetInt("Month", calendar.month);
         }
 
-        MonthText.text = calendar.month + " Month";
-        DayText.text = calendar.day + " Day";
+        currentHour = 24.0f * currentTimeOfDay;
+        currentMin = 60 * (currentHour - Mathf.Floor(currentHour));
 
         //restart our time of day to 0
         if (currentTimeOfDay >= 1)
@@ -102,12 +91,7 @@ public class TimeOfDay : MonoBehaviour {
             PlayerPrefs.SetInt("Day", calendar.day);
             SceneManager.LoadScene(CalculateSceneLevel);
         }
-
-        currentHour = 24.0f * currentTimeOfDay;
-        currentMin = 60 * (currentHour - Mathf.Floor(currentHour));
-
-        hourHand.localRotation = Quaternion.Euler(0, 0, -currentHour * hoursToDegrees);
-        minuteHand.localRotation = Quaternion.Euler(0, 0, -currentMin * minToDegrees);
+            TimeText.text = (int)currentHour + ":" + (int)currentMin;
 
 	}
 }
