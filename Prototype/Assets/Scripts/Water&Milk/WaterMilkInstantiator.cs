@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum WaterMilkType
-{
-    None, HotWater, IcedWater, HotMilk, IcedMilk
-}
-
 public class WaterMilkInstantiator : MonoBehaviour
 {
     public WaterMilkType WaterMilkType;
-
     public bool Ready = false;
 
     public float MaxAmount = 1000;
     public float CurrentAmount = 0;
     public float IncreaseAmount = 1;
 
-    void OnMouseDrag()
+    Minigame_CoffeeManager CM;
+
+    void Awake ()
+    {
+        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
+    }
+
+    void OnMouseDrag ()
     {
         switch(WaterMilkType)
         {
@@ -35,6 +36,22 @@ public class WaterMilkInstantiator : MonoBehaviour
             default:
                 break;
 
+        }
+    }
+
+    void OnMouseUp()
+    {
+        //save the amount to the cup
+        if(CM.SelectedCoffee != null)
+        {
+            if(CurrentAmount <= MaxAmount)
+            {
+                CoffeeCupBehavior cup = CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
+                cup.WaterMilkType = WaterMilkType;
+                cup.WaterMilkLevel = CurrentAmount;
+
+                Debug.Log("Successfully saved to cup!");
+            }
         }
     }
 }

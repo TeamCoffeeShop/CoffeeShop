@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class FinishedOrderList : MonoBehaviour
 {
+    public GameObject orderDisplayButton;
+
     void Awake ()
     {
         //if duplicate, erase this
         if (GameObject.Find("[[Finished Orders]]") != null)
             DestroyImmediate(gameObject);
-
-        //create saved orders
-        //CreateOrdersInUI();
     }
 
     void Start ()
@@ -38,11 +38,28 @@ public class FinishedOrderList : MonoBehaviour
         for (int i = 0; i < size; ++i)
         {
             //create cup
-            GameObject cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/cup"));
+            GameObject cup = GameObject.Instantiate(orderDisplayButton);
             cup.transform.SetParent(GameObject.Find("UI").transform, false);
 
             //set cup details here
+            CoffeeCupBehavior finishedCup = transform.GetChild(i).GetComponent<CoffeeCupBehavior>();
+            cup.GetComponent<OrderLogic>().originalCup = finishedCup;
 
+            //distinguish image by the droptype
+            switch(finishedCup.DropType)
+            {
+                case CoffeeDropType.CoffeeDrop1:
+                    cup.GetComponent<Image>().color = new Color(116/255f, 60/255f, 0);
+                    break;
+                case CoffeeDropType.CoffeeDrop2:
+                    cup.GetComponent<Image>().color = new Color(206/255f, 164/255f, 114/255f);
+                    break;
+                default:
+                    break;
+            }
+
+            //after distinguishing, deactivate original cup
+            finishedCup.gameObject.SetActive(false);  
 
             //set Transform (to not stack in one place)
             RectTransform rt = cup.GetComponent<RectTransform>();

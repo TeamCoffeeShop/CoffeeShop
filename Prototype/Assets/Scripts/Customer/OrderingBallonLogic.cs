@@ -45,6 +45,7 @@ public class OrderingBallonLogic : MonoBehaviour
 
                 //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
                 DestroyObject(other.gameObject);
+                DestroyObject(other.GetComponent<OrderLogic>().originalCup.gameObject);
                 DestroyObject(link.gameObject);
                 DestroyObject(this.gameObject);
                 Cursor.visible = true;

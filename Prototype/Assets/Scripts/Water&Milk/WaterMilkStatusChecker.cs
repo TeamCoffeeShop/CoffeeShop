@@ -11,12 +11,6 @@ public class WaterMilkStatusChecker : MonoBehaviour
         Instantiator = GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-            
-    }
-
     void OnMouseDown()
     {
         //when the player clicks one of 4 water/milk while it's the first time,

@@ -31,6 +31,11 @@ public enum CoffeeDropType
     CoffeeDrop2
 }
 
+public enum WaterMilkType
+{
+    None, HotWater, IcedWater, HotMilk, IcedMilk
+}
+
 //the static class that sets behaviours of the coffee cup
 public static class CoffeeBehaviourSetup
 {

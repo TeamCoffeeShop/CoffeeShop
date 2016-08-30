@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class OrderLogic : MonoBehaviour
 {
-    public bool CompletedOrder = false;
     public float SelectCancelSpeed = 5;
+    public CoffeeCupBehavior originalCup;
 
     Vector3 OriginalPosition;
     bool dragging = false;
