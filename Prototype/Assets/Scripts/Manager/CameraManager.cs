@@ -1,61 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ButtonType
+{
+    Create, Next, Reset
+}
+
 public class CameraManager : MonoBehaviour
 {
+    public ButtonType ButtonType;
     public GameObject CoffeeCup;
-    public CoffeeCupType CoffeeCupType;
-    public Vector3 NextPos;
-    public Vector3 NextCoffeeCupPos;
+    public CoffeeCupType NewCoffeeCupType;
+    public Vector3 CameraPos;
+    public Vector3 CoffeeCupPos;
 
     CameraLogic MainCamera;
-    Vector3 CoffeeMakingPosition;
-    Vector3 CoffeeSpawnPosition;
-
-    //variable to access coffeeCup
-    GameObject coffeeCup;
+    Minigame_CoffeeManager CM;
 
     void Awake()
     {
+        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
+
         //if none is selected, load default cup
         if(CoffeeCup == null)
            CoffeeCup = Resources.Load<GameObject>("Prefab/CoffeeCup");
 
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
-
-        CoffeeMakingPosition = new Vector3(3f, 13f, -10f);
-        CoffeeSpawnPosition = new Vector3(3f, 1f, 1f);
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        //Check if there is a coffeecup selected in the level
-        if (coffeeCup == null)
-        {
-            coffeeCup = GameObject.FindGameObjectWithTag("CoffeeCup");
-        }
     }
 
     void OnMouseDown()
     {
-        //cup selection
-        MainCamera.TargetPosition = CoffeeMakingPosition;
-        coffeeCup = Instantiate(CoffeeCup, CoffeeSpawnPosition, Quaternion.identity) as GameObject;
-        coffeeCup.name = "CoffeeCup";
-        coffeeCup.GetComponent<CoffeeCupBehavior>().type = CoffeeCupType;
-        CoffeeBehaviourSetup.SetCoffeeCup(ref coffeeCup);
-        
-        if (gameObject.tag == "Next")
+        switch (ButtonType)
         {
-            coffeeCup.transform.position = NextCoffeeCupPos;
-            MainCamera.TargetPosition = NextPos;
-        }
+            case ButtonType.Create:
+                //create new cup
+                MainCamera.TargetPosition = CameraPos;
+                CM.SelectedCoffee = Instantiate(CoffeeCup, CoffeeCupPos, Quaternion.identity) as GameObject;
+                CM.SelectedCoffee.name = "CoffeeCup";
+                CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>().type = NewCoffeeCupType;
+                CoffeeBehaviourSetup.SetCoffeeCup(ref CM.SelectedCoffee);
+                break;
 
-        //when the player clicks the reset icon
-        if (gameObject.tag == "Reset")
-        {
-            GameObject.Find("ResetManager").GetComponent<ResetManager>().Reset();
+            case ButtonType.Next:
+                if (CM.SelectedCoffee)
+                {
+                    //move cup to new position
+                    CM.SelectedCoffee.transform.position = CoffeeCupPos;
+                    MainCamera.TargetPosition = CameraPos;
+                }
+                break;
+
+            case ButtonType.Reset:
+                //when the player clicks the reset icon
+                GameObject.Find("ResetManager").GetComponent<ResetManager>().Reset();
+                break;
+
+            default:
+                break;
         }
     }
 }
