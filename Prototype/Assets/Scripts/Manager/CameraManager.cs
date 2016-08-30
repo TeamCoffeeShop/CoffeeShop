@@ -3,35 +3,28 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
-    CameraLogic MainCamera;
-
-    GameObject CoffeeCup1;
-    GameObject CoffeeCup2;
-    GameObject CoffeeCup3;
-
+    public GameObject CoffeeCup;
+    public CoffeeCupType CoffeeCupType;
     public Vector3 NextPos;
     public Vector3 NextCoffeeCupPos;
 
-    //Vector3 StartPosition;
+    CameraLogic MainCamera;
     Vector3 CoffeeMakingPosition;
     Vector3 CoffeeSpawnPosition;
-    //Vector3 DrawingPosition;
 
     //variable to access coffeeCup
     GameObject coffeeCup;
 
     void Awake()
     {
-        CoffeeCup1 = Resources.Load<GameObject>("Prefab/CoffeeCup1");
-        CoffeeCup2 = Resources.Load<GameObject>("Prefab/CoffeeCup2");
-        CoffeeCup3 = Resources.Load<GameObject>("Prefab/CoffeeCup3");
+        //if none is selected, load default cup
+        if(CoffeeCup == null)
+           CoffeeCup = Resources.Load<GameObject>("Prefab/CoffeeCup");
 
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
 
-        //StartPosition = new Vector3(-18f, 13f, -10f);
         CoffeeMakingPosition = new Vector3(3f, 13f, -10f);
         CoffeeSpawnPosition = new Vector3(3f, 1f, 1f);
-        //DrawingPosition = new Vector3(24f, 13f, -10f);
     }
 	
 	// Update is called once per frame
@@ -47,39 +40,15 @@ public class CameraManager : MonoBehaviour
     void OnMouseDown()
     {
         //cup selection
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if (gameObject.name == "Cup1")
-        {
-            MainCamera.TargetPosition = CoffeeMakingPosition;
-
-            GameObject CoffeeCup = (GameObject)Instantiate(CoffeeCup1, CoffeeSpawnPosition, Quaternion.identity);
-            CoffeeCup.name = "CoffeeCup1";
-        }
-        else if (gameObject.name == "Cup2")
-        {
-            MainCamera.TargetPosition = CoffeeMakingPosition;
-
-            GameObject CoffeeCup = (GameObject)Instantiate(CoffeeCup2, CoffeeSpawnPosition, Quaternion.identity);
-            CoffeeCup.name = "CoffeeCup2";
-        }
-        else if (gameObject.name == "Cup3")
-        {
-            MainCamera.TargetPosition = CoffeeMakingPosition;
-
-            GameObject CoffeeCup = (GameObject)Instantiate(CoffeeCup3, CoffeeSpawnPosition, Quaternion.identity);
-            CoffeeCup.name = "CoffeeCup3";
-        }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        MainCamera.TargetPosition = CoffeeMakingPosition;
+        coffeeCup = Instantiate(CoffeeCup, CoffeeSpawnPosition, Quaternion.identity) as GameObject;
+        coffeeCup.name = "CoffeeCup";
+        coffeeCup.GetComponent<CoffeeCupBehavior>().type = CoffeeCupType;
+        CoffeeBehaviourSetup.SetCoffeeCup(ref coffeeCup);
+        
         if (gameObject.tag == "Next")
         {
-            if (coffeeCup != null)
-            {
-                coffeeCup.transform.position = NextCoffeeCupPos;
-            }
-
+            coffeeCup.transform.position = NextCoffeeCupPos;
             MainCamera.TargetPosition = NextPos;
         }
 

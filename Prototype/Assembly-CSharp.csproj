@@ -50,9 +50,9 @@
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\Coffee.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
+     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\WhipCream.cs" />
