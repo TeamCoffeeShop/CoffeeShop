@@ -127,11 +127,12 @@ public class CustomerSystem : MonoBehaviour {
 
             //setting customer's position. change this after getting real model.
             Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
-
             //SpawnInRandomPos(ref new_customer_pos);
             SpawnInRandomDefinedPos(ref new_customer_pos);
+            Customer customer = CreateCustomer(customerPath, new_customer_pos, Quaternion.identity);
 
-            CreateCustomer(customerPath, new_customer_pos, Quaternion.identity).order.coffeeName = menuText;
+            //set customer's order.
+            SetRandomOrder(ref customer);
             SetRandomTime();
             time = 0;
         }
@@ -164,5 +165,21 @@ public class CustomerSystem : MonoBehaviour {
         Vector3 newpos = CustomerSeats.transform.GetChild(spawnseat).transform.position;
         pos.x = newpos.x;
         pos.z = newpos.z;
+    }
+
+    void SetRandomOrder(ref Customer customer)
+    {
+        //for right now, we'll only distinguish droptype.
+        switch(Random.Range(0, 2))
+        {
+            case 0:
+                customer.order.DropType = CoffeeDropType.CoffeeDrop1;
+                break;
+            case 1:
+                customer.order.DropType = CoffeeDropType.CoffeeDrop2;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -28,6 +28,7 @@ public class Minigame_InputManager : MonoBehaviour
             {
                 Debug.Log("coffee successfully added to list!");
                 CM.SelectedCoffee.transform.parent = list;
+                CM.SelectedCoffee.SetActive(false);
                 CM.SelectedCoffee = null;
             }
         }

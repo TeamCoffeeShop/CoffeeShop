@@ -46,17 +46,7 @@ public class FinishedOrderList : MonoBehaviour
             cup.GetComponent<OrderLogic>().originalCup = finishedCup;
 
             //distinguish image by the droptype
-            switch(finishedCup.DropType)
-            {
-                case CoffeeDropType.CoffeeDrop1:
-                    cup.GetComponent<Image>().color = new Color(116/255f, 60/255f, 0);
-                    break;
-                case CoffeeDropType.CoffeeDrop2:
-                    cup.GetComponent<Image>().color = new Color(206/255f, 164/255f, 114/255f);
-                    break;
-                default:
-                    break;
-            }
+            CoffeeOrderSetup.SetOrder(ref cup, finishedCup);
 
             //after distinguishing, deactivate original cup
             finishedCup.gameObject.SetActive(false);  

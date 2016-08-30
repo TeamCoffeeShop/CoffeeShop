@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public static class Scenes 
@@ -9,13 +10,11 @@ public static class Scenes
     public const int Minigame = 3;
 }
 
-public class Coffee
+public class CoffeeOrder
 {
-    public string coffeeName;
-    public CoffeeCup coffeecup;
-    //public CoffeeBean coffeebean;
-    public WhipCream whipcream;
-    public Syrup syrup;
+    public CoffeeCupType CupType;
+    public CoffeeDropType DropType;
+    public WaterMilkType WaterMilkType;
 }
 
 public enum CoffeeCupType
@@ -76,3 +75,38 @@ public static class CoffeeBehaviourSetup
     }
 }
 
+//the static class that sets behaviours of the coffee order
+public static class CoffeeOrderSetup
+{
+    //sets the image for the order
+    public static void SetOrder(ref GameObject cup, CoffeeCupBehavior order)
+    {
+        switch (order.DropType)
+        {
+            case CoffeeDropType.CoffeeDrop1:
+                cup.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
+                break;
+            case CoffeeDropType.CoffeeDrop2:
+                cup.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
+                break;
+            default:
+                break;
+        }
+    }
+
+    //sets the image for the order
+    public static void SetOrder(ref GameObject cup, CoffeeOrder order)
+    {
+        switch (order.DropType)
+        {
+            case CoffeeDropType.CoffeeDrop1:
+                cup.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
+                break;
+            case CoffeeDropType.CoffeeDrop2:
+                cup.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
+                break;
+            default:
+                break;
+        }
+    }
+}

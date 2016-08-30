@@ -4,18 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class OrderingBallonLogic : MonoBehaviour
 {
-    public Transform link;
+    public Transform customer;
 
     void Start ()
     {
         //follow link position
-        if(link != null)
+        if (customer != null)
         {
             // WORLD TO CANVAS CODE ///////////////////////////////////////////////////////////////////////////////////
             RectTransform rt = GetComponent<RectTransform>();
 
             //offset
-            Vector3 newPos = link.transform.position + new Vector3(0,10,0);
+            Vector3 newPos = customer.transform.position + new Vector3(0, 10, 0);
 
             rt.position = rt.worldToLocalMatrix * newPos;
 
@@ -34,24 +34,40 @@ public class OrderingBallonLogic : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D orderUI)
     {
-        if (other.tag == "CompletedOrder")
+        if (orderUI.tag == "CompletedOrder")
         {
             if(Input.GetMouseButtonUp(0))
             {
                 //check if the order is correct one
-
-
-                //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
-                DestroyObject(other.gameObject);
-                DestroyObject(other.GetComponent<OrderLogic>().originalCup.gameObject);
-                DestroyObject(link.gameObject);
-                DestroyObject(this.gameObject);
-                Cursor.visible = true;
+                if (DiffOrder(customer.GetComponent<Customer>().order, orderUI.GetComponent<OrderLogic>().originalCup))
+                {
+                    //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
+                    FinishOrder(orderUI.gameObject);
+                }
             }
             
 
         }
+    }
+
+    bool DiffOrder (CoffeeOrder order, CoffeeCupBehavior cup)
+    {
+        //for right now, just diff coffeedrop
+        if (order.DropType != cup.DropType)
+            return false;
+
+        return true;
+    }
+
+    void FinishOrder (GameObject orderUI)
+    {
+        //delte all customers and orders
+        DestroyObject(orderUI);
+        DestroyObject(orderUI.GetComponent<OrderLogic>().originalCup.gameObject);
+        DestroyObject(customer.gameObject);
+        DestroyObject(this.gameObject);
+        Cursor.visible = true;
     }
 }

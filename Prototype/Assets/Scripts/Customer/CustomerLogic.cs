@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CustomerLogic : MonoBehaviour
@@ -14,6 +15,9 @@ public class CustomerLogic : MonoBehaviour
 
         GameObject OB = Instantiate(OrderingBallon);
         OB.transform.SetParent(GameObject.Find("UI").transform, false);
-        OB.GetComponent<OrderingBallonLogic>().link = transform;
+        OB.GetComponent<OrderingBallonLogic>().customer = transform;
+
+        //custom cup display
+        CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().order);
 	}
 }
