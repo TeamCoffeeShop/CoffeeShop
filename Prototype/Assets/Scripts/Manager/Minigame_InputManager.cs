@@ -3,7 +3,14 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class Minigame_InputManager : MonoBehaviour
-{	
+{
+    Minigame_CoffeeManager CM;
+
+    void Awake()
+    {
+        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
+    }
+
 	void Update ()
     {
         //press ESC to go back to mainlevel
@@ -14,9 +21,16 @@ public class Minigame_InputManager : MonoBehaviour
         }
 
         //temporary. erase this code after creating correct order creation
-        //if(Input.GetKeyDown("space"))
-        //{
-        //    GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Cup"), new Vector3(0, 0, 0), Quaternion.identity);
-        //}
+        if(Input.GetKeyDown("space"))
+        {
+            Transform list = GameObject.Find("[[Finished Orders]]").transform;
+            if (list != null && CM.SelectedCoffee != null)
+            {
+                Debug.Log("coffee successfully added to list!");
+                CM.SelectedCoffee.transform.parent = list;
+                CM.SelectedCoffee.SetActive(false);
+                CM.SelectedCoffee = null;
+            }
+        }
 	}
 }

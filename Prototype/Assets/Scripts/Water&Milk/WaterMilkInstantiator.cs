@@ -3,49 +3,55 @@ using System.Collections;
 
 public class WaterMilkInstantiator : MonoBehaviour
 {
-    public bool HotWater = false;
-    public bool IcedWater = false;
-    public bool HotMilk = false;
-    public bool IcedMilk = false;
-
+    public WaterMilkType WaterMilkType;
     public bool Ready = false;
 
     public float MaxAmount = 1000;
     public float CurrentAmount = 0;
     public float IncreaseAmount = 1;
 
-    // Use this for initialization
-    void Start()
+    Minigame_CoffeeManager CM;
+
+    void Awake ()
     {
+        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDrag ()
     {
-        
+        switch(WaterMilkType)
+        {
+            case WaterMilkType.HotWater:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.IcedWater:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.HotMilk:
+                CurrentAmount += IncreaseAmount;
+                break;
+            case WaterMilkType.IcedMilk:
+                CurrentAmount += IncreaseAmount;
+                break;
+            default:
+                break;
+
+        }
     }
 
-    void OnMouseDrag()
+    void OnMouseUp()
     {
-        if (HotWater == true)
+        //save the amount to the cup
+        if(CM.SelectedCoffee != null)
         {
-            CurrentAmount += IncreaseAmount;
-        }
+            if(CurrentAmount <= MaxAmount)
+            {
+                CoffeeCupBehavior cup = CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
+                cup.WaterMilkType = WaterMilkType;
+                cup.WaterMilkLevel = CurrentAmount;
 
-        if (IcedWater == true)
-        {
-            CurrentAmount += IncreaseAmount;
+                Debug.Log("Successfully saved to cup!");
+            }
         }
-
-        if (HotMilk == true)
-        {
-            CurrentAmount += IncreaseAmount;
-        }
-
-        if (IcedMilk == true)
-        {
-            CurrentAmount += IncreaseAmount;
-        }
-
     }
 }

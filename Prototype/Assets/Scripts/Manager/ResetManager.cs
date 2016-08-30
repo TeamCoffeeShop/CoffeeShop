@@ -5,6 +5,12 @@ public class ResetManager : MonoBehaviour
 {
     CameraLogic MainCamera;
     Vector3 StartPosition;
+    Minigame_CoffeeManager CM;
+
+    void Awake()
+    {
+        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
+    }
 
     // Use this for initialization
     void Start ()
@@ -16,10 +22,11 @@ public class ResetManager : MonoBehaviour
     public void Reset()
     {
         //remove the coffee cup currently working on
-        if (GameObject.FindGameObjectWithTag("CoffeeCup") != null)
+        if (CM.SelectedCoffee != null)
         {
-            Destroy(GameObject.FindGameObjectWithTag("CoffeeCup"));
+            Destroy(CM.SelectedCoffee);
         }
+
         //remove all the CoffeeBean objects in the level
         if (GameObject.FindGameObjectWithTag("CoffeeBean") != null)
         {
@@ -60,10 +67,7 @@ public class ResetManager : MonoBehaviour
         //reset status of water/milk
         //See WaterMilkInstantiator.cs and WaterMilkStatusChecker.cs for more details
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().CurrentAmount = 0;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().HotWater = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().IcedWater = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().HotMilk = false;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().IcedMilk = false;
+        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().WaterMilkType = WaterMilkType.None;
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
 
         //reset camera to original position

@@ -45,14 +45,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
+     <Compile Include="Assets\Scripts\CalculateScene.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\Coffee.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
+     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\WhipCream.cs" />
@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
+     <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
      <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
@@ -72,7 +73,9 @@
      <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
      <Compile Include="Assets\Scripts\Dialogue\NPCDialogue.cs" />
      <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
+     <Compile Include="Assets\Scripts\MainMenuScene.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
@@ -87,10 +90,9 @@
      <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
      <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
-     <None Include="Assets\XmlFiles\customers.xml" />
-     <None Include="Assets\Resources\DialogueText\DialogueEx.xml" />
-     <None Include="Assets\Resources\PlayerInfo\PlayerInfo.xml" />
-     <None Include="Assets\Resources\DialogueText\FirstDialogue.txt" />
+     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
+     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+     <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

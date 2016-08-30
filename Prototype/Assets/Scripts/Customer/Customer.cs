@@ -8,8 +8,7 @@ public class Customer : MonoBehaviour
     public CustomerData data = new CustomerData();
 
     public string _name = "Customer";
-
-    public Coffee order = new Coffee();
+    public CoffeeOrder order = new CoffeeOrder();
 
     public void StoreData()
     {
@@ -37,5 +36,5 @@ public class CustomerData
     public float posz;
 
     //[XmlElement("Order")]
-    public Coffee order;
+    public CoffeeOrder order;
 }
