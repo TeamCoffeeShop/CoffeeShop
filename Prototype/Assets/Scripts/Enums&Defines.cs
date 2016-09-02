@@ -26,6 +26,7 @@ public enum CoffeeCupType
 
 public enum CoffeeDropType
 {
+    None,
     CoffeeDrop1,
     CoffeeDrop2
 }
