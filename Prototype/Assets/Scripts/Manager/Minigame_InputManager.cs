@@ -40,7 +40,7 @@ public class Minigame_InputManager : MonoBehaviour
         if(orders)
         {
             Transform list = orders.transform;
-            if (list != null && CM.SelectedCoffee != null)
+            if (list && CM.SelectedCoffee)
             {
                 //check if coffee is finished
                 if (LegitCoffee())
