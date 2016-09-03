@@ -10,13 +10,6 @@ public static class Scenes
     public const int Minigame = 3;
 }
 
-public class CoffeeOrder
-{
-    public CoffeeCupType CupType;
-    public CoffeeDropType DropType;
-    public WaterMilkType WaterMilkType;
-}
-
 public enum CoffeeCupType
 {
     CoffeeCup1,
@@ -34,6 +27,11 @@ public enum CoffeeDropType
 public enum WaterMilkType
 {
     None, HotWater, IcedWater, HotMilk, IcedMilk
+}
+
+public enum OrderType
+{
+    None, HotAmericano, IceAmericano
 }
 
 //the static class that sets behaviours of the coffee cup
@@ -80,34 +78,58 @@ public static class CoffeeBehaviourSetup
 public static class CoffeeOrderSetup
 {
     //sets the image for the order
-    public static void SetOrder(ref GameObject cup, CoffeeCupBehavior order)
+    public static void SetOrder(ref GameObject cupImage, OrderType order)
     {
-        switch (order.DropType)
+        switch (order)
         {
-            case CoffeeDropType.CoffeeDrop1:
-                cup.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
+            case OrderType.HotAmericano:
+                cupImage.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
                 break;
-            case CoffeeDropType.CoffeeDrop2:
-                cup.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
+            case OrderType.IceAmericano:
+                cupImage.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
                 break;
             default:
                 break;
         }
     }
 
-    //sets the image for the order
-    public static void SetOrder(ref GameObject cup, CoffeeOrder order)
+    //checks the coffeeordertype
+    public static OrderType DistinguishCreatedMenu (ref GameObject cup)
     {
-        switch (order.DropType)
+        OrderType type = OrderType.None;
+        CoffeeCupBehavior coffee = cup.GetComponent<CoffeeCupBehavior>();
+
+        if (coffee == null)
         {
-            case CoffeeDropType.CoffeeDrop1:
-                cup.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
-                break;
-            case CoffeeDropType.CoffeeDrop2:
-                cup.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
-                break;
-            default:
-                break;
+            Debug.Log("Error! Coffee is not found!");
         }
+        //distinguish the menu
+        else if (coffee.DropType == CoffeeDropType.CoffeeDrop1)
+        {
+            if(coffee.WaterMilkType == WaterMilkType.HotWater)
+            {
+                if(coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
+                {
+                    //Hot Americano
+                    //coffeedrop1 + hot water 양 70%~100%
+                    return OrderType.HotAmericano;
+                }
+            }
+            else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
+            {
+                if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
+                {
+                    //Ice Americano
+                    //coffeedrop1 + iced water 양 70% ~ 100%
+                    return OrderType.IceAmericano;
+                }
+            }
+        }
+        else if (coffee.DropType == CoffeeDropType.CoffeeDrop2)
+        {
+
+        }
+
+        return OrderType.None;
     }
 }

@@ -173,10 +173,10 @@ public class CustomerSystem : MonoBehaviour {
         switch(Random.Range(0, 2))
         {
             case 0:
-                customer.order.DropType = CoffeeDropType.CoffeeDrop1;
+                customer.order = OrderType.HotAmericano;
                 break;
             case 1:
-                customer.order.DropType = CoffeeDropType.CoffeeDrop2;
+                customer.order = OrderType.IceAmericano;
                 break;
             default:
                 break;

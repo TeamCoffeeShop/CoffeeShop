@@ -41,7 +41,7 @@ public class OrderingBallonLogic : MonoBehaviour
             if(Input.GetMouseButtonUp(0))
             {
                 //check if the order is correct one
-                if (DiffOrder(customer.GetComponent<Customer>().order, orderUI.GetComponent<OrderLogic>().originalCup))
+                if (customer.GetComponent<Customer>().order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
                 {
                     //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
                     FinishOrder(orderUI.gameObject);
@@ -50,15 +50,6 @@ public class OrderingBallonLogic : MonoBehaviour
             
 
         }
-    }
-
-    bool DiffOrder (CoffeeOrder order, CoffeeCupBehavior cup)
-    {
-        //for right now, just diff coffeedrop
-        if (order.DropType != cup.DropType)
-            return false;
-
-        return true;
     }
 
     void FinishOrder (GameObject orderUI)

@@ -23,46 +23,13 @@ public class Minigame_InputManager : MonoBehaviour
         //temporary. erase this code after creating correct order creation
         if(Input.GetKeyDown("space"))
         {
-            SaveFinishedOrder();
+            CM.SaveFinishedOrder();
         }
 	}
 
     public void GoBackToMainLevel ()
     {
-        SaveFinishedOrder();
+        CM.SaveFinishedOrder();
         SceneManager.LoadScene(Scenes.MainLevel);
-    }
-
-    public void SaveFinishedOrder ()
-    {
-        GameObject orders = GameObject.Find("[[Finished Orders]]");
-
-        if(orders)
-        {
-            Transform list = orders.transform;
-            if (list && CM.SelectedCoffee)
-            {
-                //check if coffee is finished
-                if (LegitCoffee())
-                {
-                    Debug.Log("coffee successfully added to list!");
-                    CM.SelectedCoffee.transform.parent = list;
-                    CM.SelectedCoffee.SetActive(false);
-                    CM.SelectedCoffee = null;
-                }
-
-            }
-        }
-    }
-
-    //check if the coffee is legit
-    bool LegitCoffee()
-    {
-        CoffeeCupBehavior cup = CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
-
-        if (cup.DropType == CoffeeDropType.None)
-            return false;
-
-        return true;
     }
 }

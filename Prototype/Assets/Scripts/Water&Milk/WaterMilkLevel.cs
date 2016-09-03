@@ -5,7 +5,7 @@ public class WaterMilkLevel : MonoBehaviour
 {
     private WaterMilkInstantiator Instantiator;
 
-    float Level;
+    public float Level;
 
     // Use this for initialization
     void Start ()
