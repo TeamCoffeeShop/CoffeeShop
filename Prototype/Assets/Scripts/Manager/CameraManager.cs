@@ -11,6 +11,9 @@ public class CameraManager : MonoBehaviour
     public GameObject CoffeeCup;
     public int step;
     public GameObject NextButton;
+    public GameObject WaterMilkText;
+    public GameObject WaterMilkGauge;
+    public GameObject WaterMilkGaugeBG;
 
     CameraLogic MainCamera;
     Minigame_CoffeeManager CM;
@@ -89,10 +92,39 @@ public class CameraManager : MonoBehaviour
 
     void ButtonCheck ()
     {
+        //Next Button
         if(NextButton)
             if (step > 2 || step < 1)
                 NextButton.SetActive(false);
             else
                 NextButton.SetActive(true);
+
+        //Water Milk Text
+        if(WaterMilkText)
+        {
+            if (step != 2)
+                WaterMilkText.SetActive(false);
+            else
+                WaterMilkText.SetActive(true);
+        }
+
+        //Water Milk Gauge
+        if (WaterMilkText && WaterMilkGaugeBG)
+        {
+            if (step != 2)
+            {
+                WaterMilkGauge.SetActive(false);
+                WaterMilkGaugeBG.SetActive(false);
+
+            }
+            else
+            {
+                WaterMilkGauge.SetActive(true);
+                WaterMilkGaugeBG.SetActive(true);
+
+            }
+        }
+
+
     }
 }

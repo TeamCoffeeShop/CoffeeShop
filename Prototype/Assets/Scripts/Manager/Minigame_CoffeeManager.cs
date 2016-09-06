@@ -34,7 +34,7 @@ public class Minigame_CoffeeManager : MonoBehaviour
     {
         CoffeeCupBehavior cup = SelectedCoffee.GetComponent<CoffeeCupBehavior>();
 
-        if (cup.DropType == CoffeeDropType.None)
+        if (cup.DropType == CoffeeDropType.None && cup.WaterMilkType == WaterMilkType.None)
             return false;
 
         return true;

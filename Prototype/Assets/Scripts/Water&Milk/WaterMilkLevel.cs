@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class WaterMilkLevel : MonoBehaviour
 {
     private WaterMilkInstantiator Instantiator;
 
+    public GameObject WaterMilkText;
+    public GameObject WaterMilkGauge;
     public float Level;
 
     // Use this for initialization
@@ -25,5 +28,12 @@ public class WaterMilkLevel : MonoBehaviour
             GameObject.Find("ResetManager").GetComponent<ResetManager>().Reset();
         }
         
+        if(WaterMilkText && WaterMilkGauge)
+        {
+            float p = Level * 0.01f;
+            WaterMilkText.GetComponent<Text>().text = p.ToString("P");
+
+            WaterMilkGauge.transform.localScale = new Vector3(1, p, 1); 
+        }
 	}
 }
