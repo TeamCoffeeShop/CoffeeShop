@@ -40,6 +40,7 @@ public class FinishedOrderList : MonoBehaviour
         //create cups as much as childrens
         int size = transform.childCount;
         float xPos = 0;
+        OrderLogic prevCup = null;
         for (int i = 0; i < size; ++i)
         {
             //create cup
@@ -48,8 +49,12 @@ public class FinishedOrderList : MonoBehaviour
 
             //set cup details here
             CoffeeCupBehavior finishedCup = transform.GetChild(i).GetComponent<CoffeeCupBehavior>();
-            cup.GetComponent<OrderLogic>().originalCup = finishedCup;
-            cup.GetComponent<OrderLogic>().OrderManager = this;
+            OrderLogic currentCup = cup.GetComponent<OrderLogic>();
+            currentCup.originalCup = finishedCup;
+            currentCup.OrderManager = this;
+            if(prevCup)
+                prevCup.NextFinishedOrder = currentCup;
+            prevCup = currentCup;
 
             //distinguish image by the droptype
             CoffeeOrderSetup.SetOrder(ref cup, finishedCup.DistinguishedMenuName);
@@ -59,9 +64,11 @@ public class FinishedOrderList : MonoBehaviour
 
             //set Transform (to not stack in one place)
             RectTransform rt = cup.GetComponent<RectTransform>();
-
+            float gap = (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
+            
             rt.Translate(xPos, 0, 0);
-            xPos += (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
+            xPos += gap;
+            currentCup.Gap = gap;
         }
     }
 }

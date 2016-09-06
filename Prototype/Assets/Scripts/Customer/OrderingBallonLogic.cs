@@ -53,6 +53,7 @@ public class OrderingBallonLogic : MonoBehaviour
     void FinishOrder (GameObject orderUI)
     {
         //delte all customers and orders
+        orderUI.GetComponent<OrderLogic>().NextFinishedOrder.MoveLeft();
         DestroyObject(orderUI);
         DestroyObject(orderUI.GetComponent<OrderLogic>().originalCup.gameObject);
         DestroyObject(customer.gameObject);
