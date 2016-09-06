@@ -96,7 +96,6 @@ public static class CoffeeOrderSetup
     //checks the coffeeordertype
     public static OrderType DistinguishCreatedMenu (ref GameObject cup)
     {
-        OrderType type = OrderType.None;
         CoffeeCupBehavior coffee = cup.GetComponent<CoffeeCupBehavior>();
 
         if (coffee == null)

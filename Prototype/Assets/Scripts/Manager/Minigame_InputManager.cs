@@ -14,11 +14,10 @@ public class Minigame_InputManager : MonoBehaviour
 	void Update ()
     {
         //press ESC to go back to mainlevel
-	    if(Input.GetKeyDown("escape"))
-        {
-            GoBackToMainLevel();
-            Cursor.visible = true;
-        }
+        //if(Input.GetKeyDown("escape"))
+        //{
+        //    GoBackToMainLevel();
+        //}
 
         //temporary. erase this code after creating correct order creation
         if(Input.GetKeyDown("space"))
@@ -31,5 +30,6 @@ public class Minigame_InputManager : MonoBehaviour
     {
         CM.SaveFinishedOrder();
         SceneManager.LoadScene(Scenes.MainLevel);
+        Cursor.visible = true;
     }
 }
