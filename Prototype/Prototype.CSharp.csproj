@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraTrigger.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
@@ -94,6 +93,7 @@
     <Compile Include="Assets\Scripts\Dialogue\NPCDialogue.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
