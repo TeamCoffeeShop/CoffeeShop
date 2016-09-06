@@ -17,9 +17,11 @@ public class TimeScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        int currentHour = (int)time.GetComponent<TimeOfDay>().currentHour;
-        int currentMin = (int)time.GetComponent<TimeOfDay>().currentMin;
-        timetxtobj.GetComponent<Text>().text = currentHour + ":" + currentMin;
+        if(time)
+        {
+            int currentHour = (int)time.GetComponent<TimeOfDay>().currentHour;
+            int currentMin = (int)time.GetComponent<TimeOfDay>().currentMin;
+            timetxtobj.GetComponent<Text>().text = currentHour + ":" + currentMin;
+        }
     }
 }

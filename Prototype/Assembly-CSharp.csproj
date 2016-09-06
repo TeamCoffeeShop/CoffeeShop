@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
      <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
+     <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />

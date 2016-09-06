@@ -43,13 +43,13 @@ public static class CoffeeBehaviourSetup
         switch(cup.GetComponent<CoffeeCupBehavior>().CupType)
         {
             case CoffeeCupType.CoffeeCup1:
-                cup.transform.localScale = new Vector3(1.5f, 0.6f, 1.5f);
+                cup.transform.localScale = new Vector3(1.5f, 0.6f, 1.5f) * 100;
                 break;
             case CoffeeCupType.CoffeeCup2:
-                cup.transform.localScale = new Vector3(0.8f, 1.2f, 0.8f);
+                cup.transform.localScale = new Vector3(0.8f, 1.2f, 0.8f) * 100;
                 break;
             case CoffeeCupType.CoffeeCup3:
-                cup.transform.localScale = new Vector3(1,1,1);
+                cup.transform.localScale = new Vector3(1,1,1) * 100;
                 break;
             default:
                 break;
