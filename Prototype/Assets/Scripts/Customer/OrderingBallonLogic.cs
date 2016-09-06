@@ -41,7 +41,7 @@ public class OrderingBallonLogic : MonoBehaviour
             if(Input.GetMouseButtonUp(0))
             {
                 //check if the order is correct one
-                if (customer.GetComponent<Customer>().order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
+                if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
                 {
                     //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
                     FinishOrder(orderUI.gameObject);

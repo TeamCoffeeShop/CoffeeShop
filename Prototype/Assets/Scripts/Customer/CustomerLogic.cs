@@ -18,6 +18,6 @@ public class CustomerLogic : MonoBehaviour
         OB.GetComponent<OrderingBallonLogic>().customer = transform;
 
         //custom cup display
-        CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().order);
+        CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
 	}
 }

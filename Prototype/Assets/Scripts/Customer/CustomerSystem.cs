@@ -9,6 +9,8 @@ public class CustomerSystem : MonoBehaviour {
 
     public Button MiniGameButton;
 
+    public string coffee;
+
     //For Random Time
     public float maxTime;
     public float minTime;
@@ -43,7 +45,7 @@ public class CustomerSystem : MonoBehaviour {
             foreach (CustomerData data in CustomerListObj.GetComponent<CustomerContainer>().customers)
             {
                 CreateCustomer(data, CustomerSystem.customerPath,
-                    new Vector3(data.posx, data.posy, data.posz), Quaternion.identity);
+                    new Vector3(data.posx, data.posy, data.posz), data.order, Quaternion.identity);
             }
         }
 
@@ -87,14 +89,14 @@ public class CustomerSystem : MonoBehaviour {
         }
     }
 
-    Customer CreateCustomer(string path, Vector3 position, Quaternion rotation)
+    Customer CreateCustomer(string path, Vector3 position, OrderType ordertype, Quaternion rotation)
     {
         GameObject prefab = Resources.Load<GameObject>(path);
 
         GameObject go = GameObject.Instantiate(prefab, position, rotation) as GameObject;
 
         Customer customer = go.GetComponent<Customer>() ?? go.AddComponent<Customer>();
-
+        customer.order = ordertype;
         customer.StoreData();
 
         CustomerListObj.GetComponent<CustomerContainer>().customers.Add(customer.data);
@@ -103,13 +105,14 @@ public class CustomerSystem : MonoBehaviour {
 
     }
 
-    public static void CreateCustomer(CustomerData data, string path, Vector3 position, Quaternion rotation)
+    public static void CreateCustomer(CustomerData data, string path, Vector3 position, OrderType ordertype, Quaternion rotation)
     {
         GameObject prefab = Resources.Load<GameObject>(path);
 
         GameObject go = GameObject.Instantiate(prefab, position, rotation) as GameObject;
 
         Customer customer = go.GetComponent<Customer>() ?? go.AddComponent<Customer>();
+        customer.order = ordertype;
         customer.StoreData();
         
         customer.data = data;
@@ -129,10 +132,12 @@ public class CustomerSystem : MonoBehaviour {
             Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
             //SpawnInRandomPos(ref new_customer_pos);
             SpawnInRandomDefinedPos(ref new_customer_pos);
-            Customer customer = CreateCustomer(customerPath, new_customer_pos, Quaternion.identity);
-
-            //set customer's order.
-            SetRandomOrder(ref customer);
+            //Set customer's order
+            OrderType order = SetRandomOrder();
+            coffee = order.ToString();
+            // Create customer and add customer to customer list
+            Customer customer = CreateCustomer(customerPath, new_customer_pos, OrderType.HotAmericano, Quaternion.identity);
+            customer.order = order;
             SetRandomTime();
             time = 0;
         }
@@ -167,19 +172,32 @@ public class CustomerSystem : MonoBehaviour {
         pos.z = newpos.z;
     }
 
-    void SetRandomOrder(ref Customer customer)
+    OrderType SetRandomOrder()
     {
+        OrderType ordertype = OrderType.None;
+
         //for right now, we'll only distinguish droptype.
-        switch(Random.Range(0, 2))
+        switch(Random.Range(0, 10))
         {
             case 0:
-                customer.order = OrderType.HotAmericano;
+            case 2:
+            case 4:
+            case 6:
+            case 8:
+                ordertype = OrderType.HotAmericano;
                 break;
             case 1:
-                customer.order = OrderType.IceAmericano;
+            case 3:
+            case 5:
+            case 7:
+            case 9:
+                ordertype = OrderType.IceAmericano;
                 break;
             default:
                 break;
         }
+
+        return ordertype;
+
     }
 }

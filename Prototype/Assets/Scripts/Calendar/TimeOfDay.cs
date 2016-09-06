@@ -3,9 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TimeOfDay : MonoBehaviour {
-
-    public Text TimeText;
+public class TimeOfDay : MonoBehaviour
+{
 
     //Set time , day and month
     public float currentHour;
@@ -30,16 +29,14 @@ public class TimeOfDay : MonoBehaviour {
 
     // Time object
     GameObject timeobj;
-    GameObject timetxtobj;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         timeobj = GameObject.Find("TimeOfDay");
+
         DontDestroyOnLoad(timeobj);
 
-        timetxtobj = GameObject.Find("time");
-        DontDestroyOnLoad(timetxtobj);
 
         if (PlayerPrefs.GetInt("Month") == 0)
         {
@@ -58,10 +55,12 @@ public class TimeOfDay : MonoBehaviour {
         {
             calendar.day = PlayerPrefs.GetInt("Day");
         }
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         currentTimeOfDay += (Time.deltaTime / secondInFullDay) * timeMultiplier;
 
@@ -91,7 +90,7 @@ public class TimeOfDay : MonoBehaviour {
             PlayerPrefs.SetInt("Day", calendar.day);
             SceneManager.LoadScene(CalculateSceneLevel);
         }
-            TimeText.text = (int)currentHour + ":" + (int)currentMin;
 
-	}
+    }
 }
+
