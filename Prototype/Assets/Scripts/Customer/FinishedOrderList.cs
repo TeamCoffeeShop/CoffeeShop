@@ -30,6 +30,11 @@ public class FinishedOrderList : MonoBehaviour
             CreateOrdersInUI();
     }
 
+    public void SetTrashVisible (bool visible)
+    {
+        GameObject.Find("UI").transform.Find("Trash").gameObject.SetActive(visible);
+    }
+
     void CreateOrdersInUI()
     {
         //create cups as much as childrens
@@ -44,6 +49,7 @@ public class FinishedOrderList : MonoBehaviour
             //set cup details here
             CoffeeCupBehavior finishedCup = transform.GetChild(i).GetComponent<CoffeeCupBehavior>();
             cup.GetComponent<OrderLogic>().originalCup = finishedCup;
+            cup.GetComponent<OrderLogic>().OrderManager = this;
 
             //distinguish image by the droptype
             CoffeeOrderSetup.SetOrder(ref cup, finishedCup.DistinguishedMenuName);

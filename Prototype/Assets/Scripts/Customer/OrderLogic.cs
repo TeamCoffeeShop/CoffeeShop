@@ -6,9 +6,11 @@ public class OrderLogic : MonoBehaviour
 {
     public float SelectCancelSpeed = 5;
     public CoffeeCupBehavior originalCup;
+    public FinishedOrderList OrderManager;
 
     Vector3 OriginalPosition;
     bool dragging = false;
+    bool trash = false;
     RectTransform rt;
 
     void Awake ()
@@ -31,12 +33,25 @@ public class OrderLogic : MonoBehaviour
         rt.position = Input.mousePosition;
         Vector3 size = rt.localToWorldMatrix * rt.sizeDelta;
         rt.position -= new Vector3(size.x * 0.5f, size.y * 0.5f, 0);
+
+        //show trash can
+        OrderManager.SetTrashVisible(true);
     }
 
     public void EndDraggingCup()
     {
         Cursor.visible = true;
         dragging = false;
+
+        //throw away
+        if (trash)
+        {
+            DestroyObject(originalCup.gameObject);
+            DestroyObject(this.gameObject);
+        }
+
+        //disable trash can
+        OrderManager.SetTrashVisible(false);
     }
 
     void Update ()
@@ -46,5 +61,15 @@ public class OrderLogic : MonoBehaviour
             //return to its original position
             rt.position += (OriginalPosition - rt.position) * Time.deltaTime * SelectCancelSpeed;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D orderUI)
+    {
+        trash = true;
+    }
+
+    void OnTriggerExit2D(Collider2D orderUI)
+    {
+        trash = false;
     }
 }

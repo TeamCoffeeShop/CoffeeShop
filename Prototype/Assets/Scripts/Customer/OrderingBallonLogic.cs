@@ -47,8 +47,6 @@ public class OrderingBallonLogic : MonoBehaviour
                     FinishOrder(orderUI.gameObject);
                 }
             }
-            
-
         }
     }
 
