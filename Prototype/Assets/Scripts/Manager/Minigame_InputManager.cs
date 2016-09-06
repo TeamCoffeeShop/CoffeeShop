@@ -1,18 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Minigame_InputManager : MonoBehaviour
 {
     Minigame_CoffeeManager CM;
 
+    Image RecipeObject;
+    bool RecipeStatus = false;
+
     void Awake()
     {
         CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
+        RecipeObject = GameObject.Find("Recipe").GetComponent<Image>();
     }
 
-	void Update ()
+    void Update ()
     {
+        if (RecipeStatus == true)
+        {
+            RecipeObject.enabled = true;
+        }
+        else if (RecipeStatus == false)
+        {
+            RecipeObject.enabled = false;
+        }
+
         //press ESC to go back to mainlevel
         //if(Input.GetKeyDown("escape"))
         //{
@@ -20,7 +34,7 @@ public class Minigame_InputManager : MonoBehaviour
         //}
 
         //temporary. erase this code after creating correct order creation
-        if(Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space"))
         {
             CM.SaveFinishedOrder();
         }
@@ -32,4 +46,10 @@ public class Minigame_InputManager : MonoBehaviour
         SceneManager.LoadScene(Scenes.MainLevel);
         Cursor.visible = true;
     }
+
+    public void Recipe()
+    {
+        RecipeStatus = !RecipeStatus;
+    }
+
 }
