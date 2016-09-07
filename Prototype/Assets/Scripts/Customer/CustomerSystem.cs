@@ -7,6 +7,9 @@ public class CustomerSystem : MonoBehaviour {
     //customer List
     public GameObject CustomerListObj;
 
+    //door that customer enters
+    public Transform Door;
+
     public Button MiniGameButton;
 
     //For Random Time
@@ -129,11 +132,13 @@ public class CustomerSystem : MonoBehaviour {
             Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);
             //SpawnInRandomPos(ref new_customer_pos);
             SpawnInRandomDefinedPos(ref new_customer_pos);
+            
             //Set customer's order
             OrderType order = SetRandomOrder();
             // Create customer and add customer to customer list
-            Customer customer = CreateCustomer(customerPath, new_customer_pos, order, Quaternion.identity);
+            Customer customer = CreateCustomer(customerPath, Door.transform.position, order, Quaternion.identity);
             customer.order = order;
+            customer.GetComponent<CustomerLogic>().TargetSeat = new_customer_pos;
             SetRandomTime();
             time = 0;
         }
