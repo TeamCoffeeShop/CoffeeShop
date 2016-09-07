@@ -9,8 +9,6 @@ public class CustomerSystem : MonoBehaviour {
 
     public Button MiniGameButton;
 
-    public string coffee;
-
     //For Random Time
     public float maxTime;
     public float minTime;
@@ -134,9 +132,8 @@ public class CustomerSystem : MonoBehaviour {
             SpawnInRandomDefinedPos(ref new_customer_pos);
             //Set customer's order
             OrderType order = SetRandomOrder();
-            coffee = order.ToString();
             // Create customer and add customer to customer list
-            Customer customer = CreateCustomer(customerPath, new_customer_pos, OrderType.HotAmericano, Quaternion.identity);
+            Customer customer = CreateCustomer(customerPath, new_customer_pos, order, Quaternion.identity);
             customer.order = order;
             SetRandomTime();
             time = 0;

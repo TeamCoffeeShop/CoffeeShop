@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
+    <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
@@ -117,7 +118,6 @@
     <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
     <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
     <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
-    <Compile Include="Assets\TimeScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
