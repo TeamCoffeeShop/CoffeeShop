@@ -123,8 +123,7 @@ public class CustomerSystem : MonoBehaviour {
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
-        {
-            
+        {     
 
             //setting customer's position. change this after getting real model.
             Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f + 6.0f, Floor.transform.position.z);

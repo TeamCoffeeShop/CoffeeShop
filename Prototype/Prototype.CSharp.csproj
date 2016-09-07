@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -89,6 +83,7 @@
     <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
     <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
     <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
