@@ -48,7 +48,8 @@ public class OrderLogic : MonoBehaviour
         //throw away
         if (trash)
         {
-            NextFinishedOrder.MoveLeft();
+            if(NextFinishedOrder)
+               NextFinishedOrder.MoveLeft();
             DestroyObject(originalCup.gameObject);
             DestroyObject(this.gameObject);
         }
@@ -68,12 +69,14 @@ public class OrderLogic : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D orderUI)
     {
-        trash = true;
+        if(orderUI.name == "Trash")
+           trash = true;
     }
 
     void OnTriggerExit2D(Collider2D orderUI)
     {
-        trash = false;
+        if (orderUI.name == "Trash")
+            trash = false;
     }
 
     //move this to left when order is gone
