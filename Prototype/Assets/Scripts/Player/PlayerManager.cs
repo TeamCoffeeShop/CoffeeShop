@@ -7,6 +7,8 @@ using System.IO;
 public class PlayerManager : MonoBehaviour {
 
     public Player player;
+    public float MoneyIncreasingSpeed = 10;
+    float ExpectedMoney;
 
     //xp UI
     public BarScript bar;
@@ -21,8 +23,7 @@ public class PlayerManager : MonoBehaviour {
 
         player = load_player("Assets/Resources/Xmls/" + PlayerDataFilePath);
 
-        money_text.GetComponent<Text>().text = player.money.ToString();
-        
+        ExpectedMoney = player.money;
     }
 	
 	// Update is called once per frame
@@ -39,6 +40,8 @@ public class PlayerManager : MonoBehaviour {
             player.xp_currentVal -= 10;
             bar.Value = player.xp_currentVal;
         }
+
+        MoneyUpdate();
     }
 
     private static Player load_player(string path)
@@ -57,5 +60,26 @@ public class PlayerManager : MonoBehaviour {
         {
             serializer.Serialize(stream, this);
         }
+    }
+
+    public void AddMoneyInstantly(float money)
+    {
+        player.money += money;
+        ExpectedMoney = player.money;
+    }
+
+    public void AddMoneyGradually(float money)
+    {
+        ExpectedMoney = player.money + money;
+    }
+
+    void MoneyUpdate ()
+    {
+        float difference = ExpectedMoney - player.money;
+        if (difference > 1)
+            player.money += difference * Time.deltaTime * MoneyIncreasingSpeed;
+        else
+            player.money = ExpectedMoney;
+        money_text.GetComponent<Text>().text = player.money.ToString("N0");
     }
 }

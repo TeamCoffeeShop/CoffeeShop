@@ -84,11 +84,11 @@ public static class CoffeeOrderSetup
         {
             case OrderType.HotAmericano:
                 cupImage.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
-                Debug.Log("Hot Americano");
+                //Debug.Log("Hot Americano");
                 break;
             case OrderType.IceAmericano:
                 cupImage.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
-                Debug.Log("Ice Americano");
+                //Debug.Log("Ice Americano");
                 break;
             default:
                 break;
@@ -132,5 +132,18 @@ public static class CoffeeOrderSetup
         }
 
         return OrderType.None;
+    }
+
+    public static float PriceTagForMenu (OrderType order)
+    {
+        switch (order)
+        {
+            case OrderType.HotAmericano:
+                return 500;
+            case OrderType.IceAmericano:
+                return 700;
+        }
+
+        return -10;
     }
 }

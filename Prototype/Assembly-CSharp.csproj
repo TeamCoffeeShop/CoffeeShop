@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
+     <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
      <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
@@ -86,7 +87,6 @@
      <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
      <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
      <Compile Include="Assets\Scripts\UI\BarScript.cs" />
-     <Compile Include="Assets\Scripts\UI\MoneyUIScript.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />

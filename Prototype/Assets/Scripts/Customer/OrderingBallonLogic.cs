@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 public class OrderingBallonLogic : MonoBehaviour
 {
     public Transform customer;
+    PlayerManager Player;
 
     void Start ()
     {
+        Player = GameObject.Find("Player").GetComponent<PlayerManager>();
+
         //follow link position
         if (customer != null)
         {
@@ -52,13 +55,16 @@ public class OrderingBallonLogic : MonoBehaviour
 
     void FinishOrder (GameObject orderUI)
     {
+        //increase money
+        Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
+
         //delte all customers and orders
         OrderLogic logic = orderUI.GetComponent<OrderLogic>();
         if(logic)
             if(logic.NextFinishedOrder)
                 logic.NextFinishedOrder.MoveLeft();
         DestroyObject(orderUI);
-        DestroyObject(orderUI.GetComponent<OrderLogic>().originalCup.gameObject);
+        DestroyObject(logic.originalCup.gameObject);
         DestroyObject(customer.gameObject);
         DestroyObject(this.gameObject);
         Cursor.visible = true;
