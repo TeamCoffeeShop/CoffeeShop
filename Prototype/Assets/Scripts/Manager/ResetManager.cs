@@ -16,7 +16,7 @@ public class ResetManager : MonoBehaviour
     void Start ()
     {
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
-        StartPosition = new Vector3(-18f, 13f, -10f);
+        StartPosition = new Vector3(-18, 5, -5);
     }
 
     public void Reset()
