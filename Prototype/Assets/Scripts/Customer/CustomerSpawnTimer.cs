@@ -38,6 +38,5 @@ public class CustomerSpawnTimer : MonoBehaviour {
     // Update is called once per frame
     void Update() {
     }
-  
 
 }
