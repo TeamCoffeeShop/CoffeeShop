@@ -17,11 +17,29 @@ public class CustomerLogic : MonoBehaviour
 
     private float timer = 0.0f;
     private float customerspawntime = 5.0f;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void OnLevelWasLoaded(int level)
+    {
+        //if not main level, deactivate customers
+        if (level != Scenes.MainLevel)
+            GetComponent<Renderer>().enabled = false;
+        else
+            GetComponent<Renderer>().enabled = true;
+
+    }
+
+
     //order menu instantly.
-	void Start ()
+    void Start ()
     {
         timeofDay = GameObject.Find("TimeOfDay");
 
+        
         //set Y in first place
         transform.Translate(0, TargetSeat.y - transform.position.y, 0);
 
@@ -33,8 +51,6 @@ public class CustomerLogic : MonoBehaviour
         if (SpawnTimer == null)
             SpawnTimer = Resources.Load<GameObject>("Prefab/SpawnBar");
     }
-
-    OB = Instantiate(OrderingBallon);
     void Update()
     {
         //if not arrived, walk
@@ -79,19 +95,22 @@ public class CustomerLogic : MonoBehaviour
                 //after arriving, make order
                 OrderStart();
                 arrived = true;
+
+                timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
+                ST.GetComponent<BarScript>().Value = timer;
+
+                //Delete customer when spawn time has passed
+                if (timer >= ST.GetComponent<BarScript>().MaxValue)
+                {
+                    LeaveCoffeeShop();
+                }
             }
-        }
-        else
-        {
-            time += 0.005f;
-            ST.GetComponent<BarScript>().Value = time;
-            ST.GetComponent<BarScript>().MaxValue = 1.0f;
         }
     }
 
     void OrderStart ()
     {
-        GameObject OB = Instantiate(OrderingBallon);
+        OB = Instantiate(OrderingBallon);
         OB.transform.SetParent(GameObject.Find("UI").transform, false);
         OB.GetComponent<OrderingBallonLogic>().customer = transform;
 
@@ -102,19 +121,6 @@ public class CustomerLogic : MonoBehaviour
         
         //custom cup display
         CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
-    }
-
-    void Update()
-    {
-        timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
-        ST.GetComponent<BarScript>().Value = timer;
-
-        //Delete customer when spawn time has passed
-        if (timer >= ST.GetComponent<BarScript>().MaxValue)
-        {
-            LeaveCoffeeShop();
-        }
-
     }
 
     void LeaveCoffeeShop()

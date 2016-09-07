@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CustomerSystem : MonoBehaviour {
 
     //customer List
-    public GameObject CustomerListObj;
+    //public GameObject CustomerListObj;
 
     //door that customer enters
     public Transform Door;
@@ -36,25 +36,25 @@ public class CustomerSystem : MonoBehaviour {
 
     void Awake()
     {
-        CustomerListObj = GameObject.Find("CustomerList(Clone)");
-        if (CustomerListObj == null)
-        {
-            CustomerListObj = Instantiate<GameObject>(CustomerListPrefab);
-        }
-        else
-        {
-            foreach (CustomerData data in CustomerListObj.GetComponent<CustomerContainer>().customers)
-            {
-                CreateCustomer(data, CustomerSystem.customerPath,
-                    new Vector3(data.posx, data.posy, data.posz), data.order, Quaternion.identity);
-            }
-        }
+        //CustomerListObj = GameObject.Find("CustomerList(Clone)");
+        //if (CustomerListObj == null)
+        //{
+        //    CustomerListObj = Instantiate<GameObject>(CustomerListPrefab);
+        //}
+        //else
+        //{
+        //    foreach (CustomerData data in CustomerListObj.GetComponent<CustomerContainer>().customers)
+        //    {
+        //        CreateCustomer(data, CustomerSystem.customerPath,
+        //            new Vector3(data.posx, data.posy, data.posz), data.order, Quaternion.identity);
+        //    }
+        //}
 
     }
 
 	// Use this for initialization
 	void Start () {
-        DontDestroyOnLoad(CustomerListObj);
+        //DontDestroyOnLoad(CustomerListObj);
         SelectMenu();
         SetRandomTime();
         time = minTime;
@@ -100,7 +100,7 @@ public class CustomerSystem : MonoBehaviour {
         customer.order = ordertype;
         customer.StoreData();
 
-        CustomerListObj.GetComponent<CustomerContainer>().customers.Add(customer.data);
+        //CustomerListObj.GetComponent<CustomerContainer>().customers.Add(customer.data);
 
         return customer;
 
