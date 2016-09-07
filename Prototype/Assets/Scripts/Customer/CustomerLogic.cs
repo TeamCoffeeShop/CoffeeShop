@@ -95,7 +95,12 @@ public class CustomerLogic : MonoBehaviour
                 //after arriving, make order
                 OrderStart();
                 arrived = true;
-
+            }
+        }
+        else
+        {
+            if (GetComponent<Renderer>().enabled == true)
+            {
                 timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
                 ST.GetComponent<BarScript>().Value = timer;
 
