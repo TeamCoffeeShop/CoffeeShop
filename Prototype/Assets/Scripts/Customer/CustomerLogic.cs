@@ -33,7 +33,6 @@ public class CustomerLogic : MonoBehaviour
 
     }
 
-
     //order menu instantly.
     void Start ()
     {
@@ -51,46 +50,13 @@ public class CustomerLogic : MonoBehaviour
         if (SpawnTimer == null)
             SpawnTimer = Resources.Load<GameObject>("Prefab/SpawnBar");
     }
+
     void Update()
     {
         //if not arrived, walk
         if (!arrived)
         {
-            //walk x coord first
-            if (transform.position.x < TargetSeat.x)
-            {
-                transform.Translate(walkSpeed * Time.deltaTime, 0, 0);
-
-                //if over, stop
-                if (transform.position.x > TargetSeat.x)
-                    transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-            }
-            else if (transform.position.x > TargetSeat.x)
-            {
-                transform.Translate(-walkSpeed * Time.deltaTime, 0, 0);
-
-                //if over, stop
-                if (transform.position.x < TargetSeat.x)
-                    transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-            }
-            //if x finished, walk y
-            else if (transform.position.z < TargetSeat.z)
-            {
-                transform.Translate(0, 0, walkSpeed * Time.deltaTime);
-
-                //if over, stop
-                if (transform.position.z > TargetSeat.z)
-                    transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-            }
-            else if (transform.position.z > TargetSeat.z)
-            {
-                transform.Translate(0, 0, -walkSpeed * Time.deltaTime);
-
-                //if over, stop
-                if (transform.position.z < TargetSeat.z)
-                    transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-            }
-            else
+            if (WalkTowardsSeat())
             {
                 //after arriving, make order
                 OrderStart();
@@ -128,7 +94,7 @@ public class CustomerLogic : MonoBehaviour
         CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
     }
 
-    void LeaveCoffeeShop()
+    void LeaveCoffeeShop ()
     {
         DestroyObject(ST.GetComponent<CustomerSpawnTimer>().customer.gameObject);
         DestroyObject(ST);
@@ -136,4 +102,45 @@ public class CustomerLogic : MonoBehaviour
         DestroyObject(this.gameObject);
     }
 
+    //walk to the seat
+    bool WalkTowardsSeat ()
+    {
+        //walk x coord first
+        if (transform.position.x < TargetSeat.x)
+        {
+            transform.Translate(walkSpeed * Time.deltaTime, 0, 0);
+
+            //if over, stop
+            if (transform.position.x > TargetSeat.x)
+                transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > TargetSeat.x)
+        {
+            transform.Translate(-walkSpeed * Time.deltaTime, 0, 0);
+
+            //if over, stop
+            if (transform.position.x < TargetSeat.x)
+                transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+        }
+        //if x finished, walk y
+        else if (transform.position.z < TargetSeat.z)
+        {
+            transform.Translate(0, 0, walkSpeed * Time.deltaTime);
+
+            //if over, stop
+            if (transform.position.z > TargetSeat.z)
+                transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+        }
+        else if (transform.position.z > TargetSeat.z)
+        {
+            transform.Translate(0, 0, -walkSpeed * Time.deltaTime);
+
+            //if over, stop
+            if (transform.position.z < TargetSeat.z)
+                transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+        }
+        else
+            return true;
+        return false;
+    }
 }

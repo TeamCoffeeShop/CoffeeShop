@@ -87,6 +87,7 @@
      <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
      <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
      <Compile Include="Assets\Scripts\UI\BarScript.cs" />
+     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
