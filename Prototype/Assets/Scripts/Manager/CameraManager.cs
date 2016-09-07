@@ -65,11 +65,11 @@ public class CameraManager : MonoBehaviour
         switch (step)
         {
             case 0:
-                return new Vector3(3, 13, -10);
+                return new Vector3(-5, 5, -5);
             case 1:
-                return new Vector3(25, 13, -10);
+                return new Vector3(5, 5, -5);
             case 2:
-                return new Vector3(47, 13, -10);
+                return new Vector3(17, 5, -5);
         }
 
         return new Vector3();
@@ -80,11 +80,11 @@ public class CameraManager : MonoBehaviour
         switch (step)
         {
             case 0:
-                return new Vector3(3, 1, 1);
+                return new Vector3(-2.5f, 1, 3.14f);
             case 1:
-                return new Vector3(25, 1, 1);
+                return new Vector3(5, 1, 3.14f);
             case 2:
-                return new Vector3(47, 1, 1);
+                return new Vector3(17, 1, 3.14f);
         }
             
         return new Vector3();

@@ -49,8 +49,6 @@ public class WaterMilkInstantiator : MonoBehaviour
                 CoffeeCupBehavior cup = CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
                 cup.WaterMilkType = WaterMilkType;
                 cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
-
-                Debug.Log("Successfully saved to cup!");
             }
         }
     }
