@@ -5,7 +5,6 @@ public class CustomerSpawnTimer : MonoBehaviour {
 
     public Transform customer;
 
-
     // Use this for initialization
     void Start() {
         //follow link position

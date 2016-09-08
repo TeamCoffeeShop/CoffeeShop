@@ -9,7 +9,6 @@ public class OrderLogic : MonoBehaviour
     public FinishedOrderList OrderManager;
     public int ChildNumber;
 
-
     Vector3 OriginalPosition;
     bool dragging = false;
     bool trash = false;

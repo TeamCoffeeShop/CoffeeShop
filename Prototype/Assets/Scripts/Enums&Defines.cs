@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public static class Scenes 
 {
@@ -8,6 +9,23 @@ public static class Scenes
     public const int MenuScreen = 1;
     public const int MainLevel = 2;
     public const int Minigame = 3;
+
+    public static int asInt(Scene scene)
+    {
+        switch (scene.name)
+        {
+            case "CoffeePrototype":
+                return Minigame;
+            case "MainGame":
+                return MainLevel;
+            case "Menu":
+                return MenuScreen;
+            case "Narration":
+                return NarratorLevel;
+        }
+
+        return 0;
+    }
 }
 
 public enum CoffeeCupType

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +7,13 @@ public class OrderingBallonLogic : MonoBehaviour
 {
     public Transform customer;
     PlayerManager Player;
+    int CurrentScene;
 
     void Start ()
     {
+        CurrentScene = Scenes.asInt(SceneManager.GetActiveScene());
+        Visibility();
+
         GameObject player = GameObject.Find("Player");
         if(player)
             Player = player.GetComponent<PlayerManager>();
@@ -37,6 +42,12 @@ public class OrderingBallonLogic : MonoBehaviour
             //custom movement
             //rt.Translate(0, 0, 0);
         }
+    }
+
+    public void OnLevelWasLoaded(int level)
+    {
+        CurrentScene = level;
+        Visibility();
     }
 
     void OnTriggerStay2D(Collider2D orderUI)
@@ -69,5 +80,13 @@ public class OrderingBallonLogic : MonoBehaviour
         DestroyObject(customer.gameObject);
         DestroyObject(this.gameObject);
         Cursor.visible = true;
+    }
+
+    void Visibility()
+    {
+        if (CurrentScene == Scenes.MainLevel)
+            GetComponent<Image>().enabled = true;
+        else
+            GetComponent<Image>().enabled = false;
     }
 }
