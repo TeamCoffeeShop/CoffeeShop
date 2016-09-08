@@ -88,14 +88,13 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.DeleteAll();
             PlayerPrefs.SetInt("Month", calendar.month);
             PlayerPrefs.SetInt("Day", calendar.day);
-            SceneManager.LoadScene(CalculateSceneLevel);
 
             //reset customers & cups
             Transform HUD = GameObject.Find("[OrderHUD]").transform;
 
-            int size = HUD.FindChild("Order Icons").transform.childCount;
+            int size = HUD.FindChild("Finished Orders").transform.childCount;
             for (int i = 0; i < size; ++i)
-                DestroyObject(HUD.FindChild("Order Icons").transform.GetChild(i).gameObject);
+                HUD.GetComponent<FinishedOrderList>().DeleteOrder(i);
 
             size = HUD.childCount;
             for (int i = 0; i < size; ++i)
@@ -110,6 +109,8 @@ public class TimeOfDay : MonoBehaviour
 
             //foreach (Transform child in GameObject.Find("[OrderHUD]").transform.FindChild("Finished Orders").transform)
             //    DestroyObject(child.gameObject);
+
+            SceneManager.LoadScene(CalculateSceneLevel);
         }
 
     }

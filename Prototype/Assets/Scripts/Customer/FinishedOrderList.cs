@@ -84,7 +84,7 @@ public class FinishedOrderList : MonoBehaviour
     public void DeleteOrder (int ChildNumber)
     {
         OrderLogic order = OrderIcon.GetChild(ChildNumber).GetComponent<OrderLogic>();
-        DestroyObject(order.originalCup);
+        DestroyObject(order.originalCup.gameObject);
         DestroyObject(order.gameObject);
     }
 
