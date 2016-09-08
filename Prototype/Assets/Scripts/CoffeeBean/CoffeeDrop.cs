@@ -64,13 +64,13 @@ public class CoffeeDrop : MonoBehaviour
             dropTime = 0;
             if (CoffeePowders[0].CPowder == 1)
             {
-                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position, Quaternion.identity);
+                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
                 coffeedrop1.name = "CoffeeDrop1";
             }
 
             if (CoffeePowders[0].CPowder == 2)
             {
-                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position, Quaternion.identity);
+                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
                 coffeedrop2.name = "CoffeeDrop2";
             }
 

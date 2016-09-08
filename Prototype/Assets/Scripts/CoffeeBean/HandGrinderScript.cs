@@ -48,7 +48,7 @@ public class HandGrinderScript : MonoBehaviour
         floorMask = LayerMask.GetMask("Floor");
         playerRigidbody = GetComponent<Rigidbody>();
 
-        oldEulerAngles = transform.rotation.eulerAngles;
+        oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
     }
 
     void FixedUpdate()
@@ -120,12 +120,12 @@ public class HandGrinderScript : MonoBehaviour
             //make coffee powder using the coffee bean
             if (CoffeeBeans[0].Check == true)
             {
-               if (oldEulerAngles != transform.rotation.eulerAngles)
+                if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
                {
                     //player should rotate at least certain degree to grind the coffee bean
-                    if(Mathf.Abs(transform.rotation.eulerAngles.y - oldEulerAngles.y) >= stanDegree)
+                   if (Mathf.Abs(transform.GetChild(0).rotation.eulerAngles.y - oldEulerAngles.y) >= stanDegree)
                     {
-                        oldEulerAngles = transform.rotation.eulerAngles;
+                        oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
                         totalRotation += 1;
                     }
                    
@@ -177,11 +177,11 @@ public class HandGrinderScript : MonoBehaviour
 
     void NewGrindMotion ()
     {
-        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + new Vector3(0,3,0));
 
         float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(GrinderPos.x, GrinderPos.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
-        transform.Rotate(0, -angle, 0);
+        transform.GetChild(0).Rotate(0, -angle, 0);
 
         MousePos = Input.mousePosition;
     }
