@@ -167,4 +167,17 @@ public static class CoffeeOrderSetup
 
         return -10;
     }
+
+    public static float XPForMenu(OrderType order)
+    {
+        switch (order)
+        {
+            case OrderType.HotAmericano:
+                return 50;
+            case OrderType.IceAmericano:
+                return 50;
+        }
+
+        return -10;
+    }
 }

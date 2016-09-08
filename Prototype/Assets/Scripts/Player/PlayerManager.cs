@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour {
     public Player player;
     public float MoneyIncreasingSpeed = 10;
     float ExpectedMoney;
+    
 
     //xp UI
     public BarScript bar;
@@ -30,16 +31,9 @@ public class PlayerManager : MonoBehaviour {
 	void Update () {
         bar.Value = player.xp_currentVal;
         bar.MaxValue = player.xp_maxVal;
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            player.xp_currentVal += 10;
-            bar.Value = player.xp_currentVal;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            player.xp_currentVal -= 10;
-            bar.Value = player.xp_currentVal;
-        }
+
+        if (player.xp_currentVal >= player.xp_maxVal)
+            PlayerLevelUp();
 
         MoneyUpdate();
     }
@@ -81,5 +75,16 @@ public class PlayerManager : MonoBehaviour {
         else
             player.money = ExpectedMoney;
         money_text.GetComponent<Text>().text = player.money.ToString("N0");
+    }
+
+    public void AddXP(float xp)
+    {
+        player.xp_currentVal += xp;
+    }
+
+    void PlayerLevelUp()
+    {
+        player.xp_maxVal += 2 * player.xp_maxVal;
+        player.xp_currentVal = 0;
     }
 }

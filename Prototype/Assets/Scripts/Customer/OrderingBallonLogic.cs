@@ -49,6 +49,9 @@ public class OrderingBallonLogic : MonoBehaviour
     {
         //increase money
         Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
+        Player.AddXP(CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order));
+
+
 
         //delete coffee
         OrderLogic logic = orderUI.GetComponent<OrderLogic>();
