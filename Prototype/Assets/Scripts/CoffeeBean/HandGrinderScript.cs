@@ -106,7 +106,8 @@ public class HandGrinderScript : MonoBehaviour
 
         if (CheckGrind == true)
         {
-            GrindMotion();
+            //GrindMotion();
+            NewGrindMotion();
         }        
     }
 
@@ -137,13 +138,13 @@ public class HandGrinderScript : MonoBehaviour
     void OnMouseDown()
     {
         CheckGrind = true;
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     void OnMouseUp()
     {
         CheckGrind = false;
-        Cursor.visible = true;
+        //Cursor.visible = true;
     }
 
     //for coffee grinding motion
@@ -154,7 +155,6 @@ public class HandGrinderScript : MonoBehaviour
 
         // Create a RaycastHit variable to store information about what was hit by the ray.
         RaycastHit floorHit;
-
 
         // Perform the raycast and if it hits something on the floor layer...
         if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
@@ -171,5 +171,29 @@ public class HandGrinderScript : MonoBehaviour
             // Set the player's rotation to this new rotation.
             playerRigidbody.MoveRotation(newRotation);
         }
+    }
+
+    Vector3 MousePos;
+
+    void NewGrindMotion ()
+    {
+        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.position);
+
+        float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(GrinderPos.x, GrinderPos.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+
+        transform.Rotate(0, -angle, 0);
+
+        MousePos = Input.mousePosition;
+    }
+
+    public static float GetAngleInRadian(Vector2 vertex1, Vector2 pivotpoint, Vector2 vertex2)
+    {
+        Vector2 Edge1 = (vertex1 - pivotpoint);
+        Vector2 Edge2 = (vertex2 - pivotpoint);
+
+        float angle1 = Mathf.Atan2(Edge1.y, Edge1.x);
+        float angle2 = Mathf.Atan2(Edge2.y, Edge2.x);
+
+        return angle2 - angle1;
     }
 }
