@@ -35,8 +35,20 @@ public class CustomerSpawnTimer : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update() {
+    void OnTriggerStay2D(Collider2D orderUI)
+    {
+        if (orderUI.tag == "CompletedOrder")
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                //check if the order is correct one
+                if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
+                {
+                    //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
+                    DestroyObject(this.gameObject);
+                }
+            }
+        }
     }
 
 }
