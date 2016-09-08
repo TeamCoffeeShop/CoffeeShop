@@ -101,11 +101,11 @@ public static class CoffeeOrderSetup
         switch (order)
         {
             case OrderType.HotAmericano:
-                cupImage.GetComponent<Image>().color = new Color(116 / 255f, 60 / 255f, 0);
+                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/Americano");
                 //Debug.Log("Hot Americano");
                 break;
             case OrderType.IceAmericano:
-                cupImage.GetComponent<Image>().color = new Color(206 / 255f, 164 / 255f, 114 / 255f);
+                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/AmericanoCld");
                 //Debug.Log("Ice Americano");
                 break;
             default:
