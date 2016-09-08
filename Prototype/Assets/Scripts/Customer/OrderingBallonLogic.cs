@@ -9,7 +9,9 @@ public class OrderingBallonLogic : MonoBehaviour
 
     void Start ()
     {
-        Player = GameObject.Find("Player").GetComponent<PlayerManager>();
+        GameObject player = GameObject.Find("Player");
+        if(player)
+            Player = player.GetComponent<PlayerManager>();
 
         //follow link position
         if (customer != null)

@@ -30,7 +30,6 @@ public class CustomerLogic : MonoBehaviour
             GetComponent<Renderer>().enabled = false;
         else
             GetComponent<Renderer>().enabled = true;
-
     }
 
     //order menu instantly.
@@ -68,12 +67,16 @@ public class CustomerLogic : MonoBehaviour
             if (GetComponent<Renderer>().enabled == true)
             {
                 timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
-                ST.GetComponent<BarScript>().Value = timer;
-
-                //Delete customer when spawn time has passed
-                if (timer >= ST.GetComponent<BarScript>().MaxValue)
+                
+                if(ST)
                 {
-                    LeaveCoffeeShop();
+                    ST.GetComponent<BarScript>().Value = timer;
+
+                    ////Delete customer when spawn time has passed
+                    if (timer >= ST.GetComponent<BarScript>().MaxValue)
+                    {
+                        LeaveCoffeeShop();
+                    }
                 }
             }
         }
@@ -82,11 +85,11 @@ public class CustomerLogic : MonoBehaviour
     void OrderStart ()
     {
         OB = Instantiate(OrderingBallon);
-        OB.transform.SetParent(GameObject.Find("UI").transform, false);
+        OB.transform.SetParent(GameObject.Find("[OrderHUD]").transform, false);
         OB.GetComponent<OrderingBallonLogic>().customer = transform;
 
         ST = Instantiate(SpawnTimer);
-        ST.transform.SetParent(GameObject.Find("UI").transform, false);
+        ST.transform.SetParent(GameObject.Find("[OrderHUD]").transform, false);
         ST.GetComponent<CustomerSpawnTimer>().customer = transform;
         ST.GetComponent<BarScript>().MaxValue = customerspawntime;
         

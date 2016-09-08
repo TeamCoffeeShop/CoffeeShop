@@ -29,6 +29,7 @@ public class FinishedOrderList : MonoBehaviour
         OrderIcon = transform.FindChild("Order Icons");
     }
 
+
     public void OnLevelWasLoaded (int level)
     {
         //if main level, create lists
@@ -76,7 +77,7 @@ public class FinishedOrderList : MonoBehaviour
 
     public void DeleteOrder (int ChildNumber)
     {
-        OrderLogic order = orders.GetChild(ChildNumber).GetComponent<OrderLogic>();
+        OrderLogic order = OrderIcon.GetChild(ChildNumber).GetComponent<OrderLogic>();
         DestroyObject(order.originalCup);
         DestroyObject(order.gameObject);
     }
