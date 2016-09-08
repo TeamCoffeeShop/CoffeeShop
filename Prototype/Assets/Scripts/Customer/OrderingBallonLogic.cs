@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class OrderingBallonLogic : MonoBehaviour
 {
     public Transform customer;
+    public GameObject SpawnBar;
+
     PlayerManager Player;
     int CurrentScene;
 
@@ -48,14 +50,19 @@ public class OrderingBallonLogic : MonoBehaviour
         //increase money
         Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
 
-        //delte all customers and orders
+        //delete coffee
         OrderLogic logic = orderUI.GetComponent<OrderLogic>();
         if (logic)
             logic.OrderManager.DeleteOrder(logic.ChildNumber);
-        DestroyObject(orderUI);
         DestroyObject(logic.originalCup.gameObject);
+        DestroyObject(orderUI);
+
+        //delete customer
         DestroyObject(customer.gameObject);
-        DestroyObject(this.gameObject);
+
+        //delete customer UI
+        DestroyObject(SpawnBar);
+        DestroyObject(gameObject);
         Cursor.visible = true;
     }
 

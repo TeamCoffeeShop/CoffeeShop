@@ -34,6 +34,13 @@ public class FinishedOrderList : MonoBehaviour
         //if main level, create lists
         if (level == Scenes.MainLevel)
             CreateOrdersInUI();
+        else
+        {
+            //delete previous orders.
+            int size = OrderIcon.childCount;
+            for (int i = 0; i < size; ++i)
+                DestroyObject(OrderIcon.GetChild(i).gameObject);
+        }
     }
 
     public void SetTrashVisible (bool visible)

@@ -92,7 +92,9 @@ public class CustomerLogic : MonoBehaviour
         ST.transform.SetParent(GameObject.Find("[OrderHUD]").transform, false);
         ST.GetComponent<CustomerSpawnTimer>().customer = transform;
         ST.GetComponent<BarScript>().MaxValue = customerspawntime;
-        
+
+        OB.GetComponent<OrderingBallonLogic>().SpawnBar = ST;
+
         //custom cup display
         CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
     }
