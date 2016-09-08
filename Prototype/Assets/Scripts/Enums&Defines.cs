@@ -30,7 +30,7 @@ public static class Scenes
 
 public enum CoffeeCupType
 {
-    CoffeeCup1,
+    Mug,
     CoffeeCup2,
     CoffeeCup3
 }
@@ -60,14 +60,17 @@ public static class CoffeeBehaviourSetup
     {
         switch(cup.GetComponent<CoffeeCupBehavior>().CupType)
         {
-            case CoffeeCupType.CoffeeCup1:
-                cup.transform.localScale = new Vector3(1.5f, 0.6f, 1.5f) * 100;
+            case CoffeeCupType.Mug:
+                cup.transform.localScale = new Vector3(60, 60, 60);
+                cup.transform.Rotate(0, 180, 0);
                 break;
             case CoffeeCupType.CoffeeCup2:
-                cup.transform.localScale = new Vector3(0.8f, 1.2f, 0.8f) * 100;
+                cup.transform.localScale = new Vector3(60, 90, 60);
+                cup.transform.Rotate(0, 180, 0);
                 break;
             case CoffeeCupType.CoffeeCup3:
-                cup.transform.localScale = new Vector3(1,1,1) * 100;
+                cup.transform.localScale = new Vector3(30, 30, 30);
+                cup.transform.Rotate(0, 180, 0);
                 break;
             default:
                 break;

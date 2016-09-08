@@ -56,10 +56,14 @@ public class CustomerSpawnTimer : MonoBehaviour {
     {
         if (CurrentScene == Scenes.MainLevel)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<Image>().enabled = true;
             UpdatePosition();
         }
         else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
             GetComponent<Image>().enabled = false;
+        }
     }
 }
