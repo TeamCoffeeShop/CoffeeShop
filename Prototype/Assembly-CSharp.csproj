@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
      <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
      <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
      <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />

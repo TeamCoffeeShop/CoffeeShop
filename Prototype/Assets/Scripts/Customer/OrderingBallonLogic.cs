@@ -27,6 +27,10 @@ public class OrderingBallonLogic : MonoBehaviour
     {
         CurrentScene = level;
         Visibility();
+
+        GameObject player = GameObject.Find("Player");
+        if (player)
+            Player = player.GetComponent<PlayerManager>();
     }
 
     void OnTriggerStay2D(Collider2D orderUI)
@@ -49,8 +53,14 @@ public class OrderingBallonLogic : MonoBehaviour
     {
         if(customer)
         {
+            float price = CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order);
+
             //increase money
-            Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
+            Player.AddMoneyGradually(price);
+            //popup
+            UIEffect.CPopUp(price,transform.position);
+
+            //increase xp
             Player.AddXP(CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order));
 
             //delete coffee
@@ -92,26 +102,7 @@ public class OrderingBallonLogic : MonoBehaviour
         //follow link position
         if (customer != null)
         {
-            // WORLD TO CANVAS CODE ///////////////////////////////////////////////////////////////////////////////////
-            RectTransform rt = GetComponent<RectTransform>();
-
-            //offset
-            Vector3 newPos = customer.transform.position + new Vector3(0, 17, 0);
-
-            rt.position = rt.worldToLocalMatrix * newPos;
-
-            RectTransform CanvasRt = transform.parent.GetComponent<RectTransform>();
-
-            Vector2 vPos = GameObject.Find("Main Camera").GetComponent<Camera>().WorldToViewportPoint(newPos);
-            Vector2 result = new Vector2(
-            ((vPos.x * CanvasRt.sizeDelta.x) - (CanvasRt.sizeDelta.x * 0.5f)),
-            ((vPos.y * CanvasRt.sizeDelta.y) - (CanvasRt.sizeDelta.y * 0.5f)));
-
-            rt.anchoredPosition = result;
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            //custom movement
-            //rt.Translate(0, 0, 0);
+            UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, 17, 0), GetComponent<RectTransform>());
         }
     }
 }
