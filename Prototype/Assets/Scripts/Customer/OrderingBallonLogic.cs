@@ -54,14 +54,19 @@ public class OrderingBallonLogic : MonoBehaviour
         if(customer)
         {
             float price = CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order);
+            float xp = CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order);
+
+            //increase xp
+            Player.AddXP(xp);
+            //popup
+            Text popup = UIEffect.CPopUp(xp, transform.position).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.xp);
 
             //increase money
             Player.AddMoneyGradually(price);
             //popup
-            UIEffect.CPopUp(price,transform.position);
-
-            //increase xp
-            Player.AddXP(CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order));
+            popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.gold);
 
             //delete coffee
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();

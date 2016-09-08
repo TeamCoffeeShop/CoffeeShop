@@ -186,6 +186,11 @@ public static class CoffeeOrderSetup
     }
 }
 
+public enum PopupType
+{
+    none, gold, xp
+}
+
 public static class UIEffect
 {
     static GameObject Canvas;
@@ -253,5 +258,26 @@ public static class UIEffect
         ((vPos.y * CanvasRt.sizeDelta.y) - (CanvasRt.sizeDelta.y * 0.5f)));
 
         rt.anchoredPosition = result;
+    }
+
+    public static void SetPopUpBehavior(Text popup, PopupType type)
+    {
+        switch (type)
+        {
+            case PopupType.gold:
+                {
+                    popup.color = new Color(1, 231 / 255.0f, 15 / 255.0f);
+                    string ntext = "+ $ " + popup.text;
+                    popup.text = ntext;
+                }
+                break;
+            case PopupType.xp:
+                {
+                    popup.color = new Color(94 / 255.0f, 163 / 255.0f, 1);
+                    string ntext = "+ XP " + popup.text;
+                    popup.text = ntext;
+                }
+                break;
+        }
     }
 }
