@@ -10,8 +10,6 @@ public class CustomerSystem : MonoBehaviour {
     //door that customer enters
     public Transform Door;
 
-    public Button MiniGameButton;
-
     //For Random Time
     public float maxTime;
     public float minTime;

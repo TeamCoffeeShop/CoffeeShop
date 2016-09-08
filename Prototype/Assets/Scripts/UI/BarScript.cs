@@ -13,8 +13,6 @@ public class BarScript : MonoBehaviour {
 
     public float MaxValue { get; set; }
 
-    int CurrentScene;
-
     public float Value
     {
         set
@@ -22,18 +20,6 @@ public class BarScript : MonoBehaviour {
             fillAmount = Map(value, 0, MaxValue, 0, 1);
         }
     }
-
-    public void OnLevelWasLoaded(int level)
-    {
-        CurrentScene = level;
-        Visibility();
-    }
-
-	void Start ()
-    {
-        CurrentScene = Scenes.asInt(SceneManager.GetActiveScene());
-        Visibility();
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -52,13 +38,5 @@ public class BarScript : MonoBehaviour {
     private float Map(float value,float inMin, float inMax, float outMin, float outMax)
     {
         return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-    }
-
-    void Visibility()
-    {
-        if (CurrentScene == Scenes.MainLevel)
-            GetComponent<Image>().enabled = true;
-        else
-            GetComponent<Image>().enabled = false;
     }
 }
