@@ -29,7 +29,6 @@ public class FinishedOrderList : MonoBehaviour
         OrderIcon = transform.FindChild("Order Icons");
     }
 
-
     public void OnLevelWasLoaded (int level)
     {
         //if main level, create lists

@@ -5,7 +5,6 @@ public class CustomerSpawnTimer : MonoBehaviour {
 
     public Transform customer;
 
-
     // Use this for initialization
     void Start() {
         //follow link position
@@ -33,10 +32,6 @@ public class CustomerSpawnTimer : MonoBehaviour {
             //rt.Translate(0, 0, 0);
         }
 
-    }
-
-    // Update is called once per frame
-    void Update() {
     }
 
 }
