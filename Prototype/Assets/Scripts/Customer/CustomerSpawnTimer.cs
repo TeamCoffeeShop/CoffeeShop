@@ -33,7 +33,7 @@ public class CustomerSpawnTimer : MonoBehaviour {
             RectTransform rt = GetComponent<RectTransform>();
 
             //offset
-            Vector3 newPos = customer.transform.position - new Vector3(0, 10, 0);
+            Vector3 newPos = customer.transform.position + new Vector3(0, -1, 0);
 
             rt.position = rt.worldToLocalMatrix * newPos;
 

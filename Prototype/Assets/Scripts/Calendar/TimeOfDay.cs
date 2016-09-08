@@ -110,6 +110,7 @@ public class TimeOfDay : MonoBehaviour
             //foreach (Transform child in GameObject.Find("[OrderHUD]").transform.FindChild("Finished Orders").transform)
             //    DestroyObject(child.gameObject);
 
+            Cursor.visible = true;
             SceneManager.LoadScene(CalculateSceneLevel);
         }
 
