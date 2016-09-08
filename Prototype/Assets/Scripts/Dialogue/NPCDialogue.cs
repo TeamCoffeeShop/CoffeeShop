@@ -13,6 +13,8 @@ public class NPCDialogue : MonoBehaviour
     private GameObject character_text; //Character Dialogue
     private GameObject option1; //Option 1
     private GameObject option2; //Option 2
+
+    private GameObject next;
                                    //////////////////////////////////
 
     public string option1Text;
@@ -103,13 +105,15 @@ public class NPCDialogue : MonoBehaviour
                         break;
                 }
             }
+
         }
 
         private void set_option_button(GameObject button, DialogueOption opt)
         {
-            button.SetActive(true);
-            button.GetComponentInChildren<Text>().text = opt.tempText;
-            button.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedOption(opt.destinationNodeID); });
+                button.SetActive(true);
+                button.GetComponentInChildren<Text>().text = opt.tempText;
+                button.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedOption(opt.destinationNodeID); });
+
         }
 
         private static Dialogue load_dialogue(string path)
