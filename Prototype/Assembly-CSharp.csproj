@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
+     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
@@ -96,6 +97,7 @@
      <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
      <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
      <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
+     <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
      <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
      <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />

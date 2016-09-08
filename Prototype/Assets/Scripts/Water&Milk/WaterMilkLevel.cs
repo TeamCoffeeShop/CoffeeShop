@@ -25,7 +25,7 @@ public class WaterMilkLevel : MonoBehaviour
         if (Level > 100)
         {
             Debug.Log("Overflow!!");
-            GameObject.Find("ResetManager").GetComponent<ResetManager>().Reset();
+            GameObject.Find("Manager").transform.FindChild("CameraManager").GetComponent<CameraManager>().ActivateAction(CamMType.reset, CoffeeCupType.Standard);
         }
         
         if(WaterMilkText && WaterMilkGauge)

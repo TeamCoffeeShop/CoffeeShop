@@ -68,6 +68,7 @@ public class NPCDialogue : MonoBehaviour
             //create an indexer, set it to 0 - the start node
             int node_id = 0;
 
+
             //while the next node is not an exit node, traverse the dialogue tree based on user input
             while (node_id != -1)
             {
@@ -75,9 +76,10 @@ public class NPCDialogue : MonoBehaviour
                 selected_option = -2;
                 while (selected_option == -2)
                 {
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.1f);
                 }
                 node_id = selected_option;
+                
             }
             dialogue_window.SetActive(false);
         SceneManager.LoadScene(gameLevel);

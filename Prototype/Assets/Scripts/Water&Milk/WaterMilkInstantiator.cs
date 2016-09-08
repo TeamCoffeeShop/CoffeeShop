@@ -11,6 +11,8 @@ public class WaterMilkInstantiator : MonoBehaviour
     public float IncreaseAmount = 1;
 
     Minigame_CoffeeManager CM;
+    Transform water;
+
 
     void Awake ()
     {
@@ -35,8 +37,11 @@ public class WaterMilkInstantiator : MonoBehaviour
                 break;
             default:
                 break;
-
         }
+
+        //water showoff
+        if (!water)
+            water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(5,2.216f,3.177f),Quaternion.identity) as GameObject).transform;
     }
 
     void OnMouseUp()
@@ -51,5 +56,9 @@ public class WaterMilkInstantiator : MonoBehaviour
                 cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
             }
         }
+
+        //finish water
+        water.GetComponent<WaterFallingLogic>().filling = false;
+        water = null;
     }
 }

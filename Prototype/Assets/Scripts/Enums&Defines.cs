@@ -87,7 +87,14 @@ public static class CoffeeBehaviourSetup
         switch(cup.GetComponent<CoffeeCupBehavior>().DropType)
         {
             case CoffeeDropType.CoffeeDrop1:
-                cup.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/Coffee");
+
+                //temporary showoff! erase this after.
+                if(cup.GetComponent<CoffeeCupBehavior>().CupType == CoffeeCupType.Mug)
+                {
+                    cup.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                    cup.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/Coffee");
                 break;
             case CoffeeDropType.CoffeeDrop2:
                 cup.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/Coffee2");

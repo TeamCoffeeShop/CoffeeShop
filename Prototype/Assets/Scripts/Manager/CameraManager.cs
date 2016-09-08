@@ -75,15 +75,15 @@ public class CameraManager : MonoBehaviour
             case 0:
                 return new Vector3(-2.5f, 0.9f, 3.14f);
             case 1:
-                return new Vector3(5, 0, 3.14f);
+                return new Vector3(5, 0.147f, 3.14f);
             case 2:
-                return new Vector3(17, 0, 3.14f);
+                return new Vector3(17, 0.147f, 3.14f);
         }
             
         return new Vector3();
     }
 
-    void ButtonCheck ()
+    public void ButtonCheck ()
     {
         //Next Button
         if(NextButton)
