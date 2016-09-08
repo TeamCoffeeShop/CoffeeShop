@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f10c3a6df4501bf43b707f8203875e4b
-timeCreated: 1473284446
+guid: 68e706fb221836c4bba72f239b39af7d
+timeCreated: 1473361538
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCylinder2
-    4300002: CoffeeMug
+    4300000: CappuccinoCup
     9500000: //RootNode
   materials:
     importMaterials: 1

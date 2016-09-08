@@ -31,8 +31,8 @@ public static class Scenes
 public enum CoffeeCupType
 {
     Mug,
-    CoffeeCup2,
-    CoffeeCup3
+    Standard,
+    Cappuccino
 }
 
 public enum CoffeeDropType
@@ -56,25 +56,29 @@ public enum OrderType
 public static class CoffeeBehaviourSetup
 {
     //sets the coffeecup model
-    public static void SetCoffeeCup(ref GameObject cup)
+    public static GameObject SetCoffeeCup(CoffeeCupType type)
     {
-        switch(cup.GetComponent<CoffeeCupBehavior>().CupType)
+        GameObject cup = null;
+
+        switch(type)
         {
             case CoffeeCupType.Mug:
-                cup.transform.localScale = new Vector3(60, 60, 60);
+                cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/CoffeeCups/Mug"));
                 cup.transform.Rotate(0, 180, 0);
                 break;
-            case CoffeeCupType.CoffeeCup2:
-                cup.transform.localScale = new Vector3(60, 90, 60);
+            case CoffeeCupType.Standard:
+                cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/CoffeeCups/Standard"));
                 cup.transform.Rotate(0, 180, 0);
                 break;
-            case CoffeeCupType.CoffeeCup3:
-                cup.transform.localScale = new Vector3(30, 30, 30);
+            case CoffeeCupType.Cappuccino:
+                cup = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/CoffeeCups/Cappuccino"));
                 cup.transform.Rotate(0, 180, 0);
                 break;
             default:
                 break;
         }
+
+        return cup;
     }
 
     //sets the material (or mesh) of the coffee

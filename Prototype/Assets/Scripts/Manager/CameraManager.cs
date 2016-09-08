@@ -8,7 +8,6 @@ public enum CamMType
 
 public class CameraManager : MonoBehaviour
 {
-    public GameObject CoffeeCup;
     public int step;
     public GameObject NextButton;
     public GameObject WaterMilkText;
@@ -22,10 +21,6 @@ public class CameraManager : MonoBehaviour
     {
         CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
 
-        //if none is selected, load default cup
-        if(CoffeeCup == null)
-           CoffeeCup = Resources.Load<GameObject>("Prefab/CoffeeCup");
-
         MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
     }
 
@@ -36,10 +31,8 @@ public class CameraManager : MonoBehaviour
             case CamMType.create:
                 //create new cup
                 MainCamera.TargetPosition = GetCameraPos(step);
-                CM.SelectedCoffee = Instantiate(CoffeeCup, GetCoffeeCupPos(step), Quaternion.identity) as GameObject;
-                CM.SelectedCoffee.name = "CoffeeCup";
-                CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>().CupType = cuptype;
-                CoffeeBehaviourSetup.SetCoffeeCup(ref CM.SelectedCoffee);
+                CM.SelectedCoffee = CoffeeBehaviourSetup.SetCoffeeCup(cuptype);
+                CM.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
                 ++step;
                 break;
             case CamMType.next:
@@ -80,7 +73,7 @@ public class CameraManager : MonoBehaviour
         switch (step)
         {
             case 0:
-                return new Vector3(-2.5f, 0, 3.14f);
+                return new Vector3(-2.5f, 0.9f, 3.14f);
             case 1:
                 return new Vector3(5, 0, 3.14f);
             case 2:

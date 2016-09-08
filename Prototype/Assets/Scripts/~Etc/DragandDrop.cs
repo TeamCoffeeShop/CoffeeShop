@@ -40,7 +40,7 @@ public class DragandDrop : MonoBehaviour {
     {
         if (coffeeCup == null)
         {
-            coffeeCup = GameObject.FindGameObjectWithTag("CoffeeCup");
+            coffeeCup = GameObject.Find("Manager").transform.FindChild("CoffeeManager").GetComponent<Minigame_CoffeeManager>().SelectedCoffee;
         }
     }
 
