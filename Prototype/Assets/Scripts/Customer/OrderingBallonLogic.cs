@@ -47,26 +47,33 @@ public class OrderingBallonLogic : MonoBehaviour
 
     void FinishOrder (GameObject orderUI)
     {
-        //increase money
-        Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
-        Player.AddXP(CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order));
+        if(customer)
+        {
+            //increase money
+            Player.AddMoneyGradually(CoffeeOrderSetup.PriceTagForMenu(customer.GetComponent<Customer>().data.order));
+            Player.AddXP(CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order));
 
+            //delete coffee
+            OrderLogic logic = orderUI.GetComponent<OrderLogic>();
+            if (logic)
+                logic.OrderManager.DeleteOrder(logic.ChildNumber);
+            DestroyObject(logic.originalCup.gameObject);
+            DestroyObject(orderUI);
 
+            DeleteCustomer();
 
-        //delete coffee
-        OrderLogic logic = orderUI.GetComponent<OrderLogic>();
-        if (logic)
-            logic.OrderManager.DeleteOrder(logic.ChildNumber);
-        DestroyObject(logic.originalCup.gameObject);
-        DestroyObject(orderUI);
+            Cursor.visible = true;
+        }
+    }
 
+    public void DeleteCustomer ()
+    {
         //delete customer
         DestroyObject(customer.gameObject);
 
         //delete customer UI
         DestroyObject(SpawnBar);
         DestroyObject(gameObject);
-        Cursor.visible = true;
     }
 
     void Visibility ()

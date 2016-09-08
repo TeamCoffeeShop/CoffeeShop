@@ -89,6 +89,27 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.SetInt("Month", calendar.month);
             PlayerPrefs.SetInt("Day", calendar.day);
             SceneManager.LoadScene(CalculateSceneLevel);
+
+            //reset customers & cups
+            Transform HUD = GameObject.Find("[OrderHUD]").transform;
+
+            int size = HUD.FindChild("Order Icons").transform.childCount;
+            for (int i = 0; i < size; ++i)
+                DestroyObject(HUD.FindChild("Order Icons").transform.GetChild(i).gameObject);
+
+            size = HUD.childCount;
+            for (int i = 0; i < size; ++i)
+                if (HUD.GetChild(i).tag == "OrderingBallon")
+                    HUD.GetChild(i).GetComponent<OrderingBallonLogic>().DeleteCustomer();
+
+            GameObject[] leftcustomers = GameObject.FindGameObjectsWithTag("Customer");
+
+            size = leftcustomers.Length;
+            for (int i = 0; i < size; ++i)
+                DestroyObject(leftcustomers[i]);
+
+            //foreach (Transform child in GameObject.Find("[OrderHUD]").transform.FindChild("Finished Orders").transform)
+            //    DestroyObject(child.gameObject);
         }
 
     }
