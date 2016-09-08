@@ -7,23 +7,30 @@ public class FinishedOrderList : MonoBehaviour
 {
     public GameObject orderDisplayButton;
 
+    Transform orders;
+    Transform OrderIcon;
+
     void Awake ()
     {
         //if duplicate, erase this
-        if (GameObject.Find("[[Finished Orders]]") != null)
+        if (GameObject.Find("[OrderHUD]") != null)
             DestroyImmediate(gameObject);
     }
 
     void Start ()
     {
         //change name to specify this object
-        transform.name = "[[Finished Orders]]";
+        transform.name = "[OrderHUD]";
 
         //make this saved between scenes
         DontDestroyOnLoad(this);
+
+        orders = transform.FindChild("Finished Orders");
+        OrderIcon = transform.FindChild("Order Icons");
     }
 
-    public void OnLevelWasLoaded(int level)
+
+    public void OnLevelWasLoaded (int level)
     {
         //if main level, create lists
         if (level == Scenes.MainLevel)
@@ -32,29 +39,26 @@ public class FinishedOrderList : MonoBehaviour
 
     public void SetTrashVisible (bool visible)
     {
-        GameObject.Find("UI").transform.Find("Trash").gameObject.SetActive(visible);
+        transform.FindChild("Trash").gameObject.SetActive(visible);
     }
 
     void CreateOrdersInUI()
     {
         //create cups as much as childrens
-        int size = transform.childCount;
+        int size = orders.childCount;
         float xPos = 0;
-        OrderLogic prevCup = null;
         for (int i = 0; i < size; ++i)
         {
             //create cup
             GameObject cup = GameObject.Instantiate(orderDisplayButton);
-            cup.transform.SetParent(GameObject.Find("UI").transform, false);
+            cup.transform.SetParent(OrderIcon, false);
 
             //set cup details here
-            CoffeeCupBehavior finishedCup = transform.GetChild(i).GetComponent<CoffeeCupBehavior>();
+            CoffeeCupBehavior finishedCup = orders.GetChild(i).GetComponent<CoffeeCupBehavior>();
             OrderLogic currentCup = cup.GetComponent<OrderLogic>();
             currentCup.originalCup = finishedCup;
             currentCup.OrderManager = this;
-            if(prevCup)
-                prevCup.NextFinishedOrder = currentCup;
-            prevCup = currentCup;
+            currentCup.ChildNumber = i;
 
             //distinguish image by the droptype
             CoffeeOrderSetup.SetOrder(ref cup, finishedCup.DistinguishedMenuName);
@@ -64,11 +68,22 @@ public class FinishedOrderList : MonoBehaviour
 
             //set Transform (to not stack in one place)
             RectTransform rt = cup.GetComponent<RectTransform>();
-            float gap = (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
+            float gap = CalculateGap(rt);
             
             rt.Translate(xPos, 0, 0);
             xPos += gap;
-            currentCup.Gap = gap;
         }
+    }
+
+    public void DeleteOrder (int ChildNumber)
+    {
+        OrderLogic order = OrderIcon.GetChild(ChildNumber).GetComponent<OrderLogic>();
+        DestroyObject(order.originalCup);
+        DestroyObject(order.gameObject);
+    }
+
+    float CalculateGap (RectTransform rt)
+    {
+        return (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
     }
 }

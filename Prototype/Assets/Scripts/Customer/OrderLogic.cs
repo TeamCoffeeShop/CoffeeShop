@@ -7,8 +7,8 @@ public class OrderLogic : MonoBehaviour
     public float SelectCancelSpeed = 5;
     public CoffeeCupBehavior originalCup;
     public FinishedOrderList OrderManager;
-    public OrderLogic NextFinishedOrder;
-    public float Gap;
+    public int ChildNumber;
+
 
     Vector3 OriginalPosition;
     bool dragging = false;
@@ -47,12 +47,7 @@ public class OrderLogic : MonoBehaviour
 
         //throw away
         if (trash)
-        {
-            if(NextFinishedOrder)
-               NextFinishedOrder.MoveLeft();
-            DestroyObject(originalCup.gameObject);
-            DestroyObject(this.gameObject);
-        }
+            OrderManager.DeleteOrder(ChildNumber);
 
         //disable trash can
         OrderManager.SetTrashVisible(false);
@@ -77,14 +72,5 @@ public class OrderLogic : MonoBehaviour
     {
         if (orderUI.name == "Trash")
             trash = false;
-    }
-
-    //move this to left when order is gone
-    public void MoveLeft ()
-    {
-        OriginalPosition.x -= Gap;
-
-        if (NextFinishedOrder)
-            NextFinishedOrder.MoveLeft();
     }
 }

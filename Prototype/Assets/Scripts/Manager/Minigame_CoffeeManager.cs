@@ -8,7 +8,7 @@ public class Minigame_CoffeeManager : MonoBehaviour
     //save finished order
     public void SaveFinishedOrder()
     {
-        GameObject orders = GameObject.Find("[[Finished Orders]]");
+        GameObject orders = GameObject.Find("[OrderHUD]");
 
         if (orders)
         {
@@ -18,8 +18,7 @@ public class Minigame_CoffeeManager : MonoBehaviour
                 //check if coffee is finished
                 if (LegitCoffee())
                 {
-                    Debug.Log("coffee successfully added to list!");
-                    SelectedCoffee.transform.parent = list;
+                    SelectedCoffee.transform.parent = list.FindChild("Finished Orders");
                     SelectedCoffee.SetActive(false);
                     SelectedCoffee.GetComponent<CoffeeCupBehavior>().DistinguishedMenuName = CoffeeOrderSetup.DistinguishCreatedMenu(ref SelectedCoffee);
                     SelectedCoffee = null;
