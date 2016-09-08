@@ -80,7 +80,7 @@ public class DragandDrop : MonoBehaviour {
         if (InGrinder == true)
         {
             //for first coffee bean type
-            if (gameObject.name == "CoffeeBean1")
+            if (gameObject.name == "CoffeeBean1(Clone)")
             {
                 //when the list is empty
                 if (hGrinderScript.CoffeeBeans.Count == 0)
@@ -93,7 +93,7 @@ public class DragandDrop : MonoBehaviour {
             }
 
             //for second coffee bean type
-            if (gameObject.name == "CoffeeBean2")
+            if (gameObject.name == "CoffeeBean2(Clone)")
             {
                 //when the list is empty
                 if (hGrinderScript.CoffeeBeans.Count == 0)
