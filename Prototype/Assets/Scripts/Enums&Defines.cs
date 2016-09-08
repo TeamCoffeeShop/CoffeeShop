@@ -185,3 +185,73 @@ public static class CoffeeOrderSetup
         return -10;
     }
 }
+
+public static class UIEffect
+{
+    static GameObject Canvas;
+    static GameObject Popup;
+
+    static bool SetCanvas ()
+    {
+        Canvas = GameObject.Find("UI");
+
+        return Canvas != null;
+    }
+
+    static bool SetPopup ()
+    {
+        Popup = Resources.Load<GameObject>("Prefab/UI/Popup");
+
+        return Popup != null;
+    }
+
+    public static GameObject WPopUp(float number, Vector3 worldposition)
+    {
+        if(!Canvas)
+            if(!SetCanvas())
+                return null;
+
+        if (!Popup)
+            if (!SetPopup())
+                return null;
+
+        GameObject p = GameObject.Instantiate(Popup);
+        p.transform.SetParent(Canvas.transform);
+        p.GetComponent<Text>().text = number.ToString("N0");
+
+        WorldToCanvas(Canvas, worldposition, p.GetComponent<RectTransform>());
+
+        return p;
+    }
+
+    public static GameObject CPopUp(float number, Vector3 canvasposition)
+    {
+        if (!Canvas)
+            if (!SetCanvas())
+                return null;
+
+        if (!Popup)
+            if (!SetPopup())
+                return null;
+
+        GameObject p = GameObject.Instantiate(Popup);
+        p.transform.SetParent(Canvas.transform);
+        p.GetComponent<Text>().text = number.ToString("N0");
+
+        p.GetComponent<RectTransform>().position = canvasposition;
+
+        return p;
+    }
+
+    public static void WorldToCanvas (GameObject canvas, Vector3 worldposition, RectTransform rt)
+    {
+        RectTransform CanvasRt = canvas.GetComponent<RectTransform>();
+
+        Vector2 vPos = Camera.main.WorldToViewportPoint(worldposition);
+        Vector2 result = new Vector2(
+        ((vPos.x * CanvasRt.sizeDelta.x) - (CanvasRt.sizeDelta.x * 0.5f)),
+        ((vPos.y * CanvasRt.sizeDelta.y) - (CanvasRt.sizeDelta.y * 0.5f)));
+
+        rt.anchoredPosition = result;
+    }
+}
