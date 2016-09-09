@@ -5,6 +5,7 @@ public class MainGameManager : MonoBehaviour {
 
     public bool OnDialogue;
     public NPCDialogue dialoguemanager;
+    public GameObject MinigameButton;
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +19,13 @@ public class MainGameManager : MonoBehaviour {
 
         if (OnDialogue)
         {
+            MinigameButton.SetActive(false);
             dialoguemanager.GetComponentInChildren<Canvas>().enabled = true;
             Time.timeScale = 0.0f;
         }
         else
         {
+            MinigameButton.SetActive(false);
             dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
             Time.timeScale = 1.0f;
         }

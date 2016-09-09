@@ -10,7 +10,6 @@ public class NPCDialogue : MonoBehaviour
         private Dialogue dia;
         private GameObject dialogue_window; //Dialogue Panel
         private GameObject npc_text; //NPC Dialogue
-        private GameObject character_text; //Character Dialogue
         private GameObject option1; //Option 1
         private GameObject option2; //Option 2
 
@@ -36,10 +35,9 @@ public class NPCDialogue : MonoBehaviour
         dialogue_window.transform.SetParent(canvas.transform, false);
 
         RectTransform dia_window_transform = (RectTransform)dialogue_window.transform;
-        dia_window_transform.localPosition = new Vector3(0, -50, 0);
+        dia_window_transform.localPosition = new Vector3(0, -300, 0);
 
         npc_text = GameObject.Find("NPCDialogue_Text");
-        character_text = GameObject.Find("CharacterDialogue_Text");
         option1 = GameObject.Find("Option1");
         option2 = GameObject.Find("Option2");
 
