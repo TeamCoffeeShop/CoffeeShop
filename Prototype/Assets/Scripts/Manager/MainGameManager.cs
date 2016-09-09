@@ -29,7 +29,7 @@ public class MainGameManager : MonoBehaviour {
         }
         else
         {
-            MinigameButton.SetActive(false);
+            MinigameButton.SetActive(true);
             dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
             NPC1.SetActive(false);
             NPC2.SetActive(false);
