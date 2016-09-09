@@ -49,11 +49,15 @@ public class NPCDialogue : MonoBehaviour
 
             RunDialogue();
         }
-        else if(PlayerPrefs.GetInt("DialogueID") == 1)
+        else if (PlayerPrefs.GetInt("DialogueID") == 1)
         {
             dia = load_dialogue("Assets/Resources/Xmls/" + Dialogue2Path);
 
             RunDialogue();
+        }
+        else
+        {
+            gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
         }
 
         }
@@ -68,26 +72,26 @@ public class NPCDialogue : MonoBehaviour
             selected_option = x;
         }
 
-        public IEnumerator run()
+    public IEnumerator run()
+    {
+        dialogue_window.SetActive(true);
+
+        //create an indexer, set it to 0 - the start node
+        int node_id = 0;
+
+        //while the next node is not an exit node, traverse the dialogue tree based on user input
+        while (node_id != -1)
         {
-            dialogue_window.SetActive(true);
-
-            //create an indexer, set it to 0 - the start node
-            int node_id = 0;
-
-            //while the next node is not an exit node, traverse the dialogue tree based on user input
-            while (node_id != -1)
+            display_node(dia.Nodes[node_id]);
+            selected_option = -2;
+            while (selected_option == -2)
             {
-                display_node(dia.Nodes[node_id]);
-                selected_option = -2;
-                while (selected_option == -2)
-                {
                 //gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
-				yield return null;
-                }
-                node_id = selected_option;
+                yield return null;
             }
-            dialogue_window.SetActive(false);
+            node_id = selected_option;
+        }
+        dialogue_window.SetActive(false);
         gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
         if (PlayerPrefs.GetInt("DialogueID") == 0)
         {
@@ -95,8 +99,11 @@ public class NPCDialogue : MonoBehaviour
             Time.timeScale = 1.0f;
             SceneManager.LoadScene(gameLevel);
         }
+        else if (PlayerPrefs.GetInt("DialogueID") == 1)
+        {
+            PlayerPrefs.SetInt("DialogueID", 2);
+        }
     }
-
         private void display_node(DialogueNode node)
         {
         npc_text.GetComponent<Text>().text = node.tempText;

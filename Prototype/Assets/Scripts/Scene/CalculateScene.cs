@@ -13,8 +13,9 @@ public class CalculateScene : MonoBehaviour {
         clockobject = GameObject.Find("TimeOfDay");
         Destroy(gameobject);
         Destroy(clockobject);
-        
-	}
+        PlayerPrefs.SetInt("DialogueID", 2);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
