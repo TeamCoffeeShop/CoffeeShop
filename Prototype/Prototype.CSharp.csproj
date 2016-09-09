@@ -95,7 +95,9 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\MiniDialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\NPCDialogue.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />

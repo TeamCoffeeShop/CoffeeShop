@@ -34,7 +34,7 @@ public class BrieDialogue : MonoBehaviour
         dialogue_window.transform.SetParent(canvas.transform, false);
 
         RectTransform dia_window_transform = (RectTransform)dialogue_window.transform;
-        dia_window_transform.localPosition = new Vector3(0, -50, 0);
+        dia_window_transform.localPosition = new Vector3(0, -80, 0);
 
         npc_text = GameObject.Find("NPCDialogue_Text");
         option1 = GameObject.Find("Option1");
