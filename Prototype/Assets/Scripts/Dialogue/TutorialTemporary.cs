@@ -65,6 +65,11 @@ public class TutorialTemporary : MonoBehaviour
                     ++Order;
                 break;
             case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
                 if (Input.GetKeyDown(KeyCode.Z))
                     ++Order;
                 break;
@@ -76,6 +81,7 @@ public class TutorialTemporary : MonoBehaviour
             finish.SetActive(false);
             time.SetActive(true);
         }
+
     }
 
     void NextDialogue()
@@ -96,9 +102,25 @@ public class TutorialTemporary : MonoBehaviour
                 break;
             case 3:
                 DestroyObject(CurrentDialogue.gameObject);
-                CurrentDialogue = DialogueManager.CreateMiniDialogue("Now, put it into the grinder.", new Vector2(200, 36), new Vector3(-6, -2, 3.13f));
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Now, put the coffee bean into the grinder.", new Vector2(280, 36), new Vector3(-6, -2, 3.13f));
                 break;
             case 4:
+                DestroyObject(CurrentDialogue.gameObject);
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Great! Next, hold and rotate the handle.", new Vector2(275, 36), new Vector3(-6, -2, 3.13f));
+                break;
+            case 5:
+                DestroyObject(CurrentDialogue.gameObject);
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Drag the grinded powders into coffee machine.", new Vector2(320, 36), new Vector3(-2.5f, -2, 3.13f));
+                break;
+            case 6:
+                DestroyObject(CurrentDialogue.gameObject);
+                break;
+            case 7:
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Lastly, Select the hot water and hold the handle to add water.", new Vector2(550, 36), new Vector3(5, -2, 3.13f));
+                break;
+            case 8:
+                DestroyObject(CurrentDialogue.gameObject);
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Nicely Done! Press \"Finish\" to bring coffee back to the cafe!", new Vector2(550, 36), new Vector3(5, -2, 3.13f));
                 FinishDialogue();
                 break;
         }
@@ -108,5 +130,8 @@ public class TutorialTemporary : MonoBehaviour
     {
         cup2.GetComponent<MeshCollider>().enabled = true;
         cup3.GetComponent<MeshCollider>().enabled = true;
+        beanbag2.GetComponent<Collider>().enabled = true;
+        Done = true;
+        finish.SetActive(true);
     }
 }
