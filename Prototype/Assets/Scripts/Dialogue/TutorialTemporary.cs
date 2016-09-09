@@ -62,6 +62,8 @@ public class TutorialTemporary : MonoBehaviour
                     ++Order;
                 break;
             case 2:
+            case 3:
+            case 4:
                 if (Input.GetKeyDown(KeyCode.Z))
                     ++Order;
                 break;
@@ -92,9 +94,17 @@ public class TutorialTemporary : MonoBehaviour
                 break;
             case 3:
                 DestroyObject(CurrentDialogue.gameObject);
-                CurrentDialogue = DialogueManager.CreateMiniDialogue("Now, put it into the grinder.", new Vector2(200, 36), new Vector3(-6, -2, 3.13f));
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Now, put the coffee bean into the grinder.", new Vector2(280, 36), new Vector3(-6, -2, 3.13f));
                 break;
             case 4:
+                DestroyObject(CurrentDialogue.gameObject);
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Great! Next, hold and rotate the handle.", new Vector2(275, 36), new Vector3(-6, -2, 3.13f));
+                break;
+            case 5:
+                DestroyObject(CurrentDialogue.gameObject);
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Drag the grinded powders into coffee machine!", new Vector2(300, 36), new Vector3(-2.5f, -2, 3.13f));
+                break;
+            case 6:
                 FinishDialogue();
                 break;
         }
@@ -104,5 +114,6 @@ public class TutorialTemporary : MonoBehaviour
     {
         cup2.GetComponent<MeshCollider>().enabled = true;
         cup3.GetComponent<MeshCollider>().enabled = true;
+        beanbag2.GetComponent<Collider>().enabled = true;
     }
 }
