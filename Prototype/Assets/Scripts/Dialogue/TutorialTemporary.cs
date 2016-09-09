@@ -15,10 +15,13 @@ public class TutorialTemporary : MonoBehaviour
     public GameObject reset;
     public GameObject finish;
 
+    public GameObject time;
     RectTransform CurrentDialogue;
 
     void Awake()
     {
+        time = GameObject.Find("TimeOfDay");
+        time.SetActive(false);
         if (GameObject.Find("[Tutorial]"))
             DestroyObject(gameObject);
 
@@ -71,6 +74,7 @@ public class TutorialTemporary : MonoBehaviour
         {
             reset.SetActive(false);
             finish.SetActive(false);
+            time.SetActive(true);
         }
     }
 
