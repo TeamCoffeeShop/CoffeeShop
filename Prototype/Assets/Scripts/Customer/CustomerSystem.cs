@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class CustomerSystem : MonoBehaviour {
 
-    //customer List
-    //public GameObject CustomerListObj;
+    //TEMPORARY!!!!!!!!!!!!!!!!!!!
+    MainGameManager MGM;
 
     //door that customer enters
     public Transform Door;
@@ -34,20 +34,7 @@ public class CustomerSystem : MonoBehaviour {
 
     void Awake()
     {
-        //CustomerListObj = GameObject.Find("CustomerList(Clone)");
-        //if (CustomerListObj == null)
-        //{
-        //    CustomerListObj = Instantiate<GameObject>(CustomerListPrefab);
-        //}
-        //else
-        //{
-        //    foreach (CustomerData data in CustomerListObj.GetComponent<CustomerContainer>().customers)
-        //    {
-        //        CreateCustomer(data, CustomerSystem.customerPath,
-        //            new Vector3(data.posx, data.posy, data.posz), data.order, Quaternion.identity);
-        //    }
-        //}
-
+        MGM = GameObject.Find("MainGameManager").GetComponent<MainGameManager>();
     }
 
 	// Use this for initialization
@@ -120,7 +107,8 @@ public class CustomerSystem : MonoBehaviour {
     void SpawnCustomer()
     {
         //counts up
-        time += Time.deltaTime;
+        if(!MGM.OnDialogue)
+            time += Time.deltaTime;
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
