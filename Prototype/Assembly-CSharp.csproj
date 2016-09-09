@@ -99,8 +99,13 @@
      <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
+     <None Include="Assets\Resources\Xmls\BiancaConversation.xml" />
+     <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
      <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+     <None Include="Assets\Resources\Xmls\AniseConversation.xml" />
      <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />
+     <None Include="Assets\Resources\Xmls\BrieConversation.xml" />
+     <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
