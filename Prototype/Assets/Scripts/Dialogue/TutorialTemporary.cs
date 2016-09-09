@@ -116,7 +116,7 @@ public class TutorialTemporary : MonoBehaviour
                 break;
             case 8:
                 DestroyObject(CurrentDialogue.gameObject);
-                CurrentDialogue = DialogueManager.CreateMiniDialogue("Nicely Done! Press \"Finish\" to bring coffee back to the cafe!", new Vector2(550, 36));
+                CurrentDialogue = DialogueManager.CreateMiniDialogue("Nicely Done! Press \"Finish\" to bring coffee back to the cafe!", new Vector2(550, 36), new Vector3(5, -2, 3.13f));
                 FinishDialogue();
                 break;
         }
