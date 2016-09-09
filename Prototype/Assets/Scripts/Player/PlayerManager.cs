@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        player = load_player("Assets/Resources/Xmls/" + PlayerDataFilePath);
+        player = load_player(PlayerDataFilePath);
 
         ExpectedMoney = player.money;
     }

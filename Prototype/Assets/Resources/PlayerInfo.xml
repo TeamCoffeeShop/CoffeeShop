@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Player>
+  <xp_currentVal>0</xp_currentVal>
+  <xp_maxVal>100</xp_maxVal>
+  
+  <money>1000</money>            
+</Player>                    
