@@ -70,6 +70,9 @@
      <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\AniseDialogue.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\BiancaDialogue.cs" />
+     <Compile Include="Assets\Scripts\Dialogue\BrieDialogue.cs" />
      <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
      <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
