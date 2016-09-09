@@ -24,24 +24,17 @@ public class WaterMilkInstantiator : MonoBehaviour
         switch(WaterMilkType)
         {
             case WaterMilkType.HotWater:
-                CurrentAmount += IncreaseAmount;
-                break;
             case WaterMilkType.IcedWater:
-                CurrentAmount += IncreaseAmount;
-                break;
             case WaterMilkType.HotMilk:
-                CurrentAmount += IncreaseAmount;
-                break;
             case WaterMilkType.IcedMilk:
+                //water showoff
+                if (!water)
+                    water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(5, 2.216f, 3.177f), Quaternion.identity) as GameObject).transform;
                 CurrentAmount += IncreaseAmount;
                 break;
             default:
                 break;
         }
-
-        //water showoff
-        if (!water)
-            water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(5,2.216f,3.177f),Quaternion.identity) as GameObject).transform;
     }
 
     void OnMouseUp()
