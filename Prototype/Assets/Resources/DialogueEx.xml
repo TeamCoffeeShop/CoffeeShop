@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Dialogue>
+    <Nodes>
+        <DialogueNode>
+            <NodeID>0</NodeID>
+            <tempText> You're our new employee, right ? Nice to meet you! </tempText>
+			<options>
+			    <DialogueOption>
+                  <tempText> NEXT</tempText>
+                  <destinationNodeID>1</destinationNodeID>
+                </DialogueOption>
+		    </options>
+        </DialogueNode>
+        
+        <DialogueNode>
+            <NodeID>1</NodeID>
+            <tempText> My name's Briana Madeleine, but you just call me Brie, got it ?</tempText>
+            <options>
+                <DialogueOption>
+                  <tempText> Got it!</tempText>
+                  <destinationNodeID>2</destinationNodeID>
+                </DialogueOption>
+                <DialogueOption>
+                  <tempText> Yes, ma' am!</tempText>
+                  <destinationNodeID>2</destinationNodeID>
+                </DialogueOption>
+            </options>
+        </DialogueNode>
+        
+        <DialogueNode>
+            <NodeID>2</NodeID>
+            <tempText> ;( See you </tempText>
+            <options>
+                <DialogueOption>
+                  <tempText> ... </tempText>
+                  <destinationNodeID>-1</destinationNodeID>
+                </DialogueOption>
+                <DialogueOption>
+                  <tempText> Bye </tempText>
+                  <destinationNodeID>-1</destinationNodeID>
+                </DialogueOption>
+            </options>
+        </DialogueNode>
+    </Nodes>
+</Dialogue>                    

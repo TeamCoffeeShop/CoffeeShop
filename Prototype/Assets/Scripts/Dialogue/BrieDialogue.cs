@@ -26,7 +26,7 @@ public class BrieDialogue : MonoBehaviour
     {
         gamemanager = GameObject.Find("MainGameManager");
 
-        dia = load_dialogue("Assets/Resources/Xmls/" + DialoguePath);
+        dia = load_dialogue(DialoguePath);
 
         var canvas = GameObject.Find("Canvas");
 

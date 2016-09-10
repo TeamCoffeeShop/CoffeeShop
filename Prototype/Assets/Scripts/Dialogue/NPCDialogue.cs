@@ -47,13 +47,13 @@ public class NPCDialogue : MonoBehaviour
 
         if (PlayerPrefs.GetInt("DialogueID") == 0)
         {
-            dia = load_dialogue("Assets/Resources/Xmls/" + Dialogue1Path);
+            dia = load_dialogue(Dialogue1Path);
 
             RunDialogue();
         }
         else if (PlayerPrefs.GetInt("DialogueID") == 1)
         {
-            dia = load_dialogue("Assets/Resources/Xmls/" + Dialogue2Path);
+            dia = load_dialogue(Dialogue2Path);
 
             RunDialogue();
         }
@@ -138,6 +138,8 @@ public class NPCDialogue : MonoBehaviour
 
         private static Dialogue load_dialogue(string path)
         {
+            path = "Xmls/" + path;
+
             XmlSerializer serz = new XmlSerializer(typeof(Dialogue));
             StreamReader reader = new StreamReader(path);
 
