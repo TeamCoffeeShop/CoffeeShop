@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CalculateScene : MonoBehaviour {
-
+public class CalculateScene : MonoBehaviour
+{
     private GameObject gameobject;
-    private GameObject clockobject;
 
 	// Use this for initialization
 	void Start () {
 
         gameobject = GameObject.Find("CustomerList(Clone)");
-        clockobject = GameObject.Find("TimeOfDay");
         Destroy(gameobject);
-        Destroy(clockobject);
+        Destroy(MainGameManager.Get.TimeOfDay.gameObject);
         PlayerPrefs.SetInt("DialogueID", 2);
 
     }

@@ -10,7 +10,6 @@ public class CustomerLogic : MonoBehaviour
 
     bool arrived = false;
     float walkSpeed = 20;
-    private GameObject timeofDay;
 
     private GameObject OB;
     private GameObject ST;
@@ -35,10 +34,7 @@ public class CustomerLogic : MonoBehaviour
 
     //order menu instantly.
     void Start ()
-    {
-        timeofDay = GameObject.Find("TimeOfDay");
-
-        
+    {        
         //set Y in first place
         transform.Translate(0, TargetSeat.y - transform.position.y, 0);
 
@@ -67,7 +63,7 @@ public class CustomerLogic : MonoBehaviour
         {
             if (GetComponent<Animator>().enabled == true)
             {
-                timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
+                timer += (Time.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
                 
                 if(ST)
                 {

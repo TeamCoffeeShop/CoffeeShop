@@ -14,20 +14,18 @@ public class CalendarSystem : MonoBehaviour {
     public Text MonthText;
     public Text DayText;
 
-    public GameObject timeofday;
-
     private int month;
     private int day;
 
     private float currentTime;
 
     // Use this for initialization
-    void Start () {
-        timeofday = GameObject.Find("TimeOfDay");
-        currentTime = timeofday.GetComponent<TimeOfDay>().currentTimeOfDay;
+    void Start () 
+    {
+        currentTime = MainGameManager.Get.TimeOfDay.currentTimeOfDay;
 
-        month = timeofday.GetComponent<TimeOfDay>().calendar.month;
-        day = timeofday.GetComponent<TimeOfDay>().calendar.day;
+        month = MainGameManager.Get.TimeOfDay.calendar.month;
+        day = MainGameManager.Get.TimeOfDay.calendar.day;
 
         MonthText.text = "Month : "+ month ;
         DayText.text = "Day : " + day;
@@ -36,8 +34,8 @@ public class CalendarSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        month = timeofday.GetComponent<TimeOfDay>().calendar.month;
-        day = timeofday.GetComponent<TimeOfDay>().calendar.day;
+        month = MainGameManager.Get.TimeOfDay.calendar.month;
+        day = MainGameManager.Get.TimeOfDay.calendar.day;
 
         MonthText.text = "Month : " + month;
         DayText.text = "Day : " + day;

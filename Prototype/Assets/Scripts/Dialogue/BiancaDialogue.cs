@@ -13,8 +13,6 @@ public class BiancaDialogue : MonoBehaviour
     private GameObject option1; //Option 1
     private GameObject option2; //Option 2
 
-    private GameObject gamemanager;
-
     private int selected_option = -2;
 
     public string DialoguePath; //Xml file
@@ -24,8 +22,6 @@ public class BiancaDialogue : MonoBehaviour
     //Use this for initialization
     void Start()
     {
-        gamemanager = GameObject.Find("MainGameManager");
-
         dia = load_dialogue(DialoguePath);
 
         var canvas = GameObject.Find("Canvas");
@@ -77,7 +73,7 @@ public class BiancaDialogue : MonoBehaviour
         }
 
         dialogue_window.SetActive(false);
-        gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
+        MainGameManager.Get.OnDialogue = false;
     }
 
     private void display_node(DialogueNode node)
@@ -121,7 +117,7 @@ public class BiancaDialogue : MonoBehaviour
 
     void OnMouseDown()
     {
-        gamemanager.GetComponent<MainGameManager>().OnDialogue = true;
+        MainGameManager.Get.OnDialogue = true;
         RunDialogue();
     }
 }
