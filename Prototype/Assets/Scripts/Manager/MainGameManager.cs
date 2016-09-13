@@ -44,7 +44,7 @@ public class MainGameManager : MonoBehaviour
     {
         if(Scene == Scenes.MainLevel)
         {
-            NPCManager = transform.FindChild("NPCManager").gameObject;
+            NPCManager = GameObject.Find("NPCManager");
             dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<NPCDialogue>();
             UI = GameObject.Find("UI");
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
