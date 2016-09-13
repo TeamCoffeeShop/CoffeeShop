@@ -5,14 +5,11 @@ using UnityEngine.UI;
 
 public class Minigame_InputManager : MonoBehaviour
 {
-    Minigame_CoffeeManager CM;
-
     Image RecipeObject;
     bool RecipeStatus = false;
 
     void Awake()
     {
-        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
         RecipeObject = GameObject.Find("Recipe").GetComponent<Image>();
     }
 
@@ -36,13 +33,13 @@ public class Minigame_InputManager : MonoBehaviour
         //temporary. erase this code after creating correct order creation
         if (Input.GetKeyDown("space"))
         {
-            CM.SaveFinishedOrder();
+            MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
         }
 	}
 
     public void GoBackToMainLevel ()
     {
-        CM.SaveFinishedOrder();
+        MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
         SceneManager.LoadScene(Scenes.MainLevel);
         Cursor.visible = true;
     }
