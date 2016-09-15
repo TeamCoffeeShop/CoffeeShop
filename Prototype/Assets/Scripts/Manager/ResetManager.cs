@@ -5,12 +5,6 @@ public class ResetManager : MonoBehaviour
 {
     CameraLogic MainCamera;
     Vector3 StartPosition;
-    Minigame_CoffeeManager CM;
-
-    void Awake()
-    {
-        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
-    }
 
     // Use this for initialization
     void Start ()
@@ -22,9 +16,9 @@ public class ResetManager : MonoBehaviour
     public void Reset()
     {
         //remove the coffee cup currently working on
-        if (CM.SelectedCoffee != null)
+        if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
         {
-            Destroy(CM.SelectedCoffee);
+            Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
         }
 
         //remove all the CoffeeBean objects in the level

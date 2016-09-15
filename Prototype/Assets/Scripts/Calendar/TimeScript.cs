@@ -2,25 +2,23 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class TimeScript : MonoBehaviour {
-
-    public GameObject time;
+public class TimeScript : MonoBehaviour
+{
     GameObject timetxtobj;
 
     // Use this for initialization
     void Start()
     {
-        time = GameObject.Find("TimeOfDay");
         timetxtobj = GameObject.Find("time");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(time)
+        if (MainGameManager.Get.TimeOfDay)
         {
-            int currentHour = (int)time.GetComponent<TimeOfDay>().currentHour;
-            int currentMin = (int)time.GetComponent<TimeOfDay>().currentMin;
+            int currentHour = (int)MainGameManager.Get.TimeOfDay.currentHour;
+            int currentMin = (int)MainGameManager.Get.TimeOfDay.currentMin;
             timetxtobj.GetComponent<Text>().text = currentHour + ":" + currentMin;
         }
     }

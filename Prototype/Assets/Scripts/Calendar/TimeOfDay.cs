@@ -27,17 +27,9 @@ public class TimeOfDay : MonoBehaviour
     //This is so we can control the speed of our time of day
     private float timeMultiplier = 1.0f;
 
-    // Time object
-    GameObject timeobj;
-
     // Use this for initialization
     void Start()
     {
-        timeobj = GameObject.Find("TimeOfDay");
-
-        DontDestroyOnLoad(timeobj);
-
-
         if (PlayerPrefs.GetInt("Month") == 0)
         {
             calendar.month = month;

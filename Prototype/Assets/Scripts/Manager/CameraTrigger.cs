@@ -6,21 +6,13 @@ public class CameraTrigger : MonoBehaviour
     public CamMType ActionType;
     public CoffeeCupType CupType;
 
-    CameraManager CameraManager;
-
-    void Awake ()
+    public void Activate ()
     {
-        CameraManager = GameObject.Find("Manager").transform.Find("CameraManager").GetComponent<CameraManager>();
+        MinigameManager.Get.CameraManager.ActivateAction(ActionType, CupType);
     }
 
-    void OnMouseDown ()
+    void OnMouseDown()
     {
-        ActivateAction();
+        Activate();
     }
-
-    public void ActivateAction ()
-    {
-        CameraManager.ActivateAction(ActionType, CupType);
-    }
-
 }

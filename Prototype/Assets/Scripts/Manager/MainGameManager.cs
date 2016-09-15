@@ -1,39 +1,74 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainGameManager : MonoBehaviour {
+public class MainGameManager : MonoBehaviour
+{
+    //public link
+    public static MainGameManager Get;
 
-    public bool OnDialogue;
+    //shortcuts
     public NPCDialogue dialoguemanager;
+    public GameObject NPCManager;
+    public GameObject UI;
+
     public GameObject MinigameButton;
-
     public GameObject NPC1;
-    public GameObject NPC2;
-	// Use this for initialization
-	void Start () {
+    public bool OnDialogue = true;
 
-        OnDialogue = true;
+    //shortcut permenant
+    public int Scene;
+    public TimeOfDay TimeOfDay;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (OnDialogue)
+    void Awake()
+    {
+        if(Get == null)
         {
-            MinigameButton.SetActive(false);
-            dialoguemanager.GetComponentInChildren<Canvas>().enabled = true;
-            NPC1.SetActive(true);
-            NPC2.SetActive(true);
-            //Time.timeScale = 0.0f;
+            DontDestroyOnLoad(this.gameObject);
+            Get = this;
+            LoadShortcuts();
+            Scene = Scenes.MenuScreen;
         }
         else
         {
-            MinigameButton.SetActive(true);
-            dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
-            NPC1.SetActive(false);
-            NPC2.SetActive(false);
-            //Time.timeScale = 1.0f;
+            DestroyObject(this.gameObject);
+        }
+    }
+	
+    public void OnLevelWasLoaded (int level)
+    {
+        Scene = level;
+        LoadShortcuts();
+    }
+
+    void LoadShortcuts ()
+    {
+        if(Scene == Scenes.MainLevel)
+        {
+            NPCManager = GameObject.Find("NPCManager");
+            dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<NPCDialogue>();
+            UI = GameObject.Find("UI");
+            MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
+            NPC1 = GameObject.Find("NPC_HeadTilt");
+        }
+    }
+
+	// Update is called once per frame
+	void Update ()
+    {
+        if(Scene == Scenes.MainLevel)
+        {
+            if (OnDialogue)
+            {
+                MinigameButton.SetActive(false);
+                dialoguemanager.GetComponentInChildren<Canvas>().enabled = true;
+                NPC1.SetActive(true);
+            }
+            else
+            {
+                MinigameButton.SetActive(true);
+                dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
+                NPC1.SetActive(false);
+            }
         }
 	}
 }

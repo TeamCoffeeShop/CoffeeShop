@@ -10,13 +10,13 @@ public class CustomerLogic : MonoBehaviour
 
     bool arrived = false;
     float walkSpeed = 20;
-    private GameObject timeofDay;
 
     private GameObject OB;
     private GameObject ST;
 
     private float timer = 0.0f;
     private float customerspawntime = 5.0f;
+    private int direction = -1;
 
     void Awake()
     {
@@ -27,17 +27,14 @@ public class CustomerLogic : MonoBehaviour
     {
         //if not main level, deactivate customers
         if (level != Scenes.MainLevel)
-            GetComponent<Renderer>().enabled = false;
+            GetComponent<Animator>().enabled = false;
         else
-            GetComponent<Renderer>().enabled = true;
+            GetComponent<Animator>().enabled = true;
     }
 
     //order menu instantly.
     void Start ()
-    {
-        timeofDay = GameObject.Find("TimeOfDay");
-
-        
+    {        
         //set Y in first place
         transform.Translate(0, TargetSeat.y - transform.position.y, 0);
 
@@ -64,9 +61,9 @@ public class CustomerLogic : MonoBehaviour
         }
         else
         {
-            if (GetComponent<Renderer>().enabled == true)
+            if (GetComponent<Animator>().enabled == true)
             {
-                timer += (Time.deltaTime / timeofDay.GetComponent<TimeOfDay>().secondInFullDay) * 24.0f;
+                timer += (Time.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
                 
                 if(ST)
                 {
@@ -111,38 +108,50 @@ public class CustomerLogic : MonoBehaviour
     bool WalkTowardsSeat ()
     {
         //walk x coord first
-        if (transform.position.x < TargetSeat.x)
+        if (transform.localPosition.x < TargetSeat.x)
         {
-            transform.Translate(walkSpeed * Time.deltaTime, 0, 0);
+            transform.localPosition += new Vector3(walkSpeed * Time.deltaTime,0,0);
 
             //if over, stop
-            if (transform.position.x > TargetSeat.x)
-                transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+            if (transform.localPosition.x > TargetSeat.x)
+                transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x > TargetSeat.x)
+        else if (transform.localPosition.x > TargetSeat.x)
         {
-            transform.Translate(-walkSpeed * Time.deltaTime, 0, 0);
+            transform.localPosition += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
 
             //if over, stop
-            if (transform.position.x < TargetSeat.x)
-                transform.position = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+            if (transform.localPosition.x < TargetSeat.x)
+                transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
         }
         //if x finished, walk y
-        else if (transform.position.z < TargetSeat.z)
+        else if (transform.localPosition.z < TargetSeat.z)
         {
-            transform.Translate(0, 0, walkSpeed * Time.deltaTime);
+            transform.localPosition += new Vector3(0,0,walkSpeed * Time.deltaTime);
+
+            if(direction == -1)
+            {
+                transform.Rotate(0,90,0);
+                direction = 0;
+            }
 
             //if over, stop
-            if (transform.position.z > TargetSeat.z)
-                transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+            if (transform.localPosition.z > TargetSeat.z)
+                transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
         }
-        else if (transform.position.z > TargetSeat.z)
+        else if (transform.localPosition.z > TargetSeat.z)
         {
-            transform.Translate(0, 0, -walkSpeed * Time.deltaTime);
+            transform.localPosition += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
+
+            if (direction == -1)
+            {
+                transform.Rotate(0, -90, 0);
+                direction = 1;
+            }
 
             //if over, stop
-            if (transform.position.z < TargetSeat.z)
-                transform.position = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+            if (transform.localPosition.z < TargetSeat.z)
+                transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
         }
         else
             return true;

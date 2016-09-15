@@ -10,14 +10,7 @@ public class WaterMilkInstantiator : MonoBehaviour
     public float CurrentAmount = 0;
     public float IncreaseAmount = 1;
 
-    Minigame_CoffeeManager CM;
     Transform water;
-
-
-    void Awake ()
-    {
-        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
-    }
 
     void OnMouseDrag ()
     {
@@ -40,11 +33,11 @@ public class WaterMilkInstantiator : MonoBehaviour
     void OnMouseUp()
     {
         //save the amount to the cup
-        if(CM.SelectedCoffee != null)
+        if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
         {
             if(CurrentAmount <= MaxAmount)
             {
-                CoffeeCupBehavior cup = CM.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
+                CoffeeCupBehavior cup = MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
                 cup.WaterMilkType = WaterMilkType;
                 cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
             }

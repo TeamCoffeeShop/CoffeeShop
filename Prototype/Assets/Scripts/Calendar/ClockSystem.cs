@@ -7,8 +7,6 @@ public class ClockSystem : MonoBehaviour {
     public Transform hourHand;
     public Transform minuteHand;
 
-    public GameObject timesystem;
-
     private float hour;
     private float min;
 
@@ -20,15 +18,15 @@ public class ClockSystem : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        hour = timesystem.GetComponent<TimeOfDay>().currentHour;
-        min = timesystem.GetComponent<TimeOfDay>().currentMin;
+        hour = MainGameManager.Get.TimeOfDay.currentHour;
+        min = MainGameManager.Get.TimeOfDay.currentMin;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        hour = timesystem.GetComponent<TimeOfDay>().currentHour;
-        min = timesystem.GetComponent<TimeOfDay>().currentMin;
+        hour = MainGameManager.Get.TimeOfDay.currentHour;
+        min = MainGameManager.Get.TimeOfDay.currentMin;
 
         hourHand.localRotation = Quaternion.Euler(0, 0, -hour * hoursToDegrees);
         minuteHand.localRotation = Quaternion.Euler(0, 0, -min * minToDegrees);

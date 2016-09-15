@@ -2,11 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class CustomerSystem : MonoBehaviour {
-
-    //TEMPORARY!!!!!!!!!!!!!!!!!!!
-    MainGameManager MGM;
-
+public class CustomerSystem : MonoBehaviour
+{
     //door that customer enters
     public Transform Door;
 
@@ -31,11 +28,6 @@ public class CustomerSystem : MonoBehaviour {
 
     //UI
     private string menuText;
-
-    void Awake()
-    {
-        MGM = GameObject.Find("MainGameManager").GetComponent<MainGameManager>();
-    }
 
 	// Use this for initialization
 	void Start () {
@@ -107,7 +99,7 @@ public class CustomerSystem : MonoBehaviour {
     void SpawnCustomer()
     {
         //counts up
-        if(!MGM.OnDialogue)
+        if(!MainGameManager.Get.OnDialogue)
             time += Time.deltaTime;
 
         // Check whether it's time to spawn the customer
@@ -125,6 +117,7 @@ public class CustomerSystem : MonoBehaviour {
             Customer customer = CreateCustomer(customerPath, Door.transform.position, order, Quaternion.identity);
             customer.order = order;
             customer.GetComponent<CustomerLogic>().TargetSeat = new_customer_pos;
+            customer.transform.Rotate(0, -90, 0,Space.World);
             SetRandomTime();
             time = 0;
         }
@@ -157,6 +150,8 @@ public class CustomerSystem : MonoBehaviour {
         Vector3 newpos = CustomerSeats.transform.GetChild(spawnseat).transform.position;
         pos.x = newpos.x;
         pos.z = newpos.z;
+
+        //rotate
     }
 
     OrderType SetRandomOrder()

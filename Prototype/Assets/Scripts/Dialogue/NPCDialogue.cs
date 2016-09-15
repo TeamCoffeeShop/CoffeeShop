@@ -27,8 +27,6 @@ public class NPCDialogue : MonoBehaviour
         //Use this for initialization
         void Start()
         {
-        gamemanager = GameObject.Find("MainGameManager");
-
         var canvas = GameObject.Find("Canvas");
 
         dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);
@@ -59,7 +57,7 @@ public class NPCDialogue : MonoBehaviour
         }
         else
         {
-            gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
+            MainGameManager.Get.OnDialogue = false;
         }
 
         }
@@ -94,7 +92,7 @@ public class NPCDialogue : MonoBehaviour
             node_id = selected_option;
         }
         dialogue_window.SetActive(false);
-        gamemanager.GetComponent<MainGameManager>().OnDialogue = false;
+        MainGameManager.Get.OnDialogue = false;
         if (PlayerPrefs.GetInt("DialogueID") == 0)
         {
             PlayerPrefs.SetInt("DialogueID", 1);

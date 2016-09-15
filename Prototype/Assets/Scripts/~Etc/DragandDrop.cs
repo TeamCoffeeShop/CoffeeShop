@@ -39,9 +39,7 @@ public class DragandDrop : MonoBehaviour {
     void Update()
     {
         if (coffeeCup == null)
-        {
-            coffeeCup = GameObject.Find("Manager").transform.FindChild("CoffeeManager").GetComponent<Minigame_CoffeeManager>().SelectedCoffee;
-        }
+            coffeeCup = MinigameManager.Get.CoffeeManager.SelectedCoffee;
     }
 
     void OnMouseDown()

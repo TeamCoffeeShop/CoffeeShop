@@ -15,13 +15,10 @@ public class CameraManager : MonoBehaviour
     public GameObject WaterMilkGaugeBG;
 
     CameraLogic MainCamera;
-    Minigame_CoffeeManager CM;
 
     void Awake()
     {
-        CM = GameObject.Find("Manager").transform.Find("CoffeeManager").GetComponent<Minigame_CoffeeManager>();
-
-        MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
+        MainCamera = Camera.main.GetComponent<CameraLogic>();
     }
 
     public void ActivateAction (CamMType action, CoffeeCupType cuptype)
@@ -31,22 +28,22 @@ public class CameraManager : MonoBehaviour
             case CamMType.create:
                 //create new cup
                 MainCamera.TargetPosition = GetCameraPos(step);
-                CM.SelectedCoffee = CoffeeBehaviourSetup.SetCoffeeCup(cuptype);
-                CM.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
+                MinigameManager.Get.CoffeeManager.SelectedCoffee = CoffeeBehaviourSetup.SetCoffeeCup(cuptype);
+                MinigameManager.Get.CoffeeManager.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
                 ++step;
                 break;
             case CamMType.next:
-                if (CM.SelectedCoffee)
+                if (MinigameManager.Get.CoffeeManager.SelectedCoffee)
                 {
                     //move cup to new position
-                    CM.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
+                    MinigameManager.Get.CoffeeManager.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
                     MainCamera.TargetPosition = GetCameraPos(step);
                     ++step;
                 }
                 break;
             case CamMType.reset:
                 //when the player clicks the reset icon
-                GameObject.Find("ResetManager").GetComponent<ResetManager>().Reset();
+                MinigameManager.Get.ResetManager.Reset();
                 step = 0;
                 break;
         }
