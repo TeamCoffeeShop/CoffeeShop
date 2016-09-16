@@ -33,19 +33,28 @@ public class OrderingBallonLogic : MonoBehaviour
             Player = player.GetComponent<PlayerManager>();
     }
 
+    bool Colliding = false;
+    Collider2D OrderUI;
+
     void OnTriggerStay2D(Collider2D orderUI)
     {
-        if (Input.GetMouseButtonUp(0))
+        if (orderUI.tag == "CompletedOrder")
         {
-            if (orderUI.tag == "CompletedOrder")
+            //check if the order is correct one
+            if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
             {
-                //check if the order is correct one
-                if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
-                {
-                    //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
-                    FinishOrder(orderUI.gameObject);
-                }
+                OrderUI = orderUI;
+                Colliding = true;
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D orderUI)
+    {
+        if(OrderUI)
+        {
+            OrderUI = null;
+            Colliding = false;
         }
     }
 
@@ -108,6 +117,19 @@ public class OrderingBallonLogic : MonoBehaviour
         if (customer != null)
         {
             UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, 17, 0), GetComponent<RectTransform>());
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (Colliding)
+            {
+                //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
+                FinishOrder(OrderUI.gameObject);
+                Colliding = false;
+            }
         }
     }
 }
