@@ -124,6 +124,14 @@
     <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\AniseConversation.xml" />
+    <None Include="Assets\Resources\BiancaConversation.xml" />
+    <None Include="Assets\Resources\BrieConversation.xml" />
+    <None Include="Assets\Resources\Dialogue1.xml" />
+    <None Include="Assets\Resources\Dialogue2.xml" />
+    <None Include="Assets\Resources\DialogueEx.xml" />
+    <None Include="Assets\Resources\FirstDialogue.txt" />
+    <None Include="Assets\Resources\PlayerInfo.xml" />
     <None Include="Assets\Resources\Xmls\AniseConversation.xml" />
     <None Include="Assets\Resources\Xmls\BiancaConversation.xml" />
     <None Include="Assets\Resources\Xmls\BrieConversation.xml" />
@@ -132,6 +140,7 @@
     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
     <None Include="Assets\Resources\Xmls\FirstDialogue.txt" />
     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+    <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
