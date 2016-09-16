@@ -35,9 +35,9 @@ public class OrderingBallonLogic : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D orderUI)
     {
-        if (orderUI.tag == "CompletedOrder")
+        if (Input.GetMouseButtonUp(0))
         {
-            if(Input.GetMouseButtonUp(0))
+            if (orderUI.tag == "CompletedOrder")
             {
                 //check if the order is correct one
                 if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
@@ -71,7 +71,7 @@ public class OrderingBallonLogic : MonoBehaviour
             //delete coffee
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();
             if (logic)
-                logic.OrderManager.DeleteOrder(logic.ChildNumber);
+                MainGameManager.Get.OrderHUD.DeleteOrder(logic.ChildNumber);
             DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 

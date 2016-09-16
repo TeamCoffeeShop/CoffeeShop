@@ -65,7 +65,6 @@ public class FinishedOrderList : MonoBehaviour
                 CoffeeCupBehavior finishedCup = orders.GetChild(i).GetComponent<CoffeeCupBehavior>();
                 OrderLogic currentCup = cup.GetComponent<OrderLogic>();
                 currentCup.originalCup = finishedCup;
-                currentCup.OrderManager = this;
                 currentCup.ChildNumber = i;
 
                 //distinguish image by the droptype

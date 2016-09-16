@@ -18,6 +18,7 @@ public class MainGameManager : MonoBehaviour
     //shortcut permenant
     public int Scene;
     public TimeOfDay TimeOfDay;
+    public FinishedOrderList OrderHUD;
 
     void Awake()
     {

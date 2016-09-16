@@ -9,6 +9,10 @@ public class TimeScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //delete this if this wasn't from main menu
+        if (MainGameManager.Get == null)
+            DestroyObject(gameObject);
+
         timetxtobj = GameObject.Find("time");
     }
 

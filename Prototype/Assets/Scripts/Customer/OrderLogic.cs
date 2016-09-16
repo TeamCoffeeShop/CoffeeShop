@@ -6,7 +6,6 @@ public class OrderLogic : MonoBehaviour
 {
     public float SelectCancelSpeed = 5;
     public CoffeeCupBehavior originalCup;
-    public FinishedOrderList OrderManager;
     public int ChildNumber;
 
     Vector3 OriginalPosition;
@@ -36,7 +35,7 @@ public class OrderLogic : MonoBehaviour
         rt.position -= new Vector3(size.x * 0.5f, size.y * 0.5f, 0);
 
         //show trash can
-        OrderManager.SetTrashVisible(true);
+        MainGameManager.Get.OrderHUD.SetTrashVisible(true);
     }
 
     public void EndDraggingCup()
@@ -46,10 +45,11 @@ public class OrderLogic : MonoBehaviour
 
         //throw away
         if (trash)
-            OrderManager.DeleteOrder(ChildNumber);
+            MainGameManager.Get.OrderHUD.DeleteOrder(ChildNumber);
 
         //disable trash can
-        OrderManager.SetTrashVisible(false);
+        //MainGameManager.Get.OrderHUD.SetTrashVisible(false);
+        MainGameManager.Get.OrderHUD.SetTrashVisible(true);
     }
 
     void Update ()
