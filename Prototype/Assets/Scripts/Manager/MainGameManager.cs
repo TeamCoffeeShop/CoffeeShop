@@ -12,6 +12,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject UI;
     public GameObject MinigameButton;
     public GameObject NPC1;
+    public FloorGridLogic Floor;
     public bool OnDialogue = true;
 
     //shortcut permenant
@@ -49,6 +50,7 @@ public class MainGameManager : MonoBehaviour
             UI = GameObject.Find("UI");
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
+            Floor = GameObject.Find("Structure").transform.FindChild("FloorGrid").GetComponent<FloorGridLogic>();
         }
     }
 
