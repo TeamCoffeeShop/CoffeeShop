@@ -1,0 +1,9 @@
+BRIE: You're our new employee, right? Nice to meet you!
+BRIE: My name's Briana Madeleine, but you just call me Brie, got it? 
+CHOICES: 
+> Got it! 
+> Yes, ma'am
+BRIE: I like your enthusiasm!
+BRIE: Anyway, this place is gonna open pretty soon, so we need to get you trained.
+BRIE: You're mostly going to be taking orders and making drinks, so let's start with how to use the equipment.
+BRIE: Why don't you make me a drink? Don't worry, I'll give you instructions as you go.

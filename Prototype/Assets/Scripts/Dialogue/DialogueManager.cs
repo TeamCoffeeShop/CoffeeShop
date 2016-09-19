@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour {
     private GameObject option1; //Option 1
     private GameObject option2; //Option 2
 
-    public GameObject DialogueWindowPrefab; //Dialogue Panel Prefab
+    private GameObject DialogueWindowPrefab; //Dialogue Panel Prefab
 
     private int selected_option = -2;
 
@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
+        MakeDialogueBox();
         string[] textLines;
 
         //If there is text file, get strings
@@ -36,10 +38,9 @@ public class DialogueManager : MonoBehaviour {
         {
             textLines = (textFile.text.Split('\n'));
             ClassifyDialogue(textLines);
-            Debug.Log("Classify");
         }
 
-        Debug.Log("Start function");
+        RunDialogue();
 	}
 	
 	// Update is called once per frame
@@ -70,53 +71,52 @@ public class DialogueManager : MonoBehaviour {
         int order = 0;
         for (int i = 0; i < texts.Length; ++i)
         {
-            if ( texts[i].Contains("\n") == false)
+           int bracketIndex = texts[i].IndexOf("]");
+
+            // Special action
+            if (texts[i].Contains("["))
             {
-                DialogueNode diaNode = new DialogueNode();
-                int bracketIndex = texts[i].IndexOf("]");
-                //Clear dialogue Node
-                diaNode.tempText = "";
-                diaNode.NodeID = order;
-                ++order;
-                diaNode.mi = null;
-                diaNode.options = null;
-
-                // Special action
-                if (texts[i].Contains("["))
+                // Get function Name
+                string functionName = texts[i].Substring(1, bracketIndex - 1);
+                //diaNode.mi = this.GetType().GetMethod(functionName);
+            }
+            else // Simple narration
+            {
+                if (texts[i].Contains("CHOICES:"))
                 {
-                    // Get function Name
-                    string functionName = texts[i].Substring(1, bracketIndex - 1);
-                    diaNode.mi = this.GetType().GetMethod(functionName);
-                }
-                else // Simple narration
-                {
-                    if (texts[i].Contains("CHOICES:"))
+                    int nodeid = i - 1;
+                    order = i;
+                    for (int j = 0; j < 2; ++j)
                     {
-                        List<DialogueOption> options = new List<DialogueOption>();
-                        int nodeid = i - 1;
-                        for (int j = 0; j < 2; ++j)
+                        i = i + 1;
+                        int arrowIndex = texts[i].IndexOf(">");
+
+                        DialogueOption option = new DialogueOption();
+                        option.tempText = texts[i].Substring(arrowIndex + 1, texts[i].Length - 1);
+                        option.destinationNodeID = order;
+
+                        if (j == 0)
                         {
-                            int arrowIndex = texts[order + 1].IndexOf(">");
-
-                            DialogueOption option = new DialogueOption();
-                            option.tempText = texts[i + 1].Substring(arrowIndex + 1, texts[i + 1].Length - 1);
-                            option.destinationNodeID = order + 1;
-                            Debug.Log(option.tempText);
-
-                            options.Add(option);
-                            ++i;
+                            dia.Nodes[nodeid].Noption1 = option;
                         }
-                        dia.Nodes[nodeid].options = options;
-                        Debug.Log(nodeid);
-                    }
-                    else
-                    {
-                        diaNode.tempText = texts[i];
-                        dia.Nodes.Add(diaNode);
-                        Debug.Log(diaNode.tempText);
-                        Debug.Log(dia.Nodes.Count - 1);
+                        else
+                            dia.Nodes[nodeid].Noption2 = option;
 
                     }
+                }
+                else
+                {
+                    // Make Node
+                    DialogueNode diaNode = new DialogueNode();                   
+                    diaNode.NodeID = order;
+                    DialogueOption nextoption = new DialogueOption();
+                    nextoption.destinationNodeID = order + 1;
+                    nextoption.tempText = "NEXT";
+                    diaNode.Noption1 = nextoption;
+                    diaNode.Noption2 = null;
+                    diaNode.tempText = texts[i];
+                    dia.Nodes.Add(diaNode);
+                    ++order;
                 }
             }
         }
@@ -124,27 +124,23 @@ public class DialogueManager : MonoBehaviour {
 
     private void display_node(DialogueNode node)
     {
-        StartCoroutine(TextScroll(npc_text.GetComponent<Text>().text));
-
-        option1.SetActive(false);
+        StartCoroutine(TextScroll(node.tempText));
+        
         option2.SetActive(false);
 
-        for (int i = 0; i < node.options.Count && i < 2; ++i)
+        if (node.Noption2 != null)
         {
-            switch (i)
-            {
-                case 0:
-                    set_option_button(option1, node.options[i]);
-                    break;
-                case 1:
-                    set_option_button(option2, node.options[i]);
-                    break;
-            }
+            set_option_button(option1, node.Noption1);
+            set_option_button(option2, node.Noption2);
+        }
+        else
+        {
+            set_option_button(option1, node.Noption1);
         }
 
     }
 
-    private IEnumerator TextScroll (string lineOfText)
+    private IEnumerator TextScroll(string lineOfText)
     {
         int letter = 0;
         npc_text.GetComponent<Text>().text = "";
@@ -152,7 +148,7 @@ public class DialogueManager : MonoBehaviour {
         cancelTyping = false;
 
         // Type text one letter at a time by speed
-        while(isTyping && !cancelTyping && (letter < lineOfText.Length - 1))
+        while (isTyping && !cancelTyping && (letter < lineOfText.Length - 1))
         {
             npc_text.GetComponent<Text>().text += lineOfText[letter];
             ++letter;
@@ -162,16 +158,7 @@ public class DialogueManager : MonoBehaviour {
         npc_text.GetComponent<Text>().text = lineOfText;
         isTyping = false;
         cancelTyping = false;
-    }
-
-    public void EnableDialogueBox()
-    {
-        dialogue_window.SetActive(true);
-    }
-
-    public void DisableDialogueBox()
-    {
-        dialogue_window.SetActive(false);
+        Debug.Log("End Text Scroll");
     }
 
     // Make dialogue box
@@ -206,9 +193,11 @@ public class DialogueManager : MonoBehaviour {
 
     private void set_option_button(GameObject button, DialogueOption opt)
     {
+        Debug.Log("SetOption");
+        Debug.Log(opt.destinationNodeID);
         button.SetActive(true);
         button.GetComponentInChildren<Text>().text = opt.tempText;
-        button.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedOption(opt.destinationNodeID); });
+        button.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedOption(opt.destinationNodeID); cancelTyping = true; });
 
     }
 
@@ -220,27 +209,19 @@ public class DialogueManager : MonoBehaviour {
         int node_id = 0;
 
         //while the next node is not an exit node, traverse the dialogue tree based on user input
-        while (node_id != -1)
+        while (node_id != dia.Nodes.Count)
         {
             display_node(dia.Nodes[node_id]);
             selected_option = -2;
             while (selected_option == -2)
             {
-                if (dia.Nodes[node_id].options.Count == 0)
-                {
-                    if (Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
-                    {
-                        selected_option = node_id + 1;
-                        yield return null;
-                    }
-                }
-                else
-                    yield return null;
+                yield return new WaitForSeconds(0.25f);
+                        //if (Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
             }
             node_id = selected_option;
+
         }
         // When there is no dialogue, disable dialogue box
-        dialogue_window.SetActive(false);
-        
+        dialogue_window.SetActive(false);       
     }
 }

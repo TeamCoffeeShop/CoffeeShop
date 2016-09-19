@@ -7,7 +7,7 @@ public class MainGameManager : MonoBehaviour
     public static MainGameManager Get;
 
     //shortcuts
-    public NPCDialogue dialoguemanager;
+    public DialogueManager dialoguemanager;
     public GameObject NPCManager;
     public GameObject UI;
 
@@ -46,7 +46,7 @@ public class MainGameManager : MonoBehaviour
         if(Scene == Scenes.MainLevel)
         {
             NPCManager = GameObject.Find("NPCManager");
-            dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<NPCDialogue>();
+            dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<DialogueManager>();
             UI = GameObject.Find("UI");
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");

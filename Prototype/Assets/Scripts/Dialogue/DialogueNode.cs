@@ -7,7 +7,9 @@ using System.Reflection;
     {
         public int NodeID = -1; // Node order
         public string tempText; // Node txt
-        public List<DialogueOption> options = new List<DialogueOption>(); //  Node option
 
-    public MethodInfo mi = null;
+    public DialogueOption Noption1;
+    public DialogueOption Noption2;
+
+    //public MethodInfo mi = null;
     }
