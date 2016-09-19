@@ -10,7 +10,6 @@ public class MainGameManager : MonoBehaviour
     public DialogueManager dialoguemanager;
     public GameObject NPCManager;
     public GameObject UI;
-
     public GameObject MinigameButton;
     public GameObject NPC1;
     public bool OnDialogue = true;
@@ -26,8 +25,8 @@ public class MainGameManager : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             Get = this;
+            Scene = Scenes.MainLevel;
             LoadShortcuts();
-            Scene = Scenes.MenuScreen;
         }
         else
         {
@@ -68,7 +67,7 @@ public class MainGameManager : MonoBehaviour
             {
                 MinigameButton.SetActive(true);
                 dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
-                NPC1.SetActive(false);
+                //NPC1.SetActive(false);
             }
         }
 	}
