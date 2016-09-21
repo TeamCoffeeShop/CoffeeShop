@@ -15,7 +15,7 @@ public class Grid : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(MainGameManager.Get.Floor.IsEditMode)
+        if(MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
             renderer.material = Selected_Material;
     }
 
@@ -26,9 +26,12 @@ public class Grid : MonoBehaviour
 
     void OnMouseUp ()
     {
-        if (MainGameManager.Get.Floor.IsEditMode)
+        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
         {
-            MainGameManager.Get.DecoEditUI.SetActive(true);
+            if(transform.childCount != 0)
+            {
+                MainGameManager.Get.Floor.SetEditMode(EditMode.selected);
+            }
         }
     }
 

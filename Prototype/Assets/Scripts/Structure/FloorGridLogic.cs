@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic; // for list
 
+public enum EditMode
+{
+    off, selecting, selected
+}
+
 public class FloorGridLogic : MonoBehaviour
 {
     [Range(10, 30)]
@@ -13,14 +18,31 @@ public class FloorGridLogic : MonoBehaviour
     public GameObject FloorPrefab;
     public GameObject FloorPrefab2;
 
-    public bool IsEditMode = false;
+    public EditMode IsEditMode;
 
     GameObject[,] Grids;
     public List<CafeDeco> Seats;
 
     public void ToggleEditMode()
     {
-        IsEditMode = !IsEditMode;
+        SetEditMode(IsEditMode != EditMode.off ? EditMode.off : EditMode.selecting);
+    }
+
+    public void SetEditMode(EditMode mode)
+    {
+        switch (mode)
+        {
+            case EditMode.off:
+                MainGameManager.Get.DecoEditUI.SetActive(false);
+                break;
+            case EditMode.selected:
+                MainGameManager.Get.DecoEditUI.SetActive(true);
+                break;
+            case EditMode.selecting:
+                break;
+        }
+
+        IsEditMode = mode;
     }
 
     void Start ()
