@@ -10,9 +10,9 @@ public class MainGameManager : MonoBehaviour
     public DialogueManager dialoguemanager;
     public GameObject NPCManager;
     public GameObject UI;
-
     public GameObject MinigameButton;
     public GameObject NPC1;
+    public FloorGridLogic Floor;
     public bool OnDialogue = true;
 
     //shortcut permenant
@@ -27,8 +27,8 @@ public class MainGameManager : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             Get = this;
+            Scene = Scenes.MainLevel;
             LoadShortcuts();
-            Scene = Scenes.MenuScreen;
         }
         else
         {
@@ -51,6 +51,7 @@ public class MainGameManager : MonoBehaviour
             UI = GameObject.Find("UI");
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
+            Floor = GameObject.Find("Structure").transform.FindChild("FloorGrid").GetComponent<FloorGridLogic>();
         }
     }
 

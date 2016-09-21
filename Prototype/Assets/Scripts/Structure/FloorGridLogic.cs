@@ -12,6 +12,8 @@ public class FloorGridLogic : MonoBehaviour
     public GameObject FloorPrefab;
     public GameObject FloorPrefab2;
 
+    public bool IsEditMode = false;
+
     GameObject[,] Grids;
 
     void Start ()
@@ -39,5 +41,10 @@ public class FloorGridLogic : MonoBehaviour
             }
             BeginLocation.x += FloorPrefab.transform.localScale.x;
         }
+    }
+
+    public void ToggleEditMode ()
+    {
+        IsEditMode = !IsEditMode;
     }
 }
