@@ -9,4 +9,7 @@ public class Player
     //Money
     public float money;
 
+    //Level
+    public int level;
+
 }

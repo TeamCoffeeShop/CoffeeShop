@@ -138,7 +138,7 @@ public class CustomerSystem : MonoBehaviour
 
     void SpawnInRandomDefinedPos(ref Vector3 pos)
     {
-        int size = CustomerSeats.transform.childCount;
+        int size = MainGameManager.Get.Floor.Seats.Count;
 
         //if there's no seat, return
         if (size == 0)
@@ -147,7 +147,7 @@ public class CustomerSystem : MonoBehaviour
         int spawnseat = Random.Range(0, size);
 
         //set position to the seat
-        Vector3 newpos = CustomerSeats.transform.GetChild(spawnseat).transform.position;
+        Vector3 newpos = MainGameManager.Get.Floor.Seats[spawnseat].transform.position;
         pos.x = newpos.x;
         pos.z = newpos.z;
 
