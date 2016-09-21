@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B1235EE4-71EE-C815-28F8-C3378E5ADB84}</ProjectGuid>
+    <ProjectGuid>{51DF0FB7-255A-2CCE-9561-AE5AC5E3213F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,67 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
-     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
-     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
-     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
-     <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\WhipCream.cs" />
-     <Compile Include="Assets\Scripts\Cream\CreamLogic.cs" />
-     <Compile Include="Assets\Scripts\Cream\CreamingGradingLogic.cs" />
-     <Compile Include="Assets\Scripts\Cream\WhippingCream.cs" />
-     <Compile Include="Assets\Scripts\Customer\Customer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
-     <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
-     <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
-     <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\MiniDialogue.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
-     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
-     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
-     <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
-     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
-     <Compile Include="Assets\Scripts\Player\Player.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
-     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
-     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
-     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
-     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
-     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
-     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
-     <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
-     <Compile Include="Assets\Scripts\UI\UISystem.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
-     <Compile Include="Assets\Scripts\~Etc\Billboard.cs" />
-     <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
-     <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
-     <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
-     <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
-     <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
+     <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
      <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
      <None Include="Assets\Resources\Xmls\3.txt" />
      <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />

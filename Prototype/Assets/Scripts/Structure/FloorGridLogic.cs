@@ -25,18 +25,21 @@ public class FloorGridLogic : MonoBehaviour
 
     public void ToggleEditMode()
     {
-        SetEditMode(IsEditMode != EditMode.off ? EditMode.off : EditMode.selecting);
+        SetEditMode(IsEditMode != EditMode.off ? EditMode.off : EditMode.selecting, null);
     }
 
-    public void SetEditMode(EditMode mode)
+    public void SetEditMode(EditMode mode, Grid grid)
     {
         switch (mode)
         {
             case EditMode.off:
                 MainGameManager.Get.DecoEditUI.SetActive(false);
+                MainGameManager.Get.maincamera.Return();
                 break;
             case EditMode.selected:
+                MainGameManager.Get.maincamera.LookingAt(grid.transform.position + new Vector3(0,5,0));
                 MainGameManager.Get.DecoEditUI.SetActive(true);
+                
                 break;
             case EditMode.selecting:
                 break;

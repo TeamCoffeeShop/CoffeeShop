@@ -14,6 +14,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject MinigameButton;
     public GameObject NPC1;
     public FloorGridLogic Floor;
+    public LookAt maincamera;
     public bool OnDialogue = true;
 
     //shortcut permenant
@@ -54,6 +55,7 @@ public class MainGameManager : MonoBehaviour
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
             Floor = GameObject.Find("Structure").transform.FindChild("FloorGrid").GetComponent<FloorGridLogic>();
+            maincamera = Camera.main.GetComponent<LookAt>();
         }
     }
 

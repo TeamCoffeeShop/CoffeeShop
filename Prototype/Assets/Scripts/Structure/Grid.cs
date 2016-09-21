@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour
         {
             if(transform.childCount != 0)
             {
-                MainGameManager.Get.Floor.SetEditMode(EditMode.selected);
+                MainGameManager.Get.Floor.SetEditMode(EditMode.selected, this);
             }
         }
     }
