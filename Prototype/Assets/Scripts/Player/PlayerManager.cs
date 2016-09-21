@@ -9,33 +9,31 @@ public class PlayerManager : MonoBehaviour {
     public Player player;
     public float MoneyIncreasingSpeed = 10;
     float ExpectedMoney;
-    
 
-    //xp UI
-    public BarScript bar;
-
-    //money UI
-    public GameObject money_text;
 
     public string PlayerDataFilePath; // Xml file
 
 	// Use this for initialization
 	void Start () {
 
-        player = load_player(PlayerDataFilePath);
+            player = load_player(PlayerDataFilePath);
 
-        ExpectedMoney = player.money;
+            ExpectedMoney = player.money;
+            PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
+            PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
+            PlayerPrefs.SetFloat("money", player.money);
+            player.level = 1;
+            PlayerPrefs.SetInt("level", player.level);     
     }
 	
 	// Update is called once per frame
 	void Update () {
-        bar.Value = player.xp_currentVal;
-        bar.MaxValue = player.xp_maxVal;
 
         if (player.xp_currentVal >= player.xp_maxVal)
             PlayerLevelUp();
 
         MoneyUpdate();
+
     }
 
     private static Player load_player(string path)
@@ -67,16 +65,6 @@ public class PlayerManager : MonoBehaviour {
         ExpectedMoney = player.money + money;
     }
 
-    void MoneyUpdate ()
-    {
-        float difference = ExpectedMoney - player.money;
-        if (difference > 1)
-            player.money += difference * Time.deltaTime * MoneyIncreasingSpeed;
-        else
-            player.money = ExpectedMoney;
-        money_text.GetComponent<Text>().text = player.money.ToString("N0");
-    }
-
     public void AddXP(float xp)
     {
         player.xp_currentVal += xp;
@@ -86,5 +74,22 @@ public class PlayerManager : MonoBehaviour {
     {
         player.xp_maxVal += 2 * player.xp_maxVal;
         player.xp_currentVal = 0;
+        PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
+        PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
+
+        player.level += 1;
+        PlayerPrefs.SetInt("level", player.level);
     }
+
+    void MoneyUpdate()
+    {
+        float difference = ExpectedMoney - player.money;
+        if (difference > 1)
+            player.money += difference * Time.deltaTime * MoneyIncreasingSpeed;
+        else
+            player.money = ExpectedMoney;
+
+        PlayerPrefs.SetFloat("money", player.money);
+    }
+
 }

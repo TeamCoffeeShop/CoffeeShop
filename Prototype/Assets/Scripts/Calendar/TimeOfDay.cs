@@ -80,6 +80,10 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.DeleteAll();
             PlayerPrefs.SetInt("Month", calendar.month);
             PlayerPrefs.SetInt("Day", calendar.day);
+            PlayerPrefs.SetFloat("xp_currentVal", MainGameManager.Get.playerManager.player.xp_currentVal);
+            PlayerPrefs.SetFloat("xp_maxVal", MainGameManager.Get.playerManager.player.xp_maxVal);
+            PlayerPrefs.SetFloat("money", MainGameManager.Get.playerManager.player.money);
+            PlayerPrefs.SetInt("level", MainGameManager.Get.playerManager.player.level);
 
             //reset customers & cups
             Transform HUD = GameObject.Find("[OrderHUD]").transform;
