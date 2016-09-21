@@ -19,6 +19,7 @@ public class MainGameManager : MonoBehaviour
     public int Scene;
     public TimeOfDay TimeOfDay;
     public FinishedOrderList OrderHUD;
+    public PlayerManager playerManager;
 
     void Awake()
     {
@@ -62,13 +63,13 @@ public class MainGameManager : MonoBehaviour
             {
                 MinigameButton.SetActive(false);
                 dialoguemanager.GetComponentInChildren<Canvas>().enabled = true;
-                NPC1.SetActive(true);
+                //NPC1.SetActive(true);
             }
             else
             {
                 MinigameButton.SetActive(true);
                 dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
-                NPC1.SetActive(false);
+                //NPC1.SetActive(false);
             }
         }
 	}

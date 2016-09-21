@@ -3,5 +3,7 @@
   <xp_currentVal>0</xp_currentVal>
   <xp_maxVal>100</xp_maxVal>
   
-  <money>1000</money>            
+  <money>1000</money>
+  <level>0</level>
+
 </Player>                    

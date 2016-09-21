@@ -8,17 +8,12 @@ public class OrderingBallonLogic : MonoBehaviour
     public Transform customer;
     public GameObject SpawnBar;
 
-    PlayerManager Player;
     int CurrentScene;
 
     void Start ()
     {
         CurrentScene = Scenes.asInt(SceneManager.GetActiveScene());
         Visibility();
-
-        GameObject player = GameObject.Find("Player");
-        if(player)
-            Player = player.GetComponent<PlayerManager>();
 
         UpdatePosition();
     }
@@ -27,10 +22,6 @@ public class OrderingBallonLogic : MonoBehaviour
     {
         CurrentScene = level;
         Visibility();
-
-        GameObject player = GameObject.Find("Player");
-        if (player)
-            Player = player.GetComponent<PlayerManager>();
     }
 
     bool Colliding = false;
@@ -66,13 +57,13 @@ public class OrderingBallonLogic : MonoBehaviour
             float xp = CoffeeOrderSetup.XPForMenu(customer.GetComponent<Customer>().data.order);
 
             //increase xp
-            Player.AddXP(xp);
+            MainGameManager.Get.playerManager.AddXP(xp);
             //popup
             Text popup = UIEffect.CPopUp(xp, transform.position).GetComponent<Text>();
             UIEffect.SetPopUpBehavior(popup, PopupType.xp);
 
             //increase money
-            Player.AddMoneyGradually(price);
+            MainGameManager.Get.playerManager.AddMoneyGradually(price);
             //popup
             popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
             UIEffect.SetPopUpBehavior(popup, PopupType.gold);
