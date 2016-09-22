@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomerLogic : MonoBehaviour
 {
     public GameObject OrderingBallon;
     public GameObject SpawnTimer;
-    public Vector3 TargetSeat;
+
+    public Grid Begin;
+    public Grid Goal;
 
     bool arrived = false;
     float walkSpeed = 20;
@@ -32,19 +35,11 @@ public class CustomerLogic : MonoBehaviour
             GetComponent<Animator>().enabled = true;
     }
 
-    //order menu instantly.
     void Start ()
     {        
-        //set Y in first place
-        transform.Translate(0, TargetSeat.y - transform.position.y, 0);
-
-        //the default ballon
-        if(OrderingBallon == null)
-            OrderingBallon = Resources.Load<GameObject>("Prefab/OrderingBallon");
-
-        //the default spawnTimer
-        if (SpawnTimer == null)
-            SpawnTimer = Resources.Load<GameObject>("Prefab/SpawnBar");
+        //Find Path to the seat
+        if (FindPathToSeat())
+            Debug.Log("Finding Path Failed!");
     }
 
     void Update()
@@ -104,57 +99,257 @@ public class CustomerLogic : MonoBehaviour
         DestroyObject(this.gameObject);
     }
 
-    //walk to the seat
-    bool WalkTowardsSeat ()
+    List<Vector2> MoveGridList = new List<Vector2>();
+
+    class AstarGrid
     {
-        //walk x coord first
-        if (transform.localPosition.x < TargetSeat.x)
-        {
-            transform.localPosition += new Vector3(walkSpeed * Time.deltaTime,0,0);
+        public AstarGrid Parent = null;
+        public float F;
+        public float G;
+        public float H;
+        public bool Closed;
+    }
 
-            //if over, stop
-            if (transform.localPosition.x > TargetSeat.x)
-                transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-        }
-        else if (transform.localPosition.x > TargetSeat.x)
-        {
-            transform.localPosition += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
+    AstarGrid FillGridData(AstarGrid[,] map, AstarGrid parent, int X, int Z)
+    {
+        Debug.Log("Adding " + X + ", " + Z + "...");
 
-            //if over, stop
-            if (transform.localPosition.x < TargetSeat.x)
-                transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-        }
-        //if x finished, walk y
-        else if (transform.localPosition.z < TargetSeat.z)
-        {
-            transform.localPosition += new Vector3(0,0,walkSpeed * Time.deltaTime);
+        //if the Data already exists, return
+        if (map[X,Z] != null)
+            if (!map[X,Z].Closed)
+                return map[X,Z];
+            else
+                return null;
 
-            if(direction == -1)
-            {
-                transform.Rotate(0,90,0);
-                direction = 0;
-            }
+        //if the grid is impenetrable, return
+        Transform realGrid = MainGameManager.Get.Floor.Grids[X, Z].transform;
+        if (realGrid.childCount != 0)
+            if (realGrid.GetChild(0).GetComponent<CafeDeco>().Type == CafeDecoType.impenetrable)
+                return null;
 
-            //if over, stop
-            if (transform.localPosition.z > TargetSeat.z)
-                transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-        }
-        else if (transform.localPosition.z > TargetSeat.z)
-        {
-            transform.localPosition += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
+        AstarGrid grid = map[X, Z] = new AstarGrid();
 
-            if (direction == -1)
-            {
-                transform.Rotate(0, -90, 0);
-                direction = 1;
-            }
+        //distance from begin
+        grid.G = (Begin.transform.position - MainGameManager.Get.Floor.Grids[X, Z].transform.position).sqrMagnitude;
 
-            //if over, stop
-            if (transform.localPosition.z < TargetSeat.z)
-                transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-        }
-        else
-            return true;
+        //distance from goal
+        grid.H = (Goal.transform.position - MainGameManager.Get.Floor.Grids[X, Z].transform.position).sqrMagnitude;
+
+        grid.F = grid.G + grid.H;
+        grid.Parent = parent;
+
+        return grid;
+    }
+
+    // a really costly A* pathfinding algorithm.
+    // consider using thread with this code.
+    bool FindPathToSeat()
+    {
+        //create new open map
+        AstarGrid[,] map = new AstarGrid[MainGameManager.Get.Floor.X,MainGameManager.Get.Floor.Z];
+
+        map[Begin.X, Begin.Z] = new AstarGrid();
+        map[Begin.X, Begin.Z].Closed = true;
+        AstarAlgorithm(map, Begin.X, Begin.Z);
+
         return false;
     }
+
+    void AstarAlgorithm(AstarGrid[,] map, int X, int Z)
+    {
+        Debug.Log("Grid " + X + ", " + Z + " selected!");
+
+        float lowest_Cost = -1;
+        int Next_X = -1, Next_Z = -1;
+        AstarGrid grid;
+
+        //Check grids near the current grid
+        if (X - 1 >= 0)
+        {
+            // - - -
+            // X O -
+            // - - -
+            grid = FillGridData(map, map[X, Z], X - 1, Z);
+            if(grid != null)
+            {
+                lowest_Cost = grid.F;
+                Next_X = X - 1;
+                Next_Z = Z;
+            }
+
+            if (Z + 1 < MainGameManager.Get.Floor.Z)
+            {
+                // X - -
+                // - O -
+                // - - -
+                grid = FillGridData(map, map[X, Z], X - 1, Z + 1);
+                if (grid != null)
+                    if(lowest_Cost > grid.F)
+                    {
+                        lowest_Cost = grid.F;
+                        Next_X = X - 1;
+                        Next_Z = Z + 1;
+                    }
+            }
+
+            if(Z - 1 >= 0)
+            {
+                // - - -
+                // - O -
+                // X - -
+                grid = FillGridData(map, map[X, Z], X - 1, Z - 1);
+                if (grid != null)
+                    if (lowest_Cost > grid.F)
+                    {
+                        lowest_Cost = grid.F;
+                        Next_X = X - 1;
+                        Next_Z = Z - 1;
+                    }
+            }
+        }
+
+        if (X + 1 < MainGameManager.Get.Floor.X)
+        {
+            // - - -
+            // - O X
+            // - - -
+            grid = FillGridData(map, map[X, Z], X + 1, Z);
+            if (grid != null)
+                if (lowest_Cost > grid.F)
+                {
+                    lowest_Cost = grid.F;
+                    Next_X = X + 1;
+                    Next_Z = Z;
+                }
+
+            if (Z + 1 < MainGameManager.Get.Floor.Z)
+            {
+                // - - X
+                // - O -
+                // - - -
+                grid = FillGridData(map, map[X, Z], X + 1, Z + 1);
+                if (grid != null)
+                    if (lowest_Cost > grid.F)
+                    {
+                        lowest_Cost = grid.F;
+                        Next_X = X + 1;
+                        Next_Z = Z + 1;
+                    }
+            }
+
+            if (Z - 1 >= 0)
+            {
+                // - - -
+                // - O -
+                // - - X
+                grid = FillGridData(map, map[X, Z], X + 1, Z - 1);
+                if (grid != null)
+                    if (lowest_Cost > grid.F)
+                    {
+                        lowest_Cost = grid.F;
+                        Next_X = X + 1;
+                        Next_Z = Z - 1;
+                    }
+            }
+        }
+
+        if (Z + 1 < MainGameManager.Get.Floor.Z)
+        {
+            // - X -
+            // - O -
+            // - - -
+            grid = FillGridData(map, map[X, Z], X, Z + 1);
+            if (grid != null)
+                if (lowest_Cost > grid.F)
+                {
+                    lowest_Cost = grid.F;
+                    Next_X = X;
+                    Next_Z = Z + 1;
+                }
+        }
+
+        if (Z - 1 >= 0)
+        {
+            // - - -
+            // - O -
+            // - X -
+            grid = FillGridData(map, map[X, Z], X, Z - 1);
+            if (grid != null)
+                if (lowest_Cost > grid.F)
+                {
+                    lowest_Cost = grid.F;
+                    Next_X = X;
+                    Next_Z = Z - 1;
+                }
+        }
+
+        Debug.Log("Next Grid is " + Next_X + ", " + Next_Z + ".");
+    }
+
+
+    bool WalkTowardsSeat ()
+    {
+        if (MoveGridList.Count != 0)
+        {
+            //walk to the seat
+
+
+            return true;
+        }
+
+        return false;
+    }
+
+    //bool WalkTowardsSeatPrev ()
+    //{
+    //    //walk x coord first
+    //    if (transform.localPosition.x < TargetSeat.x)
+    //    {
+    //        transform.localPosition += new Vector3(walkSpeed * Time.deltaTime,0,0);
+
+    //        //if over, stop
+    //        if (transform.localPosition.x > TargetSeat.x)
+    //            transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+    //    }
+    //    else if (transform.localPosition.x > TargetSeat.x)
+    //    {
+    //        transform.localPosition += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
+
+    //        //if over, stop
+    //        if (transform.localPosition.x < TargetSeat.x)
+    //            transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
+    //    }
+    //    //if x finished, walk y
+    //    else if (transform.localPosition.z < TargetSeat.z)
+    //    {
+    //        transform.localPosition += new Vector3(0,0,walkSpeed * Time.deltaTime);
+
+    //        if(direction == -1)
+    //        {
+    //            transform.Rotate(0,90,0);
+    //            direction = 0;
+    //        }
+
+    //        //if over, stop
+    //        if (transform.localPosition.z > TargetSeat.z)
+    //            transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+    //    }
+    //    else if (transform.localPosition.z > TargetSeat.z)
+    //    {
+    //        transform.localPosition += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
+
+    //        if (direction == -1)
+    //        {
+    //            transform.Rotate(0, -90, 0);
+    //            direction = 1;
+    //        }
+
+    //        //if over, stop
+    //        if (transform.localPosition.z < TargetSeat.z)
+    //            transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
+    //    }
+    //    else
+    //        return true;
+    //    return false;
+    //}
 }

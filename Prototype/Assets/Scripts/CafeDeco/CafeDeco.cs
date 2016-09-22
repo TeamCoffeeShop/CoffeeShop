@@ -8,15 +8,18 @@ public enum CafeDecoType
 
 public class CafeDeco : MonoBehaviour
 {
-    public CafeDecoType     Type = CafeDecoType.penetrable;
-    public         bool   Filled = false;
-    public        float    Float;
-    public         bool Selected = false;
-    public float OriginalFloat;
+    public CafeDecoType          Type = CafeDecoType.penetrable;
+    public         bool        Filled = false;
+    public         bool      Selected = false;
+    public        float         Float;
+    public        float OriginalFloat;
 
     void Start ()
     {
-        MainGameManager.Get.Floor.Seats.Add(this);
+        //add seat
+        if(Type == CafeDecoType.seat)
+            MainGameManager.Get.Floor.Seats.Add(this);
+
         Float = OriginalFloat = transform.localPosition.y;
         Float += 3;
     }
@@ -33,7 +36,8 @@ public class CafeDeco : MonoBehaviour
 
     void OnDestroy ()
     {
-        MainGameManager.Get.Floor.Seats.Remove(this);
+        if (Type == CafeDecoType.seat)
+            MainGameManager.Get.Floor.Seats.Remove(this);
     }
 
     public void Rotate ()

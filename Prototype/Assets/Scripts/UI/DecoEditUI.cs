@@ -75,31 +75,27 @@ public class DecoEditUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         
         //calculate closest grid to be moved
-        GameObject closestgrid = EditingGrid.gameObject;
-        float closest = (closestgrid.transform.position - MovingCafeDeco.transform.position).sqrMagnitude;
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Floor");
-        
-        //find the closest grid
-        foreach (GameObject grid in objs)
+        Grid ClosestGrid = Grid.FindClosestGrid(MovingCafeDeco.transform.position);
+
+        //check if the grid is already with other CafeDeco
+        if (ClosestGrid.transform.childCount == 0)
         {
-            float dist = (grid.transform.position - MovingCafeDeco.transform.position).sqrMagnitude;
-            
-            //if one is closer
-            if(dist < closest)
-            {
-                closest = dist;
-                closestgrid = grid;
-            }
+            //successfully move the CafeDeco into Grid
+            MovingCafeDeco.transform.SetParent(ClosestGrid.transform);
+            MovingCafeDeco.transform.localPosition = new Vector3(0, MovingCafeDeco.GetComponent<CafeDeco>().Float, 0);
+
+            //change selected grid
+            EditingGrid.renderer.material = EditingGrid.Original_Material;
+            EditingGrid = ClosestGrid;
+            EditingGrid.renderer.material = EditingGrid.Selected_Material;
         }
-
-        //successfully move the CafeDeco into Grid
-        MovingCafeDeco.transform.SetParent(closestgrid.transform);
-        MovingCafeDeco.transform.localPosition = new Vector3(0, MovingCafeDeco.GetComponent<CafeDeco>().Float, 0);
-
-        //change selected grid
-        EditingGrid.renderer.material = EditingGrid.Original_Material;
-        EditingGrid = closestgrid.GetComponent<Grid>();
-        EditingGrid.renderer.material = EditingGrid.Selected_Material;
+        //if already filled, return to the original one.
+        else
+        {
+            MovingCafeDeco.transform.SetParent(EditingGrid.transform);
+            MovingCafeDeco.transform.localPosition = new Vector3(0, MovingCafeDeco.GetComponent<CafeDeco>().Float, 0);
+        }
+        
 
         //camera
         MainGameManager.Get.maincamera.LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
