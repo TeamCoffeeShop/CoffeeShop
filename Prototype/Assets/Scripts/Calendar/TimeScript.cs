@@ -23,6 +23,7 @@ public class TimeScript : MonoBehaviour
         {
             int currentHour = (int)MainGameManager.Get.TimeOfDay.currentHour;
             int currentMin = (int)MainGameManager.Get.TimeOfDay.currentMin;
+
             timetxtobj.GetComponent<Text>().text = currentHour + ":" + currentMin;
         }
     }
