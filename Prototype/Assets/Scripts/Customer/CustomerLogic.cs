@@ -112,8 +112,6 @@ public class CustomerLogic : MonoBehaviour
 
     AstarGrid FillGridData(AstarGrid[,] map, AstarGrid parent, int X, int Z)
     {
-        Debug.Log("Adding " + X + ", " + Z + "...");
-
         //if the Data already exists, return
         if (map[X,Z] != null)
             if (!map[X,Z].Closed)
@@ -126,6 +124,8 @@ public class CustomerLogic : MonoBehaviour
         if (realGrid.childCount != 0)
             if (realGrid.GetChild(0).GetComponent<CafeDeco>().Type == CafeDecoType.impenetrable)
                 return null;
+
+        Debug.Log("Adding " + X + ", " + Z + "...");
 
         AstarGrid grid = map[X, Z] = new AstarGrid();
 
@@ -149,7 +149,6 @@ public class CustomerLogic : MonoBehaviour
         AstarGrid[,] map = new AstarGrid[MainGameManager.Get.Floor.X,MainGameManager.Get.Floor.Z];
 
         map[Begin.X, Begin.Z] = new AstarGrid();
-        map[Begin.X, Begin.Z].Closed = true;
         AstarAlgorithm(map, Begin.X, Begin.Z);
 
         return false;
@@ -157,9 +156,19 @@ public class CustomerLogic : MonoBehaviour
 
     void AstarAlgorithm(AstarGrid[,] map, int X, int Z)
     {
+        //if arrived to goal
+        if(MainGameManager.Get.Floor.Grids[X,Z] == Goal)
+        {
+            Debug.Log("Reached To Goal!");
+            return;
+        }
+
+        //close the data since it is selected
+        map[X, Z].Closed = true;
+
         Debug.Log("Grid " + X + ", " + Z + " selected!");
 
-        float lowest_Cost = -1;
+        float lowest_Cost = 100000;
         int Next_X = -1, Next_Z = -1;
         AstarGrid grid;
 
@@ -170,12 +179,8 @@ public class CustomerLogic : MonoBehaviour
             // X O -
             // - - -
             grid = FillGridData(map, map[X, Z], X - 1, Z);
-            if(grid != null)
-            {
-                lowest_Cost = grid.F;
-                Next_X = X - 1;
-                Next_Z = Z;
-            }
+            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z);
+
 
             if (Z + 1 < MainGameManager.Get.Floor.Z)
             {
@@ -183,13 +188,7 @@ public class CustomerLogic : MonoBehaviour
                 // - O -
                 // - - -
                 grid = FillGridData(map, map[X, Z], X - 1, Z + 1);
-                if (grid != null)
-                    if(lowest_Cost > grid.F)
-                    {
-                        lowest_Cost = grid.F;
-                        Next_X = X - 1;
-                        Next_Z = Z + 1;
-                    }
+                CheckAstarGrid(map[X,Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z + 1);
             }
 
             if(Z - 1 >= 0)
@@ -198,13 +197,8 @@ public class CustomerLogic : MonoBehaviour
                 // - O -
                 // X - -
                 grid = FillGridData(map, map[X, Z], X - 1, Z - 1);
-                if (grid != null)
-                    if (lowest_Cost > grid.F)
-                    {
-                        lowest_Cost = grid.F;
-                        Next_X = X - 1;
-                        Next_Z = Z - 1;
-                    }
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z - 1);
+
             }
         }
 
@@ -214,13 +208,8 @@ public class CustomerLogic : MonoBehaviour
             // - O X
             // - - -
             grid = FillGridData(map, map[X, Z], X + 1, Z);
-            if (grid != null)
-                if (lowest_Cost > grid.F)
-                {
-                    lowest_Cost = grid.F;
-                    Next_X = X + 1;
-                    Next_Z = Z;
-                }
+            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z);
+
 
             if (Z + 1 < MainGameManager.Get.Floor.Z)
             {
@@ -228,13 +217,7 @@ public class CustomerLogic : MonoBehaviour
                 // - O -
                 // - - -
                 grid = FillGridData(map, map[X, Z], X + 1, Z + 1);
-                if (grid != null)
-                    if (lowest_Cost > grid.F)
-                    {
-                        lowest_Cost = grid.F;
-                        Next_X = X + 1;
-                        Next_Z = Z + 1;
-                    }
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z + 1);
             }
 
             if (Z - 1 >= 0)
@@ -243,13 +226,7 @@ public class CustomerLogic : MonoBehaviour
                 // - O -
                 // - - X
                 grid = FillGridData(map, map[X, Z], X + 1, Z - 1);
-                if (grid != null)
-                    if (lowest_Cost > grid.F)
-                    {
-                        lowest_Cost = grid.F;
-                        Next_X = X + 1;
-                        Next_Z = Z - 1;
-                    }
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z - 1);
             }
         }
 
@@ -259,13 +236,7 @@ public class CustomerLogic : MonoBehaviour
             // - O -
             // - - -
             grid = FillGridData(map, map[X, Z], X, Z + 1);
-            if (grid != null)
-                if (lowest_Cost > grid.F)
-                {
-                    lowest_Cost = grid.F;
-                    Next_X = X;
-                    Next_Z = Z + 1;
-                }
+            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z + 1);
         }
 
         if (Z - 1 >= 0)
@@ -274,18 +245,34 @@ public class CustomerLogic : MonoBehaviour
             // - O -
             // - X -
             grid = FillGridData(map, map[X, Z], X, Z - 1);
-            if (grid != null)
-                if (lowest_Cost > grid.F)
-                {
-                    lowest_Cost = grid.F;
-                    Next_X = X;
-                    Next_Z = Z - 1;
-                }
+            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z - 1);
         }
 
-        Debug.Log("Next Grid is " + Next_X + ", " + Next_Z + ".");
+        Debug.Log("Next grid is " + Next_X + ", " + Next_Z + "!");
+
+        //go to next grid
+        AstarAlgorithm(map, Next_X, Next_Z);
+
+        //after reaching goal, start adding to the vector list
     }
 
+    void CheckAstarGrid(AstarGrid curr_grid, AstarGrid grid, ref float lowest_Cost, ref int X, ref int Z, int Next_X, int Next_Z)
+    {
+        //change the target grid
+        if (grid != null)
+        {
+            //if not parent, don't calculate for now
+            if (curr_grid != grid.Parent)
+                return;
+
+            if (lowest_Cost > grid.F)
+            {
+                lowest_Cost = grid.F;
+                X = Next_X;
+                Z = Next_Z;
+            }
+        }
+    }
 
     bool WalkTowardsSeat ()
     {
