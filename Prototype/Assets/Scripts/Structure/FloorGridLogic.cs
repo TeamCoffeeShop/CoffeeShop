@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic; // for list
+
+public enum EditMode
+{
+    off, selecting, selected
+}
 
 public class FloorGridLogic : MonoBehaviour
 {
@@ -12,15 +18,44 @@ public class FloorGridLogic : MonoBehaviour
     public GameObject FloorPrefab;
     public GameObject FloorPrefab2;
 
-    public bool IsEditMode = false;
+    public EditMode IsEditMode;
 
     GameObject[,] Grids;
+    public List<CafeDeco> Seats;
+
+    public void ToggleEditMode()
+    {
+        SetEditMode(IsEditMode != EditMode.off ? EditMode.off : EditMode.selecting, null);
+    }
+
+    public void SetEditMode(EditMode mode, Grid grid)
+    {
+        switch (mode)
+        {
+            case EditMode.off:
+                MainGameManager.Get.DecoEditUI.DisableSelected();
+                break;
+            case EditMode.selected:
+                MainGameManager.Get.DecoEditUI.Selected(grid);                
+                break;
+            case EditMode.selecting:
+                break;
+        }
+
+        IsEditMode = mode;
+    }
 
     void Start ()
     {
+        CreateGrid();
+        LoadItemsInCafe();
+    }
+
+    void CreateGrid ()
+    {
         bool Floor = false;
 
-        Grids = new GameObject[X,Z];
+        Grids = new GameObject[X, Z];
 
         //starting location
         Vector2 BeginLocation = new Vector2(FloorPrefab.transform.localScale.x * 0.5f * (1 - X), 0);
@@ -43,8 +78,33 @@ public class FloorGridLogic : MonoBehaviour
         }
     }
 
-    public void ToggleEditMode ()
+    //this one requires XML depository save.
+    void LoadItemsInCafe ()
     {
-        IsEditMode = !IsEditMode;
+        //XML load here
+
+        //!!TEMPORARY!!
+        //loads custom items instead of loading from XML.
+        GameObject Seat = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat");
+
+        Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+
+        Grids[7, 1].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[6, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[7, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[8, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+
+        Grids[7, 6].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[6, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[7, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[8, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+
+        Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
     }
 }

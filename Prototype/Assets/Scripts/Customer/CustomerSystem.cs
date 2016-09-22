@@ -34,7 +34,6 @@ public class CustomerSystem : MonoBehaviour
         //DontDestroyOnLoad(CustomerListObj);
         SelectMenu();
         SetRandomTime();
-        time = minTime;
 
 	}
 	
@@ -104,8 +103,7 @@ public class CustomerSystem : MonoBehaviour
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
-        {     
-
+        {
             //setting customer's position. change this after getting real model.
             Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f /*+ 6.0f*/, Floor.transform.position.z);
             //SpawnInRandomPos(ref new_customer_pos);
@@ -138,7 +136,7 @@ public class CustomerSystem : MonoBehaviour
 
     void SpawnInRandomDefinedPos(ref Vector3 pos)
     {
-        int size = CustomerSeats.transform.childCount;
+        int size = MainGameManager.Get.Floor.Seats.Count;
 
         //if there's no seat, return
         if (size == 0)
@@ -147,7 +145,7 @@ public class CustomerSystem : MonoBehaviour
         int spawnseat = Random.Range(0, size);
 
         //set position to the seat
-        Vector3 newpos = CustomerSeats.transform.GetChild(spawnseat).transform.position;
+        Vector3 newpos = MainGameManager.Get.Floor.Seats[spawnseat].transform.position;
         pos.x = newpos.x;
         pos.z = newpos.z;
 

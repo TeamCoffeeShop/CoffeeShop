@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
+    <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
+    <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
     <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
     <Compile Include="Assets\Scripts\UI\UISystem.cs" />

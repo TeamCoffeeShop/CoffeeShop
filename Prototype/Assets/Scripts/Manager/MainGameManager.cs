@@ -10,9 +10,11 @@ public class MainGameManager : MonoBehaviour
     public DialogueManager dialoguemanager;
     public GameObject NPCManager;
     public GameObject UI;
+    public DecoEditUI DecoEditUI;
     public GameObject MinigameButton;
     public GameObject NPC1;
     public FloorGridLogic Floor;
+    public LookAt maincamera;
     public bool OnDialogue = true;
 
     //shortcut permenant
@@ -49,9 +51,11 @@ public class MainGameManager : MonoBehaviour
             NPCManager = GameObject.Find("NPCManager");
             dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<DialogueManager>();
             UI = GameObject.Find("UI");
+            DecoEditUI = UI.transform.FindChild("DecoEditUI").GetComponent<DecoEditUI>();
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
             Floor = GameObject.Find("Structure").transform.FindChild("FloorGrid").GetComponent<FloorGridLogic>();
+            maincamera = Camera.main.GetComponent<LookAt>();
         }
     }
 

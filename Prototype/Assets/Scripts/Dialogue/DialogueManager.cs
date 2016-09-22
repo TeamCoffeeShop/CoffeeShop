@@ -158,7 +158,7 @@ public class DialogueManager : MonoBehaviour {
         npc_text.GetComponent<Text>().text = lineOfText;
         isTyping = false;
         cancelTyping = false;
-        Debug.Log("End Text Scroll");
+        //Debug.Log("End Text Scroll");
     }
 
     // Make dialogue box
