@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Grid : MonoBehaviour
 {
-    public Material Selected_Material;
-           Material Original_Material;
-           Renderer renderer;
+    public Material  Selected_Material;
+    public Material Selecting_Material;
+           Material  Original_Material;
+           Renderer           renderer;
 
     void Awake ()
     {
@@ -16,12 +17,13 @@ public class Grid : MonoBehaviour
     void OnMouseEnter()
     {
         if(MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
-            renderer.material = Selected_Material;
+            renderer.material = Selecting_Material;
     }
 
     void OnMouseExit ()
     {
-        renderer.material = Original_Material;
+        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
+            renderer.material = Original_Material;
     }
 
     void OnMouseUp ()
@@ -33,6 +35,16 @@ public class Grid : MonoBehaviour
                 MainGameManager.Get.Floor.SetEditMode(EditMode.selected, this);
             }
         }
+    }
+
+    void Update ()
+    {
+        if(MainGameManager.Get.DecoEditUI.EditingGrid == this)
+        {
+            renderer.material = Selected_Material;
+        }
+        else if (MainGameManager.Get.Floor.IsEditMode != EditMode.selecting)
+            renderer.material = Original_Material;
     }
 
     public bool IsFilled ()
