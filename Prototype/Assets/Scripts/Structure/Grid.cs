@@ -5,8 +5,8 @@ public class Grid : MonoBehaviour
 {
     public Material  Selected_Material;
     public Material Selecting_Material;
-           Material  Original_Material;
-           Renderer           renderer;
+    public Material  Original_Material;
+    public Renderer           renderer;
 
     void Awake ()
     {
@@ -35,16 +35,6 @@ public class Grid : MonoBehaviour
                 MainGameManager.Get.Floor.SetEditMode(EditMode.selected, this);
             }
         }
-    }
-
-    void Update ()
-    {
-        if(MainGameManager.Get.DecoEditUI.EditingGrid == this)
-        {
-            renderer.material = Selected_Material;
-        }
-        else if (MainGameManager.Get.Floor.IsEditMode != EditMode.selecting)
-            renderer.material = Original_Material;
     }
 
     public bool IsFilled ()

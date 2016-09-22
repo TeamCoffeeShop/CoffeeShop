@@ -5,17 +5,24 @@ public class DecoEditUI : MonoBehaviour
 {
     public Grid EditingGrid;
     bool Dragging = false;
-    Vector3 PrevMousePosition;
-    GameObject DecoCopy;
+    Transform MovingCafeDeco;
 
     float CameraAngle;
-    float MoveSpeed = 0.1f;
+    float MoveSpeed = 0.7f;
 
     public void Selected (Grid grid)
     {
         gameObject.SetActive(true);
+
+        //grid
         EditingGrid = grid;
-        grid.transform.GetChild(0).GetComponent<CafeDeco>().Selected = true;
+        EditingGrid.renderer.material = EditingGrid.Selected_Material;
+
+        //CafeDeco
+        MovingCafeDeco = grid.transform.GetChild(0);
+        MovingCafeDeco.GetComponent<CafeDeco>().Selected = true;
+
+        //camera
         MainGameManager.Get.maincamera.LookingAt(grid.transform.position + new Vector3(0, 5, 0));
         MainGameManager.Get.Floor.IsEditMode = EditMode.selected;
     }
@@ -24,10 +31,18 @@ public class DecoEditUI : MonoBehaviour
     {
         if(EditingGrid != null)
         {
+            //camera
             MainGameManager.Get.Floor.IsEditMode = EditMode.off;
             MainGameManager.Get.maincamera.Return();
-            EditingGrid.transform.GetChild(0).GetComponent<CafeDeco>().Selected = false;
+
+            //CafeDeco
+            MovingCafeDeco.GetComponent<CafeDeco>().Selected = false;
+            MovingCafeDeco = null;
+
+            //grid
+            EditingGrid.renderer.material = EditingGrid.Original_Material;
             EditingGrid = null;
+
             gameObject.SetActive(false);
         }
     }
@@ -47,20 +62,47 @@ public class DecoEditUI : MonoBehaviour
     public void MoveBegin ()
     {
         Dragging = true;
-        Cursor.visible = false;
-        PrevMousePosition = Input.mousePosition;
+        Cursor.lockState = CursorLockMode.Locked;
 
-        //temporary. will change soon.
-        DecoCopy = Instantiate(EditingGrid.transform.GetChild(0).gameObject);
-        DecoCopy.transform.localScale = EditingGrid.transform.GetChild(0).lossyScale;
-        DecoCopy.transform.position = EditingGrid.transform.GetChild(0).position;
+        //unlink parent from grid
+        MovingCafeDeco.SetParent(null);
     }
 
     public void MoveEnd ()
     {
+        //cursor option
         Dragging = false;
-        Cursor.visible = true;
-        DestroyObject(DecoCopy);
+        Cursor.lockState = CursorLockMode.None;
+        
+        //calculate closest grid to be moved
+        GameObject closestgrid = EditingGrid.gameObject;
+        float closest = (closestgrid.transform.position - MovingCafeDeco.transform.position).sqrMagnitude;
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Floor");
+        
+        //find the closest grid
+        foreach (GameObject grid in objs)
+        {
+            float dist = (grid.transform.position - MovingCafeDeco.transform.position).sqrMagnitude;
+            
+            //if one is closer
+            if(dist < closest)
+            {
+                closest = dist;
+                closestgrid = grid;
+            }
+        }
+
+        //successfully move the CafeDeco into Grid
+        MovingCafeDeco.transform.SetParent(closestgrid.transform);
+        MovingCafeDeco.transform.localPosition = new Vector3(0, MovingCafeDeco.GetComponent<CafeDeco>().Float, 0);
+
+        //change selected grid
+        EditingGrid.renderer.material = EditingGrid.Original_Material;
+        EditingGrid = closestgrid.GetComponent<Grid>();
+        EditingGrid.renderer.material = EditingGrid.Selected_Material;
+
+        //camera
+        MainGameManager.Get.maincamera.LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
     }
 
     void Start ()
@@ -72,15 +114,15 @@ public class DecoEditUI : MonoBehaviour
     {
         if (Dragging)
         {
-            Vector3 Move = Input.mousePosition - PrevMousePosition;
-            PrevMousePosition = Input.mousePosition;
+            Vector2 Move = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
             Vector2 newMove;
             newMove.x = Mathf.Cos(CameraAngle) * Move.x + -Mathf.Sin(CameraAngle) * Move.y;
             newMove.y = Mathf.Sin(CameraAngle) * Move.x + Mathf.Cos(CameraAngle) * Move.y;
 
-            DecoCopy.transform.position += new Vector3(newMove.x * MoveSpeed, 0, newMove.y * MoveSpeed);
+            MovingCafeDeco.transform.position += new Vector3(newMove.x * MoveSpeed, 0, newMove.y * MoveSpeed);
 
+            MainGameManager.Get.maincamera.LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
         }
     }
 }

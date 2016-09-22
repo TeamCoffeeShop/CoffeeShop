@@ -12,7 +12,7 @@ public class CafeDeco : MonoBehaviour
     public         bool   Filled = false;
     public        float    Float;
     public         bool Selected = false;
-    float OriginalFloat;
+    public float OriginalFloat;
 
     void Start ()
     {
