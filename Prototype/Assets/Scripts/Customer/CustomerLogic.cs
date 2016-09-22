@@ -99,7 +99,7 @@ public class CustomerLogic : MonoBehaviour
         DestroyObject(this.gameObject);
     }
 
-    List<Vector2> MoveGridList = new List<Vector2>();
+    List<Vector3> MoveGridList = new List<Vector3>();
 
     class AstarGrid
     {
@@ -108,6 +108,9 @@ public class CustomerLogic : MonoBehaviour
         public float G;
         public float H;
         public bool Closed;
+
+        public int X;
+        public int Z;
     }
 
     AstarGrid FillGridData(AstarGrid[,] map, AstarGrid parent, int X, int Z)
@@ -117,15 +120,21 @@ public class CustomerLogic : MonoBehaviour
             if (!map[X,Z].Closed)
                 return map[X,Z];
             else
+            {
+                //Debug.Log(X + ", " + Z + " already used!");
                 return null;
+            }
 
         //if the grid is impenetrable, return
         Transform realGrid = MainGameManager.Get.Floor.Grids[X, Z].transform;
         if (realGrid.childCount != 0)
             if (realGrid.GetChild(0).GetComponent<CafeDeco>().Type == CafeDecoType.impenetrable)
+            {
+                //Debug.Log(X + ", " + Z + " impenetrable!");
                 return null;
+            }
 
-        Debug.Log("Adding " + X + ", " + Z + "...");
+        //Debug.Log("Adding " + X + ", " + Z + "...");
 
         AstarGrid grid = map[X, Z] = new AstarGrid();
 
@@ -137,6 +146,8 @@ public class CustomerLogic : MonoBehaviour
 
         grid.F = grid.G + grid.H;
         grid.Parent = parent;
+        grid.X = X;
+        grid.Z = Z;
 
         return grid;
     }
@@ -151,109 +162,137 @@ public class CustomerLogic : MonoBehaviour
         map[Begin.X, Begin.Z] = new AstarGrid();
         AstarAlgorithm(map, Begin.X, Begin.Z);
 
+        AstarGrid grid = map[Goal.X, Goal.Z];
+        while (grid != map[Begin.X, Begin.Z])
+        {
+            MoveGridList.Add(MainGameManager.Get.Floor.Grids[grid.X, grid.Z].transform.position);
+            grid = grid.Parent;
+        }
+        MoveGridList.Reverse();
+
         return false;
     }
 
-    void AstarAlgorithm(AstarGrid[,] map, int X, int Z)
+    bool AstarAlgorithm(AstarGrid[,] map, int X, int Z)
     {
         //if arrived to goal
-        if(MainGameManager.Get.Floor.Grids[X,Z] == Goal)
-        {
-            Debug.Log("Reached To Goal!");
-            return;
-        }
+        if(MainGameManager.Get.Floor.Grids[X,Z] == Goal.gameObject)
+            return true;
 
         //close the data since it is selected
         map[X, Z].Closed = true;
 
-        Debug.Log("Grid " + X + ", " + Z + " selected!");
-
-        float lowest_Cost = 100000;
-        int Next_X = -1, Next_Z = -1;
         AstarGrid grid;
 
-        //Check grids near the current grid
-        if (X - 1 >= 0)
-        {
-            // - - -
-            // X O -
-            // - - -
-            grid = FillGridData(map, map[X, Z], X - 1, Z);
-            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z);
+        //int loop = 0;
+        float lowest_Cost = 100000;
+        int Next_X = -1, Next_Z = -1;
 
+        do
+        {
+            //Debug.Log("Grid " + X + ", " + Z + " selected!");
+
+            lowest_Cost = 100000;
+            Next_X = -1;
+            Next_Z = -1;
+
+            //Check grids near the current grid
+            if (X - 1 >= 0)
+            {
+                // - - -
+                // X O -
+                // - - -
+                grid = FillGridData(map, map[X, Z], X - 1, Z);
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z);
+
+
+                if (Z + 1 < MainGameManager.Get.Floor.Z)
+                {
+                    // X - -
+                    // - O -
+                    // - - -
+                    grid = FillGridData(map, map[X, Z], X - 1, Z + 1);
+                    CheckAstarGrid(map[X,Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z + 1);
+                }
+
+                if(Z - 1 >= 0)
+                {
+                    // - - -
+                    // - O -
+                    // X - -
+                    grid = FillGridData(map, map[X, Z], X - 1, Z - 1);
+                    CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z - 1);
+
+                }
+            }
+
+            if (X + 1 < MainGameManager.Get.Floor.X)
+            {
+                // - - -
+                // - O X
+                // - - -
+                grid = FillGridData(map, map[X, Z], X + 1, Z);
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z);
+
+
+                if (Z + 1 < MainGameManager.Get.Floor.Z)
+                {
+                    // - - X
+                    // - O -
+                    // - - -
+                    grid = FillGridData(map, map[X, Z], X + 1, Z + 1);
+                    CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z + 1);
+                }
+
+                if (Z - 1 >= 0)
+                {
+                    // - - -
+                    // - O -
+                    // - - X
+                    grid = FillGridData(map, map[X, Z], X + 1, Z - 1);
+                    CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z - 1);
+                }
+            }
 
             if (Z + 1 < MainGameManager.Get.Floor.Z)
             {
-                // X - -
+                // - X -
                 // - O -
                 // - - -
-                grid = FillGridData(map, map[X, Z], X - 1, Z + 1);
-                CheckAstarGrid(map[X,Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z + 1);
-            }
-
-            if(Z - 1 >= 0)
-            {
-                // - - -
-                // - O -
-                // X - -
-                grid = FillGridData(map, map[X, Z], X - 1, Z - 1);
-                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X - 1, Z - 1);
-
-            }
-        }
-
-        if (X + 1 < MainGameManager.Get.Floor.X)
-        {
-            // - - -
-            // - O X
-            // - - -
-            grid = FillGridData(map, map[X, Z], X + 1, Z);
-            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z);
-
-
-            if (Z + 1 < MainGameManager.Get.Floor.Z)
-            {
-                // - - X
-                // - O -
-                // - - -
-                grid = FillGridData(map, map[X, Z], X + 1, Z + 1);
-                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z + 1);
+                grid = FillGridData(map, map[X, Z], X, Z + 1);
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z + 1);
             }
 
             if (Z - 1 >= 0)
             {
                 // - - -
                 // - O -
-                // - - X
-                grid = FillGridData(map, map[X, Z], X + 1, Z - 1);
-                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X + 1, Z - 1);
+                // - X -
+                grid = FillGridData(map, map[X, Z], X, Z - 1);
+                CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z - 1);
             }
-        }
 
-        if (Z + 1 < MainGameManager.Get.Floor.Z)
-        {
-            // - X -
-            // - O -
-            // - - -
-            grid = FillGridData(map, map[X, Z], X, Z + 1);
-            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z + 1);
-        }
+            //if blocked, return to 
+            if (Next_X == -1 || Next_Z == -1)
+            {
+                //Debug.Log("End of road! returning...");
+                return false;
+            }
 
-        if (Z - 1 >= 0)
-        {
-            // - - -
-            // - O -
-            // - X -
-            grid = FillGridData(map, map[X, Z], X, Z - 1);
-            CheckAstarGrid(map[X, Z], grid, ref lowest_Cost, ref Next_X, ref Next_Z, X, Z - 1);
-        }
+            //Debug.Log("Next grid is " + Next_X + ", " + Next_Z + "!");
 
-        Debug.Log("Next grid is " + Next_X + ", " + Next_Z + "!");
+            //loop++;
+            //if (loop > 4)
+            //{
+            //    Debug.Log("max loop!");
+            //    return true;
+            //}
 
-        //go to next grid
-        AstarAlgorithm(map, Next_X, Next_Z);
+        } while (!AstarAlgorithm(map, Next_X, Next_Z));
 
-        //after reaching goal, start adding to the vector list
+
+
+        return true;
     }
 
     void CheckAstarGrid(AstarGrid curr_grid, AstarGrid grid, ref float lowest_Cost, ref int X, ref int Z, int Next_X, int Next_Z)
@@ -261,9 +300,13 @@ public class CustomerLogic : MonoBehaviour
         //change the target grid
         if (grid != null)
         {
-            //if not parent, don't calculate for now
             if (curr_grid != grid.Parent)
-                return;
+                //if have same parent
+                if(curr_grid.Parent == grid.Parent)
+                {
+                    if (curr_grid.F < grid.F)
+                        return;
+                }
 
             if (lowest_Cost > grid.F)
             {
@@ -278,65 +321,21 @@ public class CustomerLogic : MonoBehaviour
     {
         if (MoveGridList.Count != 0)
         {
+            Vector3 direction = (MoveGridList[0] - transform.position).normalized;
+
             //walk to the seat
+            transform.position += direction * walkSpeed * Time.deltaTime;
 
+            //if past the seat
+            Vector3 newdir = (MoveGridList[0] - transform.position).normalized;
+            if (newdir.x * direction.x < 0 || newdir.z * direction.z < 0)
+                MoveGridList.RemoveAt(0);
 
-            return true;
+            //rotate
+            //direction.
+
+            return false;
         }
-
-        return false;
+        return true;
     }
-
-    //bool WalkTowardsSeatPrev ()
-    //{
-    //    //walk x coord first
-    //    if (transform.localPosition.x < TargetSeat.x)
-    //    {
-    //        transform.localPosition += new Vector3(walkSpeed * Time.deltaTime,0,0);
-
-    //        //if over, stop
-    //        if (transform.localPosition.x > TargetSeat.x)
-    //            transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-    //    }
-    //    else if (transform.localPosition.x > TargetSeat.x)
-    //    {
-    //        transform.localPosition += new Vector3(-walkSpeed * Time.deltaTime, 0, 0);
-
-    //        //if over, stop
-    //        if (transform.localPosition.x < TargetSeat.x)
-    //            transform.localPosition = new Vector3(TargetSeat.x, transform.position.y, transform.position.z);
-    //    }
-    //    //if x finished, walk y
-    //    else if (transform.localPosition.z < TargetSeat.z)
-    //    {
-    //        transform.localPosition += new Vector3(0,0,walkSpeed * Time.deltaTime);
-
-    //        if(direction == -1)
-    //        {
-    //            transform.Rotate(0,90,0);
-    //            direction = 0;
-    //        }
-
-    //        //if over, stop
-    //        if (transform.localPosition.z > TargetSeat.z)
-    //            transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-    //    }
-    //    else if (transform.localPosition.z > TargetSeat.z)
-    //    {
-    //        transform.localPosition += new Vector3(0, 0, -walkSpeed * Time.deltaTime);
-
-    //        if (direction == -1)
-    //        {
-    //            transform.Rotate(0, -90, 0);
-    //            direction = 1;
-    //        }
-
-    //        //if over, stop
-    //        if (transform.localPosition.z < TargetSeat.z)
-    //            transform.localPosition = new Vector3(transform.position.x, transform.position.y, TargetSeat.z);
-    //    }
-    //    else
-    //        return true;
-    //    return false;
-    //}
 }
