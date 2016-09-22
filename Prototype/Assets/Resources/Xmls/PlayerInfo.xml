@@ -4,6 +4,7 @@
   <xp_maxVal>100</xp_maxVal>
   
   <money>1000</money>
+  <income>0</income>
   <level>0</level>
 
 </Player>                    

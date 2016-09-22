@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour {
     public float MoneyIncreasingSpeed = 10;
     float ExpectedMoney;
 
+    public float income;
 
     public string PlayerDataFilePath; // Xml file
 
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour {
             PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
             PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
             PlayerPrefs.SetFloat("money", player.money);
+        PlayerPrefs.SetFloat("income", player.income);
             player.level = 1;
             PlayerPrefs.SetInt("level", player.level);     
     }
@@ -58,16 +60,30 @@ public class PlayerManager : MonoBehaviour {
     {
         player.money += money;
         ExpectedMoney = player.money;
+        income += money;
+        PlayerPrefs.SetFloat("income", income);
     }
 
     public void AddMoneyGradually(float money)
     {
         ExpectedMoney = player.money + money;
-    }
+        income += money;
+        PlayerPrefs.SetFloat("income", income);
 
+    }
+    public void SubtractMoneyGradully(float money)
+    {
+        ExpectedMoney = player.money - money;
+        income -= money;
+        PlayerPrefs.SetFloat("income", income);
+    }
     public void AddXP(float xp)
     {
         player.xp_currentVal += xp;
+    }
+
+    public void SubtractXP(float xp)
+    {
     }
 
     void PlayerLevelUp()

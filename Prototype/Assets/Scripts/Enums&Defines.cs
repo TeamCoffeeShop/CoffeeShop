@@ -196,7 +196,7 @@ public static class CoffeeOrderSetup
 
 public enum PopupType
 {
-    none, gold, xp
+    none, gold, xp, penalty
 }
 
 public static class UIEffect
@@ -286,6 +286,14 @@ public static class UIEffect
                     popup.text = ntext;
                 }
                 break;
+            case PopupType.penalty:
+                {
+                    popup.color = Color.red;
+                    string ntext = "- $ " + popup.text;
+                    popup.text = ntext;
+                }
+                break;
+
         }
     }
 }
