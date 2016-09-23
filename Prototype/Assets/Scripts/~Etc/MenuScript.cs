@@ -16,6 +16,11 @@ public class MenuScript : MonoBehaviour {
 
     public void GotoLevel(int level)
     {
+        //stop time
+        if(level == 5)
+        {
+            MainGameManager.Get.TimeOfDay.enabled = false;
+        }
         SceneManager.LoadScene(level);
     }
 
