@@ -332,7 +332,7 @@ public class CustomerLogic : MonoBehaviour
                 MoveGridList.RemoveAt(0);
 
             //rotate
-            //direction.
+            transform.forward = direction;
 
             return false;
         }

@@ -297,3 +297,21 @@ public static class UIEffect
         }
     }
 }
+
+public static class InGameTime
+{
+    private static float TS = 1;
+
+    public static float timeScale
+    {
+        get
+        {
+            return TS;
+        }
+    }
+
+    public static void SetTimeScale (float speed)
+    {
+        TS = speed;
+    }
+}

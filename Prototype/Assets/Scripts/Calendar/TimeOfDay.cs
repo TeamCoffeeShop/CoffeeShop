@@ -53,7 +53,6 @@ public class TimeOfDay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         currentTimeOfDay += (Time.deltaTime / secondInFullDay) * timeMultiplier;
 
         if (calendar.day > 30)

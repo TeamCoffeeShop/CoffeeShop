@@ -22,7 +22,7 @@ public class LookAt : MonoBehaviour
     void Update ()
     {
         transform.position += ((follow ? TargetPosition : OriginalPosition) - transform.position) * Time.deltaTime * Speed;
-       cam.orthographicSize += ((follow ? OriginalSize * 0.5f: OriginalSize) - cam.orthographicSize) * Time.deltaTime * Speed;
+        cam.orthographicSize += ((follow ? OriginalSize * 0.5f: OriginalSize) - cam.orthographicSize) * Time.deltaTime * Speed;
     }
 
     public void LookingAt (Vector3 worldPos)
