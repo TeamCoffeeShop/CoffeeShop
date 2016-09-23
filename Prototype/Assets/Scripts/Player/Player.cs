@@ -8,8 +8,11 @@ public class Player
 
     //Money
     public float money;
+    public float income;
 
     //Level
     public int level;
+
+    public int penalty_day;
 
 }

@@ -8,6 +8,7 @@ public class OrderingBallonLogic : MonoBehaviour
     public Transform customer;
     public GameObject SpawnBar;
 
+    bool OrderCheck;
     int CurrentScene;
 
     void Start ()
@@ -36,6 +37,13 @@ public class OrderingBallonLogic : MonoBehaviour
             {
                 OrderUI = orderUI;
                 Colliding = true;
+                OrderCheck = true;
+            }
+            else
+            {
+                OrderUI = orderUI;
+                Colliding = true;
+                OrderCheck = false;
             }
         }
     }
@@ -81,6 +89,36 @@ public class OrderingBallonLogic : MonoBehaviour
         }
     }
 
+    void GivePenalty(GameObject orderUI)
+    {
+        int xp = 5;
+        int price = 200;
+
+        if (customer)
+        {
+            //increase xp
+            MainGameManager.Get.playerManager.SubtractXP(xp);
+
+            //increase money
+            MainGameManager.Get.playerManager.SubtractMoneyGradully(price);
+            //popup
+            Text popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.penalty);
+
+            //delete coffee
+            OrderLogic logic = orderUI.GetComponent<OrderLogic>();
+            if (logic)
+                MainGameManager.Get.OrderHUD.DeleteOrder(logic.ChildNumber);
+            DestroyObject(logic.originalCup.gameObject);
+            DestroyObject(orderUI);
+
+            DeleteCustomer();
+
+            Cursor.visible = true;
+        }
+
+    }
+
     public void DeleteCustomer ()
     {
         //delete customer
@@ -117,9 +155,18 @@ public class OrderingBallonLogic : MonoBehaviour
         {
             if (Colliding)
             {
-                //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
-                FinishOrder(OrderUI.gameObject);
-                Colliding = false;
+                if (OrderCheck)
+                {
+                    //if correct, give correct respond (ex. customer leaving the cafe, paying, etc...)
+                    FinishOrder(OrderUI.gameObject);
+                    Colliding = false;
+                }
+                else
+                {
+                    GivePenalty(OrderUI.gameObject);
+                    Colliding = false;
+                }
+
             }
         }
     }

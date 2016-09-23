@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Grid : MonoBehaviour
 {
-    public Material Selected_Material;
-           Material Original_Material;
-           Renderer renderer;
+    public Material  Selected_Material;
+    public Material Selecting_Material;
+    public Material  Original_Material;
+    public Renderer           renderer;
+
+    public int X, Z;
 
     void Awake ()
     {
@@ -15,20 +18,24 @@ public class Grid : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(MainGameManager.Get.Floor.IsEditMode)
-            renderer.material = Selected_Material;
+        if(MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
+            renderer.material = Selecting_Material;
     }
 
     void OnMouseExit ()
     {
-        renderer.material = Original_Material;
+        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
+            renderer.material = Original_Material;
     }
 
     void OnMouseUp ()
     {
-        if (MainGameManager.Get.Floor.IsEditMode)
+        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
         {
-            MainGameManager.Get.DecoEditUI.SetActive(true);
+            if(transform.childCount != 0)
+            {
+                MainGameManager.Get.Floor.SetEditMode(EditMode.selected, this);
+            }
         }
     }
 
@@ -45,5 +52,28 @@ public class Grid : MonoBehaviour
         Item.transform.SetParent(gameObject.transform);
         Item.transform.localPosition = new Vector3(0,gameObject.transform.lossyScale.y * 0.5f,0);
         return Item;
+    }
+
+    public static Grid FindClosestGrid (Vector3 pos)
+    {
+        //calculate closest grid to be moved
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Floor");
+
+        GameObject closestgrid = objs[0];
+        float closest = (closestgrid.transform.position - pos).sqrMagnitude;
+        //find the closest grid
+        foreach (GameObject grid in objs)
+        {
+            float dist = (grid.transform.position - pos).sqrMagnitude;
+
+            //if one is closer
+            if (dist < closest)
+            {
+                closest = dist;
+                closestgrid = grid;
+            }
+        }
+
+        return closestgrid.GetComponent<Grid>();
     }
 }

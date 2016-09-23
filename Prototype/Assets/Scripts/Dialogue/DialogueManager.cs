@@ -158,7 +158,7 @@ public class DialogueManager : MonoBehaviour {
         npc_text.GetComponent<Text>().text = lineOfText;
         isTyping = false;
         cancelTyping = false;
-        Debug.Log("End Text Scroll");
+        //Debug.Log("End Text Scroll");
     }
 
     // Make dialogue box
@@ -193,8 +193,8 @@ public class DialogueManager : MonoBehaviour {
 
     private void set_option_button(GameObject button, DialogueOption opt)
     {
-        Debug.Log("SetOption");
-        Debug.Log(opt.destinationNodeID);
+        //Debug.Log("SetOption");
+        //Debug.Log(opt.destinationNodeID);
         button.SetActive(true);
         button.GetComponentInChildren<Text>().text = opt.tempText;
         button.GetComponent<Button>().onClick.AddListener(delegate { SetSelectedOption(opt.destinationNodeID); cancelTyping = true; });

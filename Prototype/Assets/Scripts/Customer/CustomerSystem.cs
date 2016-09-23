@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CustomerSystem : MonoBehaviour
 {
     //door that customer enters
-    public Transform Door;
+    public GameObject Enterance;
 
     //For Random Time
     public float maxTime;
@@ -26,16 +26,9 @@ public class CustomerSystem : MonoBehaviour
     //Customer List Prefab
     public GameObject CustomerListPrefab; 
 
-    //UI
-    private string menuText;
-
-	// Use this for initialization
-	void Start () {
-        //DontDestroyOnLoad(CustomerListObj);
-        SelectMenu();
+	void Start ()
+    {
         SetRandomTime();
-        time = minTime;
-
 	}
 	
 	// Update is called once per frame
@@ -47,24 +40,6 @@ public class CustomerSystem : MonoBehaviour
     void SetRandomTime()
     {
         spawnTime = Random.Range(minTime, maxTime);
-    }
-
-    void SelectMenu()
-    {
-        int randomNum = Random.Range(0, 2);
-        // Americano
-        if (randomNum == 0)
-        {
-            menuText = "Americano";
-        }
-        else if (randomNum == 1)
-        {
-            menuText = "Caffe latte";
-        }
-        else if (randomNum == 2)
-        {
-            menuText = "Caffe Mocha";
-        }
     }
 
     Customer CreateCustomer(string path, Vector3 position, OrderType ordertype, Quaternion rotation)
@@ -104,54 +79,35 @@ public class CustomerSystem : MonoBehaviour
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
-        {     
+        {            
+            Grid enterGrid = Grid.FindClosestGrid(Enterance.transform.position);
 
-            //setting customer's position. change this after getting real model.
-            Vector3 new_customer_pos = new Vector3(Floor.transform.position.x, Floor.transform.position.y + Floor.transform.localScale.y * 0.5f /*+ 6.0f*/, Floor.transform.position.z);
-            //SpawnInRandomPos(ref new_customer_pos);
-            SpawnInRandomDefinedPos(ref new_customer_pos);
-            
             //Set customer's order
             OrderType order = SetRandomOrder();
             // Create customer and add customer to customer list
-            Customer customer = CreateCustomer(customerPath, Door.transform.position, order, Quaternion.identity);
+            Customer customer = CreateCustomer(customerPath, enterGrid.transform.position, order, Quaternion.identity);
             customer.order = order;
-            customer.GetComponent<CustomerLogic>().TargetSeat = new_customer_pos;
+            customer.GetComponent<CustomerLogic>().Begin = enterGrid;
+            customer.GetComponent<CustomerLogic>().Goal = SetRandomSeat();
             customer.transform.Rotate(0, -90, 0,Space.World);
             SetRandomTime();
             time = 0;
         }
     }
 
-    void SpawnInRandomPos(ref Vector3 pos)
-    {
-        Vector2 new_customer_pos_random_range = new Vector2(Floor.transform.localScale.x * 0.5f, Floor.transform.localScale.z * 0.5f);
-        const float new_customer_pos_range_offset = 1;
-
-        new_customer_pos_random_range.x -= new_customer_pos_range_offset;
-        new_customer_pos_random_range.y -= new_customer_pos_range_offset;
-
-        //set random position based on floor's scale and offset
-        pos.x += Random.Range(-new_customer_pos_random_range.x, new_customer_pos_random_range.x);
-        pos.z += Random.Range(-new_customer_pos_random_range.y, new_customer_pos_random_range.y);
-    }
-
-    void SpawnInRandomDefinedPos(ref Vector3 pos)
+    Grid SetRandomSeat ()
     {
         int size = MainGameManager.Get.Floor.Seats.Count;
 
         //if there's no seat, return
         if (size == 0)
-            return;
+            return null;
 
         int spawnseat = Random.Range(0, size);
 
         //set position to the seat
-        Vector3 newpos = MainGameManager.Get.Floor.Seats[spawnseat].transform.position;
-        pos.x = newpos.x;
-        pos.z = newpos.z;
+        return MainGameManager.Get.Floor.Seats[spawnseat].transform.GetComponentInParent<Grid>();
 
-        //rotate
     }
 
     OrderType SetRandomOrder()

@@ -53,7 +53,6 @@ public class TimeOfDay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         currentTimeOfDay += (Time.deltaTime / secondInFullDay) * timeMultiplier;
 
         if (calendar.day > 30)
@@ -84,6 +83,7 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.SetFloat("xp_maxVal", MainGameManager.Get.playerManager.player.xp_maxVal);
             PlayerPrefs.SetFloat("money", MainGameManager.Get.playerManager.player.money);
             PlayerPrefs.SetInt("level", MainGameManager.Get.playerManager.player.level);
+
 
             //reset customers & cups
             Transform HUD = GameObject.Find("[OrderHUD]").transform;

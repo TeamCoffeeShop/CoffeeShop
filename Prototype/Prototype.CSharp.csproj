@@ -96,11 +96,10 @@
     <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
     <Compile Include="Assets\Scripts\Dialogue\MiniDialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
-    <Compile Include="Assets\Scripts\DiarySystem\DateSystem.cs" />
-    <Compile Include="Assets\Scripts\DiarySystem\DiaryManager.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
+    <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
@@ -114,6 +113,7 @@
     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
+    <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
     <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
     <Compile Include="Assets\Scripts\UI\UISystem.cs" />

@@ -30,6 +30,5 @@ public class ClockSystem : MonoBehaviour {
 
         hourHand.localRotation = Quaternion.Euler(0, 0, -hour * hoursToDegrees);
         minuteHand.localRotation = Quaternion.Euler(0, 0, -min * minToDegrees);
-
     }
 }
