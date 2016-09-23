@@ -90,7 +90,7 @@ public class FloorGridLogic : MonoBehaviour
         GameObject Seat = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat");
         GameObject TestBox = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_TestBox");
 
-        Grids[7, 7].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
         Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
         Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
         Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
@@ -100,11 +100,12 @@ public class FloorGridLogic : MonoBehaviour
         Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
         Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
 
-        Grids[8, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[8, 5].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[8, 6].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[9, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[8, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[6, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 5].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 6].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[6, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
 
     }
 }
