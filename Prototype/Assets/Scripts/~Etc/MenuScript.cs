@@ -17,10 +17,13 @@ public class MenuScript : MonoBehaviour {
     public void GotoLevel(int level)
     {
         //stop time
-        if(level == 5)
+        if (level == Scenes.NextDay)
         {
             MainGameManager.Get.TimeOfDay.enabled = false;
         }
+        else
+            MainGameManager.Get.TimeOfDay.enabled = true;
+
         SceneManager.LoadScene(level);
     }
 

@@ -52,8 +52,6 @@ public class CustomerSystem : MonoBehaviour
         customer.order = ordertype;
         customer.StoreData();
 
-        //CustomerListObj.GetComponent<CustomerContainer>().customers.Add(customer.data);
-
         return customer;
 
     }

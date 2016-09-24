@@ -61,21 +61,18 @@ public class PlayerManager : MonoBehaviour {
         player.money += money;
         ExpectedMoney = player.money;
         income += money;
-        PlayerPrefs.SetFloat("income", income);
     }
 
     public void AddMoneyGradually(float money)
     {
         ExpectedMoney = player.money + money;
         income += money;
-        PlayerPrefs.SetFloat("income", income);
 
     }
     public void SubtractMoneyGradully(float money)
     {
         ExpectedMoney = player.money - money;
         income -= money;
-        PlayerPrefs.SetFloat("income", income);
     }
     public void AddXP(float xp)
     {
@@ -90,11 +87,9 @@ public class PlayerManager : MonoBehaviour {
     {
         player.xp_maxVal += 2 * player.xp_maxVal;
         player.xp_currentVal = 0;
-        PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
-        PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
 
         player.level += 1;
-        PlayerPrefs.SetInt("level", player.level);
+
     }
 
     void MoneyUpdate()
@@ -105,7 +100,6 @@ public class PlayerManager : MonoBehaviour {
         else
             player.money = ExpectedMoney;
 
-        PlayerPrefs.SetFloat("money", player.money);
     }
 
 }
