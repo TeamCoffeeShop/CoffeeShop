@@ -88,7 +88,7 @@ public class CustomerSystem : MonoBehaviour
             Customer customer = CreateCustomer(customerPath, enterGrid.transform.position, order, Quaternion.identity);
             customer.order = order;
             customer.GetComponent<CustomerLogic>().Begin = enterGrid;
-            customer.GetComponent<CustomerLogic>().Goal = SetRandomSeat();
+            customer.GetComponent<CustomerLogic>().End = SetRandomSeat();
             customer.transform.Rotate(0, -90, 0,Space.World);
             SetRandomTime();
             time = 0;
