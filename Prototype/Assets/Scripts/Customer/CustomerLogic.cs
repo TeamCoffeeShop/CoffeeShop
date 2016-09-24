@@ -95,10 +95,23 @@ public class CustomerLogic : MonoBehaviour
         DestroyObject(this.gameObject);
     }
 
+    class A_GRID
+    {
+        public int X = -1, Z = -1;
+
+        public float F, G, H;
+        public bool closed;
+        public A_GRID Parent = null;
+    }
+
     List<Vector3> MoveGridList;
     List<A_GRID> OpenList;
     A_GRID[,] Grids;
     bool ReachedEnd = false;
+
+    public Grid Begin;
+    public Grid End;
+    private FloorGridLogic Floor;
 
     bool WalkTowardsSeat()
     {
@@ -121,20 +134,6 @@ public class CustomerLogic : MonoBehaviour
         }
         return true;
     }
-
-    public Grid Begin;
-    public Grid End;
-
-    class A_GRID
-    {
-        public int X = -1, Z = -1;
-
-        public float F, G, H;
-        public bool closed;
-        public A_GRID Parent = null;
-    }
-
-    private FloorGridLogic Floor;
 
     void FindPathToSeat ()
     {
@@ -160,29 +159,15 @@ public class CustomerLogic : MonoBehaviour
         }
     }
 
-    void InsertInOrder(List<A_GRID> OpenList, A_GRID toInsert)
-    {
-        if (toInsert == null)
-            return;
-
-        int i;
-        for (i = 0; i < OpenList.Count; ++i)
-        {
-            if (OpenList[i].F >= toInsert.F)
-                break;
-        }
-
-        OpenList.Insert(i, toInsert);
-    }
-
     void AstarAlgorithm ()
     {
         //Begin Grid
         A_GRID CurrentGrid = Grids[Begin.X, Begin.Z] = new A_GRID();
         CurrentGrid.X = Begin.X;
         CurrentGrid.Z = Begin.Z;
+        CurrentGrid.closed = true;
 
-        FillAdjacentGrid(CurrentGrid);
+        CheckAdjacentGrid(CurrentGrid);
 
         do
         {
@@ -191,66 +176,92 @@ public class CustomerLogic : MonoBehaviour
             CurrentGrid.closed = true;
             OpenList.Remove(CurrentGrid);
 
+            //Debug.Log("[" + CurrentGrid.X + ", " + CurrentGrid.Z + "]" + " is selected!");
+
             CheckAdjacentGrid(CurrentGrid);
 
         } while (OpenList.Count != 0 && !ReachedEnd);
     }
-    
-    void FillAdjacentGrid (A_GRID current_grid)
+
+    void CheckAdjacentGrid (A_GRID current_grid)
     {
         int X = current_grid.X, Z = current_grid.Z;
-        A_GRID new_grid = null;
 
         if (X > 0)
         {
-            OpenGrid(current_grid, X - 1, Z, ref new_grid);
-            InsertInOrder(OpenList, new_grid);
+            CalculateGrid(current_grid, X - 1, Z);
             if (Z + 1 < Floor.Z)
-            {
-                OpenGrid(current_grid, X - 1, Z + 1, ref new_grid);
-                InsertInOrder(OpenList, new_grid);
-            }
+                CalculateGrid(current_grid, X - 1, Z + 1);                
             if (Z > 0)
-            {
-                OpenGrid(current_grid, X - 1, Z - 1, ref new_grid);
-                InsertInOrder(OpenList, new_grid);
-            }
+                CalculateGrid(current_grid, X - 1, Z - 1);                
         }
 
         if (X + 1 < Floor.X)
         {
-            OpenGrid(current_grid, X + 1, Z, ref new_grid);
-            InsertInOrder(OpenList, new_grid);
+            CalculateGrid(current_grid, X + 1, Z);
             if (Z + 1 < Floor.Z)
-            {
-                OpenGrid(current_grid, X + 1, Z + 1, ref new_grid);
-                InsertInOrder(OpenList, new_grid);
-            }
+                CalculateGrid(current_grid, X + 1, Z + 1);
             if (Z > 0)
-            {
-                OpenGrid(current_grid, X + 1, Z - 1, ref new_grid);
-                InsertInOrder(OpenList, new_grid);
-            }
+                CalculateGrid(current_grid, X + 1, Z - 1);   
         }
 
         if (Z + 1 < Floor.Z)
-        {
-            OpenGrid(current_grid, X, Z + 1, ref new_grid);
-            InsertInOrder(OpenList, new_grid);
-        }
+            CalculateGrid(current_grid, X, Z + 1);
         if (Z > 0)
-        {
-            OpenGrid(current_grid, X, Z - 1, ref new_grid);
-            InsertInOrder(OpenList, new_grid);
-        }
+            CalculateGrid(current_grid, X, Z - 1);
     }
 
-    bool OpenGrid (A_GRID current_grid, int nX, int nZ, ref A_GRID new_grid)
+    void CalculateGrid(A_GRID current_grid, int nX, int nZ)
+    {
+        if (ReachedEnd)
+            return;
+
+        //Debug.Log("Checking [" + nX + ", " + nZ + "] ...");
+
+        A_GRID new_grid = null;
+
+        if (OpenGrid(current_grid, ref new_grid, nX, nZ))
+        {
+            //Debug.Log("There's already open grid! comparing G..");
+
+            //compare G
+            if (new_grid.G > CalculateG(current_grid, new_grid))
+            {
+                //change
+                new_grid.Parent = current_grid;
+
+                //recalculat G and F
+                new_grid.G = CalculateG(current_grid, new_grid);
+                new_grid.F = new_grid.G + new_grid.H;
+
+                //Debug.Log("Lower cost path detected! redirecting...");
+                OpenList.Remove(new_grid);
+                InsertInOrder(OpenList, new_grid);
+
+
+            }
+        }
+        else
+        {
+            InsertInOrder(OpenList, new_grid);
+
+            //if reached end, return true
+            if (End.X == nX && End.Z == nZ)
+                ReachedEnd = true;
+        }
+
+        //if (new_grid != null)
+        //    Debug.Log("F: " + new_grid.F + " G: " + new_grid.G + " H: " + new_grid.H);
+        //else
+        //    Debug.Log("Grid is impenetrable or closed.");
+    }
+
+    bool OpenGrid(A_GRID current_grid, ref A_GRID new_grid, int nX, int nZ)
     {
         //if there is already OpenGrid, return null
         if (Grids[nX, nZ] != null)
         {
-            if(Grids[nX, nZ].closed)
+            if (Grids[nX, nZ].closed)
                 return false;
             new_grid = Grids[nX, nZ];
             return true;
@@ -284,75 +295,29 @@ public class CustomerLogic : MonoBehaviour
         return false;
     }
 
-    void CheckAdjacentGrid (A_GRID current_grid)
+    void InsertInOrder(List<A_GRID> OpenList, A_GRID toInsert)
     {
-        int X = current_grid.X, Z = current_grid.Z;
-        A_GRID new_grid = null;
-
-        if (X > 0)
-        {
-            CalculateGrid(current_grid, ref new_grid, X - 1, Z);
-            if (Z + 1 < Floor.Z)
-                CalculateGrid(current_grid, ref new_grid, X - 1, Z + 1);                
-            if (Z > 0)
-                CalculateGrid(current_grid, ref new_grid, X - 1, Z - 1);                
-        }
-
-        if (X + 1 < Floor.X)
-        {
-            CalculateGrid(current_grid, ref new_grid, X + 1, Z);
-            if (Z + 1 < Floor.Z)
-                CalculateGrid(current_grid, ref new_grid, X + 1, Z + 1);
-            if (Z > 0)
-                CalculateGrid(current_grid, ref new_grid, X + 1, Z - 1);   
-        }
-
-        if (Z + 1 < Floor.Z)
-            CalculateGrid(current_grid, ref new_grid, X, Z + 1);
-        if (Z > 0)
-            CalculateGrid(current_grid, ref new_grid, X, Z - 1);
-    }
-
-    void CalculateGrid (A_GRID current_grid, ref A_GRID new_grid, int X, int Z)
-    {
-        if (ReachedEnd)
+        if (toInsert == null)
             return;
 
-        if (OpenGrid(current_grid, X, Z, ref new_grid))
+        int i;
+        for (i = 0; i < OpenList.Count; ++i)
         {
-            //compare G
-            if (new_grid.G + CalculateG(new_grid, current_grid) < current_grid.G)
-            {
-                //change
-                current_grid.Parent = new_grid.Parent;
-
-                //recalculat G and F
-                current_grid.G = CalculateG(current_grid.Parent, new_grid.Parent);
-                current_grid.F = current_grid.G + current_grid.H;
-
-                //re-order in list
-                //OpenList.Remove(current_grid);
-                //InsertInOrder(OpenList, current_grid);
-            }
+            if (OpenList[i].F >= toInsert.F)
+                break;
         }
-        else
-        {
-            InsertInOrder(OpenList, new_grid);
 
-            //if reached end, return true
-            if (End.X == X && End.Z == Z)
-                ReachedEnd = true;
-        }
+        OpenList.Insert(i, toInsert);
     }
 
-    float CalculateG(A_GRID current_grid, A_GRID new_grid)
+    float CalculateG(A_GRID from, A_GRID to)
     {
         //calculate G
         //diagonal
-        if ((new_grid.X != current_grid.X) == (new_grid.Z != current_grid.Z))
-            return current_grid.G + 14;
+        if ((to.X != from.X) == (to.Z != from.Z))
+            return from.G + 14;
         //straight
         else
-            return current_grid.G + 10;
+            return from.G + 10;
     }
 }

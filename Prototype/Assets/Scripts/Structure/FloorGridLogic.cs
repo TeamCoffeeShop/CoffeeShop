@@ -90,26 +90,21 @@ public class FloorGridLogic : MonoBehaviour
         GameObject Seat = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat");
         GameObject TestBox = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_TestBox");
 
-        //Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
-        //Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
-        //Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
-        //Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+        Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
 
-        //Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat);
-        //Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
-        //Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
-        //Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+        Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
+        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
+        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
 
-        //Grids[6, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
-        //Grids[5, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
-        //Grids[5, 5].GetComponent<Grid>().AddItemToGrid(TestBox);
-        //Grids[5, 6].GetComponent<Grid>().AddItemToGrid(TestBox);
-        //Grids[5, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
-        //Grids[6, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
-
-        Grids[0, 3].GetComponent<Grid>().AddItemToGrid(Seat);
-        Grids[1, 2].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[1, 3].GetComponent<Grid>().AddItemToGrid(TestBox);
-        Grids[2, 3].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[6, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 5].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 6].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[5, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
+        Grids[6, 7].GetComponent<Grid>().AddItemToGrid(TestBox);
     }
 }

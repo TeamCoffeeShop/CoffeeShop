@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{B1235EE4-71EE-C815-28F8-C3378E5ADB84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -45,85 +46,84 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AstarBackUp.cs" />
-     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
-     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
-     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
-     <Compile Include="Assets\Scripts\Calendar\DiaryScript.cs" />
-     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
-     <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\WhipCream.cs" />
-     <Compile Include="Assets\Scripts\Cream\CreamLogic.cs" />
-     <Compile Include="Assets\Scripts\Cream\CreamingGradingLogic.cs" />
-     <Compile Include="Assets\Scripts\Cream\WhippingCream.cs" />
-     <Compile Include="Assets\Scripts\Customer\Customer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
-     <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
-     <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
-     <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
-     <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\MiniDialogue.cs" />
-     <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
-     <Compile Include="Assets\Scripts\DiarySystem\DateSystem.cs" />
-     <Compile Include="Assets\Scripts\DiarySystem\DiaryManager.cs" />
-     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
-     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
-     <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
-     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
-     <Compile Include="Assets\Scripts\Player\Player.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
-     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
-     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
-     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
-     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
-     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
-     <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
-     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
-     <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
-     <Compile Include="Assets\Scripts\UI\UISystem.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
-     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
-     <Compile Include="Assets\Scripts\~Etc\Billboard.cs" />
-     <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
-     <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
-     <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
-     <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
-     <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
-     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
-     <None Include="Assets\Resources\Xmls\3.txt" />
-     <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
-     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
-     <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
-     <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
-     <None Include="Assets\Resources\Xmls\2.txt" />
- <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
+    <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
+    <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
+    <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
+    <Compile Include="Assets\Scripts\Calendar\DiaryScript.cs" />
+    <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
+    <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
+    <Compile Include="Assets\Scripts\CoffeeMenu\WhipCream.cs" />
+    <Compile Include="Assets\Scripts\Cream\CreamLogic.cs" />
+    <Compile Include="Assets\Scripts\Cream\CreamingGradingLogic.cs" />
+    <Compile Include="Assets\Scripts\Cream\WhippingCream.cs" />
+    <Compile Include="Assets\Scripts\Customer\Customer.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
+    <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
+    <Compile Include="Assets\Scripts\Customer\FinishedOrderList.cs" />
+    <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
+    <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueNode.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueOption.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\MiniDialogue.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
+    <Compile Include="Assets\Scripts\DiarySystem\DateSystem.cs" />
+    <Compile Include="Assets\Scripts\DiarySystem\DiaryManager.cs" />
+    <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
+    <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
+    <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
+    <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
+    <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
+    <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
+    <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
+    <Compile Include="Assets\Scripts\Structure\Grid.cs" />
+    <Compile Include="Assets\Scripts\UI\BarScript.cs" />
+    <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
+    <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
+    <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
+    <Compile Include="Assets\Scripts\UI\UISystem.cs" />
+    <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
+    <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
+    <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
+    <Compile Include="Assets\Scripts\~Etc\Billboard.cs" />
+    <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
+    <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
+    <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
+    <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
+    <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
+    <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
+    <None Include="Assets\Resources\Xmls\3.txt" />
+    <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
+    <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+    <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
+    <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
+    <None Include="Assets\Resources\Xmls\2.txt" />
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -133,5 +133,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>
