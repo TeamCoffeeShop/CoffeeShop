@@ -88,17 +88,21 @@ public class FloorGridLogic : MonoBehaviour
         //!!TEMPORARY!!
         //loads custom items instead of loading from XML.
         GameObject Seat = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat");
+        GameObject Seat2 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat 2");
         GameObject TestBox = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_TestBox");
+        GameObject Table01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Table 1");
 
         Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
         Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
         Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
         Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+        Grids[2, 2].GetComponent<Grid>().AddItemToGrid(Table01);
 
-        Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat);
-        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
-        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
-        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+        Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat2);
+        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 90, 0);
+        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 180, 0);
+        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, -90, 0);
+        Grids[2, 7].GetComponent<Grid>().AddItemToGrid(Table01);
 
         Grids[6, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
         Grids[5, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
