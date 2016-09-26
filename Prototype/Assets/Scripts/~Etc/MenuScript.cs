@@ -14,6 +14,10 @@ public class MenuScript : MonoBehaviour {
 	
 	}
 
+    public void GotoMainGmae()
+    {
+        SceneManager.LoadScene(Scenes.MainLevel);
+    }
     public void GotoLevel(int level)
     {
         //stop time

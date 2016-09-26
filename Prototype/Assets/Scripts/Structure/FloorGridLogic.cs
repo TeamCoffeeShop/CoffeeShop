@@ -91,18 +91,25 @@ public class FloorGridLogic : MonoBehaviour
         GameObject Seat2 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Seat 2");
         GameObject TestBox = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_TestBox");
         GameObject Table01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Table 1");
+        GameObject Table02 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Table 2");
+        GameObject Carpet01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Carpet 1");
+
 
         Grids[2, 1].GetComponent<Grid>().AddItemToGrid(Seat);
         Grids[1, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
         Grids[2, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
         Grids[3, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
         Grids[2, 2].GetComponent<Grid>().AddItemToGrid(Table01);
+        Grids[2, 2].GetComponent<Grid>().AddItemToGrid(Carpet01).transform.Translate(0, 0.3f, 0);
 
         Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat2);
         Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 90, 0);
         Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 180, 0);
         Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, -90, 0);
-        Grids[2, 7].GetComponent<Grid>().AddItemToGrid(Table01);
+        Grids[2, 7].GetComponent<Grid>().AddItemToGrid(Table02);
+        Grids[2, 7].GetComponent<Grid>().AddItemToGrid(Carpet01).transform.Translate(0, 0.3f, 0);
+
+
 
         Grids[6, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
         Grids[5, 4].GetComponent<Grid>().AddItemToGrid(TestBox);
