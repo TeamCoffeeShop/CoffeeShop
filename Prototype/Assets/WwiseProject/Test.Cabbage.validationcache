@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="72">
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1916058555" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="3578190462" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="3578465644" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Attenuations\Default Work Unit.wwu" DateLow="1915548206" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Audio Devices\Default Work Unit.wwu" DateLow="1915263129" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Control Surface Sessions\Default Work Unit.wwu" DateLow="1915328102" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Conversion Settings\Default Work Unit.wwu" DateLow="1915383218" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Conversion Settings\Factory Conversion Settings.wwu" DateLow="3579321249" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1915688293" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Default Work Unit.wwu" DateLow="1915923476" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory Auro Headphone.wwu" DateLow="3541583182" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory Effects.wwu" DateLow="3577940285" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Box Modeler.wwu" DateLow="3668596989" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Delay.wwu" DateLow="3667516229" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Dynamics.wwu" DateLow="3670508358" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Filters.wwu" DateLow="3667881491" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="3672870387" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="3670103054" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="3667456182" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Effects\Factory McDSP Effects.wwu" DateLow="3498134880" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Events\Default Work Unit.wwu" DateLow="1915963504" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Game Parameters\Default Work Unit.wwu" DateLow="1916143636" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="3577585025" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1915633382" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1916018535" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Mixing Sessions\Default Work Unit.wwu" DateLow="1915428122" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Modulators\Default Work Unit.wwu" DateLow="1915222964" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Presets\Default Work Unit.wwu" DateLow="1915823388" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Queries\Default Work Unit.wwu" DateLow="1915593354" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Queries\Factory Queries.wwu" DateLow="3578955995" DateHigh="30545974"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\SoundBanks\Default Work Unit.wwu" DateLow="1915728419" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1915473153" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\States\Default Work Unit.wwu" DateLow="1916103582" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Switches\Default Work Unit.wwu" DateLow="1915768358" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Test.wproj" DateLow="1915097974" DateHigh="30545977"/>
+	<ValidationCacheItem File="C:\Users\Cabbage\Desktop\Test\Test\Triggers\Default Work Unit.wwu" DateLow="1915873436" DateHigh="30545977"/>
+</ValidationCache>
