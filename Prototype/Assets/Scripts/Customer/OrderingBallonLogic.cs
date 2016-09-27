@@ -83,7 +83,7 @@ public class OrderingBallonLogic : MonoBehaviour
             DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 
-            DeleteCustomer();
+            customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
 
             Cursor.visible = true;
         }
@@ -112,21 +112,11 @@ public class OrderingBallonLogic : MonoBehaviour
             DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 
-            DeleteCustomer();
+            customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
 
             Cursor.visible = true;
         }
 
-    }
-
-    public void DeleteCustomer ()
-    {
-        //delete customer
-        DestroyObject(customer.gameObject);
-
-        //delete customer UI
-        DestroyObject(SpawnBar);
-        DestroyObject(gameObject);
     }
 
     void Visibility ()
@@ -145,12 +135,14 @@ public class OrderingBallonLogic : MonoBehaviour
         //follow link position
         if (customer != null)
         {
-            UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, 17, 0), GetComponent<RectTransform>());
+            UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, 23, 0), GetComponent<RectTransform>());
         }
     }
 
     void Update()
     {
+        UpdatePosition();
+
         if (Input.GetMouseButtonUp(0))
         {
             if (Colliding)

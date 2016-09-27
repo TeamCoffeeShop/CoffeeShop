@@ -95,7 +95,7 @@ public class TimeOfDay : MonoBehaviour
             size = HUD.childCount;
             for (int i = 0; i < size; ++i)
                 if (HUD.GetChild(i).tag == "OrderingBallon")
-                    HUD.GetChild(i).GetComponent<OrderingBallonLogic>().DeleteCustomer();
+                    HUD.GetChild(i).GetComponent<OrderingBallonLogic>().customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
 
             GameObject[] leftcustomers = GameObject.FindGameObjectsWithTag("Customer");
 
