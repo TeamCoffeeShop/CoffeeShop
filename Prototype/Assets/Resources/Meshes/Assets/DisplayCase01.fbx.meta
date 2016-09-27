@@ -1,32 +1,15 @@
 fileFormatVersion: 2
-guid: e3083774563f47342af1f1384744079f
-timeCreated: 1474582981
+guid: 7f551fa99a6769542bc9eb7fa9580802
+timeCreated: 1474963732
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Cube10x10
-    100002: Cube1x1
-    100004: Cube20x20
-    100006: Cube5x5
-    100008: //RootNode
-    400000: Cube10x10
-    400002: Cube1x1
-    400004: Cube20x20
-    400006: Cube5x5
-    400008: //RootNode
-    2300000: Cube10x10
-    2300002: Cube1x1
-    2300004: Cube20x20
-    2300006: Cube5x5
-    3300000: Cube10x10
-    3300002: Cube1x1
-    3300004: Cube20x20
-    3300006: Cube5x5
-    4300000: Cube1x1
-    4300002: Cube5x5
-    4300004: Cube10x10
-    4300006: Cube20x20
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: DisplayCase01
     9500000: //RootNode
   materials:
     importMaterials: 1
