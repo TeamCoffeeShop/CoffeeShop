@@ -63,7 +63,7 @@ public class CustomerLogic : MonoBehaviour
             // TEMPORARY
             //if (GetComponent<Animator>().enabled == true)
             {
-                timer += (Time.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
+                timer += (InGameTime.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
                 
                 if(ST)
                 {
@@ -130,7 +130,7 @@ public class CustomerLogic : MonoBehaviour
             Vector3 direction = (MoveGridList[0] - transform.position).normalized;
 
             //walk to the seat
-            transform.position += direction * walkSpeed * Time.deltaTime;
+            transform.position += direction * walkSpeed * InGameTime.deltaTime;
 
             //if past the seat
             Vector3 newdir = (MoveGridList[0] - transform.position).normalized;

@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\TimeManager.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />

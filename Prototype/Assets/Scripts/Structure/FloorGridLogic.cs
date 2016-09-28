@@ -36,7 +36,7 @@ public class FloorGridLogic : MonoBehaviour
                 MainGameManager.Get.DecoEditUI.DisableSelected();
                 break;
             case EditMode.selected:
-                MainGameManager.Get.DecoEditUI.Selected(grid);                
+                MainGameManager.Get.DecoEditUI.Selected(grid);
                 break;
             case EditMode.selecting:
                 break;
