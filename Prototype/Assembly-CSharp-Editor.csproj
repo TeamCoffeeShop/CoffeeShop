@@ -66,7 +66,6 @@
      <Compile Include="Assets\Wwise\Editor\WwiseMenu\Windows\AkWwiseMenu_Windows.cs" />
      <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkPluginActivator.cs" />
      <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkUnitySettingsParser.cs" />
-     <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkWwisePostImportCallback.cs" />
      <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkWwiseSettingsWindow.cs" />
      <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkWwiseSetupWindow.cs" />
      <Compile Include="Assets\Wwise\Editor\WwiseSetupWizard\AkWwiseSetupWizard.cs" />
@@ -85,7 +84,6 @@
      <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\Init.txt" />
      <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\PluginInfo.xml" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
-     <None Include="Assets\Wwise\Readme.txt" />
      <None Include="Assets\Resources\Xmls\3.txt" />
      <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
      <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Init.txt" />
@@ -96,6 +94,7 @@
      <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
      <None Include="Assets\StreamingAssets\desc.txt" />
      <None Include="Assets\WwiseSettings.xml" />
+     <None Include="Assets\Wwise\Readme.txt" />
      <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
      <None Include="Assets\Resources\Xmls\2.txt" />
  <Reference Include="UnityEditor.Advertisements">
