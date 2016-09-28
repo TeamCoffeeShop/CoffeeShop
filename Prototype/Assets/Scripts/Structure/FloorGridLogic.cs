@@ -18,6 +18,8 @@ public class FloorGridLogic : MonoBehaviour
     public GameObject FloorPrefab;
     public GameObject FloorPrefab2;
 
+    public Transform FloorGrid;
+
     public EditMode IsEditMode;
 
     public GameObject[,] Grids;
@@ -45,6 +47,11 @@ public class FloorGridLogic : MonoBehaviour
         IsEditMode = mode;
     }
 
+    void Awake()
+    {
+        FloorGrid = transform.FindChild("FloorGrid").transform;
+    }
+
     void Start ()
     {
         CreateGrid();
@@ -69,7 +76,7 @@ public class FloorGridLogic : MonoBehaviour
             {
                 Grids[i, j] = GameObject.Instantiate(Floor ? FloorPrefab : FloorPrefab2);
                 Floor = !Floor;
-                Grids[i, j].transform.SetParent(gameObject.transform);
+                Grids[i, j].transform.SetParent(FloorGrid);
                 Grids[i, j].GetComponent<Grid>().X = i;
                 Grids[i, j].GetComponent<Grid>().Z = j;
 
