@@ -38,7 +38,7 @@ public class CustomerLogic : MonoBehaviour
 
     void Start ()
     {
-        billboard = GetComponent<Billboard>();
+        billboard = transform.FindChild("Moth").GetComponent<Billboard>();
         
         //Find Path to the seat
         FindPathToSeat();
@@ -46,6 +46,13 @@ public class CustomerLogic : MonoBehaviour
 
     void Update()
     {
+        //if edit mode, slow down
+        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selected)
+        {
+            transform.GetChild(0).GetComponent<Animator>().speed = InGameTime.timeScale;
+        }
+        else
+            transform.GetChild(0).GetComponent<Animator>().speed = 1;
 
         //if not arrived, walk
         if (!arrived)

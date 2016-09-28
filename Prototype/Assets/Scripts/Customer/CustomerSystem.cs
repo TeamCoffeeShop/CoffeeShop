@@ -73,7 +73,7 @@ public class CustomerSystem : MonoBehaviour
     {
         //counts up
         if(!MainGameManager.Get.OnDialogue)
-            time += Time.deltaTime;
+            time += InGameTime.deltaTime;
 
         // Check whether it's time to spawn the customer
         if (time >= spawnTime)
