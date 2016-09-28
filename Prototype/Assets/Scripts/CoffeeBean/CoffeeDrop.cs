@@ -19,11 +19,18 @@ public class CoffeeDrop : MonoBehaviour
 {
     public List<CoffeePowder> CoffeePowders = new List<CoffeePowder>();
 
-    bool ready;
+    public bool ready;
 
     //time check for coffee drop
     int dropTime;
     public int dropMaxTime;
+
+    //coffee machine handle
+    private GameObject handle;
+    private bool CameraRotate;
+    private bool MinigamePrepare;
+    public float angle = 0;
+    bool increaseAngle = true;
 
     //coffee drop variables
     public GameObject CoffeeDrop1;
@@ -33,12 +40,13 @@ public class CoffeeDrop : MonoBehaviour
     void Start()
     {
         ready = false;
+        handle = GameObject.Find("EspressoMachineHandle");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -51,7 +59,19 @@ public class CoffeeDrop : MonoBehaviour
 
         if (ready == true)
         {
-            DropCoffee();
+            if (CameraRotate)
+            {
+                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 9, 1);
+                Camera.main.transform.Rotate(40, 0, 0);
+                handle.transform.Translate(0, 1, 0);
+                CameraRotate = false;
+                MinigamePrepare = true;
+            }
+            if (MinigamePrepare)
+            {
+                HandleMotion();
+            }
+            //DropCoffee();
         }
     }
 
@@ -77,5 +97,19 @@ public class CoffeeDrop : MonoBehaviour
             CoffeePowders.Clear();
             ready = false;
         }
+    }
+
+    void OnMouseDown()
+    {
+        if (ready)
+        {
+            if (gameObject.name == "CoffeeMachine")
+                CameraRotate = true;
+        }
+    }
+
+    void HandleMotion()
+    {
+
     }
 }

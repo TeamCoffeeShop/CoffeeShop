@@ -23,19 +23,19 @@
 #define AK_WWISESDK_VERSION_MINOR				1
 
 /// Wwise SDK sub-minor version
-#define AK_WWISESDK_VERSION_SUBMINOR			2
+#define AK_WWISESDK_VERSION_SUBMINOR			3
 
 /// Wwise SDK build number
-#define AK_WWISESDK_VERSION_BUILD				5863
+#define AK_WWISESDK_VERSION_BUILD				5878
 
 /// Wwise SDK build date (year)
 #define AK_WWISESDK_BUILD_YEAR					2016
 
 /// Wwise SDK build date (month)
-#define AK_WWISESDK_BUILD_MONTH					8
+#define AK_WWISESDK_BUILD_MONTH					9
 
 /// Wwise SDK build date (day)
-#define AK_WWISESDK_BUILD_DAY					29
+#define AK_WWISESDK_BUILD_DAY					23
 
 //@}
 
