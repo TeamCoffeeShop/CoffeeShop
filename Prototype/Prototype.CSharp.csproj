@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
@@ -244,10 +245,17 @@
     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
     <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Init.txt" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\PluginInfo.xml" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\SoundbanksInfo.xml" />
     <None Include="Assets\StreamingAssets\desc.txt" />
     <None Include="Assets\Wwise\NewVersion.txt" />
     <None Include="Assets\Wwise\Readme.txt" />
     <None Include="Assets\Wwise\Version.txt" />
+    <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\Init.txt" />
+    <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\PluginInfo.xml" />
+    <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\SoundbanksInfo.xml" />
+    <None Include="Assets\WwiseProject\IncrementalSoundBankData.xml" />
     <None Include="Assets\WwiseSettings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

@@ -29,8 +29,12 @@ public class CoffeeDrop : MonoBehaviour
     private GameObject handle;
     private bool CameraRotate;
     private bool MinigamePrepare;
+    private bool CheckGameStart = false;
     public float angle = 0;
-    bool increaseAngle = true;
+
+    public float rotateSpeed;
+    public float rotAngle;
+    private int dir = 1;
 
     //coffee drop variables
     public GameObject CoffeeDrop1;
@@ -70,6 +74,17 @@ public class CoffeeDrop : MonoBehaviour
             if (MinigamePrepare)
             {
                 HandleMotion();
+                CheckGameStart = true;
+            }
+            if (CheckGameStart)
+            {
+                HandleMotion();
+                if (handle.transform.eulerAngles.y <= 150)
+            dir = -dir;
+                if (handle.transform.eulerAngles.y >= 290)
+            dir = -dir;
+
+                handle.transform.Rotate( new Vector3(0,1,0) * Time.deltaTime * dir * 60);
             }
             //DropCoffee();
         }
@@ -103,13 +118,22 @@ public class CoffeeDrop : MonoBehaviour
     {
         if (ready)
         {
-            if (gameObject.name == "CoffeeMachine")
-                CameraRotate = true;
+            if (MinigamePrepare == false)
+            {
+                if (gameObject.name == "CoffeeMachine")
+                    CameraRotate = true;
+            }
         }
     }
 
-    void HandleMotion()
+    private void HandleMotion()
     {
+         //Rotate +- 70 degree
+        if (handle.transform.eulerAngles.y <= handle.transform.eulerAngles.y - rotAngle)
+            dir = -dir;
+        if (handle.transform.eulerAngles.y >= handle.transform.eulerAngles.y + rotAngle)
+            dir = -dir;
 
+        handle.transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * dir * rotateSpeed);
     }
 }
