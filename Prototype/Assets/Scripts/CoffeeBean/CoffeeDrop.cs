@@ -65,7 +65,7 @@ public class CoffeeDrop : MonoBehaviour
         {
             if (CameraRotate)
             {
-                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 9, 1);
+                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 Camera.main.transform.Rotate(40, 0, 0);
                 handle.transform.Translate(0, 1, 0);
                 CameraRotate = false;
@@ -99,13 +99,13 @@ public class CoffeeDrop : MonoBehaviour
             dropTime = 0;
             if (CoffeePowders[0].CPowder == 1)
             {
-                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
+                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position + new Vector3(0, 55, 0), Quaternion.identity);
                 coffeedrop1.name = "CoffeeDrop1";
             }
 
             if (CoffeePowders[0].CPowder == 2)
             {
-                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position + new Vector3(0, 5, 0), Quaternion.identity);
+                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position + new Vector3(0, 55, 0), Quaternion.identity);
                 coffeedrop2.name = "CoffeeDrop2";
             }
 
