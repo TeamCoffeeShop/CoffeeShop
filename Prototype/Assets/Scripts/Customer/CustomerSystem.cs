@@ -22,7 +22,7 @@ public class CustomerSystem : MonoBehaviour
     public GameObject Floor;
 
     //Customer Prefab
-    public const string customerPath = "Prefab/Customer2";
+    public const string customerPath = "Prefab/Customer/Customer";
     //Customer List Prefab
     public GameObject CustomerListPrefab; 
 
@@ -80,13 +80,25 @@ public class CustomerSystem : MonoBehaviour
         {            
             Grid enterGrid = Grid.FindClosestGrid(Enterance.transform.position);
 
+            Grid DefinedSeat = SetRandomSeat();
+            //if no seat, return
+            
+            if (DefinedSeat == null)
+            {
+                SetRandomTime();
+                time = 0;
+                return;
+            }
+
             //Set customer's order
             OrderType order = SetRandomOrder();
             // Create customer and add customer to customer list
             Customer customer = CreateCustomer(customerPath, enterGrid.transform.position, order, Quaternion.identity);
             customer.order = order;
+            customer.GetComponent<CustomerLogic>().SeatX = DefinedSeat.X;
+            customer.GetComponent<CustomerLogic>().SeatZ = DefinedSeat.Z;
             customer.GetComponent<CustomerLogic>().Begin = enterGrid;
-            customer.GetComponent<CustomerLogic>().End = SetRandomSeat();
+            customer.GetComponent<CustomerLogic>().End = DefinedSeat;
             customer.transform.Rotate(0, -90, 0,Space.World);
             SetRandomTime();
             time = 0;
@@ -95,7 +107,7 @@ public class CustomerSystem : MonoBehaviour
 
     Grid SetRandomSeat ()
     {
-        int size = MainGameManager.Get.Floor.Seats.Count;
+        int size = MainGameManager.Get.Floor.EmptySeats.Count;
 
         //if there's no seat, return
         if (size == 0)
@@ -103,8 +115,11 @@ public class CustomerSystem : MonoBehaviour
 
         int spawnseat = Random.Range(0, size);
 
+        Grid seat = MainGameManager.Get.Floor.EmptySeats[spawnseat].GetComponentInParent<Grid>();
+        seat.transform.GetChild(0).GetComponent<CafeDeco>().Filled = true;
+
         //set position to the seat
-        return MainGameManager.Get.Floor.Seats[spawnseat].transform.GetComponentInParent<Grid>();
+        return seat;
 
     }
 

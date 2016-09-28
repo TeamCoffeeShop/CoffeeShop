@@ -5,8 +5,11 @@ using System.Collections.Generic;
 
 public class CustomerLogic : MonoBehaviour
 {
+    public RuntimeAnimatorController Seated_Motion;
     public GameObject OrderingBallon;
     public GameObject SpawnTimer;
+    //public Grid Seat;
+    public int SeatX = -1, SeatZ = -1;
 
     bool arrived = false;
     float walkSpeed = 20;
@@ -17,6 +20,7 @@ public class CustomerLogic : MonoBehaviour
     private float timer = 0.0f;
     private float customerspawntime = 5.0f;
     private int direction = -1;
+    private Billboard billboard;
 
     void Awake()
     {
@@ -26,20 +30,23 @@ public class CustomerLogic : MonoBehaviour
     public void OnLevelWasLoaded(int level)
     {
         //if not main level, deactivate customers
-        if (level != Scenes.MainLevel)
-            GetComponent<Animator>().enabled = false;
-        else
-            GetComponent<Animator>().enabled = true;
+        //if (level != Scenes.MainLevel)
+        //    GetComponent<Animator>().enabled = false;
+        //else
+        //    GetComponent<Animator>().enabled = true;
     }
 
     void Start ()
-    {        
+    {
+        billboard = GetComponent<Billboard>();
+        
         //Find Path to the seat
         FindPathToSeat();
     }
 
     void Update()
     {
+
         //if not arrived, walk
         if (!arrived)
         {
@@ -47,14 +54,16 @@ public class CustomerLogic : MonoBehaviour
             {
                 //after arriving, make order
                 OrderStart();
+                transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = Seated_Motion;
                 arrived = true;
             }
         }
         else
         {
-            if (GetComponent<Animator>().enabled == true)
+            // TEMPORARY
+            //if (GetComponent<Animator>().enabled == true)
             {
-                timer += (Time.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
+                timer += (InGameTime.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
                 
                 if(ST)
                 {
@@ -87,8 +96,9 @@ public class CustomerLogic : MonoBehaviour
         CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
     }
 
-    void LeaveCoffeeShop ()
+    public void LeaveCoffeeShop ()
     {
+        MainGameManager.Get.Floor.Grids[SeatX,SeatZ].transform.GetChild(0).GetComponent<CafeDeco>().Filled = false;
         DestroyObject(ST.GetComponent<CustomerSpawnTimer>().customer.gameObject);
         DestroyObject(ST);
         DestroyObject(OB);
@@ -120,7 +130,7 @@ public class CustomerLogic : MonoBehaviour
             Vector3 direction = (MoveGridList[0] - transform.position).normalized;
 
             //walk to the seat
-            transform.position += direction * walkSpeed * Time.deltaTime;
+            transform.position += direction * walkSpeed * InGameTime.deltaTime;
 
             //if past the seat
             Vector3 newdir = (MoveGridList[0] - transform.position).normalized;
@@ -128,7 +138,10 @@ public class CustomerLogic : MonoBehaviour
                 MoveGridList.RemoveAt(0);
 
             //rotate
-            transform.forward = direction;
+            if (direction.z > direction.x * 1.01f)
+                billboard.invert = false;
+            else
+                billboard.invert = true;
 
             return false;
         }

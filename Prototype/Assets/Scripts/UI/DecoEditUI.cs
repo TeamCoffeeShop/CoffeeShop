@@ -16,7 +16,7 @@ public class DecoEditUI : MonoBehaviour
 
         //grid
         EditingGrid = grid;
-        EditingGrid.renderer.material = EditingGrid.Selected_Material;
+        EditingGrid.GetComponent<Renderer>().material = EditingGrid.Selected_Material;
 
         //CafeDeco
         MovingCafeDeco = grid.transform.GetChild(0);
@@ -25,6 +25,9 @@ public class DecoEditUI : MonoBehaviour
         //camera
         MainGameManager.Get.maincamera.LookingAt(grid.transform.position + new Vector3(0, 5, 0));
         MainGameManager.Get.Floor.IsEditMode = EditMode.selected;
+
+        //Time
+        InGameTime.SetTimeScale(0.1f);
     }
 
     public void DisableSelected ()
@@ -40,8 +43,11 @@ public class DecoEditUI : MonoBehaviour
             MovingCafeDeco = null;
 
             //grid
-            EditingGrid.renderer.material = EditingGrid.Original_Material;
+            EditingGrid.GetComponent<Renderer>().material = EditingGrid.Original_Material;
             EditingGrid = null;
+
+            //Time
+            InGameTime.SetTimeScale(1);     
 
             gameObject.SetActive(false);
         }
@@ -85,9 +91,9 @@ public class DecoEditUI : MonoBehaviour
             MovingCafeDeco.transform.localPosition = new Vector3(0, MovingCafeDeco.GetComponent<CafeDeco>().Float, 0);
 
             //change selected grid
-            EditingGrid.renderer.material = EditingGrid.Original_Material;
+            EditingGrid.GetComponent<Renderer>().material = EditingGrid.Original_Material;
             EditingGrid = ClosestGrid;
-            EditingGrid.renderer.material = EditingGrid.Selected_Material;
+            EditingGrid.GetComponent<Renderer>().material = EditingGrid.Selected_Material;
         }
         //if already filled, return to the original one.
         else

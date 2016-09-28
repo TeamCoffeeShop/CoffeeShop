@@ -13,7 +13,6 @@ public class MainGameManager : MonoBehaviour
     public DecoEditUI DecoEditUI;
     public GameObject MinigameButton;
     public GameObject NPC1;
-    public FloorGridLogic Floor;
     public LookAt maincamera;
     public bool OnDialogue = true;
 
@@ -22,6 +21,7 @@ public class MainGameManager : MonoBehaviour
     public TimeOfDay TimeOfDay;
     public FinishedOrderList OrderHUD;
     public PlayerManager playerManager;
+    public FloorGridLogic Floor;
 
     void Awake()
     {
@@ -54,7 +54,6 @@ public class MainGameManager : MonoBehaviour
             DecoEditUI = UI.transform.FindChild("DecoEditUI").GetComponent<DecoEditUI>();
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
-            Floor = GameObject.Find("Structure").transform.FindChild("FloorGrid").GetComponent<FloorGridLogic>();
             maincamera = Camera.main.GetComponent<LookAt>();
         }
     }
