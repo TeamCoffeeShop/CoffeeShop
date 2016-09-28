@@ -222,7 +222,6 @@
      <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\Init.txt" />
      <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\PluginInfo.xml" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
-     <None Include="Assets\Wwise\Readme.txt" />
      <None Include="Assets\Resources\Xmls\3.txt" />
      <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
      <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Init.txt" />
@@ -233,6 +232,7 @@
      <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
      <None Include="Assets\StreamingAssets\desc.txt" />
      <None Include="Assets\WwiseSettings.xml" />
+     <None Include="Assets\Wwise\Readme.txt" />
      <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
      <None Include="Assets\Resources\Xmls\2.txt" />
  <Reference Include="UnityEngine.UI">
