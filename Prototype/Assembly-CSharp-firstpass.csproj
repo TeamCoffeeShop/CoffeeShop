@@ -45,15 +45,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
-     <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
-     <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
-     <None Include="Assets\Resources\Xmls\3.txt" />
-     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs" />
+     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+     <None Include="Assets\WwiseProject\IncrementalSoundBankData.xml" />
+     <None Include="Assets\Wwise\Version.txt" />
+     <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\Init.txt" />
+     <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\PluginInfo.xml" />
      <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
+     <None Include="Assets\Resources\Xmls\3.txt" />
+     <None Include="Assets\Resources\Xmls\Dialogue2.xml" />
+     <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Init.txt" />
+     <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\PluginInfo.xml" />
+     <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\SoundbanksInfo.xml" />
+     <None Include="Assets\WwiseProject\GeneratedSoundBanks\Windows\SoundbanksInfo.xml" />
+     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
+     <None Include="Assets\StreamingAssets\desc.txt" />
+     <None Include="Assets\WwiseSettings.xml" />
+     <None Include="Assets\Wwise\Readme.txt" />
      <None Include="Assets\Resources\Xmls\Dialogue1.xml" />
      <None Include="Assets\Resources\Xmls\2.txt" />
+     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
