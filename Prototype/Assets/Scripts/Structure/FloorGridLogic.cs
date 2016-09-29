@@ -103,6 +103,7 @@ public class FloorGridLogic : MonoBehaviour
         GameObject Tikitorch = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Tikitorch");
         GameObject Counter01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Counter 1");
         GameObject Divider01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Divider 1");
+        GameObject CatPalace = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_CatPalace");
 
 
         Grids[7, 1].GetComponent<Grid>().AddItemToGrid(Seat);
@@ -129,5 +130,7 @@ public class FloorGridLogic : MonoBehaviour
         Grids[5, 7].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
         Grids[5, 8].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
         Grids[5, 9].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
+
+        Grids[0, 0].GetComponent<Grid>().AddItemToGrid(CatPalace);
     }
 }
