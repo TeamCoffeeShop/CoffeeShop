@@ -163,7 +163,7 @@ public class HandGrinderScript : MonoBehaviour
             Vector3 playerToMouse = floorHit.point - transform.position;
 
             // Ensure the vector is entirely along the floor plane.
-            playerToMouse.y = 0f;
+            playerToMouse.y = 0;
 
             // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
             Quaternion newRotation = Quaternion.LookRotation(playerToMouse);

@@ -6,26 +6,26 @@ public class Grid : MonoBehaviour
     public Material  Selected_Material;
     public Material Selecting_Material;
     public Material  Original_Material;
-    public Renderer           renderer;
+    public Renderer           Renderer;
 
     public int X, Z;
 
     void Awake ()
     {
-        renderer = GetComponent<Renderer>();
-        Original_Material = renderer.material;
+        Renderer = GetComponent<Renderer>();
+        Original_Material = Renderer.material;
     }
 
     void OnMouseEnter()
     {
         if(MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
-            renderer.material = Selecting_Material;
+            Renderer.material = Selecting_Material;
     }
 
     void OnMouseExit ()
     {
         if (MainGameManager.Get.Floor.IsEditMode == EditMode.selecting)
-            renderer.material = Original_Material;
+            Renderer.material = Original_Material;
     }
 
     void OnMouseUp ()

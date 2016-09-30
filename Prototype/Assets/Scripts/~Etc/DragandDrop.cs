@@ -6,7 +6,7 @@ public class DragandDrop : MonoBehaviour {
     private Vector3 screenPoint;
     private Vector3 offset;
 
-    float DragHeight = 1;
+    float DragHeight = 51;
 
     bool Grab = false;
     bool InGrinder = false;
