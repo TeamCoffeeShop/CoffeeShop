@@ -26,6 +26,7 @@ public class CoffeeDrop : MonoBehaviour
     public int dropMaxTime;
     public float angle;
 
+    private GameObject handleObj;
     //coffee machine handle
     private GameObject handle;
     private bool CameraRotate;
@@ -48,6 +49,8 @@ public class CoffeeDrop : MonoBehaviour
     {
         ready = false;
         handle = GameObject.Find("EspressoMachineHandle");
+        handleObj = GameObject.Find("HandleObject");
+        handleObj.SetActive(true);
         handle.SetActive(false);
     }
 
@@ -62,13 +65,14 @@ public class CoffeeDrop : MonoBehaviour
         //when the coffee machine is not empty
         if (CoffeePowders.Count != 0)
         {
-           // ready = true;
+            ready = true;
         }
 
         if (ready == true)
         {
             if (CameraRotate)
             {
+                handleObj.SetActive(false);
                 Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
                 Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 Camera.main.transform.Rotate(35, 0, 0);
