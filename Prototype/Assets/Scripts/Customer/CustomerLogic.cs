@@ -89,11 +89,11 @@ public class CustomerLogic : MonoBehaviour
     void OrderStart ()
     {
         OB = Instantiate(OrderingBallon);
-        OB.transform.SetParent(GameObject.Find("[OrderHUD]").transform, false);
+        OB.transform.SetParent(MainGameManager.Get.OrderHUD.transform, false);
         OB.GetComponent<OrderingBallonLogic>().customer = transform;
 
         ST = Instantiate(SpawnTimer);
-        ST.transform.SetParent(GameObject.Find("[OrderHUD]").transform, false);
+        ST.transform.SetParent(MainGameManager.Get.OrderHUD.transform, false);
         ST.GetComponent<CustomerSpawnTimer>().customer = transform;
         ST.GetComponent<BarScript>().MaxValue = customerspawntime;
 

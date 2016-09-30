@@ -19,7 +19,10 @@ public class DialogueManager : MonoBehaviour {
     // .txt file 
     public TextAsset textFile;
 
+    // canvas
+    public GameObject Canvas;
     public bool isActive;
+    private bool isSceneChange;
 
     private bool isTyping = false;
     private bool cancelTyping = false;
@@ -27,9 +30,10 @@ public class DialogueManager : MonoBehaviour {
     public float typeSpeed;
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+    {
         DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
+        Canvas = GameObject.Find("[Canvas] Dialogue");
         MakeDialogueBox();
         string[] textLines;
 
@@ -40,11 +44,12 @@ public class DialogueManager : MonoBehaviour {
             ClassifyDialogue(textLines);
         }
 
-        RunDialogue();
+        //RunDialogue();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
         ////##CHANGE## The key set enter button temporaily, it will change
         //if(Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
@@ -164,7 +169,7 @@ public class DialogueManager : MonoBehaviour {
     // Make dialogue box
     private void MakeDialogueBox()
     {
-        var canvas = GameObject.Find("Canvas");
+        var canvas = GameObject.Find("[Canvas] Dialogue");
 
         dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);
         dialogue_window.transform.SetParent(canvas.transform, false);
@@ -223,5 +228,25 @@ public class DialogueManager : MonoBehaviour {
         }
         // When there is no dialogue, disable dialogue box
         dialogue_window.SetActive(false);       
+    }
+
+    public void SetSceneChange (bool active)
+    {
+        isSceneChange = active;
+
+        if(isSceneChange)
+        {
+            MainGameManager.Get.maincamera.LookingAtDialogue();
+            RunDialogue();
+        }
+        else
+        {
+            MainGameManager.Get.maincamera.Return();
+        }
+    }
+
+    public void ToggleSceneChange ()
+    {
+        SetSceneChange(!isSceneChange);
     }
 }
