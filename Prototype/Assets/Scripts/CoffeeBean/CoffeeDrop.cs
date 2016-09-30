@@ -24,13 +24,16 @@ public class CoffeeDrop : MonoBehaviour
     //time check for coffee drop
     int dropTime;
     public int dropMaxTime;
+    public float angle;
 
     //coffee machine handle
     private GameObject handle;
     private bool CameraRotate;
     private bool MinigamePrepare;
     private bool CheckGameStart = false;
-    public float angle = 0;
+    private bool DropPrepare = false;
+    private bool Drop = false;
+    public float eulerangle = 0;
 
     public float rotateSpeed;
     public float rotAngle;
@@ -65,28 +68,41 @@ public class CoffeeDrop : MonoBehaviour
         {
             if (CameraRotate)
             {
+                Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
                 Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 Camera.main.transform.Rotate(40, 0, 0);
-                handle.transform.Translate(0, 1, 0);
+                handle.transform.Translate(0, 1.2f, 0);
                 CameraRotate = false;
                 MinigamePrepare = true;
             }
             if (MinigamePrepare)
             {
                 HandleMotion();
+                MinigamePrepare = false;
                 CheckGameStart = true;
             }
             if (CheckGameStart)
             {
                 HandleMotion();
                 if (handle.transform.eulerAngles.y <= 150)
-            dir = -dir;
+                    dir = -dir;
                 if (handle.transform.eulerAngles.y >= 290)
-            dir = -dir;
+                    dir = -dir;
 
-                handle.transform.Rotate( new Vector3(0,1,0) * Time.deltaTime * dir * 60);
+                eulerangle = handle.transform.eulerAngles.y;
+                handle.transform.Rotate( new Vector3(0,1,0) * Time.deltaTime * dir * 60);              
             }
-            //DropCoffee();
+            if (DropPrepare)
+            {
+                Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+                Camera.main.transform.Rotate(-40, 0, 0);
+                CheckGameStart = false;
+                DropPrepare = false;
+                ready = false;
+                Drop = true;
+            }
+            if (Drop)
+                DropCoffee();
         }
     }
 
@@ -99,7 +115,7 @@ public class CoffeeDrop : MonoBehaviour
             dropTime = 0;
             if (CoffeePowders[0].CPowder == 1)
             {
-                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position + new Vector3(0, 55, 0), Quaternion.identity);
+                GameObject coffeedrop1 = (GameObject)Instantiate(CoffeeDrop1, transform.position + new Vector3(0, 20, 0), Quaternion.identity);
                 coffeedrop1.name = "CoffeeDrop1";
             }
 
@@ -118,11 +134,17 @@ public class CoffeeDrop : MonoBehaviour
     {
         if (ready)
         {
-            if (MinigamePrepare == false)
+            if (MinigamePrepare == false && CheckGameStart == false)
             {
                 if (gameObject.name == "CoffeeMachine")
                     CameraRotate = true;
             }
+        }
+
+        if (CheckGameStart)
+        {
+            if (handle.transform.eulerAngles.y < 250 && handle.transform.eulerAngles.y > 190)
+                DropPrepare = true;
         }
     }
 
