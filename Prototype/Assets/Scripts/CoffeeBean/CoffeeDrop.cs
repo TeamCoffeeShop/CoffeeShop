@@ -48,6 +48,7 @@ public class CoffeeDrop : MonoBehaviour
     {
         ready = false;
         handle = GameObject.Find("EspressoMachineHandle");
+        handle.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,7 +62,7 @@ public class CoffeeDrop : MonoBehaviour
         //when the coffee machine is not empty
         if (CoffeePowders.Count != 0)
         {
-            ready = true;
+           // ready = true;
         }
 
         if (ready == true)
@@ -70,13 +71,14 @@ public class CoffeeDrop : MonoBehaviour
             {
                 Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
                 Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
-                Camera.main.transform.Rotate(40, 0, 0);
+                Camera.main.transform.Rotate(35, 0, 0);
                 handle.transform.Translate(0, 1.2f, 0);
                 CameraRotate = false;
                 MinigamePrepare = true;
             }
             if (MinigamePrepare)
             {
+                handle.SetActive(true);
                 HandleMotion();
                 MinigamePrepare = false;
                 CheckGameStart = true;
@@ -95,7 +97,7 @@ public class CoffeeDrop : MonoBehaviour
             if (DropPrepare)
             {
                 Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
-                Camera.main.transform.Rotate(-40, 0, 0);
+                Camera.main.transform.Rotate(-35, 0, 0);
                 CheckGameStart = false;
                 DropPrepare = false;
                 ready = false;
@@ -121,7 +123,7 @@ public class CoffeeDrop : MonoBehaviour
 
             if (CoffeePowders[0].CPowder == 2)
             {
-                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position + new Vector3(0, 55, 0), Quaternion.identity);
+                GameObject coffeedrop2 = (GameObject)Instantiate(CoffeeDrop2, transform.position + new Vector3(0, 20, 0), Quaternion.identity);
                 coffeedrop2.name = "CoffeeDrop2";
             }
 

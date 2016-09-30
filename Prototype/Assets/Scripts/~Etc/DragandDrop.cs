@@ -10,6 +10,7 @@ public class DragandDrop : MonoBehaviour {
 
     bool Grab = false;
     bool InGrinder = false;
+    bool InHandle = false;
     bool InMachine = false;
     bool InCup = false;
 
@@ -18,6 +19,10 @@ public class DragandDrop : MonoBehaviour {
     HandGrinderScript hGrinderScript;
     CoffeeDrop cMachineScript;
 
+    //variable to access coffee machine handle
+    GameObject machineHandle;
+    GameObject coffeepowderInHandle;
+    GameObject coffeepowders;
     //variable to access coffeemachine
     GameObject coffeeMachine;
 
@@ -28,6 +33,9 @@ public class DragandDrop : MonoBehaviour {
     {
         handGrinder = GameObject.Find("HandGrinder");
         coffeeMachine = GameObject.Find("CoffeeMachine");
+        machineHandle = GameObject.Find("HandleObject");
+        coffeepowderInHandle = GameObject.Find("CoffeePowders");
+        coffeepowders = Resources.Load<GameObject>("Meshes/Assets/CoffeePowders");
         hGrinderScript = handGrinder.GetComponent<HandGrinderScript>();
         cMachineScript = coffeeMachine.GetComponent<CoffeeDrop>();
     }
@@ -87,6 +95,7 @@ public class DragandDrop : MonoBehaviour {
                     hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 1));
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
+                    
                 }
             }
 
@@ -100,12 +109,13 @@ public class DragandDrop : MonoBehaviour {
                     hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 2));
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
+
                 }
             }
         }
 
-        //when the player drags and drops the coffee powder into the coffee machine, destory the coffee powder object
-        if (InMachine == true)
+        //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
+        if (InHandle == true)
         {
             //for first coffee powder type
             if (gameObject.name == "CoffeePowder1")
@@ -117,6 +127,8 @@ public class DragandDrop : MonoBehaviour {
                     cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
+                    coffeepowderInHandle.transform.localScale += (new Vector3(0.02f, 0.02f, 0.02f));
+                    //coffeepowderInHandle = (GameObject)Instantiate(coffeepowders, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
                 }
             }
 
@@ -130,7 +142,22 @@ public class DragandDrop : MonoBehaviour {
                     cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
+                    coffeepowderInHandle.transform.localScale += (new Vector3(0.02f, 0.02f, 0.02f));
+                    //coffeepowderInHandle = (GameObject)Instantiate(coffeepowders, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
                 }
+            }
+        }
+
+        //when the player drags and drops the coffee machine handle into the coffee machine, destory the coffee powder object
+        if (InMachine == true)
+        {
+            if (gameObject.name == "HandleObject")
+            {
+                if(coffeepowderInHandle)
+                    Destroy(coffeepowderInHandle);
+                Destroy(machineHandle);
+                    // destroy the coffee machine handle object
+                    Destroy(gameObject);   
             }
         }
 
@@ -174,6 +201,15 @@ public class DragandDrop : MonoBehaviour {
         //if the player picks up the coffeepowder
         if (gameObject.tag == "CoffeePowder")
         {
+            if (col.gameObject == machineHandle && this.Grab == true)
+            {
+                InHandle = true;
+            }
+        }
+
+        //if the player picks up the coffeepowder
+        if (gameObject.tag == "HandleObject")
+        {
             if (col.gameObject == coffeeMachine && this.Grab == true)
             {
                 InMachine = true;
@@ -200,6 +236,14 @@ public class DragandDrop : MonoBehaviour {
             }
         }
         if (gameObject.tag == "CoffeePowder")
+        {
+            if (col.gameObject == machineHandle && this.Grab == true)
+            {
+                InHandle = false;
+            }
+        }
+
+        if (gameObject.tag == "HandleObject")
         {
             if (col.gameObject == coffeeMachine && this.Grab == true)
             {
