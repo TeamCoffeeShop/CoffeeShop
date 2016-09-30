@@ -7,7 +7,6 @@ public class MainGameManager : MonoBehaviour
     public static MainGameManager Get;
 
     //shortcuts
-    public DialogueManager dialoguemanager;
     public GameObject NPCManager;
     public GameObject UI;
     public DecoEditUI DecoEditUI;
@@ -22,6 +21,7 @@ public class MainGameManager : MonoBehaviour
     public FinishedOrderList OrderHUD;
     public PlayerManager playerManager;
     public FloorGridLogic Floor;
+    public DialogueManager DialogueManager;
 
     void Awake()
     {
@@ -49,8 +49,7 @@ public class MainGameManager : MonoBehaviour
         if(Scene == Scenes.MainLevel)
         {
             NPCManager = GameObject.Find("NPCManager");
-            dialoguemanager = GameObject.Find("DialogueSystem").GetComponent<DialogueManager>();
-            UI = GameObject.Find("UI");
+            UI = GameObject.Find("[Canvas] UI");
             DecoEditUI = UI.transform.FindChild("DecoEditUI").GetComponent<DecoEditUI>();
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
@@ -66,13 +65,13 @@ public class MainGameManager : MonoBehaviour
             if (OnDialogue)
             {
                 MinigameButton.SetActive(false);
-                dialoguemanager.GetComponentInChildren<Canvas>().enabled = true;
+                //DialogueManager.Canvas.SetActive(true);
                 //NPC1.SetActive(true);
             }
             else
             {
                 MinigameButton.SetActive(true);
-                dialoguemanager.GetComponentInChildren<Canvas>().enabled = false;
+                //DialogueManager.Canvas.SetActive(false);
                 //NPC1.SetActive(false);
             }
         }
