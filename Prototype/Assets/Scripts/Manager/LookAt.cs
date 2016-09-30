@@ -43,6 +43,7 @@ public class LookAt : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.65f,27.69f,-0.93f);
         MainGameManager.Get.UI.SetActive(false);
         MainGameManager.Get.OrderHUD.gameObject.SetActive(false);
+        MainGameManager.Get.dialoguecamera.SetActive(true);
         follow = true;
     }
 
@@ -53,6 +54,7 @@ public class LookAt : MonoBehaviour
         GetComponent<BlurOptimized>().enabled = false;
         MainGameManager.Get.UI.SetActive(true);
         MainGameManager.Get.OrderHUD.gameObject.SetActive(true);
+        MainGameManager.Get.dialoguecamera.SetActive(false);
         follow = false;
     }
 }

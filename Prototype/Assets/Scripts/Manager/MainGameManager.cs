@@ -13,6 +13,7 @@ public class MainGameManager : MonoBehaviour
     public GameObject MinigameButton;
     public GameObject NPC1;
     public LookAt maincamera;
+    public GameObject dialoguecamera;
     public bool OnDialogue = true;
 
     //shortcut permenant
@@ -54,6 +55,8 @@ public class MainGameManager : MonoBehaviour
             MinigameButton = UI.transform.FindChild("MiniGame").gameObject;
             NPC1 = GameObject.Find("NPC_HeadTilt");
             maincamera = Camera.main.GetComponent<LookAt>();
+            dialoguecamera = GameObject.Find("Dialogue Camera");
+            dialoguecamera.SetActive(false);
         }
     }
 
