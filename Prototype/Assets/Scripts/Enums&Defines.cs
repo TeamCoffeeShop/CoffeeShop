@@ -206,7 +206,7 @@ public static class UIEffect
 
     static bool SetCanvas ()
     {
-        Canvas = GameObject.Find("UI");
+        Canvas = MainGameManager.Get.UI;
 
         return Canvas != null;
     }
