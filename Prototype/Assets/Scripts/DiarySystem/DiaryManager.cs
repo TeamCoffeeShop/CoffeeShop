@@ -23,26 +23,29 @@ public class DiaryManager : MonoBehaviour
     private Image NPCInformationImage;
     private Image NPCInformationButtonImage;
 
-    bool StatusBool = false;
+    public bool StatusBool = false;
     bool CalendarBool = false;
     bool CalendarDetailBool = false;
     bool NPCBool = false;
+    bool NPCDetailBool = false;
 
     GameObject[] Dates;
+    GameObject[] NPCs;
     GameObject Times;
 
     // Use this for initialization
     void Start ()
     {
-        //All of the Single Date Icon
         Dates = GameObject.FindGameObjectsWithTag("Date");
         Times = GameObject.FindGameObjectWithTag("Time");
-       
+        NPCs = GameObject.FindGameObjectsWithTag("NPCList");
+
         //Initial Setting
         StatusBool = true;
         CalendarBool = false;
         NPCBool = false;
         CalendarDetailBool = false;
+        NPCDetailBool = false;
         
         //Panel for Each Section
         StatusPanelImage = StatusPanel.GetComponent<Image>();
@@ -54,20 +57,27 @@ public class DiaryManager : MonoBehaviour
         DateInformationButtonImage = DateInformationButton.GetComponent<Image>();
         DateInformationImage.enabled = false;
         DateInformationButtonImage.enabled = false;
+
+        //NPC Detail Screen
+        NPCInformationImage = NPCInformation.GetComponent<Image>(); ;
+        NPCInformationButtonImage = NPCInformationButton.GetComponent<Image>();
+        NPCInformationImage.enabled = false;
+        NPCInformationButtonImage.enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         TabCheck();
-        CalendarStatusCheck();       
+        CalendarStatusCheck();
+        NPCStatusCheck();     
     }
 
+    //Exit Diary Level
     public void BackToLevel(int level)
     {
         if (MainGameManager.Get.TimeOfDay.enabled == false)
         {
-            Debug.Log("a");
             MainGameManager.Get.TimeOfDay.enabled = true;
         }
         SceneManager.LoadScene(level);
@@ -79,6 +89,7 @@ public class DiaryManager : MonoBehaviour
         CalendarBool = false;
         CalendarDetailBool = false;        
         NPCBool = false;
+        NPCDetailBool = false;
     }
 
     public void Calendar ()
@@ -87,6 +98,7 @@ public class DiaryManager : MonoBehaviour
         CalendarBool = true;
         CalendarDetailBool = false;        
         NPCBool = false;
+        NPCDetailBool = false;
     }
 
     public void NPC ()
@@ -94,12 +106,18 @@ public class DiaryManager : MonoBehaviour
         StatusBool = false;
         CalendarBool = false;
         CalendarDetailBool = false;        
-        NPCBool = true;        
+        NPCBool = true;
+        NPCDetailBool = false;
     }
 
     public void DateTouch()
     {
         CalendarDetailBool = !CalendarDetailBool;
+    }
+
+    public void NPCTouch()
+    {
+        NPCDetailBool = !NPCDetailBool;
     }
 
     void CalendarStatusCheck()
@@ -137,6 +155,42 @@ public class DiaryManager : MonoBehaviour
             }
             DateInformationImage.enabled = false;
             DateInformationButtonImage.enabled = false;
+        }
+    }
+
+    void NPCStatusCheck()
+    {
+        if (NPCBool)
+        {
+            if (NPCDetailBool)
+            {
+                foreach (GameObject NPC in NPCs)
+                {
+                    NPC.GetComponent<Button>().enabled = false;
+                }
+                NPCInformationImage.enabled = true;
+                NPCInformationButtonImage.enabled = true;
+            }
+            else
+            {
+                foreach (GameObject NPC in NPCs)
+                {
+                    NPC.GetComponent<Image>().enabled = true;
+                    NPC.GetComponent<Button>().enabled = true;
+                }
+                NPCInformationImage.enabled = false;
+                NPCInformationButtonImage.enabled = false;
+            }
+        }
+        else
+        {
+            foreach (GameObject NPC in NPCs)
+            {
+                NPC.GetComponent<Image>().enabled = false;
+                NPC.GetComponent<Button>().enabled = false;
+            }
+            NPCInformationImage.enabled = false;
+            NPCInformationButtonImage.enabled = false;
         }
     }
 

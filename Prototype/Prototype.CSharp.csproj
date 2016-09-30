@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -66,7 +68,6 @@
     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
-    <Compile Include="Assets\Scripts\Calendar\DiaryScript.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
     <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Assets\Scripts\Dialogue\TutorialTemporary.cs" />
     <Compile Include="Assets\Scripts\DiarySystem\DateSystem.cs" />
     <Compile Include="Assets\Scripts\DiarySystem\DiaryManager.cs" />
+    <Compile Include="Assets\Scripts\DiarySystem\DiaryScript.cs" />
+    <Compile Include="Assets\Scripts\DiarySystem\DiaryStatus.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
