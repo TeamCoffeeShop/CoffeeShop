@@ -30,6 +30,7 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().Off();
         OrigianlPosition = gameObject.transform.position;
     }
 
