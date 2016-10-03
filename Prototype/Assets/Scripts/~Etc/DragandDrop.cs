@@ -101,7 +101,14 @@ public class DragandDrop : MonoBehaviour {
                     hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 1));
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
-                    
+                    //Rotate Camera
+                    Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                    Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                    Camera.main.transform.Rotate(90, 0, 0);
+                    //Set grinder status to start status
+                    hGrinderScript.rotationImage.enabled = true;
+                    hGrinderScript.coffeeBeanCheck = true;
+                    hGrinderScript.totalRotation = 0;
                 }
             }
 
@@ -115,13 +122,16 @@ public class DragandDrop : MonoBehaviour {
                     hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 2));
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
-
+                    //Rotate Camera
+                    Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                    Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                    Camera.main.transform.Rotate(90, 0, 0);
+                    //Set grinder status to start status
+                    hGrinderScript.rotationImage.enabled = true;
+                    hGrinderScript.coffeeBeanCheck = true;
+                    hGrinderScript.totalRotation = 0;
                 }
             }
-            //Rotate Camera
-            Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-            Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-            Camera.main.transform.Rotate(90, 0, 0);
         }
 
         //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
@@ -167,13 +177,16 @@ public class DragandDrop : MonoBehaviour {
         {
             if (gameObject.name == "CoffeeMachineHandle")
             {
+                if (cMachineScript.CoffeePowders.Count != 0)
+                { 
                 if(coffeepowderInHandle)
-                    Destroy(coffeepowderInHandle);
+                Destroy(coffeepowderInHandle);
 
                 Destroy(machineHandle);
-                    // destroy the coffee machine handle object
+                // destroy the coffee machine handle object
                 Destroy(gameObject);
                 coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
+                }
             }
         }
 
