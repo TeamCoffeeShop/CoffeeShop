@@ -20,6 +20,17 @@ public class CameraLogic : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        //temporary!!!
+        if (Input.GetKey(KeyCode.A))
+        {
+            TargetPosition.x -= 10 * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            TargetPosition.x += 10 * Time.deltaTime;
+        }
+
+
         Vector3 diff = TargetPosition - transform.position;
         if (diff.magnitude < 0.001f)
         {
