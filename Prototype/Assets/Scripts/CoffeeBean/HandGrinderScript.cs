@@ -19,6 +19,11 @@ public class HandGrinderScript : MonoBehaviour
     //bool type for rotation
     bool CheckGrind = false;
 
+    //bool type for checking coffee grinder game
+    bool CheckGameStop = false;
+
+    //UI image for rotation
+    public Image rotationImage;
     public List<CoffeeBean> CoffeeBeans = new List<CoffeeBean>();
 
     //bool type for rotation check
@@ -56,6 +61,7 @@ public class HandGrinderScript : MonoBehaviour
         coffeeBar.Value = totalRotation;
         coffeeBar.MaxValue = stanRotation;
         coffeeBar.GetComponent<Image>().enabled = false;
+        rotationImage.enabled = false;
     }
 
     void FixedUpdate()
@@ -93,7 +99,7 @@ public class HandGrinderScript : MonoBehaviour
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (totalRotation > stanRotation)
+        if(CheckGameStop)//if (totalRotation > stanRotation)
         {
             Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
             Camera.main.transform.Rotate(-90, 0, 0);
@@ -114,6 +120,7 @@ public class HandGrinderScript : MonoBehaviour
 
             totalRotation = 0;
             CoffeeBeans.Clear();
+            CheckGameStop = false;
         }
 
         if (CheckGrind == true)
@@ -164,12 +171,15 @@ public class HandGrinderScript : MonoBehaviour
     void OnMouseDown()
     {
         CheckGrind = true;
+        rotationImage.enabled = true;
         //Cursor.visible = false;
     }
 
     void OnMouseUp()
     {
         CheckGrind = false;
+        CheckGameStop = true;
+        rotationImage.enabled = false;
         //Cursor.visible = true;
     }
 
