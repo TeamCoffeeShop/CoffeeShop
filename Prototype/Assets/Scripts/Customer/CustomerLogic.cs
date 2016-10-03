@@ -106,9 +106,16 @@ public class CustomerLogic : MonoBehaviour
     public void LeaveCoffeeShop ()
     {
         MainGameManager.Get.Floor.Grids[SeatX,SeatZ].transform.GetChild(0).GetComponent<CafeDeco>().Filled = false;
-        DestroyObject(ST.GetComponent<CustomerSpawnTimer>().customer.gameObject);
-        DestroyObject(ST);
-        DestroyObject(OB);
+        if(ST != null)
+        {
+            DestroyObject(ST.GetComponent<CustomerSpawnTimer>().customer.gameObject);
+            DestroyObject(ST);
+        }
+        if(OB != null)
+        {
+            DestroyObject(OB);
+        }
+
         DestroyObject(this.gameObject);
     }
 

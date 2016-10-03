@@ -6,6 +6,10 @@ public class MainGameManager : MonoBehaviour
     //public link
     public static MainGameManager Get;
 
+    //Canvas
+    public CalculateScene Canvas_TimeOfDay;
+    public bool OnDialogue = true;
+
     //shortcuts
     public GameObject NPCManager;
     public GameObject UI;
@@ -13,7 +17,6 @@ public class MainGameManager : MonoBehaviour
     public GameObject MinigameButton;
     public GameObject NPC1;
     public LookAt maincamera;
-    public bool OnDialogue = true;
 
     //shortcut permenant
     public int Scene;
