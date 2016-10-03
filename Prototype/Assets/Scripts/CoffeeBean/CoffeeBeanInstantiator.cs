@@ -30,7 +30,7 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().Off();
+        SetMode(Mode.off);
         OrigianlPosition = gameObject.transform.position;
     }
 
@@ -64,7 +64,7 @@ public class CoffeeBeanInstantiator : MonoBehaviour
     public void ToggleMode()
     {
         if(!ShakeReady)
-            SetMode(IsMode != Mode.off ? Mode.off : Mode.on);
+            SetMode(Mode.on);
     }
 
     public void SetMode(Mode mode)
@@ -104,7 +104,12 @@ public class CoffeeBeanInstantiator : MonoBehaviour
                 break;
         }
         StartCoroutine(MakeCoffeeBean());
-        GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().Off();
+        SetMode(Mode.off);
+    }
+
+    public void CancleCoffeeBeanSelection()
+    {
+        SetMode(Mode.off);
     }
 
     IEnumerator MakeCoffeeBean()
