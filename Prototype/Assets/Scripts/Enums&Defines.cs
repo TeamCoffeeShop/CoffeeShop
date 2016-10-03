@@ -10,6 +10,7 @@ public static class Scenes
     public const int Minigame = 2;
     public const int NextDay = 3;
     public const int NarratorLevel = 4;
+    public const int Diary = 5;
 
     public static int asInt(Scene scene)
     {

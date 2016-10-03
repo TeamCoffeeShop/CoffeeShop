@@ -7,7 +7,6 @@ public class DiaryStatus : MonoBehaviour
 {
     public int currentStatus;
     GameObject gmObject;
-    bool diaryStatus;
 
     private float ratio;
 
@@ -55,35 +54,10 @@ public class DiaryStatus : MonoBehaviour
             default:
                 break;
         }
-
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        diaryStatus = GameObject.Find("DiaryManager").GetComponent<DiaryManager>().StatusBool;
-
-        if (diaryStatus)
-        {
-            if (currentStatus == 1 || currentStatus == 2 || currentStatus == 3 || currentStatus == 6)
-            {
-                gameObject.GetComponent<Text>().enabled = true;
-            }
-            else
-            {
-                gameObject.GetComponent<Image>().enabled = true;
-            }
-        }
-        else
-        {
-            if (currentStatus == 1 || currentStatus == 2 || currentStatus == 3 || currentStatus == 6)
-            {
-                gameObject.GetComponent<Text>().enabled = false;
-            }
-            else
-            {
-                gameObject.GetComponent<Image>().enabled = false;
-            }
-        }
     }
 }
