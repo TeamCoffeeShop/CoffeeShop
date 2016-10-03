@@ -8,6 +8,7 @@ public class MainGameManager : MonoBehaviour
 
     //Canvas
     public CalculateScene Canvas_TimeOfDay;
+    public DiaryManager Canvas_Diary;
     public bool OnDialogue = true;
 
     //shortcuts

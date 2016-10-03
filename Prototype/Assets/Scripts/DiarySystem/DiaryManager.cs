@@ -5,28 +5,28 @@ using UnityEngine.UI;
 
 public class DiaryManager : MonoBehaviour
 {
-    public GameObject StatusPanel;
-    public GameObject CalendarPanel;
-    public GameObject NPCPanel;
+    public DiarySelection StatusPanel;
+    public DiarySelection CalendarPanel;
+    public DiarySelection NPCPanel;
     public GameObject DateInformation;
     public GameObject NPCInformation;
 
     GameObject[] DateDetailButton;
     GameObject[] NPCDetailButton;
 
-    // Use this for initialization
-    void Start ()
+    public void TurnOn ()
     {
-        StatusPanel.GetComponent<DiarySelection>().On();
-        CalendarPanel.GetComponent<DiarySelection>().Off();
-        NPCPanel.GetComponent<DiarySelection>().Off();        
+        InGameTime.SetTimeScale(0);
+        StatusPanel.On();
+        CalendarPanel.Off();
+        NPCPanel.Off();  
+        gameObject.SetActive(true);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    public void TurnOff ()
     {
-        DateDetailButton = GameObject.FindGameObjectsWithTag("DateDetail");
-        NPCDetailButton = GameObject.FindGameObjectsWithTag("NPCDetail");
+        InGameTime.SetTimeScale(1);
+        gameObject.SetActive(false);
     }
 
     //diary section selection
@@ -35,28 +35,27 @@ public class DiaryManager : MonoBehaviour
         DateInformation.GetComponent<DiarySelection>().Off();
         NPCInformation.GetComponent<DiarySelection>().Off();
 
+        StatusPanel.Off();
+        CalendarPanel.Off();
+        NPCPanel.Off();
         switch (WhatSection)
         {
             case 1:
-                StatusPanel.GetComponent<DiarySelection>().On();
-                CalendarPanel.GetComponent<DiarySelection>().Off();
-                NPCPanel.GetComponent<DiarySelection>().Off();
+                StatusPanel.On();
                 break;
             case 2:
-                StatusPanel.GetComponent<DiarySelection>().Off();
-                CalendarPanel.GetComponent<DiarySelection>().On();
-                NPCPanel.GetComponent<DiarySelection>().Off();
+                CalendarPanel.On();
                 break;
             case 3:
-                StatusPanel.GetComponent<DiarySelection>().Off();
-                CalendarPanel.GetComponent<DiarySelection>().Off();
-                NPCPanel.GetComponent<DiarySelection>().On();
+                NPCPanel.On();
                 break;
         }        
     }
 
     public void DateInfo(bool Status)
     {
+        DateDetailButton = GameObject.FindGameObjectsWithTag("DateDetail");
+
         if (Status)
         {
             DateInformation.GetComponent<DiarySelection>().On();
@@ -77,6 +76,8 @@ public class DiaryManager : MonoBehaviour
 
     public void NPCInfo(bool Status)
     {
+        NPCDetailButton = GameObject.FindGameObjectsWithTag("NPCDetail");
+
         if (Status)
         {
             NPCInformation.GetComponent<DiarySelection>().On();
@@ -93,12 +94,5 @@ public class DiaryManager : MonoBehaviour
                 NPC.GetComponent<Button>().enabled = true;
             }
         }
-    }
-
-    //exit diary level
-    public void BackToLevel()
-    {
-        InGameTime.SetTimeScale(1);
-        SceneManager.LoadScene(1);
     }
 }

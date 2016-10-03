@@ -8,9 +8,6 @@ public static class Scenes
     public const int MenuScreen = 0;
     public const int MainLevel = 1;
     public const int Minigame = 2;
-    public const int NextDay = 3;
-    public const int NarratorLevel = 4;
-    public const int Diary = 5;
 
     public static int asInt(Scene scene)
     {
@@ -22,8 +19,6 @@ public static class Scenes
                 return MainLevel;
             case "Menu":
                 return MenuScreen;
-            case "Narration":
-                return NarratorLevel;
         }
 
         return 0;
