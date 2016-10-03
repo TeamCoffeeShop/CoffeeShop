@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\DiarySystem\DateSystem.cs" />
     <Compile Include="Assets\Scripts\DiarySystem\DiaryManager.cs" />
     <Compile Include="Assets\Scripts\DiarySystem\DiaryScript.cs" />
+    <Compile Include="Assets\Scripts\DiarySystem\DiarySelection.cs" />
     <Compile Include="Assets\Scripts\DiarySystem\DiaryStatus.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />

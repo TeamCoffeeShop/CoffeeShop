@@ -4,35 +4,34 @@ using UnityEngine.UI;
 
 public class CalculateScene : MonoBehaviour
 {
-    private GameObject gameobject;
+    public Text CurrentMoney;
+    public Text MaintenanceExpense;
+    public Text Total;
 
-    public GameObject CurrentMoney;
-    public GameObject MaintenanceExpense;
-    public GameObject Total;
-	// Use this for initialization
-	void Start () {
-        MainGameManager.Get.TimeOfDay.enabled = false;
+	public void TurnOn ()
+    {
+        gameObject.SetActive(true);
+        InGameTime.SetTimeScale(0);
+        
+        //input current data
         float current_money = MainGameManager.Get.playerManager.player.money;
         float maintenance_expense = 200;
         float total = current_money - maintenance_expense;
         MainGameManager.Get.playerManager.SubtractMoneyGradully(maintenance_expense);
 
-        gameobject = GameObject.Find("CustomerList(Clone)");
-        Destroy(gameobject);
+        //delete all customers
+        foreach (GameObject customer in GameObject.FindGameObjectsWithTag("Customer"))
+            customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
 
-
-        CurrentMoney = GameObject.Find("CurrentMoney");
-        CurrentMoney.GetComponent<Text>().text = "Current Money : " + current_money;
-
-        MaintenanceExpense = GameObject.Find("MaintenanceExpense");
-        MaintenanceExpense.GetComponent<Text>().text = "Maintenance Expense : " + maintenance_expense;
-
-        Total = GameObject.Find("Total");
-        Total.GetComponent<Text>().text = "Total : " + total;
+        //display data
+        CurrentMoney.text = "Current Money : " + current_money;
+        MaintenanceExpense.text = "Maintenance Expense : " + maintenance_expense;
+        Total.text = "Total : " + total;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    public void TurnOff ()
+    {
+        gameObject.SetActive(false);
+        InGameTime.SetTimeScale(1);
+    }
 }

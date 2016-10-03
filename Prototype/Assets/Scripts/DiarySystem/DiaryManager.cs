@@ -5,222 +5,100 @@ using UnityEngine.UI;
 
 public class DiaryManager : MonoBehaviour
 {
-    //Public GameObjects
     public GameObject StatusPanel;
     public GameObject CalendarPanel;
     public GameObject NPCPanel;
     public GameObject DateInformation;
-    public GameObject DateInformationButton;
     public GameObject NPCInformation;
-    public GameObject NPCInformationButton;
 
-    //Public Images
-    private Image StatusPanelImage;
-    private Image CalendarPanelImage;
-    private Image NPCPanelImage;
-    private Image DateInformationImage;
-    private Image DateInformationButtonImage;
-    private Image NPCInformationImage;
-    private Image NPCInformationButtonImage;
-
-    public bool StatusBool = false;
-    bool CalendarBool = false;
-    bool CalendarDetailBool = false;
-    bool NPCBool = false;
-    bool NPCDetailBool = false;
-
-    GameObject[] Dates;
-    GameObject[] NPCs;
-    GameObject Times;
+    GameObject[] DateDetailButton;
+    GameObject[] NPCDetailButton;
 
     // Use this for initialization
     void Start ()
     {
-        Dates = GameObject.FindGameObjectsWithTag("Date");
-        Times = GameObject.FindGameObjectWithTag("Time");
-        NPCs = GameObject.FindGameObjectsWithTag("NPCList");
-
-        //Initial Setting
-        StatusBool = true;
-        CalendarBool = false;
-        NPCBool = false;
-        CalendarDetailBool = false;
-        NPCDetailBool = false;
-        
-        //Panel for Each Section
-        StatusPanelImage = StatusPanel.GetComponent<Image>();
-        CalendarPanelImage = CalendarPanel.GetComponent<Image>();
-        NPCPanelImage = NPCPanel.GetComponent<Image>();
-
-        //Date Detail Screen
-        DateInformationImage = DateInformation.GetComponent<Image>();
-        DateInformationButtonImage = DateInformationButton.GetComponent<Image>();
-        DateInformationImage.enabled = false;
-        DateInformationButtonImage.enabled = false;
-
-        //NPC Detail Screen
-        NPCInformationImage = NPCInformation.GetComponent<Image>(); ;
-        NPCInformationButtonImage = NPCInformationButton.GetComponent<Image>();
-        NPCInformationImage.enabled = false;
-        NPCInformationButtonImage.enabled = false;
+        StatusPanel.GetComponent<DiarySelection>().On();
+        CalendarPanel.GetComponent<DiarySelection>().Off();
+        NPCPanel.GetComponent<DiarySelection>().Off();        
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        TabCheck();
-        CalendarStatusCheck();
-        NPCStatusCheck();     
+        DateDetailButton = GameObject.FindGameObjectsWithTag("DateDetail");
+        NPCDetailButton = GameObject.FindGameObjectsWithTag("NPCDetail");
     }
 
-    //Exit Diary Level
-    public void BackToLevel(int level)
+    //diary section selection
+    public void SelectSection(int WhatSection)
     {
-        if (MainGameManager.Get.TimeOfDay.enabled == false)
+        DateInformation.GetComponent<DiarySelection>().Off();
+        NPCInformation.GetComponent<DiarySelection>().Off();
+
+        switch (WhatSection)
         {
-            MainGameManager.Get.TimeOfDay.enabled = true;
-        }
-        SceneManager.LoadScene(level);
+            case 1:
+                StatusPanel.GetComponent<DiarySelection>().On();
+                CalendarPanel.GetComponent<DiarySelection>().Off();
+                NPCPanel.GetComponent<DiarySelection>().Off();
+                break;
+            case 2:
+                StatusPanel.GetComponent<DiarySelection>().Off();
+                CalendarPanel.GetComponent<DiarySelection>().On();
+                NPCPanel.GetComponent<DiarySelection>().Off();
+                break;
+            case 3:
+                StatusPanel.GetComponent<DiarySelection>().Off();
+                CalendarPanel.GetComponent<DiarySelection>().Off();
+                NPCPanel.GetComponent<DiarySelection>().On();
+                break;
+        }        
     }
 
-    public void Status ()
+    public void DateInfo(bool Status)
     {
-        StatusBool = true;
-        CalendarBool = false;
-        CalendarDetailBool = false;        
-        NPCBool = false;
-        NPCDetailBool = false;
-    }
-
-    public void Calendar ()
-    {
-        StatusBool = false;
-        CalendarBool = true;
-        CalendarDetailBool = false;        
-        NPCBool = false;
-        NPCDetailBool = false;
-    }
-
-    public void NPC ()
-    {
-        StatusBool = false;
-        CalendarBool = false;
-        CalendarDetailBool = false;        
-        NPCBool = true;
-        NPCDetailBool = false;
-    }
-
-    public void DateTouch()
-    {
-        CalendarDetailBool = !CalendarDetailBool;
-    }
-
-    public void NPCTouch()
-    {
-        NPCDetailBool = !NPCDetailBool;
-    }
-
-    void CalendarStatusCheck()
-    {
-        if (CalendarBool)
+        if (Status)
         {
-            Times.GetComponent<Text>().enabled = true;
-            if (CalendarDetailBool)
+            DateInformation.GetComponent<DiarySelection>().On();
+            foreach (GameObject Date in DateDetailButton)
             {
-                foreach (GameObject Date in Dates)
-                {
-                    Date.GetComponent<Button>().enabled = false;
-                }
-                DateInformationImage.enabled = true;
-                DateInformationButtonImage.enabled = true;
-            }
-            else
-            {
-                foreach (GameObject Date in Dates)
-                {
-                    Date.GetComponent<Image>().enabled = true;
-                    Date.GetComponent<Button>().enabled = true;
-                }
-                DateInformationImage.enabled = false;
-                DateInformationButtonImage.enabled = false;
-            }
-        }
-        else
-        {
-            Times.GetComponent<Text>().enabled = false;
-            foreach (GameObject Date in Dates)
-            {
-                Date.GetComponent<Image>().enabled = false;
                 Date.GetComponent<Button>().enabled = false;
             }
-            DateInformationImage.enabled = false;
-            DateInformationButtonImage.enabled = false;
-        }
-    }
-
-    void NPCStatusCheck()
-    {
-        if (NPCBool)
-        {
-            if (NPCDetailBool)
-            {
-                foreach (GameObject NPC in NPCs)
-                {
-                    NPC.GetComponent<Button>().enabled = false;
-                }
-                NPCInformationImage.enabled = true;
-                NPCInformationButtonImage.enabled = true;
-            }
-            else
-            {
-                foreach (GameObject NPC in NPCs)
-                {
-                    NPC.GetComponent<Image>().enabled = true;
-                    NPC.GetComponent<Button>().enabled = true;
-                }
-                NPCInformationImage.enabled = false;
-                NPCInformationButtonImage.enabled = false;
-            }
         }
         else
         {
-            foreach (GameObject NPC in NPCs)
+            DateInformation.GetComponent<DiarySelection>().Off();
+            foreach (GameObject Date in DateDetailButton)
             {
-                NPC.GetComponent<Image>().enabled = false;
+                Date.GetComponent<Button>().enabled = true;
+            }
+        }
+    }
+
+    public void NPCInfo(bool Status)
+    {
+        if (Status)
+        {
+            NPCInformation.GetComponent<DiarySelection>().On();
+            foreach (GameObject NPC in NPCDetailButton)
+            {
                 NPC.GetComponent<Button>().enabled = false;
             }
-            NPCInformationImage.enabled = false;
-            NPCInformationButtonImage.enabled = false;
+        }
+        else
+        {
+            NPCInformation.GetComponent<DiarySelection>().Off();
+            foreach (GameObject NPC in NPCDetailButton)
+            {
+                NPC.GetComponent<Button>().enabled = true;
+            }
         }
     }
 
-    void TabCheck()
+    //exit diary level
+    public void BackToLevel()
     {
-        if (StatusBool)
-        {
-            StatusPanelImage.enabled = true;
-        }
-        else
-        {
-            StatusPanelImage.enabled = false;
-        }
-
-        if (CalendarBool)
-        {
-            CalendarPanelImage.enabled = true;
-        }
-        else
-        {
-            CalendarPanelImage.enabled = false;
-        }
-
-        if (NPCBool)
-        {
-            NPCPanelImage.enabled = true;
-        }
-        else
-        {
-            NPCPanelImage.enabled = false;
-        }
-    }    
+        InGameTime.SetTimeScale(1);
+        SceneManager.LoadScene(1);
+    }
 }
