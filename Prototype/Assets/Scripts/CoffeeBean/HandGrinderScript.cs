@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic; // for list
+using UnityEngine.UI;
+
 
 public class HandGrinderScript : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class HandGrinderScript : MonoBehaviour
     ////////////////////////////////////
     ////////////////////////////////////
 
+    public BarScript coffeeBar;
     //bool type for rotation
     bool CheckGrind = false;
 
@@ -31,6 +34,7 @@ public class HandGrinderScript : MonoBehaviour
     public GameObject CoffeePowder1;
     public GameObject CoffeePowder2;
 
+    private bool CameraRotateCheck;
     //rotation degree function variables
     ////////////////////////////////////
     ////////////////////////////////////
@@ -49,6 +53,9 @@ public class HandGrinderScript : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
+        coffeeBar.Value = totalRotation;
+        coffeeBar.MaxValue = stanRotation;
+        coffeeBar.GetComponent<Image>().enabled = false;
     }
 
     void FixedUpdate()
@@ -88,6 +95,11 @@ public class HandGrinderScript : MonoBehaviour
 
         if (totalRotation > stanRotation)
         {
+            Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+            Camera.main.transform.Rotate(-90, 0, 0);
+
+            coffeeBar.gameObject.SetActive(false);
+
             if (CoffeeBeans[0].CBean == 1)
             {
                 GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
@@ -116,10 +128,24 @@ public class HandGrinderScript : MonoBehaviour
         //when the list is not empty
         if (CoffeeBeans.Count != 0)
         {
+            if (CameraRotateCheck == false)
+            {
+                //Rotate Camera
+                Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                Camera.main.transform.Rotate(90, 0, 0);
+                coffeeBar.GetComponent<Image>().enabled = true;
+                CameraRotateCheck = true;
+            }
             //check what kind of coffee bean is in the grinder,
             //make coffee powder using the coffee bean
             if (CoffeeBeans[0].Check == true)
             {
+                // Save coffee content
+                coffeeBar.Value = totalRotation;
+                coffeeBar.MaxValue = stanRotation;
+                CoffeeBeans[0].coffeecontent = (int)totalRotation;
+
                 if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
                {
                     //player should rotate at least certain degree to grind the coffee bean

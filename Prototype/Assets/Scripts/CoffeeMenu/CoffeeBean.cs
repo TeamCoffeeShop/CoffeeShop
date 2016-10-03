@@ -10,6 +10,8 @@ public class CoffeeBean
 {
     Bean beanName;
 
+    public int coffeecontent;
+
     public bool Check;
     public int CBean;
 
