@@ -21,12 +21,12 @@ public class MenuScript : MonoBehaviour {
     public void GotoLevel(int level)
     {
         //stop time
-        if (level == Scenes.NextDay)
+        if (level == Scenes.NextDay || level == Scenes.Diary)
         {
-            MainGameManager.Get.TimeOfDay.enabled = false;
+            InGameTime.SetTimeScale(0);
         }
         else
-            MainGameManager.Get.TimeOfDay.enabled = true;
+            InGameTime.SetTimeScale(1);
 
         SceneManager.LoadScene(level);
     }
