@@ -14,11 +14,11 @@ public class CameraManager : MonoBehaviour
     public GameObject WaterMilkGauge;
     public GameObject WaterMilkGaugeBG;
 
-    CameraLogic MainCamera;
+    //CameraLogic MainCamera;
 
     void Awake()
     {
-        MainCamera = Camera.main.GetComponent<CameraLogic>();
+        //MainCamera = Camera.main.GetComponent<CameraLogic>();
     }
 
     public void ActivateAction (CamMType action, CoffeeCupType cuptype)
@@ -27,7 +27,7 @@ public class CameraManager : MonoBehaviour
         {
             case CamMType.create:
                 //create new cup
-                MainCamera.TargetPosition = GetCameraPos(step);
+                //MainCamera.TargetPosition = GetCameraPos(step);
                 MinigameManager.Get.CoffeeManager.SelectedCoffee = CoffeeBehaviourSetup.SetCoffeeCup(cuptype);
                 MinigameManager.Get.CoffeeManager.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
                 ++step;
@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
                 {
                     //move cup to new position
                     MinigameManager.Get.CoffeeManager.SelectedCoffee.transform.position = GetCoffeeCupPos(step);
-                    MainCamera.TargetPosition = GetCameraPos(step);
+                    //MainCamera.TargetPosition = GetCameraPos(step);
                     ++step;
                 }
                 break;
