@@ -7,11 +7,13 @@ public class CoffeePowder
 
     public bool Check;
     public int CPowder;
+    public int coffeeContent;
 
-    public CoffeePowder(bool check, int coffeePowder)
+    public CoffeePowder(bool check, int coffeePowder, int content)
     {
         Check = check;
         CPowder = coffeePowder;
+        coffeeContent = content;
     }
 }
 

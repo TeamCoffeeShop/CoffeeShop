@@ -118,6 +118,10 @@ public class DragandDrop : MonoBehaviour {
 
                 }
             }
+            //Rotate Camera
+            Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+            Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+            Camera.main.transform.Rotate(90, 0, 0);
         }
 
         //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
@@ -129,8 +133,9 @@ public class DragandDrop : MonoBehaviour {
                 //when the list is empty
                 if (cMachineScript.CoffeePowders.Count == 0)
                 {
+                    int content = hGrinderScript.PowderContent;
                     //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1));
+                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1, content));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
                     // Add espresson powder in the handle
@@ -145,8 +150,9 @@ public class DragandDrop : MonoBehaviour {
                 //when the list is empty
                 if (cMachineScript.CoffeePowders.Count == 0)
                 {
+                    int content = hGrinderScript.PowderContent;
                     //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2));
+                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2, content));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
                     // Add espresson powder in the handle

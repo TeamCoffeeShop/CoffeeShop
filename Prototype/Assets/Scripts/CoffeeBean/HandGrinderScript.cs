@@ -38,8 +38,8 @@ public class HandGrinderScript : MonoBehaviour
     //coffee powder variables
     public GameObject CoffeePowder1;
     public GameObject CoffeePowder2;
+    public int PowderContent;
 
-    private bool CameraRotateCheck;
     //rotation degree function variables
     ////////////////////////////////////
     ////////////////////////////////////
@@ -60,8 +60,9 @@ public class HandGrinderScript : MonoBehaviour
         oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
         coffeeBar.Value = totalRotation;
         coffeeBar.MaxValue = stanRotation;
-        coffeeBar.GetComponent<Image>().enabled = false;
+        coffeeBar.gameObject.SetActive(false);
         rotationImage.enabled = false;
+        PowderContent = 0;
     }
 
     void FixedUpdate()
@@ -103,6 +104,7 @@ public class HandGrinderScript : MonoBehaviour
         {
             Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
             Camera.main.transform.Rotate(-90, 0, 0);
+            PowderContent = (int)totalRotation;
 
             coffeeBar.gameObject.SetActive(false);
 
@@ -110,6 +112,7 @@ public class HandGrinderScript : MonoBehaviour
             {
                 GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
                 coffeepowder1.name = "CoffeePowder1";
+                
             }
 
             if (CoffeeBeans[0].CBean == 2)
@@ -135,15 +138,7 @@ public class HandGrinderScript : MonoBehaviour
         //when the list is not empty
         if (CoffeeBeans.Count != 0)
         {
-            if (CameraRotateCheck == false)
-            {
-                //Rotate Camera
-                Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-                Camera.main.transform.Rotate(90, 0, 0);
-                coffeeBar.GetComponent<Image>().enabled = true;
-                CameraRotateCheck = true;
-            }
+            coffeeBar.gameObject.SetActive(true);
             //check what kind of coffee bean is in the grinder,
             //make coffee powder using the coffee bean
             if (CoffeeBeans[0].Check == true)
@@ -151,7 +146,7 @@ public class HandGrinderScript : MonoBehaviour
                 // Save coffee content
                 coffeeBar.Value = totalRotation;
                 coffeeBar.MaxValue = stanRotation;
-                CoffeeBeans[0].coffeecontent = (int)totalRotation;
+                PowderContent = (int)totalRotation;
 
                 if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
                {
@@ -172,6 +167,7 @@ public class HandGrinderScript : MonoBehaviour
     {
         CheckGrind = true;
         rotationImage.enabled = true;
+        PowderContent = 0;
         //Cursor.visible = false;
     }
 
@@ -180,6 +176,7 @@ public class HandGrinderScript : MonoBehaviour
         CheckGrind = false;
         CheckGameStop = true;
         rotationImage.enabled = false;
+        coffeeBar.gameObject.SetActive(false);
         //Cursor.visible = true;
     }
 
