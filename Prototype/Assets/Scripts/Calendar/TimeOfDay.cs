@@ -84,7 +84,6 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.SetFloat("money", MainGameManager.Get.playerManager.player.money);
             PlayerPrefs.SetInt("level", MainGameManager.Get.playerManager.player.level);
 
-
             //reset customers & cups
             Transform HUD = GameObject.Find("[OrderHUD]").transform;
 
@@ -92,22 +91,7 @@ public class TimeOfDay : MonoBehaviour
             for (int i = 0; i < size; ++i)
                 HUD.GetComponent<FinishedOrderList>().DeleteOrder(i);
 
-            size = HUD.childCount;
-            for (int i = 0; i < size; ++i)
-                if (HUD.GetChild(i).tag == "OrderingBallon")
-                    HUD.GetChild(i).GetComponent<OrderingBallonLogic>().customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
-
-            GameObject[] leftcustomers = GameObject.FindGameObjectsWithTag("Customer");
-
-            size = leftcustomers.Length;
-            for (int i = 0; i < size; ++i)
-                DestroyObject(leftcustomers[i]);
-
-            //foreach (Transform child in GameObject.Find("[OrderHUD]").transform.FindChild("Finished Orders").transform)
-            //    DestroyObject(child.gameObject);
-
-            Cursor.visible = true;
-            SceneManager.LoadScene(CalculateSceneLevel);
+            MainGameManager.Get.Canvas_TimeOfDay.TurnOn();
         }
 
     }
