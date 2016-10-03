@@ -21,8 +21,11 @@ public class DragandDrop : MonoBehaviour {
 
     //variable to access coffee machine handle
     GameObject machineHandle;
+
+    //variable to access coffee handle
+    GameObject EspressoPowder;
     GameObject coffeepowderInHandle;
-    GameObject coffeepowders;
+
     //variable to access coffeemachine
     GameObject coffeeMachine;
 
@@ -33,9 +36,9 @@ public class DragandDrop : MonoBehaviour {
     {
         handGrinder = GameObject.Find("HandGrinder");
         coffeeMachine = GameObject.Find("CoffeeMachine");
-        machineHandle = GameObject.Find("HandleObject");
-        coffeepowderInHandle = GameObject.Find("CoffeePowders");
-        coffeepowders = Resources.Load<GameObject>("Meshes/Assets/CoffeePowders");
+        machineHandle = GameObject.Find("CoffeeMachineHandle");
+        EspressoPowder = Resources.Load<GameObject>("Prefab/EspressoPowder");
+
         hGrinderScript = handGrinder.GetComponent<HandGrinderScript>();
         cMachineScript = coffeeMachine.GetComponent<CoffeeDrop>();
     }
@@ -62,6 +65,9 @@ public class DragandDrop : MonoBehaviour {
          screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
          offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+        if(gameObject == machineHandle)
+            InMachine = true;
     }
 
     void OnMouseDrag()
@@ -112,6 +118,10 @@ public class DragandDrop : MonoBehaviour {
 
                 }
             }
+            //Rotate Camera
+            Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+            Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+            Camera.main.transform.Rotate(90, 0, 0);
         }
 
         //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
@@ -123,12 +133,14 @@ public class DragandDrop : MonoBehaviour {
                 //when the list is empty
                 if (cMachineScript.CoffeePowders.Count == 0)
                 {
+                    int content = hGrinderScript.PowderContent;
                     //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1));
+                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1, content));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
-                    coffeepowderInHandle.transform.localScale += (new Vector3(0.02f, 0.02f, 0.02f));
-                    //coffeepowderInHandle = (GameObject)Instantiate(coffeepowders, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+                    // Add espresson powder in the handle
+                    coffeepowderInHandle = (GameObject)Instantiate(EspressoPowder, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+                    coffeepowderInHandle.transform.parent = machineHandle.transform;
                 }
             }
 
@@ -138,12 +150,14 @@ public class DragandDrop : MonoBehaviour {
                 //when the list is empty
                 if (cMachineScript.CoffeePowders.Count == 0)
                 {
+                    int content = hGrinderScript.PowderContent;
                     //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2));
+                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2, content));
                     //and then destroy the coffee powder object
                     Destroy(gameObject);
-                    coffeepowderInHandle.transform.localScale += (new Vector3(0.02f, 0.02f, 0.02f));
-                    //coffeepowderInHandle = (GameObject)Instantiate(coffeepowders, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+                    // Add espresson powder in the handle
+                    coffeepowderInHandle = (GameObject)Instantiate(EspressoPowder, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+
                 }
             }
         }
@@ -151,13 +165,15 @@ public class DragandDrop : MonoBehaviour {
         //when the player drags and drops the coffee machine handle into the coffee machine, destory the coffee powder object
         if (InMachine == true)
         {
-            if (gameObject.name == "HandleObject")
+            if (gameObject.name == "CoffeeMachineHandle")
             {
                 if(coffeepowderInHandle)
                     Destroy(coffeepowderInHandle);
+
                 Destroy(machineHandle);
                     // destroy the coffee machine handle object
-                    Destroy(gameObject);   
+                Destroy(gameObject);
+                coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
             }
         }
 
@@ -207,8 +223,8 @@ public class DragandDrop : MonoBehaviour {
             }
         }
 
-        //if the player picks up the coffeepowder
-        if (gameObject.tag == "HandleObject")
+        //if the player picks up the coffee machine handle
+        if (gameObject.tag == "CoffeeMachineHandle")
         {
             if (col.gameObject == coffeeMachine && this.Grab == true)
             {
@@ -243,7 +259,7 @@ public class DragandDrop : MonoBehaviour {
             }
         }
 
-        if (gameObject.tag == "HandleObject")
+        if (gameObject.tag == "CoffeeMachineHandle")
         {
             if (col.gameObject == coffeeMachine && this.Grab == true)
             {

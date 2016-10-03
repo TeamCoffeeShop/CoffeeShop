@@ -7,11 +7,13 @@ public class CoffeePowder
 
     public bool Check;
     public int CPowder;
+    public int coffeeContent;
 
-    public CoffeePowder(bool check, int coffeePowder)
+    public CoffeePowder(bool check, int coffeePowder, int content)
     {
         Check = check;
         CPowder = coffeePowder;
+        coffeeContent = content;
     }
 }
 
@@ -29,7 +31,7 @@ public class CoffeeDrop : MonoBehaviour
     private GameObject handleObj;
     //coffee machine handle
     private GameObject handle;
-    private bool CameraRotate;
+    public bool CameraRotate;
     private bool MinigamePrepare;
     private bool CheckGameStart = false;
     private bool DropPrepare = false;
@@ -49,7 +51,7 @@ public class CoffeeDrop : MonoBehaviour
     {
         ready = false;
         handle = GameObject.Find("EspressoMachineHandle");
-        handleObj = GameObject.Find("HandleObject");
+        handleObj = GameObject.Find("CoffeeMachineHandle");
         handleObj.SetActive(true);
         handle.SetActive(false);
     }
@@ -72,7 +74,6 @@ public class CoffeeDrop : MonoBehaviour
         {
             if (CameraRotate)
             {
-                handleObj.SetActive(false);
                 Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
                 Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 Camera.main.transform.Rotate(35, 0, 0);
@@ -140,11 +141,11 @@ public class CoffeeDrop : MonoBehaviour
     {
         if (ready)
         {
-            if (MinigamePrepare == false && CheckGameStart == false)
-            {
-                if (gameObject.name == "CoffeeMachine")
-                    CameraRotate = true;
-            }
+            //if (MinigamePrepare == false && CheckGameStart == false)
+            //{
+            //    if (gameObject.name == "CoffeeMachine")
+            //        CameraRotate = true;
+            //}
         }
 
         if (CheckGameStart)

@@ -140,6 +140,7 @@
     <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
     <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
     <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
+    <Compile Include="Assets\Scripts\~Etc\RotationScript.cs" />
     <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />
     <Compile Include="Assets\Wwise\Deployment\API\Generated\Android\AkAudioOutputType_Android.cs" />
     <Compile Include="Assets\Wwise\Deployment\API\Generated\Android\AkMemPoolAttributes_Android.cs" />
