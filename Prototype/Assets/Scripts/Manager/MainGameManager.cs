@@ -23,6 +23,7 @@ public class MainGameManager : MonoBehaviour
     public TimeOfDay TimeOfDay;
     public PlayerManager playerManager;
     public DecoEditUI DecoEditUI;
+    public SceneChangeManager SceneChangeManager;
     public bool OnDialogue = true;
 
     void Awake()
