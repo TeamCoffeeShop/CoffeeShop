@@ -28,6 +28,14 @@ public class CoffeeBeanInstantiator : MonoBehaviour
     bool ShakeCheck;
     float ShakeDistance = 0.1f;
 
+    //highlight
+    OutlineHighlighter h;
+
+    void Awake ()
+    {
+        h = GetComponent<OutlineHighlighter>();
+    }
+
     void Start()
     {
         SetMode(Mode.off);
@@ -36,6 +44,11 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     void Update()
     {
+        if (MinigameManager.Get.CoffeeManager.step == 1)
+            h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
+        else
+            h.highlightOn = OutlineHighlighter.HighlightOn.none;
+
         if (ShakeReady)
             Shake();
         else
@@ -117,7 +130,8 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         ShakeReady = true;
         yield return new WaitForSeconds(WaitingTime);
         ShakeReady = false;
-        GameObject coffeeBean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position - new Vector3(0, 1, 0), Quaternion.identity);        
+        GameObject coffeeBean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
+        MinigameManager.Get.CoffeeManager.step = 2;
     }
 
     void Shake()

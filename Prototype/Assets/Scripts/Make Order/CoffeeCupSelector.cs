@@ -28,6 +28,8 @@ public class CoffeeCupSelector : MonoBehaviour
             //create new cup
             GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
             MinigameManager.Get.CoffeeManager.SelectedCoffee = cup;
+            MinigameManager.Get.CoffeeManager.LockToCamera = true;
+            MinigameManager.Get.CoffeeManager.step = 1;
             cup.transform.position = gameObject.transform.position;
         }
     }

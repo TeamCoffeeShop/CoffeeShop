@@ -102,9 +102,9 @@ public class DragandDrop : MonoBehaviour {
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
                     //Rotate Camera
-                    Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                    Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-                    Camera.main.transform.Rotate(90, 0, 0);
+                    //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                    //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                    //Camera.main.transform.Rotate(90, 0, 0);
                     //Set grinder status to start status
                     hGrinderScript.rotationImage.enabled = true;
                     hGrinderScript.coffeeBeanCheck = true;
@@ -123,9 +123,9 @@ public class DragandDrop : MonoBehaviour {
                     //and then destroy the coffee bean object
                     Destroy(gameObject);
                     //Rotate Camera
-                    Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                    Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-                    Camera.main.transform.Rotate(90, 0, 0);
+                    //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                    //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                    //Camera.main.transform.Rotate(90, 0, 0);
                     //Set grinder status to start status
                     hGrinderScript.rotationImage.enabled = true;
                     hGrinderScript.coffeeBeanCheck = true;

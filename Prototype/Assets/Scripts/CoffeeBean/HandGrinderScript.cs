@@ -54,6 +54,10 @@ public class HandGrinderScript : MonoBehaviour
     ////////////////////////////////////
     ////////////////////////////////////
 
+    //highlight
+    OutlineHighlighter h;
+    OutlineHighlighter h2;
+
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
@@ -65,11 +69,24 @@ public class HandGrinderScript : MonoBehaviour
         coffeeBar.gameObject.SetActive(false);
         rotationImage.enabled = false;
         PowderContent = 0;
+        h = GetComponent<OutlineHighlighter>();
+        h2 = transform.GetChild(0).GetComponent<OutlineHighlighter>();
     }
 
     void FixedUpdate()
     {
         RotationCheck();
+
+        if (MinigameManager.Get.CoffeeManager.step == 2)
+        {
+            h.highlightOn = OutlineHighlighter.HighlightOn.always;
+            h2.highlightOn = OutlineHighlighter.HighlightOn.always;
+        }
+        else
+        {
+            h.highlightOn = OutlineHighlighter.HighlightOn.none;
+            h2.highlightOn = OutlineHighlighter.HighlightOn.none;
+        }
 
         //track down the hand grinder rotation based on the mouse position
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,8 +123,8 @@ public class HandGrinderScript : MonoBehaviour
         {
             if (CoffeeBeans.Count != 0)
             {
-                Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
-                Camera.main.transform.Rotate(-90, 0, 0);
+                //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+                //Camera.main.transform.Rotate(-90, 0, 0);
                 PowderContent = (int)totalRotation;
                 coffeeBar.gameObject.SetActive(false);
 
@@ -116,6 +133,7 @@ public class HandGrinderScript : MonoBehaviour
                     GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
                     coffeepowder1.name = "CoffeePowder1";
                     CheckGameStop = false;
+                    MinigameManager.Get.CoffeeManager.step = 3;
 
                 }
 
@@ -124,6 +142,7 @@ public class HandGrinderScript : MonoBehaviour
                     GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
                     coffeepowder2.name = "CoffeePowder2";
                     CheckGameStop = false;
+                    MinigameManager.Get.CoffeeManager.step = 3;
                 }
 
                 totalRotation = 0;
