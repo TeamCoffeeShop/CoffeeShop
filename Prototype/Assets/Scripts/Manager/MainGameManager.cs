@@ -11,9 +11,11 @@ public class MainGameManager : MonoBehaviour
     public CalculateScene Canvas_TimeOfDay;
     public DiaryManager Canvas_Diary;
     public FinishedOrderList Canvas_OrderHUD;
+    public GameObject Canvas_Dialogue;
 
     //camera
     public GameObject DialogueCamera;
+    public LookAt CafeCamera;
 
     //shortcuts
     public CustomerSystem CustomerSystem;

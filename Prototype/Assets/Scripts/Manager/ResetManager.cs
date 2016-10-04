@@ -3,15 +3,7 @@ using System.Collections;
 
 public class ResetManager : MonoBehaviour
 {
-    CameraLogic MainCamera;
-    Vector3 StartPosition;
-
-    // Use this for initialization
-    void Start ()
-    {
-        MainCamera = GameObject.Find("Main Camera").GetComponent<CameraLogic>();
-        StartPosition = new Vector3(-18, 5, -5);
-    }
+    public Vector3 OriginalPosition;
 
     public void Reset()
     {
@@ -65,6 +57,6 @@ public class ResetManager : MonoBehaviour
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
 
         //reset camera to original position
-        MainCamera.TargetPosition = StartPosition;
+        //MinigameManager.Get.MakeOrderCamera.TargetPosition = StartPosition;
     }
 }

@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour {
     // canvas
     public GameObject Canvas;
     public bool isActive;
-    private bool isSceneChange;
 
     private bool isTyping = false;
     private bool cancelTyping = false;
@@ -46,30 +45,6 @@ public class DialogueManager : MonoBehaviour {
 
         //RunDialogue();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-        ////##CHANGE## The key set enter button temporaily, it will change
-        //if(Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
-        //{
-        //    if (!isActive)
-        //        EnableDialogueBox();
-
-
-        //    else if( isTyping && !cancelTyping)
-        //    {
-        //        cancelTyping = true;
-
-        //    }         
-        //}
-
-        //if (!isActive)
-        //{
-        //    return;
-        //}
-    }
 
     private void ClassifyDialogue(string[] texts)
     {
@@ -228,25 +203,5 @@ public class DialogueManager : MonoBehaviour {
         }
         // When there is no dialogue, disable dialogue box
         dialogue_window.SetActive(false);       
-    }
-
-    public void SetSceneChange (bool active)
-    {
-        isSceneChange = active;
-
-        if(isSceneChange)
-        {
-            Camera.main.GetComponent<LookAt>().LookingAtDialogue();
-            RunDialogue();
-        }
-        else
-        {
-            Camera.main.GetComponent<LookAt>().Return();
-        }
-    }
-
-    public void ToggleSceneChange ()
-    {
-        SetSceneChange(!isSceneChange);
     }
 }
