@@ -22,20 +22,6 @@ public class CustomerLogic : MonoBehaviour
     private int direction = -1;
     private Billboard billboard;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void OnLevelWasLoaded(int level)
-    {
-        //if not main level, deactivate customers
-        //if (level != Scenes.MainLevel)
-        //    GetComponent<Animator>().enabled = false;
-        //else
-        //    GetComponent<Animator>().enabled = true;
-    }
-
     void Start ()
     {
         billboard = transform.FindChild("Moth").GetComponent<Billboard>();
@@ -46,13 +32,7 @@ public class CustomerLogic : MonoBehaviour
 
     void Update()
     {
-        //if edit mode, slow down
-        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selected)
-        {
-            transform.GetChild(0).GetComponent<Animator>().speed = InGameTime.timeScale;
-        }
-        else
-            transform.GetChild(0).GetComponent<Animator>().speed = 1;
+        transform.GetChild(0).GetComponent<Animator>().speed = InGameTime.timeScale;
 
         //if not arrived, walk
         if (!arrived)

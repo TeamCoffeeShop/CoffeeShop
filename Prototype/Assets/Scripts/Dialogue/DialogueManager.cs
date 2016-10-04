@@ -20,7 +20,6 @@ public class DialogueManager : MonoBehaviour {
     public TextAsset textFile;
 
     // canvas
-    public GameObject Canvas;
     public bool isActive;
 
     private bool isTyping = false;
@@ -32,7 +31,6 @@ public class DialogueManager : MonoBehaviour {
 	void Start ()
     {
         DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
-        Canvas = GameObject.Find("[Canvas] Dialogue");
         MakeDialogueBox();
         string[] textLines;
 
@@ -144,10 +142,8 @@ public class DialogueManager : MonoBehaviour {
     // Make dialogue box
     private void MakeDialogueBox()
     {
-        var canvas = GameObject.Find("[Canvas] Dialogue");
-
         dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);
-        dialogue_window.transform.SetParent(canvas.transform, false);
+        dialogue_window.transform.SetParent(MainGameManager.Get.Canvas_Dialogue.transform, false);
 
         RectTransform dia_window_transform = (RectTransform)dialogue_window.transform;
         dia_window_transform.anchoredPosition = new Vector3(0, 20, 0);

@@ -8,7 +8,6 @@ public class Minigame_InputManager : MonoBehaviour
     public void GoBackToMainLevel ()
     {
         MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
-        SceneManager.LoadScene(Scenes.MainLevel);
-        Cursor.visible = true;
+        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
     }
 }

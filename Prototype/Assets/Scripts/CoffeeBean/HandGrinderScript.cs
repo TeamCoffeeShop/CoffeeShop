@@ -16,6 +16,7 @@ public class HandGrinderScript : MonoBehaviour
     ////////////////////////////////////
 
     public BarScript coffeeBar;
+    public Image rotationImage;
     //bool type for rotation
     bool CheckGrind = false;
 
@@ -25,7 +26,6 @@ public class HandGrinderScript : MonoBehaviour
     bool CheckGameStop = false;
 
     //UI image for rotation
-    public Image rotationImage;
     public List<CoffeeBean> CoffeeBeans = new List<CoffeeBean>();
 
     //bool type for rotation check
