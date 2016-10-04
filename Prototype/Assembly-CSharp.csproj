@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
      <Compile Include="Assets\Scripts\Camera\MakeOrderCameraLogic.cs" />
+     <Compile Include="Assets\Scripts\Camera\Minigame_CameraMover.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanSelection.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />

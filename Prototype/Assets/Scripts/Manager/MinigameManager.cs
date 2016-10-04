@@ -15,6 +15,7 @@ public class MinigameManager : MonoBehaviour
     //shortcuts
     public ResetManager ResetManager;
     public Minigame_CoffeeManager CoffeeManager;
+    public Minigame_InputManager InputManager;
 
     void Awake ()
     {

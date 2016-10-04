@@ -57,6 +57,6 @@ public class ResetManager : MonoBehaviour
         GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
 
         //reset camera to original position
-        //MinigameManager.Get.MakeOrderCamera.TargetPosition = StartPosition;
+        MinigameManager.Get.MakeOrderCamera.Return();
     }
 }
