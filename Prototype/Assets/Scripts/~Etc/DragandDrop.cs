@@ -177,15 +177,23 @@ public class DragandDrop : MonoBehaviour {
         {
             if (gameObject.name == "CoffeeMachineHandle")
             {
-                if (cMachineScript.CoffeePowders.Count != 0)
-                { 
-                if(coffeepowderInHandle)
-                Destroy(coffeepowderInHandle);
+                Vector3 coffeemachinescreen = Camera.main.WorldToScreenPoint(coffeeMachine.transform.position);
+                Vector3 machineoffset = coffeeMachine.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, coffeemachinescreen.z));
 
-                Destroy(machineHandle);
-                // destroy the coffee machine handle object
-                Destroy(gameObject);
-                coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
+                if (coffeemachinescreen.x - 30 < Input.mousePosition.x && coffeemachinescreen.x + 30 > Input.mousePosition.x)
+                   // && coffeemachinescreen.y - 30 < Input.mousePosition.y && coffeemachinescreen.y + 30> Input.mousePosition.y)
+                    //&& coffeemachinescreen.z - 30 < Input.mousePosition.z && coffeemachinescreen.z + 30 > Input.mousePosition.z)
+                {
+                    if (cMachineScript.CoffeePowders.Count != 0)
+                    {
+                        if (coffeepowderInHandle)
+                            Destroy(coffeepowderInHandle);
+
+                        Destroy(machineHandle);
+                        // destroy the coffee machine handle object
+                        Destroy(gameObject);
+                        coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
+                    }
                 }
             }
         }

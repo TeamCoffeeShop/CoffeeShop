@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class Minigame_InputManager : MonoBehaviour
 {
-    Image RecipeObject;
+    //Image RecipeObject;
     bool RecipeStatus = false;
 
     void Awake()
     {
-        RecipeObject = GameObject.Find("Recipe").GetComponent<Image>();
+        //RecipeObject = GameObject.Find("Recipe").GetComponent<Image>();
     }
 
     void Update ()
     {
         if (RecipeStatus == true)
         {
-            RecipeObject.enabled = true;
+            //RecipeObject.enabled = true;
         }
         else if (RecipeStatus == false)
         {
-            RecipeObject.enabled = false;
+            //RecipeObject.enabled = false;
         }
 
         //press ESC to go back to mainlevel
