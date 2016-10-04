@@ -236,12 +236,12 @@ public class DialogueManager : MonoBehaviour {
 
         if(isSceneChange)
         {
-            MainGameManager.Get.maincamera.LookingAtDialogue();
+            Camera.main.GetComponent<LookAt>().LookingAtDialogue();
             RunDialogue();
         }
         else
         {
-            MainGameManager.Get.maincamera.Return();
+            Camera.main.GetComponent<LookAt>().Return();
         }
     }
 

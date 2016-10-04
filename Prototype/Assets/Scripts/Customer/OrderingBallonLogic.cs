@@ -79,7 +79,7 @@ public class OrderingBallonLogic : MonoBehaviour
             //delete coffee
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();
             if (logic)
-                MainGameManager.Get.OrderHUD.DeleteOrder(logic.ChildNumber);
+                MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(logic.ChildNumber);
             DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 
@@ -108,7 +108,7 @@ public class OrderingBallonLogic : MonoBehaviour
             //delete coffee
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();
             if (logic)
-                MainGameManager.Get.OrderHUD.DeleteOrder(logic.ChildNumber);
+                MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(logic.ChildNumber);
             DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 

@@ -23,7 +23,7 @@ public class DecoEditUI : MonoBehaviour
         MovingCafeDeco.GetComponent<CafeDeco>().Selected = true;
 
         //camera
-        MainGameManager.Get.maincamera.LookingAt(grid.transform.position + new Vector3(0, 5, 0));
+        Camera.main.GetComponent<LookAt>().LookingAt(grid.transform.position + new Vector3(0, 5, 0));
         MainGameManager.Get.Floor.IsEditMode = EditMode.selected;
 
         //Time
@@ -36,7 +36,7 @@ public class DecoEditUI : MonoBehaviour
         {
             //camera
             MainGameManager.Get.Floor.IsEditMode = EditMode.off;
-            MainGameManager.Get.maincamera.Return();
+            Camera.main.GetComponent<LookAt>().Return();
 
             //CafeDeco
             MovingCafeDeco.GetComponent<CafeDeco>().Selected = false;
@@ -104,12 +104,12 @@ public class DecoEditUI : MonoBehaviour
         
 
         //camera
-        MainGameManager.Get.maincamera.LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
+        Camera.main.GetComponent<LookAt>().LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
     }
 
     void Start ()
     {
-        CameraAngle = -Quaternion.ToEulerAngles(MainGameManager.Get.maincamera.transform.rotation).y;
+        CameraAngle = -Quaternion.ToEulerAngles(Camera.main.transform.rotation).y;
     }
 
     void Update ()
@@ -124,7 +124,7 @@ public class DecoEditUI : MonoBehaviour
 
             MovingCafeDeco.transform.position += new Vector3(newMove.x * MoveSpeed, 0, newMove.y * MoveSpeed);
 
-            MainGameManager.Get.maincamera.LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
+            Camera.main.GetComponent<LookAt>().LookingAt(MovingCafeDeco.position + new Vector3(0, 5, 0));
         }
     }
 }
