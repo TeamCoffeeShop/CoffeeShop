@@ -59,7 +59,6 @@
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
-     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCup.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\Syrup.cs" />
@@ -89,6 +88,7 @@
      <Compile Include="Assets\Scripts\DiarySystem\DiarySelection.cs" />
      <Compile Include="Assets\Scripts\DiarySystem\DiaryStatus.cs" />
      <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
+     <Compile Include="Assets\Scripts\Make Order\CoffeeCupSelector.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
      <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
@@ -117,6 +117,7 @@
      <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
      <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\~Etc\OutlineHighlighter.cs" />
      <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\RotationScript.cs" />
      <Compile Include="Assets\Scripts\~Etc\WaterFallingLogic.cs" />

@@ -8,11 +8,7 @@ public class Minigame_CoffeeManager : MonoBehaviour
     //save finished order
     public void SaveFinishedOrder()
     {
-        GameObject orders = GameObject.Find("[OrderHUD]");
-
-        if (orders)
-        {
-            Transform list = orders.transform;
+            Transform list = MainGameManager.Get.Canvas_OrderHUD.transform;
             if (list && SelectedCoffee)
             {
                 //check if coffee is finished
@@ -25,7 +21,6 @@ public class Minigame_CoffeeManager : MonoBehaviour
                 }
 
             }
-        }
     }
 
     //check if the coffee is legit
@@ -37,5 +32,10 @@ public class Minigame_CoffeeManager : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    void Update ()
+    {
+
     }
 }
