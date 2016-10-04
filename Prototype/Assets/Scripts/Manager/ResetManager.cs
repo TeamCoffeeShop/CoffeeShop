@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ResetManager : MonoBehaviour
 {
-    public Vector3 OriginalPosition;
-
     public void Reset()
     {
         //remove the coffee cup currently working on
@@ -58,5 +56,6 @@ public class ResetManager : MonoBehaviour
 
         //reset camera to original position
         MinigameManager.Get.MakeOrderCamera.Return();
+        MinigameManager.Get.CoffeeManager.step = 0;
     }
 }

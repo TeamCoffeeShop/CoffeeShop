@@ -74,9 +74,9 @@ public class CoffeeDrop : MonoBehaviour
         {
             if (CameraRotate)
             {
-                Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
-                Camera.main.transform.Rotate(35, 0, 0);
+                //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
+                //Camera.main.transform.Rotate(35, 0, 0);
                 handle.transform.Translate(0, 1.2f, 0);
                 CameraRotate = false;
                 MinigamePrepare = true;
@@ -101,8 +101,8 @@ public class CoffeeDrop : MonoBehaviour
             }
             if (DropPrepare)
             {
-                Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
-                Camera.main.transform.Rotate(-35, 0, 0);
+                //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+                //Camera.main.transform.Rotate(-35, 0, 0);
                 CheckGameStart = false;
                 DropPrepare = false;
                 ready = false;

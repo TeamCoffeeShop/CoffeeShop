@@ -13,7 +13,7 @@ public class Minigame_CoffeeManager : MonoBehaviour
     //step 2 : grind the coffee bean
     public int step = 0;
 
-
+    
 
     //save finished order
     public void SaveFinishedOrder()
