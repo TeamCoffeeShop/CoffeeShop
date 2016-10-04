@@ -20,9 +20,7 @@ public class DialogueManager : MonoBehaviour {
     public TextAsset textFile;
 
     // canvas
-    public GameObject Canvas;
     public bool isActive;
-    private bool isSceneChange;
 
     private bool isTyping = false;
     private bool cancelTyping = false;
@@ -33,7 +31,6 @@ public class DialogueManager : MonoBehaviour {
 	void Start ()
     {
         DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
-        Canvas = GameObject.Find("[Canvas] Dialogue");
         MakeDialogueBox();
         string[] textLines;
 
@@ -46,30 +43,6 @@ public class DialogueManager : MonoBehaviour {
 
         //RunDialogue();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-        ////##CHANGE## The key set enter button temporaily, it will change
-        //if(Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
-        //{
-        //    if (!isActive)
-        //        EnableDialogueBox();
-
-
-        //    else if( isTyping && !cancelTyping)
-        //    {
-        //        cancelTyping = true;
-
-        //    }         
-        //}
-
-        //if (!isActive)
-        //{
-        //    return;
-        //}
-    }
 
     private void ClassifyDialogue(string[] texts)
     {
@@ -169,10 +142,8 @@ public class DialogueManager : MonoBehaviour {
     // Make dialogue box
     private void MakeDialogueBox()
     {
-        var canvas = GameObject.Find("[Canvas] Dialogue");
-
         dialogue_window = Instantiate<GameObject>(DialogueWindowPrefab);
-        dialogue_window.transform.SetParent(canvas.transform, false);
+        dialogue_window.transform.SetParent(MainGameManager.Get.Canvas_Dialogue.transform, false);
 
         RectTransform dia_window_transform = (RectTransform)dialogue_window.transform;
         dia_window_transform.anchoredPosition = new Vector3(0, 20, 0);
@@ -228,25 +199,5 @@ public class DialogueManager : MonoBehaviour {
         }
         // When there is no dialogue, disable dialogue box
         dialogue_window.SetActive(false);       
-    }
-
-    public void SetSceneChange (bool active)
-    {
-        isSceneChange = active;
-
-        if(isSceneChange)
-        {
-            MainGameManager.Get.maincamera.LookingAtDialogue();
-            RunDialogue();
-        }
-        else
-        {
-            MainGameManager.Get.maincamera.Return();
-        }
-    }
-
-    public void ToggleSceneChange ()
-    {
-        SetSceneChange(!isSceneChange);
     }
 }

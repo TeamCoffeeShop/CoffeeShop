@@ -35,7 +35,7 @@ public class OrderLogic : MonoBehaviour
         rt.position -= new Vector3(size.x * 0.5f, size.y * 0.5f, 0);
 
         //show trash can
-        MainGameManager.Get.OrderHUD.SetTrashVisible(true);
+        MainGameManager.Get.Canvas_OrderHUD.SetTrashVisible(true);
     }
 
     public void EndDraggingCup()
@@ -45,11 +45,11 @@ public class OrderLogic : MonoBehaviour
 
         //throw away
         if (trash)
-            MainGameManager.Get.OrderHUD.DeleteOrder(ChildNumber);
+            MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
 
         //disable trash can
         //MainGameManager.Get.OrderHUD.SetTrashVisible(false);
-        MainGameManager.Get.OrderHUD.SetTrashVisible(true);
+        MainGameManager.Get.Canvas_OrderHUD.SetTrashVisible(true);
     }
 
     void Update ()

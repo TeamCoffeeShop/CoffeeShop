@@ -85,7 +85,7 @@ public class TimeOfDay : MonoBehaviour
             PlayerPrefs.SetInt("level", MainGameManager.Get.playerManager.player.level);
 
             //reset customers & cups
-            Transform HUD = GameObject.Find("[OrderHUD]").transform;
+            Transform HUD = MainGameManager.Get.Canvas_OrderHUD.transform;
 
             int size = HUD.FindChild("Finished Orders").transform.childCount;
             for (int i = 0; i < size; ++i)

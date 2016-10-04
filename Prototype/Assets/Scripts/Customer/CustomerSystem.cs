@@ -18,9 +18,6 @@ public class CustomerSystem : MonoBehaviour
     //Seats list
     public GameObject CustomerSeats;
 
-    //Coffee Shop Floor
-    public GameObject Floor;
-
     //Customer Prefab
     public const string customerPath = "Prefab/Customer/Customer";
     //Customer List Prefab

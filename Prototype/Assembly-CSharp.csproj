@@ -52,6 +52,8 @@
      <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeOfDay.cs" />
      <Compile Include="Assets\Scripts\Calendar\TimeScript.cs" />
+     <Compile Include="Assets\Scripts\Camera\MakeOrderCameraLogic.cs" />
+     <Compile Include="Assets\Scripts\Camera\Minigame_CameraMover.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanSelection.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
@@ -88,7 +90,6 @@
      <Compile Include="Assets\Scripts\DiarySystem\DiaryStatus.cs" />
      <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\CameraTrigger.cs" />
      <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
      <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
@@ -96,6 +97,7 @@
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\SceneChangeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\TimeManager.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />

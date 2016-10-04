@@ -82,3 +82,4 @@ C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Temp\bin\Debug\UnityEngine.Network
 C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\obj\Debug\Assembly-CSharp.dll
 C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

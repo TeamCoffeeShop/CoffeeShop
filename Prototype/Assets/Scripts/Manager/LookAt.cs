@@ -41,9 +41,9 @@ public class LookAt : MonoBehaviour
         GetComponent<BlurOptimized>().enabled = true;
         transform.position = TargetPosition = new Vector3(-11.64f, 17.21f, -48.69f);
         transform.rotation = Quaternion.Euler(0.65f,27.69f,-0.93f);
-        MainGameManager.Get.UI.SetActive(false);
-        MainGameManager.Get.OrderHUD.gameObject.SetActive(false);
-        MainGameManager.Get.dialoguecamera.SetActive(true);
+        MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
+        MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(false);
+        MainGameManager.Get.DialogueCamera.SetActive(true);
         follow = true;
     }
 
@@ -52,9 +52,9 @@ public class LookAt : MonoBehaviour
         transform.rotation = OriginalRotation;
         GetComponent<Camera>().orthographic = true;
         GetComponent<BlurOptimized>().enabled = false;
-        MainGameManager.Get.UI.SetActive(true);
-        MainGameManager.Get.OrderHUD.gameObject.SetActive(true);
-        MainGameManager.Get.dialoguecamera.SetActive(false);
+        MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
+        MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);
+        MainGameManager.Get.DialogueCamera.SetActive(false);
         follow = false;
     }
 }

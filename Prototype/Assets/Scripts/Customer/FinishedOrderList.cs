@@ -10,21 +10,8 @@ public class FinishedOrderList : MonoBehaviour
     Transform orders;
     Transform OrderIcon;
 
-    void Awake ()
-    {
-        //if duplicate, erase this
-        if (GameObject.Find("[OrderHUD]") != null)
-            DestroyImmediate(gameObject);
-    }
-
     void Start ()
     {
-        //change name to specify this object
-        transform.name = "[OrderHUD]";
-
-        //make this saved between scenes
-        DontDestroyOnLoad(this);
-
         orders = transform.FindChild("Finished Orders");
         OrderIcon = transform.FindChild("Order Icons");
     }

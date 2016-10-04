@@ -29,16 +29,23 @@ Shader "Toon/Basic Outline" {
 		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 
 		float3 norm   = normalize(mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal));
-		float2 offset = TransformViewToProjection(norm.xy);
+    float2 offset = TransformViewToProjection(norm.xy);
 
 		#ifdef UNITY_Z_0_FAR_FROM_CLIPSPACE //to handle recent standard asset package on older version of unity (before 5.5)
 			o.pos.xy += offset * UNITY_Z_0_FAR_FROM_CLIPSPACE(o.pos.z) * _Outline;
 		#else
-			o.pos.xy += offset * o.pos.z * _Outline;
+    o.pos.xy += offset * o.pos.z * _Outline;
+    //o.pos.xy += offset * _Outline;
 		#endif
 		o.color = _OutlineColor;
 		UNITY_TRANSFER_FOG(o,o.pos);
 		return o;
+    /*v2f o;
+    o.pos = v.vertex;
+    o.pos.xyz += offset * v.normal.xyz *_Outline;
+    o.pos = mul(UNITY_MATRIX_MVP, o.pos);
+    o.color = _OutlineColor;
+    return o;*/
 	}
 	ENDCG
 

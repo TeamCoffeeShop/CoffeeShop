@@ -43,21 +43,21 @@ public class CoffeeBeanInstantiator : MonoBehaviour
             gameObject.transform.position = OrigianlPosition;
 
             if (CoffeeBean1Ready)
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean1").GetComponent<RawImage>().enabled = true;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean1").GetComponent<RawImage>().enabled = true;
             else
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean1").GetComponent<RawImage>().enabled = false;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean1").GetComponent<RawImage>().enabled = false;
             if (CoffeeBean2Ready)
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean2").GetComponent<RawImage>().enabled = true;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean2").GetComponent<RawImage>().enabled = true;
             else
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean2").GetComponent<RawImage>().enabled = false;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean2").GetComponent<RawImage>().enabled = false;
             if (CoffeeBean3Ready)
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean3").GetComponent<RawImage>().enabled = true;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean3").GetComponent<RawImage>().enabled = true;
             else
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean3").GetComponent<RawImage>().enabled = false;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean3").GetComponent<RawImage>().enabled = false;
             if (CoffeeBean4Ready)
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean4").GetComponent<RawImage>().enabled = true;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean4").GetComponent<RawImage>().enabled = true;
             else
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean4").GetComponent<RawImage>().enabled = false;
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").transform.FindChild("CoffeeBean4").GetComponent<RawImage>().enabled = false;
         }
     }
 
@@ -72,10 +72,10 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         switch (mode)
         {
             case Mode.off:
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().Off();
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().Off();
                 break;
             case Mode.on:
-                GameObject.Find("UI").transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().On();
+                MinigameManager.Get.Canvas_UI.transform.FindChild("CoffeeBeanSelection").GetComponent<CoffeeBeanSelection>().On();
                 break;
         }
         IsMode = mode;

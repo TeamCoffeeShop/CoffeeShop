@@ -5,48 +5,27 @@ using UnityEngine.UI;
 
 public class Minigame_InputManager : MonoBehaviour
 {
-    //Image RecipeObject;
-    bool RecipeStatus = false;
-
-    void Awake()
-    {
-        //RecipeObject = GameObject.Find("Recipe").GetComponent<Image>();
-    }
-
+    public bool CameraMove;
+    
     void Update ()
     {
-        if (RecipeStatus == true)
+        if(CameraMove)
         {
-            //RecipeObject.enabled = true;
-        }
-        else if (RecipeStatus == false)
-        {
-            //RecipeObject.enabled = false;
-        }
+            if(Input.GetKey(KeyCode.Mouse0))
+            {
+                //move camera
+                Vector3 dP = new Vector3(-Input.GetAxis("Mouse X") * 0.5f, 0, 0);
+                MinigameManager.Get.MakeOrderCamera.Slide(dP);
+            }
 
-        //press ESC to go back to mainlevel
-        //if(Input.GetKeyDown("escape"))
-        //{
-        //    GoBackToMainLevel();
-        //}
-
-        //temporary. erase this code after creating correct order creation
-        if (Input.GetKeyDown("space"))
-        {
-            MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+                CameraMove = false;
         }
-	}
+    }
 
     public void GoBackToMainLevel ()
     {
         MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
-        SceneManager.LoadScene(Scenes.MainLevel);
-        Cursor.visible = true;
+        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
     }
-
-    public void Recipe()
-    {
-        RecipeStatus = !RecipeStatus;
-    }
-
 }

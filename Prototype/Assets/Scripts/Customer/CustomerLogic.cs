@@ -22,20 +22,6 @@ public class CustomerLogic : MonoBehaviour
     private int direction = -1;
     private Billboard billboard;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void OnLevelWasLoaded(int level)
-    {
-        //if not main level, deactivate customers
-        //if (level != Scenes.MainLevel)
-        //    GetComponent<Animator>().enabled = false;
-        //else
-        //    GetComponent<Animator>().enabled = true;
-    }
-
     void Start ()
     {
         billboard = transform.FindChild("Moth").GetComponent<Billboard>();
@@ -46,13 +32,7 @@ public class CustomerLogic : MonoBehaviour
 
     void Update()
     {
-        //if edit mode, slow down
-        if (MainGameManager.Get.Floor.IsEditMode == EditMode.selected)
-        {
-            transform.GetChild(0).GetComponent<Animator>().speed = InGameTime.timeScale;
-        }
-        else
-            transform.GetChild(0).GetComponent<Animator>().speed = 1;
+        transform.GetChild(0).GetComponent<Animator>().speed = InGameTime.timeScale;
 
         //if not arrived, walk
         if (!arrived)
@@ -89,11 +69,11 @@ public class CustomerLogic : MonoBehaviour
     void OrderStart ()
     {
         OB = Instantiate(OrderingBallon);
-        OB.transform.SetParent(MainGameManager.Get.OrderHUD.transform, false);
+        OB.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
         OB.GetComponent<OrderingBallonLogic>().customer = transform;
 
         ST = Instantiate(SpawnTimer);
-        ST.transform.SetParent(MainGameManager.Get.OrderHUD.transform, false);
+        ST.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
         ST.GetComponent<CustomerSpawnTimer>().customer = transform;
         ST.GetComponent<BarScript>().MaxValue = customerspawntime;
 

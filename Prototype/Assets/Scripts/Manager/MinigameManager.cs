@@ -6,11 +6,16 @@ public class MinigameManager : MonoBehaviour
     //public link
     public static MinigameManager Get;
 
+    //Canvas
+    public GameObject Canvas_UI;
+
+    //camera
+    public MakeOrderCameraLogic MakeOrderCamera;
+
     //shortcuts
     public ResetManager ResetManager;
     public Minigame_CoffeeManager CoffeeManager;
-    public CameraManager CameraManager;
-    public Canvas UI;
+    public Minigame_InputManager InputManager;
 
     void Awake ()
     {
