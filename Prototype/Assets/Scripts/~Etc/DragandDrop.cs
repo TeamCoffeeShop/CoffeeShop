@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DragandDrop : MonoBehaviour {
-
+public class DragandDrop : MonoBehaviour
+{
     private Vector3 screenPoint;
     private Vector3 offset;
 
-    float DragHeight = 1;
+    Vector2 Xbound = new Vector2(-225, -177);
+    Vector2 Ybound = new Vector2(0.5f, 6);
+    Vector2 Zbound = new Vector2(3, 3);
 
     bool Grab = false;
     bool InGrinder = false;
     bool InHandle = false;
     bool InMachine = false;
     bool InCup = false;
+
+    public enum ObjectType
+    {
+        none, coffeeBean, coffeePowder, coffeeMachineHandle
+    }
+    public ObjectType type;
+    public int typeIndex;
 
     //variables to access handgrinder
     GameObject handGrinder;
@@ -29,9 +38,6 @@ public class DragandDrop : MonoBehaviour {
     //variable to access coffeemachine
     GameObject coffeeMachine;
 
-    //variable to access coffeeCup
-    GameObject coffeeCup;
-
     void Awake()
     {
         handGrinder = GameObject.Find("HandGrinder");
@@ -41,16 +47,6 @@ public class DragandDrop : MonoBehaviour {
 
         hGrinderScript = handGrinder.GetComponent<HandGrinderScript>();
         cMachineScript = coffeeMachine.GetComponent<CoffeeDrop>();
-    }
-
-    void FixedUpdate()
-    {
-    }
-
-    void Update()
-    {
-        if (coffeeCup == null)
-            coffeeCup = MinigameManager.Get.CoffeeManager.SelectedCoffee;
     }
 
     void OnMouseDown()
@@ -66,6 +62,16 @@ public class DragandDrop : MonoBehaviour {
          offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 
+        //highlighter
+        switch (type)
+        {
+            case ObjectType.coffeeBean:
+                {
+                    handGrinder.GetComponent<HandGrinderScript>().highlightWhenAble = true;
+                }
+                break;
+        }
+
         if(gameObject == machineHandle)
             InMachine = true;
     }
@@ -74,10 +80,28 @@ public class DragandDrop : MonoBehaviour {
     {
         //for drag and drop
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-         curPosition.y = DragHeight;
-         transform.position = curPosition;
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+
+        //X bound
+        if (curPosition.x < Xbound.x)
+            curPosition.x = Xbound.x;
+        else if (curPosition.x > Xbound.y)
+            curPosition.x = Xbound.y;
+
+        //Y bound
+        if (curPosition.y < Ybound.x)
+            curPosition.y = Ybound.x;
+        else if (curPosition.y > Ybound.y)
+            curPosition.y = Ybound.y;
+
+        // Z bound
+        if (curPosition.z < Zbound.x)
+            curPosition.z = Zbound.x;
+        else if (curPosition.z > Zbound.y)
+            curPosition.z = Zbound.y;
+
+        transform.position = curPosition;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
@@ -88,209 +112,175 @@ public class DragandDrop : MonoBehaviour {
         //cursor visible
         Cursor.visible = true;
 
-        //when the player drags and drops the coffee bean into the grinder, destroy the coffee bean object
-        if (InGrinder == true)
+        switch (type)
         {
-            //for first coffee bean type
-            if (gameObject.name == "CoffeeBean1(Clone)")
-            {
-                //when the list is empty
-                if (hGrinderScript.CoffeeBeans.Count == 0)
+            case ObjectType.coffeeBean:
+                //when the player drags and drops the coffee bean into the grinder, destroy the coffee bean object
+                if (InGrinder == true)
                 {
-                    //put first coffee bean info
-                    hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 1));
-                    //and then destroy the coffee bean object
-                    Destroy(gameObject);
-                    //Rotate Camera
-                    //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                    //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-                    //Camera.main.transform.Rotate(90, 0, 0);
-                    //Set grinder status to start status
-                    hGrinderScript.rotationImage.enabled = true;
-                    hGrinderScript.coffeeBeanCheck = true;
-                    hGrinderScript.totalRotation = 0;
-                }
-            }
-
-            //for second coffee bean type
-            if (gameObject.name == "CoffeeBean2(Clone)")
-            {
-                //when the list is empty
-                if (hGrinderScript.CoffeeBeans.Count == 0)
-                {
-                    //put second coffee bean info
-                    hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, 2));
-                    //and then destroy the coffee bean object
-                    Destroy(gameObject);
-                    //Rotate Camera
-                    //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
-                    //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
-                    //Camera.main.transform.Rotate(90, 0, 0);
-                    //Set grinder status to start status
-                    hGrinderScript.rotationImage.enabled = true;
-                    hGrinderScript.coffeeBeanCheck = true;
-                    hGrinderScript.totalRotation = 0;
-                }
-            }
-        }
-
-        //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
-        if (InHandle == true)
-        {
-            //for first coffee powder type
-            if (gameObject.name == "CoffeePowder1")
-            {
-                //when the list is empty
-                if (cMachineScript.CoffeePowders.Count == 0)
-                {
-                    int content = hGrinderScript.PowderContent;
-                    //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 1, content));
-                    //and then destroy the coffee powder object
-                    Destroy(gameObject);
-                    // Add espresson powder in the handle
-                    coffeepowderInHandle = (GameObject)Instantiate(EspressoPowder, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
-                    coffeepowderInHandle.transform.parent = machineHandle.transform;
-                }
-            }
-
-            //for first coffee powder type
-            if (gameObject.name == "CoffeePowder2")
-            {
-                //when the list is empty
-                if (cMachineScript.CoffeePowders.Count == 0)
-                {
-                    int content = hGrinderScript.PowderContent;
-                    //put first coffee powder info
-                    cMachineScript.CoffeePowders.Add(new CoffeePowder(true, 2, content));
-                    //and then destroy the coffee powder object
-                    Destroy(gameObject);
-                    // Add espresson powder in the handle
-                    coffeepowderInHandle = (GameObject)Instantiate(EspressoPowder, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
-
-                }
-            }
-        }
-
-        //when the player drags and drops the coffee machine handle into the coffee machine, destory the coffee powder object
-        if (InMachine == true)
-        {
-            if (gameObject.name == "CoffeeMachineHandle")
-            {
-                Vector3 coffeemachinescreen = Camera.main.WorldToScreenPoint(coffeeMachine.transform.position);
-                Vector3 machineoffset = coffeeMachine.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, coffeemachinescreen.z));
-
-                if (coffeemachinescreen.x - 30 < Input.mousePosition.x && coffeemachinescreen.x + 30 > Input.mousePosition.x)
-                {
-                    if (cMachineScript.CoffeePowders.Count != 0)
+                    //when the list is empty
+                    if (hGrinderScript.CoffeeBeans.Count == 0)
                     {
-                        if (coffeepowderInHandle)
-                            Destroy(coffeepowderInHandle);
-
-                        Destroy(machineHandle);
-                        // destroy the coffee machine handle object
+                        //put first coffee bean info
+                        hGrinderScript.CoffeeBeans.Add(new CoffeeBean(true, typeIndex));
+                        //and then destroy the coffee bean object
                         Destroy(gameObject);
-                        coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
+                        //Rotate Camera
+                        //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
+                        //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-6, 60, 5);
+                        //Camera.main.transform.Rotate(90, 0, 0);
+                        //Set grinder status to start status
+                        hGrinderScript.rotationImage.enabled = true;
+                        hGrinderScript.coffeeBeanCheck = true;
+                        hGrinderScript.totalRotation = 0;
                     }
                 }
-            }
-        }
+                else
+                    handGrinder.GetComponent<HandGrinderScript>().highlightWhenAble = false;
+                break;
 
+            case ObjectType.coffeePowder:
+                //when the player drags and drops the coffee powder into the the handle, destory the coffee powder object
+                if (InHandle == true)
+                {
+                    //when the list is empty
+                    if (cMachineScript.CoffeePowders.Count == 0)
+                    {
+                        int content = hGrinderScript.PowderContent;
+                        //put first coffee powder info
+                        cMachineScript.CoffeePowders.Add(new CoffeePowder(true, typeIndex, content));
+                        //and then destroy the coffee powder object
+                        Destroy(gameObject);
+                        // Add espresson powder in the handle
+                        coffeepowderInHandle = (GameObject)Instantiate(EspressoPowder, machineHandle.transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+                        coffeepowderInHandle.transform.parent = machineHandle.transform;
+                    }
+                }
+                break;
+            case ObjectType.coffeeMachineHandle:
+                //when the player drags and drops the coffee machine handle into the coffee machine, destory the coffee powder object
+                if (InMachine == true)
+                {
+                    Vector3 coffeemachinescreen = Camera.main.WorldToScreenPoint(coffeeMachine.transform.position);
+                    Vector3 machineoffset = coffeeMachine.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, coffeemachinescreen.z));
+
+                    if (coffeemachinescreen.x - 30 < Input.mousePosition.x && coffeemachinescreen.x + 30 > Input.mousePosition.x)
+                    {
+                        if (cMachineScript.CoffeePowders.Count != 0)
+                        {
+                            if (coffeepowderInHandle)
+                                Destroy(coffeepowderInHandle);
+
+                            Destroy(machineHandle);
+                            // destroy the coffee machine handle object
+                            Destroy(gameObject);
+                            coffeeMachine.GetComponent<CoffeeDrop>().CameraRotate = true;
+                        }
+                    }
+                }
+                break;
+        }
+        
         //when the player drags and drops the coffee drop into the coffee cup, destory the coffee drop object
         if (InCup == true)
         {
-            if (gameObject.tag == "CoffeeDrop")
-            {
-                switch(gameObject.name)
+            if(MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
+                if (gameObject.tag == "CoffeeDrop")
                 {
-                    case "CoffeeDrop1":
-                        coffeeCup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop1;
-                        CoffeeBehaviourSetup.SetCoffee(ref coffeeCup);
-                        Destroy(gameObject);
-                        break;
-                    case "CoffeeDrop2":
-                        coffeeCup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop2;
-                        CoffeeBehaviourSetup.SetCoffee(ref coffeeCup);
-                        Destroy(gameObject);
-                        break;
-                    default:
-                        break;
+                    switch(gameObject.name)
+                    {
+                        case "CoffeeDrop1":
+                            MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop1;
+                            CoffeeBehaviourSetup.SetCoffee(ref MinigameManager.Get.CoffeeManager.SelectedCoffee);
+                            Destroy(gameObject);
+                            break;
+                        case "CoffeeDrop2":
+                            MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop2;
+                            CoffeeBehaviourSetup.SetCoffee(ref MinigameManager.Get.CoffeeManager.SelectedCoffee);
+                            Destroy(gameObject);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
         }
     }
 
 
     void OnCollisionEnter(Collision col)
     {
-        //if the player picks up the coffeebean
-        if (gameObject.tag == "CoffeeBean")
-        {
-            //and drops it into the handgrinder
-            if (col.gameObject == handGrinder && this.Grab == true)
+        if(Grab)
+            switch (type)
             {
-                InGrinder = true;
-            }
-        }
+                case ObjectType.coffeeBean:
+                    //and drops it into the handgrinder
+                    if (col.gameObject == handGrinder)
+                    {
+                        InGrinder = true;
+                    }
+                    break;
 
-        //if the player picks up the coffeepowder
-        if (gameObject.tag == "CoffeePowder")
-        {
-            if (col.gameObject == machineHandle && this.Grab == true)
-            {
-                InHandle = true;
+                case ObjectType.coffeePowder:
+                    //if the player picks up the coffeepowder
+                    if (col.gameObject == machineHandle)
+                    {
+                        InHandle = true;
+                    }
+                    break;
+                case ObjectType.coffeeMachineHandle:
+                    //if the player picks up the coffee machine handle
+                    if (col.gameObject == coffeeMachine)
+                    {
+                        InMachine = true;
+                    }
+                    break;
             }
-        }
-
-        //if the player picks up the coffee machine handle
-        if (gameObject.tag == "CoffeeMachineHandle")
-        {
-            if (col.gameObject == coffeeMachine && this.Grab == true)
-            {
-                InMachine = true;
-            }
-        }
 
         //if the player picks up the coffeedrop
-        if (gameObject.tag == "CoffeeDrop")
+        if (gameObject.tag == "CoffeeDrop" && this.Grab == true)
         {
-            if (col.gameObject == coffeeCup && this.Grab == true)
-            {
-                InCup = true;
-            }
+            if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
+                if (col.gameObject == MinigameManager.Get.CoffeeManager.SelectedCoffee)
+                {
+                    InCup = true;
+                }
         }
     }
 
     void OnCollisionExit(Collision col)
     {
-        if (gameObject.tag == "CoffeeBean")
-        {
-            if (col.gameObject == handGrinder && this.Grab == true)
+        if(Grab)
+            switch (type)
             {
-                InGrinder = false;
-            }
-        }
-        if (gameObject.tag == "CoffeePowder")
-        {
-            if (col.gameObject == machineHandle && this.Grab == true)
-            {
-                InHandle = false;
-            }
-        }
+                case ObjectType.coffeeBean:
+                    //and drops it into the handgrinder
+                    if (col.gameObject == handGrinder)
+                    {
+                        InGrinder = false;
+                    }
+                    break;
 
-        if (gameObject.tag == "CoffeeMachineHandle")
-        {
-            if (col.gameObject == coffeeMachine && this.Grab == true)
-            {
-                InMachine = false;
+                case ObjectType.coffeePowder:
+                    if (col.gameObject == machineHandle)
+                    {
+                        InHandle = false;
+                    }
+                    break;
+                case ObjectType.coffeeMachineHandle:
+                    if (col.gameObject == coffeeMachine)
+                    {
+                        InMachine = false;
+                    }
+                    break;
             }
-        }
+
         if (gameObject.tag == "CoffeeDrop")
         {
-            if (col.gameObject == coffeeCup && this.Grab == true)
-            {
-                InCup = false;
-            }
+            if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
+                if (col.gameObject == MinigameManager.Get.CoffeeManager.SelectedCoffee && this.Grab == true)
+                {
+                    InCup = false;
+                }
         }
     }
 }

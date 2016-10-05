@@ -8,9 +8,9 @@ public class Minigame_CoffeeManager : MonoBehaviour
     public float LockSpeed = 10;
     
     
-    //step 0 : selecting cup
-    //step 1 : selecting coffee bean
-    //step 2 : grind the coffee bean
+    //step 0 : selecting coffee bean
+    //step 1 : grind the coffee bean
+    //step 2 : selecting cup
     public int step = 0;
 
     //save finished order

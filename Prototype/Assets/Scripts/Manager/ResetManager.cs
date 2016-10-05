@@ -12,18 +12,16 @@ public class ResetManager : MonoBehaviour
         }
 
         //remove all the CoffeeBean objects in the level
-        if (GameObject.FindGameObjectWithTag("CoffeeBean") != null)
+        GameObject[] names = GameObject.FindGameObjectsWithTag("DragAndDrop");
+        foreach (GameObject item in names)
         {
-            GameObject[] names = GameObject.FindGameObjectsWithTag("CoffeeBean");
-            foreach (GameObject item in names)
-            {
-                Destroy(item);
-            }
+            Destroy(item);
         }
+
         //remove all the CoffeeDrop objects in the level
         if (GameObject.FindGameObjectWithTag("CoffeeDrop") != null)
         {
-            GameObject[] names = GameObject.FindGameObjectsWithTag("CoffeeDrop");
+            names = GameObject.FindGameObjectsWithTag("CoffeeDrop");
             foreach (GameObject item in names)
             {
                 Destroy(item);
@@ -32,7 +30,7 @@ public class ResetManager : MonoBehaviour
         //remove all the CoffeePowder objects in the level
         if (GameObject.FindGameObjectWithTag("CoffeePowder") != null)
         {
-            GameObject[] names = GameObject.FindGameObjectsWithTag("CoffeePowder");
+            names = GameObject.FindGameObjectsWithTag("CoffeePowder");
             foreach (GameObject item in names)
             {
                 Destroy(item);
@@ -41,7 +39,7 @@ public class ResetManager : MonoBehaviour
         //remove all the Cream objects in the level
         if (GameObject.FindGameObjectWithTag("Cream") != null)
         {
-            GameObject[] names = GameObject.FindGameObjectsWithTag("Cream");
+            names = GameObject.FindGameObjectsWithTag("Cream");
             foreach (GameObject item in names)
             {
                 Destroy(item);

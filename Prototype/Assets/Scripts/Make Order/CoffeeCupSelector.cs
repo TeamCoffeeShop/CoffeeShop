@@ -14,7 +14,7 @@ public class CoffeeCupSelector : MonoBehaviour
     //if coffeecup is not selected, try to select one
     void Update ()
     {
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee == null)
+        if (MinigameManager.Get.CoffeeManager.step == 2)
             h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
         else
             h.highlightOn = OutlineHighlighter.HighlightOn.none;
@@ -23,7 +23,7 @@ public class CoffeeCupSelector : MonoBehaviour
     void OnMouseUp ()
     {
         //if the cup is selected
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee == null)
+        if (MinigameManager.Get.CoffeeManager.step == 2)
         {
             //create new cup
             GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
