@@ -112,12 +112,10 @@ public static class CoffeeOrderSetup
         switch (order)
         {
             case OrderType.HotAmericano:
-                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/Americano");
-                //Debug.Log("Hot Americano");
+                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/HotAmericano_WOText");
                 break;
             case OrderType.IceAmericano:
-                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/AmericanoCld");
-                //Debug.Log("Ice Americano");
+                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/ColdAmericano_WOText");
                 break;
             default:
                 break;

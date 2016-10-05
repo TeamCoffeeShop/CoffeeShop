@@ -22,7 +22,7 @@ public class WaterMilkInstantiator : MonoBehaviour
             case WaterMilkType.IcedMilk:
                 //water showoff
                 if (!water)
-                    water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(5, 52.216f, 3.177f), Quaternion.identity) as GameObject).transform;
+                    water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(-189.88f, 2.216f, 3.177f), Quaternion.identity) as GameObject).transform;
                 CurrentAmount += IncreaseAmount;
                 break;
             default:
