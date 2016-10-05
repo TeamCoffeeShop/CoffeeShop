@@ -82,6 +82,9 @@
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanSelection.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\ObjectClickScript.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\PullAndSelect.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\SphereScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
     <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
     <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
