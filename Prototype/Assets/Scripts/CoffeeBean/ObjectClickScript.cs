@@ -14,4 +14,10 @@ public class ObjectClickScript : MonoBehaviour {
     {
         CheckRotation = false;
     }
+
+    void OnCollisionEnter()
+    {
+        if(gameObject.tag == "CoffeeCondition")
+            CheckRotation = false;
+    }
 }
