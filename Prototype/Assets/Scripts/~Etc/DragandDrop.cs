@@ -181,8 +181,6 @@ public class DragandDrop : MonoBehaviour {
                 Vector3 machineoffset = coffeeMachine.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, coffeemachinescreen.z));
 
                 if (coffeemachinescreen.x - 30 < Input.mousePosition.x && coffeemachinescreen.x + 30 > Input.mousePosition.x)
-                   // && coffeemachinescreen.y - 30 < Input.mousePosition.y && coffeemachinescreen.y + 30> Input.mousePosition.y)
-                    //&& coffeemachinescreen.z - 30 < Input.mousePosition.z && coffeemachinescreen.z + 30 > Input.mousePosition.z)
                 {
                     if (cMachineScript.CoffeePowders.Count != 0)
                     {

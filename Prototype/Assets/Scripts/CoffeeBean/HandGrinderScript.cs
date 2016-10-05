@@ -84,8 +84,8 @@ public class HandGrinderScript : MonoBehaviour
         }
         else
         {
-            h.highlightOn = OutlineHighlighter.HighlightOn.none;
-            h2.highlightOn = OutlineHighlighter.HighlightOn.none;
+            //h.highlightOn = OutlineHighlighter.HighlightOn.none;
+            //h2.highlightOn = OutlineHighlighter.HighlightOn.none;
         }
 
         //track down the hand grinder rotation based on the mouse position

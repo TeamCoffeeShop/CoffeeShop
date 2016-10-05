@@ -44,10 +44,10 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     void Update()
     {
-        if (MinigameManager.Get.CoffeeManager.step == 1)
-            h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
-        else
-            h.highlightOn = OutlineHighlighter.HighlightOn.none;
+        //if (MinigameManager.Get.CoffeeManager.step == 1)
+        //    h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
+        //else
+        //    h.highlightOn = OutlineHighlighter.HighlightOn.none;
 
         if (ShakeReady)
             Shake();
