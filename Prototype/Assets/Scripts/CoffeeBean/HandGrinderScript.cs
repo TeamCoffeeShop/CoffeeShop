@@ -21,6 +21,7 @@ public class HandGrinderScript : MonoBehaviour
     bool CheckGrind = false;
 
     public bool coffeeBeanCheck = false;
+    public bool highlightWhenAble = false;
 
     //bool type for checking coffee grinder game
     bool CheckGameStop = false;
@@ -77,17 +78,6 @@ public class HandGrinderScript : MonoBehaviour
     {
         RotationCheck();
 
-        if (MinigameManager.Get.CoffeeManager.step == 2)
-        {
-            h.highlightOn = OutlineHighlighter.HighlightOn.always;
-            h2.highlightOn = OutlineHighlighter.HighlightOn.always;
-        }
-        else
-        {
-            h.highlightOn = OutlineHighlighter.HighlightOn.none;
-            h2.highlightOn = OutlineHighlighter.HighlightOn.none;
-        }
-
         //track down the hand grinder rotation based on the mouse position
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +123,7 @@ public class HandGrinderScript : MonoBehaviour
                     GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
                     coffeepowder1.name = "CoffeePowder1";
                     CheckGameStop = false;
-                    MinigameManager.Get.CoffeeManager.step = 3;
+                    MinigameManager.Get.CoffeeManager.step = 2;
 
                 }
 
@@ -142,7 +132,7 @@ public class HandGrinderScript : MonoBehaviour
                     GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
                     coffeepowder2.name = "CoffeePowder2";
                     CheckGameStop = false;
-                    MinigameManager.Get.CoffeeManager.step = 3;
+                    MinigameManager.Get.CoffeeManager.step = 2;
                 }
 
                 totalRotation = 0;
@@ -154,7 +144,30 @@ public class HandGrinderScript : MonoBehaviour
         {
             //GrindMotion();
             NewGrindMotion();
-        }        
+            h.highlightOn = OutlineHighlighter.HighlightOn.none;
+            h2.highlightOn = OutlineHighlighter.HighlightOn.none;
+        }
+        else
+        {
+            if (MinigameManager.Get.CoffeeManager.step == 1 && highlightWhenAble)
+            {
+                if (coffeeBeanCheck)
+                {
+                    h.highlightOn = OutlineHighlighter.HighlightOn.none;
+                    h2.highlightOn = OutlineHighlighter.HighlightOn.always;
+                }
+                else
+                {
+                    h.highlightOn = OutlineHighlighter.HighlightOn.always;
+                    h2.highlightOn = OutlineHighlighter.HighlightOn.none;
+                }
+            }
+            else
+            {
+                h.highlightOn = OutlineHighlighter.HighlightOn.none;
+                h2.highlightOn = OutlineHighlighter.HighlightOn.none;
+            }
+        }
     }
 
     void RotationCheck()
@@ -209,30 +222,30 @@ public class HandGrinderScript : MonoBehaviour
     }
 
     //for coffee grinding motion
-    void GrindMotion()
-    {
-        // Create a ray from the mouse cursor on screen in the direction of the camera.
-        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //void GrindMotion()
+    //{
+    //    // Create a ray from the mouse cursor on screen in the direction of the camera.
+    //    Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // Create a RaycastHit variable to store information about what was hit by the ray.
-        RaycastHit floorHit;
+    //    // Create a RaycastHit variable to store information about what was hit by the ray.
+    //    RaycastHit floorHit;
 
-        // Perform the raycast and if it hits something on the floor layer...
-        if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-        {
-            // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-            Vector3 playerToMouse = floorHit.point - transform.position;
+    //    // Perform the raycast and if it hits something on the floor layer...
+    //    if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
+    //    {
+    //        // Create a vector from the player to the point on the floor the raycast from the mouse hit.
+    //        Vector3 playerToMouse = floorHit.point - transform.position;
 
-            // Ensure the vector is entirely along the floor plane.
-            playerToMouse.y = 0;
+    //        // Ensure the vector is entirely along the floor plane.
+    //        playerToMouse.y = 0;
 
-            // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+    //        // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
+    //        Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 
-            // Set the player's rotation to this new rotation.
-            playerRigidbody.MoveRotation(newRotation);
-        }
-    }
+    //        // Set the player's rotation to this new rotation.
+    //        playerRigidbody.MoveRotation(newRotation);
+    //    }
+    //}
 
     Vector3 MousePos;
 

@@ -44,15 +44,18 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     void Update()
     {
-        if (MinigameManager.Get.CoffeeManager.step == 1)
-            h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
-        else
-            h.highlightOn = OutlineHighlighter.HighlightOn.none;
-
         if (ShakeReady)
+        {
+            h.highlightOn = OutlineHighlighter.HighlightOn.none;
             Shake();
+        }
         else
         {
+            if (MinigameManager.Get.CoffeeManager.step == 0)
+                h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
+            else
+                h.highlightOn = OutlineHighlighter.HighlightOn.none;
+
             gameObject.transform.position = OrigianlPosition;
 
             if (CoffeeBean1Ready)
@@ -130,8 +133,8 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         ShakeReady = true;
         yield return new WaitForSeconds(WaitingTime);
         ShakeReady = false;
-        GameObject coffeeBean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
-        MinigameManager.Get.CoffeeManager.step = 2;
+        GameObject coffeeBean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
+        MinigameManager.Get.CoffeeManager.step = 1;
     }
 
     void Shake()
