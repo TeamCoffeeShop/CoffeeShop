@@ -116,6 +116,8 @@
      <Compile Include="Assets\Scripts\~Etc\Billboard.cs" />
      <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
      <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
+     <Compile Include="Assets\Scripts\~Etc\LiquidFalling\CustomFallingEffect.cs" />
+     <Compile Include="Assets\Scripts\~Etc\LiquidFalling\FallingLiquid.cs" />
      <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
      <Compile Include="Assets\Scripts\~Etc\OutlineHighlighter.cs" />
      <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />
