@@ -20,7 +20,7 @@ public class CustomFallingEffect : MonoBehaviour
 
     void Start ()
     {
-        liquidPrefab = Resources.Load<>();
+        //liquidPrefab = Resources.Load<>();
     }
 
     public void StartFalling ()
