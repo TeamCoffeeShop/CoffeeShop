@@ -79,8 +79,10 @@
     <Compile Include="Assets\Scripts\Camera\MakeOrderCameraLogic.cs" />
     <Compile Include="Assets\Scripts\Camera\Minigame_CameraMover.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanLogic.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanSelection.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
+    <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderHandleScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\ObjectClickScript.cs" />
     <Compile Include="Assets\Scripts\CoffeeBean\PullAndSelect.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Assets\Scripts\DiarySystem\DiaryStatus.cs" />
     <Compile Include="Assets\Scripts\Enums&amp;Defines.cs" />
     <Compile Include="Assets\Scripts\Make Order\CoffeeCupSelector.cs" />
+    <Compile Include="Assets\Scripts\Make Order\CoffeeMachineHandleLogic.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
@@ -135,7 +138,6 @@
     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
     <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
     <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
-    <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
     <Compile Include="Assets\Scripts\UI\UISystem.cs" />
     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
     <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
@@ -143,6 +145,8 @@
     <Compile Include="Assets\Scripts\~Etc\Billboard.cs" />
     <Compile Include="Assets\Scripts\~Etc\CameraLogic.cs" />
     <Compile Include="Assets\Scripts\~Etc\DragandDrop.cs" />
+    <Compile Include="Assets\Scripts\~Etc\LiquidFalling\CustomFallingEffect.cs" />
+    <Compile Include="Assets\Scripts\~Etc\LiquidFalling\FallingLiquid.cs" />
     <Compile Include="Assets\Scripts\~Etc\MenuScript.cs" />
     <Compile Include="Assets\Scripts\~Etc\OutlineHighlighter.cs" />
     <Compile Include="Assets\Scripts\~Etc\PopupLogic.cs" />

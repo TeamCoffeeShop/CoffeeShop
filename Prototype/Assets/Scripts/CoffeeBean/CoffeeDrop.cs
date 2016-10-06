@@ -45,14 +45,18 @@ public class CoffeeDrop : MonoBehaviour
     {
         //stick handle into position
         if (handle != null)
+        {
             handle.transform.position = transform.position + new Vector3(0, 1.9f, 0);
+            if(!Drop)
+                CameraRotate = true;
+        }
 
         if (CameraRotate)
         {
             //Camera.main.GetComponent<CameraLogic>().PreviousPosition = Camera.main.GetComponent<CameraLogic>().TargetPosition;
             //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
             //Camera.main.transform.Rotate(35, 0, 0);
-            handle.transform.Translate(0, 1.2f, 0);
+            //handle.transform.Translate(0, 1.2f, 0);
             CameraRotate = false;
             MinigamePrepare = true;
         }
