@@ -98,18 +98,16 @@ public class CoffeeDrop : MonoBehaviour
             {
                 case 1:
                     cup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop1;
-                    liquid = cup.transform.GetChild(0);
                     break;
                 case 2:
                     cup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop2;
-                    liquid = cup.transform.GetChild(0);
                     break;
                 default:
                     break;
 
             }
-            if (liquid != null)
-                liquid.gameObject.SetActive(true);
+            if(cup.transform.childCount != 0)
+                cup.transform.GetChild(0).gameObject.SetActive(true);
 
             cup = null;
 
