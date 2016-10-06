@@ -17,6 +17,7 @@ public class CoffeeCupSelector : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = false;
         GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
         cup.transform.position = gameObject.transform.position;
-        Destroy(this);
+        this.gameObject.SetActive(false);
+        //Destroy(this);
     }
 }
