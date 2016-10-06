@@ -3,33 +3,20 @@ using System.Collections;
 
 public class CoffeeCupSelector : MonoBehaviour
 {
-    OutlineHighlighter h;
     public GameObject CoffeeCupPrefab;
 
-    void Awake ()
+    void Start ()
     {
-        h = GetComponent<OutlineHighlighter>();
+        GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.coffeeMachine.gameObject;
     }
 
-    //if coffeecup is not selected, try to select one
-    void Update()
+    void OnMouseDown ()
     {
-        //if (MinigameManager.Get.CoffeeManager.step >= 2)
-        //    h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
-        //else
-        //    h.highlightOn = OutlineHighlighter.HighlightOn.none;
-    }
-
-    void OnMouseUp ()
-    {
-        //if the cup is selected
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee == null)
-        {
-            //create new cup
-            GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
-            MinigameManager.Get.CoffeeManager.SelectedCoffee = cup;
-            MinigameManager.Get.CoffeeManager.LockToCamera = true;
-            cup.transform.position = gameObject.transform.position;
-        }
+        //create new cup
+        GetComponent<Collider>().isTrigger = false;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
+        cup.transform.position = gameObject.transform.position;
+        Destroy(this);
     }
 }

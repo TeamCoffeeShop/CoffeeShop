@@ -33,15 +33,15 @@ public class WaterMilkInstantiator : MonoBehaviour
     void OnMouseUp()
     {
         //save the amount to the cup
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
-        {
-            if(CurrentAmount <= MaxAmount)
-            {
-                CoffeeCupBehavior cup = MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
-                cup.WaterMilkType = WaterMilkType;
-                cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
-            }
-        }
+        //if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
+        //{
+        //    if(CurrentAmount <= MaxAmount)
+        //    {
+        //        CoffeeCupBehavior cup = MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
+        //        cup.WaterMilkType = WaterMilkType;
+        //        cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
+        //    }
+        //}
 
         //finish water
         water.GetComponent<WaterFallingLogic>().filling = false;
