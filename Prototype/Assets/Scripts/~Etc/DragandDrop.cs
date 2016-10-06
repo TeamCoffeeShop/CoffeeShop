@@ -32,14 +32,15 @@ public class DragandDrop : MonoBehaviour
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 
-        //highlight on targets
-        foreach (GameObject target in Target)
-        {
-            OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
+        if(active)
+            //highlight on targets
+            foreach (GameObject target in Target)
+            {
+                OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
 
-            if(h != null)
-                h.active = true;
-        }
+                if(h != null)
+                    h.active = true;
+            }
     }
 
     void OnMouseDrag ()
@@ -77,14 +78,15 @@ public class DragandDrop : MonoBehaviour
             InTarget_Return = InTarget;
         }
 
-        //highlight off targets
-        foreach (GameObject target in Target)
-        {
-            OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
+        if(active)
+            //highlight off targets
+            foreach (GameObject target in Target)
+            {
+                OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
 
-            if (h != null)
-                h.active = false;
-        }
+                if (h != null)
+                    h.active = false;
+            }
     }
 
     void OnCollisionEnter(Collision col)

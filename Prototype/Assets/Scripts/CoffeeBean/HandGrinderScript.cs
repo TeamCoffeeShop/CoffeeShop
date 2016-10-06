@@ -66,21 +66,6 @@ public class HandGrinderScript : MonoBehaviour
                 PowderContent = (int)totalRotation;
                 coffeeBar.gameObject.SetActive(false);
 
-                //if (CoffeeBeans[0].CBean == 1)
-                //{
-                //    GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
-                //    coffeepowder1.name = "CoffeePowder1";
-                //    CheckGameStop = false;
-
-                //}
-
-                //if (CoffeeBeans[0].CBean == 2)
-                //{
-                //    GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
-                //    coffeepowder2.name = "CoffeePowder2";
-                //    CheckGameStop = false;
-                //}
-
                 totalRotation = 0;
                 ExertCoffeePowder();
             }
@@ -159,6 +144,7 @@ public class HandGrinderScript : MonoBehaviour
 
         //add powder to handle
         MachineHandle.GetComponent<DragandDrop>().active = true;
+        MachineHandle.GetComponent<OutlineHighlighter>().active = true;
         MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
 
         MachineHandle = null;
