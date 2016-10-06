@@ -17,6 +17,7 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
         if (d.inTarget == 1)
         {
             MinigameManager.Get.handGrinder.PutCoffeeMachinHandleToGrinder(gameObject);
+            d.active = false;
         }
         //machine
         else if (d.inTarget == 2)

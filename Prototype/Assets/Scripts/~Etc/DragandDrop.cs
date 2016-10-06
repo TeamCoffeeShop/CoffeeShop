@@ -3,11 +3,13 @@ using System.Collections;
 
 public class DragandDrop : MonoBehaviour
 {
+    public bool active = true;
     public Vector2 Xbound = new Vector2(-225, -177);
     public Vector2 Ybound = new Vector2(0.5f, 6);
     public Vector2 Zbound = new Vector2(3, 3);
     public GameObject[] Target;
 
+    private bool pActive;
     private int InTarget_Return = 0;
     private int InTarget = 0;
     private Vector3 screenPoint;
@@ -114,6 +116,22 @@ public class DragandDrop : MonoBehaviour
             }
     }
 
+    void Start ()
+    {
+        pActive = !active;
+    }
+
+    void Update ()
+    {
+        if(pActive != active)
+        {
+            pActive = active;
+
+            InTarget = 0;
+            InTarget_Return = 0;
+            Grab = false;
+        }
+    }
 
     //void OnMouseUp()
     //{

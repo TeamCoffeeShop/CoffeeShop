@@ -30,6 +30,7 @@ public class HandGrinderScript : MonoBehaviour
     public bool IsFilled { get { return coffeeBeanCheck; } }
     private bool machineHandleCheck = false;
     private GameObject MachineHandle;
+    private bool highlightMachineHandle = false;
 
     void Awake()
     {
@@ -55,69 +56,80 @@ public class HandGrinderScript : MonoBehaviour
             MachineHandle.transform.rotation = Quaternion.Euler(new Vector3(0, -137.36f, 0));
         }
 
-        RotationCheck();
-
         if (CheckGameStop && coffeeBeanCheck && machineHandleCheck)//if (totalRotation > stanRotation)
         {
-            //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
-            //Camera.main.transform.Rotate(-90, 0, 0);
-            PowderContent = (int)totalRotation;
-            coffeeBar.gameObject.SetActive(false);
+            //temporary grind checking
+            if (totalRotation > stanRotation)
+            {
+                //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+                //Camera.main.transform.Rotate(-90, 0, 0);
+                PowderContent = (int)totalRotation;
+                coffeeBar.gameObject.SetActive(false);
 
-            //if (CoffeeBeans[0].CBean == 1)
-            //{
-            //    GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
-            //    coffeepowder1.name = "CoffeePowder1";
-            //    CheckGameStop = false;
+                //if (CoffeeBeans[0].CBean == 1)
+                //{
+                //    GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
+                //    coffeepowder1.name = "CoffeePowder1";
+                //    CheckGameStop = false;
 
-            //}
+                //}
 
-            //if (CoffeeBeans[0].CBean == 2)
-            //{
-            //    GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
-            //    coffeepowder2.name = "CoffeePowder2";
-            //    CheckGameStop = false;
-            //}
+                //if (CoffeeBeans[0].CBean == 2)
+                //{
+                //    GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
+                //    coffeepowder2.name = "CoffeePowder2";
+                //    CheckGameStop = false;
+                //}
 
-            totalRotation = 0;
-            ExertCoffeePowder();
+                totalRotation = 0;
+                ExertCoffeePowder();
+            }
         }
+
+        CheckGameStop = false;
 
         //grind motion
         if (CheckGrind)
         {
+            RotationCheck();
+
             if (!coffeeBeanCheck || (coffeeBeanCheck && machineHandleCheck))
                 NewGrindMotion();
             else
+            {
                 MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
+                highlightMachineHandle = true;
+            }
         }
         else
-            MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
+        {
+            if(highlightMachineHandle)
+            {
+                MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
+                highlightMachineHandle = false;
+            }
+        }
     }
 
     void RotationCheck()
     {
         coffeeBar.gameObject.SetActive(true);
-        //check what kind of coffee bean is in the grinder,
-        //make coffee powder using the coffee bean
-        //if (CoffeeBeans[0].Check == true)
-        //{
-        //    // Save coffee content
-        //    coffeeBar.Value = totalRotation;
-        //    coffeeBar.MaxValue = stanRotation;
-        //    PowderContent = (int)totalRotation;
 
-        //    if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
-        //    {
-        //        //player should rotate at least certain degree to grind the coffee bean
-        //        if (Mathf.Abs(transform.GetChild(0).rotation.eulerAngles.y - oldEulerAngles.y) >= stanDegree)
-        //        {
-        //            oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
-        //            totalRotation += 1;
-        //        }
-                   
-        //    }
-        //}
+        // Save coffee content
+        coffeeBar.Value = totalRotation;
+        coffeeBar.MaxValue = stanRotation;
+        PowderContent = (int)totalRotation;
+
+        if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
+        {
+            //player should rotate at least certain degree to grind the coffee bean
+            if (Mathf.Abs(transform.GetChild(0).rotation.eulerAngles.y - oldEulerAngles.y) >= stanDegree)
+            {
+                oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
+                totalRotation += 1;
+            }
+
+        }
     }
 
     public void AddCoffeeBeanToGrinder (int type)
@@ -140,9 +152,17 @@ public class HandGrinderScript : MonoBehaviour
 
     void ExertCoffeePowder ()
     {
+        //realease coffee & handle
         CoffeeBeanOnTop.SetActive(false);
-        CoffeeType = 0;
+        machineHandleCheck = false;
         coffeeBeanCheck = false;
+
+        //add powder to handle
+        MachineHandle.GetComponent<DragandDrop>().active = true;
+        MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
+
+        MachineHandle = null;
+        CoffeeType = 0;
     }
 
     Vector3 MousePos;
