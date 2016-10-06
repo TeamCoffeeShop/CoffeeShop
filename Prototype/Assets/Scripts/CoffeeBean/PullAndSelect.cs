@@ -34,8 +34,8 @@ public class PullAndSelect : MonoBehaviour {
         //float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(pivotTransform.position.x, pivotTransform.position.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
         //if (angle > -180 && angle < 180)
-        if(sphere.GetComponent<ObjectClickScript>().MouseChakable)
-            transform.RotateAround(pivotTransform.position, new Vector3(0, 1, 0), -MousePosDelta.x);
+        //if(sphere.GetComponent<ObjectClickScript>().MouseChakable)
+            //transform.RotateAround(pivotTransform.position, new Vector3(0, 1, 0), MousePosDelta.x);
 
         PreviousMousePos = MousePos;
     }
