@@ -29,6 +29,7 @@ public class HandGrinderScript : MonoBehaviour
 
     private bool coffeeBeanCheck = false;
     public bool IsFilled { get { return coffeeBeanCheck; } }
+    private bool machineHandleCheck = false;
 
     void Awake()
     {
@@ -49,7 +50,7 @@ public class HandGrinderScript : MonoBehaviour
     {
         RotationCheck();
 
-        if (CheckGameStop)//if (totalRotation > stanRotation)
+        if (CheckGameStop && coffeeBeanCheck && machineHandleCheck)//if (totalRotation > stanRotation)
         {
             if (CoffeeBeans.Count != 0)
             {
@@ -58,28 +59,32 @@ public class HandGrinderScript : MonoBehaviour
                 PowderContent = (int)totalRotation;
                 coffeeBar.gameObject.SetActive(false);
 
-                if (CoffeeBeans[0].CBean == 1)
-                {
-                    GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
-                    coffeepowder1.name = "CoffeePowder1";
-                    CheckGameStop = false;
+                //if (CoffeeBeans[0].CBean == 1)
+                //{
+                //    GameObject coffeepowder1 = (GameObject)Instantiate(CoffeePowder1, transform.position, Quaternion.identity);
+                //    coffeepowder1.name = "CoffeePowder1";
+                //    CheckGameStop = false;
 
-                }
+                //}
 
-                if (CoffeeBeans[0].CBean == 2)
-                {
-                    GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
-                    coffeepowder2.name = "CoffeePowder2";
-                    CheckGameStop = false;
-                }
+                //if (CoffeeBeans[0].CBean == 2)
+                //{
+                //    GameObject coffeepowder2 = (GameObject)Instantiate(CoffeePowder2, transform.position, Quaternion.identity);
+                //    coffeepowder2.name = "CoffeePowder2";
+                //    CheckGameStop = false;
+                //}
 
                 totalRotation = 0;
-                CoffeeBeans.Clear();
+                ExertCoffeePowder();
             }
         }
 
-        if (CheckGrind == true)
-            NewGrindMotion();
+        //grind motion
+        if (CheckGrind)
+        {
+            if (!(coffeeBeanCheck || machineHandleCheck))
+                NewGrindMotion();
+        }
     }
 
     void RotationCheck()
@@ -120,6 +125,7 @@ public class HandGrinderScript : MonoBehaviour
             return;
         }
         CoffeeBeanOnTop.SetActive(true);
+        CoffeeBeans.Add(new CoffeeBean(true, type));
         CoffeeType = type;
         coffeeBeanCheck = true;
     }
@@ -127,6 +133,7 @@ public class HandGrinderScript : MonoBehaviour
     void ExertCoffeePowder ()
     {
         CoffeeBeanOnTop.SetActive(false);
+        CoffeeBeans.Clear();
         CoffeeType = 0;
         coffeeBeanCheck = false;
     }

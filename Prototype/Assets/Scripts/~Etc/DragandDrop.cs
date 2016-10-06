@@ -114,57 +114,6 @@ public class DragandDrop : MonoBehaviour
             }
     }
 
-    //void OnMouseDown()
-    //{
-    //    //grab check
-    //    Grab = true;
-
-    //    //for drag and drop
-    //    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //    screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-    //    offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-    //    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
-
-    //    switch (type)
-    //    {
-    //        case ObjectType.coffeeBean:
-    //        case ObjectType.coffeeMachineHandle:
-    //            MinigameManager.Get.handGrinder.highlightWhenAble = true;
-    //            break;
-    //    }
-
-    //    if(gameObject == MinigameManager.Get.coffeeMachineHandle)
-    //        InTarget = true;
-    //}
-
-    //void OnMouseDrag()
-    //{
-    //    //for drag and drop
-    //    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //    Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-    //    Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-
-    //    //X bound
-    //    if (curPosition.x < Xbound.x)
-    //        curPosition.x = Xbound.x;
-    //    else if (curPosition.x > Xbound.y)
-    //        curPosition.x = Xbound.y;
-
-    //    //Y bound
-    //    if (curPosition.y < Ybound.x)
-    //        curPosition.y = Ybound.x;
-    //    else if (curPosition.y > Ybound.y)
-    //        curPosition.y = Ybound.y;
-
-    //    // Z bound
-    //    if (curPosition.z < Zbound.x)
-    //        curPosition.z = Zbound.x;
-    //    else if (curPosition.z > Zbound.y)
-    //        curPosition.z = Zbound.y;
-
-    //    transform.position = curPosition;
-    //    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //}
 
     //void OnMouseUp()
     //{

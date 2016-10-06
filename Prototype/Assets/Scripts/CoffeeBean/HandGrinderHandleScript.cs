@@ -21,6 +21,5 @@ public class HandGrinderHandleScript : MonoBehaviour
             machine.CheckGameStop = true;
         }
         machine.coffeeBar.gameObject.SetActive(false);
-        //Cursor.visible = true;
     }
 }
