@@ -109,7 +109,7 @@ public class DecoEditUI : MonoBehaviour
 
     void Start ()
     {
-        CameraAngle = -Quaternion.ToEulerAngles(Camera.main.transform.rotation).y;
+        CameraAngle = -Camera.main.transform.rotation.eulerAngles.y;
     }
 
     void Update ()

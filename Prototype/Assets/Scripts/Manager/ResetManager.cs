@@ -15,36 +15,30 @@ public class ResetManager : MonoBehaviour
         GameObject[] names = GameObject.FindGameObjectsWithTag("DragAndDrop");
         foreach (GameObject item in names)
         {
-            Destroy(item);
+            if (item.name == "CoffeeMachineHandle")
+                item.transform.position = new Vector3(-214.46f, 0.17f, 3.51f);
+            else
+                Destroy(item);
         }
 
-        //remove all the CoffeeDrop objects in the level
-        if (GameObject.FindGameObjectWithTag("CoffeeDrop") != null)
-        {
-            names = GameObject.FindGameObjectsWithTag("CoffeeDrop");
-            foreach (GameObject item in names)
-            {
-                Destroy(item);
-            }
-        }
-        //remove all the CoffeePowder objects in the level
-        if (GameObject.FindGameObjectWithTag("CoffeePowder") != null)
-        {
-            names = GameObject.FindGameObjectsWithTag("CoffeePowder");
-            foreach (GameObject item in names)
-            {
-                Destroy(item);
-            }
-        }
-        //remove all the Cream objects in the level
-        if (GameObject.FindGameObjectWithTag("Cream") != null)
-        {
-            names = GameObject.FindGameObjectsWithTag("Cream");
-            foreach (GameObject item in names)
-            {
-                Destroy(item);
-            }
-        }
+        ////remove all the CoffeeDrop objects in the level
+        //if (GameObject.FindGameObjectWithTag("CoffeeDrop") != null)
+        //{
+        //    names = GameObject.FindGameObjectsWithTag("CoffeeDrop");
+        //    foreach (GameObject item in names)
+        //    {
+        //        Destroy(item);
+        //    }
+        //}
+        ////remove all the Cream objects in the level
+        //if (GameObject.FindGameObjectWithTag("Cream") != null)
+        //{
+        //    names = GameObject.FindGameObjectsWithTag("Cream");
+        //    foreach (GameObject item in names)
+        //    {
+        //        Destroy(item);
+        //    }
+        //}
 
         //reset status of water/milk
         //See WaterMilkInstantiator.cs and WaterMilkStatusChecker.cs for more details
@@ -54,6 +48,6 @@ public class ResetManager : MonoBehaviour
 
         //reset camera to original position
         MinigameManager.Get.MakeOrderCamera.Return();
-        MinigameManager.Get.CoffeeManager.step = 0;
+        MinigameManager.Get.CoffeeManager.IsMakingOrderJustStarted = true;
     }
 }

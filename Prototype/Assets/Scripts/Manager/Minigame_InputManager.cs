@@ -26,6 +26,6 @@ public class Minigame_InputManager : MonoBehaviour
     public void GoBackToMainLevel ()
     {
         MinigameManager.Get.CoffeeManager.SaveFinishedOrder();
-        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
+        MainGameManager.Get.Canvas_OrderHUD.CreateOrdersInUI();
     }
 }

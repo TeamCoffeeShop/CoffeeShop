@@ -6,12 +6,8 @@ public class Minigame_CoffeeManager : MonoBehaviour
     public GameObject SelectedCoffee;
     public bool LockToCamera;
     public float LockSpeed = 10;
-    
-    
-    //step 0 : selecting coffee bean
-    //step 1 : grind the coffee bean
-    //step 2 : selecting cup
-    public int step = 0;
+
+    public bool IsMakingOrderJustStarted = true;
 
     //save finished order
     public void SaveFinishedOrder()
@@ -48,8 +44,8 @@ public class Minigame_CoffeeManager : MonoBehaviour
         if (SelectedCoffee != null && LockToCamera)
         {
             Vector3 TargetPos = MinigameManager.Get.MakeOrderCamera.transform.position;
-            TargetPos += MinigameManager.Get.MakeOrderCamera.transform.forward * 5;
-            TargetPos -= MinigameManager.Get.MakeOrderCamera.transform.up * 2;
+            TargetPos += MinigameManager.Get.MakeOrderCamera.transform.forward * 10;
+            TargetPos -= MinigameManager.Get.MakeOrderCamera.transform.up * 1.5f;
 
             SelectedCoffee.transform.position += (TargetPos - SelectedCoffee.transform.position) * Time.deltaTime * LockSpeed;
         }

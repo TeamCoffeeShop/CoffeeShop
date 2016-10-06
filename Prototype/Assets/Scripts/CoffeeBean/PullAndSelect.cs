@@ -29,9 +29,9 @@ public class PullAndSelect : MonoBehaviour {
         }
         Vector3 MousePos = Input.mousePosition;
         Vector3 MousePosDelta = MousePos - PreviousMousePos;
-        Vector3 CylinderPos = Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + new Vector3(0, 3, 0));
+        //Vector3 CylinderPos = Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + new Vector3(0, 3, 0));
 
-        float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(pivotTransform.position.x, pivotTransform.position.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        //float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(pivotTransform.position.x, pivotTransform.position.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
         //if (angle > -180 && angle < 180)
         

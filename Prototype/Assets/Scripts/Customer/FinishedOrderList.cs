@@ -16,26 +16,7 @@ public class FinishedOrderList : MonoBehaviour
         OrderIcon = transform.FindChild("Order Icons");
     }
 
-    public void OnLevelWasLoaded (int level)
-    {
-        //if main level, create lists
-        if (level == Scenes.MainLevel)
-            CreateOrdersInUI();
-        else
-        {
-            //delete previous orders.
-            int size = OrderIcon.childCount;
-            for (int i = 0; i < size; ++i)
-                DestroyObject(OrderIcon.GetChild(i).gameObject);
-        }
-    }
-
-    public void SetTrashVisible (bool visible)
-    {
-        transform.FindChild("Trash").gameObject.SetActive(visible);
-    }
-
-    void CreateOrdersInUI()
+    public void CreateOrdersInUI()
     {
         if (orders)
         {

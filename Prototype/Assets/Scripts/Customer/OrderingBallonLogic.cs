@@ -9,20 +9,10 @@ public class OrderingBallonLogic : MonoBehaviour
     public GameObject SpawnBar;
 
     bool OrderCheck;
-    int CurrentScene;
 
     void Start ()
     {
-        CurrentScene = Scenes.asInt(SceneManager.GetActiveScene());
-        Visibility();
-
         UpdatePosition();
-    }
-
-    public void OnLevelWasLoaded(int level)
-    {
-        CurrentScene = level;
-        Visibility();
     }
 
     bool Colliding = false;
@@ -117,17 +107,6 @@ public class OrderingBallonLogic : MonoBehaviour
             Cursor.visible = true;
         }
 
-    }
-
-    void Visibility ()
-    {
-        if (CurrentScene == Scenes.MainLevel)
-        {
-            GetComponent<Image>().enabled = true;
-            UpdatePosition();
-        }
-        else
-            GetComponent<Image>().enabled = false;
     }
 
     void UpdatePosition ()

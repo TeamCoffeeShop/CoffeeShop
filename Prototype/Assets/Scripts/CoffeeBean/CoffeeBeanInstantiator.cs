@@ -51,7 +51,7 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         }
         else
         {
-            if (MinigameManager.Get.CoffeeManager.step == 0)
+            if (MinigameManager.Get.CoffeeManager.IsMakingOrderJustStarted)
                 h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
             else
                 h.highlightOn = OutlineHighlighter.HighlightOn.none;
@@ -133,8 +133,9 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         ShakeReady = true;
         yield return new WaitForSeconds(WaitingTime);
         ShakeReady = false;
-        GameObject coffeeBean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-        MinigameManager.Get.CoffeeManager.step = 1;
+        GameObject coffeebean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
+        coffeebean.GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.handGrinder.gameObject;
+        MinigameManager.Get.CoffeeManager.IsMakingOrderJustStarted = false;
     }
 
     void Shake()

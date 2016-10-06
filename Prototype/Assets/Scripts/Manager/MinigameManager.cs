@@ -16,6 +16,9 @@ public class MinigameManager : MonoBehaviour
     public ResetManager ResetManager;
     public Minigame_CoffeeManager CoffeeManager;
     public Minigame_InputManager InputManager;
+    public HandGrinderScript handGrinder;
+    public CoffeeDrop coffeeMachine;
+    public GameObject coffeeMachineHandle;
 
     void Awake ()
     {

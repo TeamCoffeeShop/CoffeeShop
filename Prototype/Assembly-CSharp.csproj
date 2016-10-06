@@ -55,8 +55,10 @@
      <Compile Include="Assets\Scripts\Camera\MakeOrderCameraLogic.cs" />
      <Compile Include="Assets\Scripts\Camera\Minigame_CameraMover.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanInstantiator.cs" />
+     <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanLogic.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeBeanSelection.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\CoffeeDrop.cs" />
+     <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderHandleScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\ObjectClickScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\PullAndSelect.cs" />
@@ -111,7 +113,6 @@
      <Compile Include="Assets\Scripts\UI\BarScript.cs" />
      <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
      <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
-     <Compile Include="Assets\Scripts\UI\OnlyShowIn.cs" />
      <Compile Include="Assets\Scripts\UI\UISystem.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />

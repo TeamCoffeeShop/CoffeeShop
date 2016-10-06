@@ -49,13 +49,13 @@ public class DialogueManager : MonoBehaviour {
         int order = 0;
         for (int i = 0; i < texts.Length; ++i)
         {
-           int bracketIndex = texts[i].IndexOf("]");
+           //int bracketIndex = texts[i].IndexOf("]");
 
             // Special action
             if (texts[i].Contains("["))
             {
                 // Get function Name
-                string functionName = texts[i].Substring(1, bracketIndex - 1);
+                //string functionName = texts[i].Substring(1, bracketIndex - 1);
                 //diaNode.mi = this.GetType().GetMethod(functionName);
             }
             else // Simple narration

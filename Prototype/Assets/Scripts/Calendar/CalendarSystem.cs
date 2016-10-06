@@ -17,12 +17,12 @@ public class CalendarSystem : MonoBehaviour {
     private int month;
     private int day;
 
-    private float currentTime;
+    //private float currentTime;
 
     // Use this for initialization
     void Start () 
     {
-        currentTime = MainGameManager.Get.TimeOfDay.currentTimeOfDay;
+        //currentTime = MainGameManager.Get.TimeOfDay.currentTimeOfDay;
 
         month = MainGameManager.Get.TimeOfDay.calendar.month;
         day = MainGameManager.Get.TimeOfDay.calendar.day;
