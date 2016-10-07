@@ -143,23 +143,31 @@ public class HandGrinderScript : MonoBehaviour
 
     void ExertCoffeePowder ()
     {
-        //realease coffee
-        CoffeeBeanOnTop.SetActive(false);
-        coffeeBeanCheck = false;
-
         //add powder to handle
         MachineHandle.GetComponent<DragandDrop>().active = true;
         MachineHandle.GetComponent<OutlineHighlighter>().active = true;
         MachineHandle.GetComponent<CoffeeMachineHandleLogic>().CoffeeBeanType = CoffeeType;
         MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
 
+        DiscardCoffeeBean();
         TakeOutCoffeeMachineHandleFromGrinder();
+    }
+
+    public void DiscardCoffeeBean ()
+    {
+        //realease coffee
+        CoffeeBeanOnTop.SetActive(false);
+        coffeeBeanCheck = false;
         CoffeeType = 0;
     }
 
     public void TakeOutCoffeeMachineHandleFromGrinder ()
     {
+        if (MachineHandle == null)
+            return;
+
         machineHandleCheck = false;
+        MachineHandle.GetComponent<DragandDrop>().active = true;
         MachineHandle = null;
     }
 

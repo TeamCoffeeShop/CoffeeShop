@@ -4,7 +4,7 @@ using System.Collections;
 public class CoffeeCupSelector : MonoBehaviour
 {
     public GameObject CoffeeCupPrefab;
-    private int active = 0;
+    public int active = 0;
     private float time = 0;
     private Vector3 pos;
 
@@ -16,27 +16,28 @@ public class CoffeeCupSelector : MonoBehaviour
 
     void OnMouseDown ()
     {
-        if (active == 0)
-        {
-            time = 1;
-            active = 1;
-            pos = gameObject.transform.position;
-        }
+        //if (active == 0)
+        //{
+        //    time = 1;
+        //    active = 1;
+        //    pos = gameObject.transform.position;
+        //}
     }
 
     void Update()
     {
-        if (active == 1)
-        {
-            if (time < 0)
-            {
-                //create new cup
-                GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
-                cup.transform.position = pos;
-                active = 2;
-            }
-            else
-                time -= InGameTime.deltaTime;
-        }
+        //if (active == 1)
+        //{
+        //    if (time < 0)
+        //    {
+        //        //create new cup
+        //        GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
+        //        cup.transform.position = pos;
+        //        active = 2;
+        //        time = 1000000;
+        //    }
+        //    else
+        //        time -= InGameTime.deltaTime;
+        //}
     }
 }

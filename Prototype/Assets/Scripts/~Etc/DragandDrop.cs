@@ -208,6 +208,7 @@ public class DragandDrop : MonoBehaviour
             InTarget = 0;
             InTarget_Return = 0;
             //Grab = false;
+            FinishedReturning = true;
             //EndOfGrab = false;
         }
     }

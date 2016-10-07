@@ -11,15 +11,29 @@ public class ResetManager : MonoBehaviour
         //    Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
         //}
 
+        //empty coffeegrinder, machine
+        MinigameManager.Get.handGrinder.TakeOutCoffeeMachineHandleFromGrinder();
+        MinigameManager.Get.handGrinder.DiscardCoffeeBean();
+        MinigameManager.Get.coffeeMachine.TakeOutCoffeeCupFromMachine();
+        MinigameManager.Get.coffeeMachine.TakeOutCoffeeMachineHandleFromMachine();
+
         //remove all the CoffeeBean objects in the level
         GameObject[] names = GameObject.FindGameObjectsWithTag("DragAndDrop");
         foreach (GameObject item in names)
         {
             if (item.name == "CoffeeMachineHandle")
-                item.transform.position = new Vector3(-214.46f, 0.17f, 3.51f);
+                item.transform.position = new Vector3(-219.67f, 0.17f, 3.51f);
             else
                 Destroy(item);
         }
+
+        //remove all the coffeecups in the level
+        //names = GameObject.FindGameObjectsWithTag("CoffeeCup");
+        //foreach (GameObject item in names)
+        //{
+        //    if (item.GetComponent<CoffeeCupSelector>().active != 0)
+        //        Destroy(item);
+        //}
 
         ////remove all the CoffeeDrop objects in the level
         //if (GameObject.FindGameObjectWithTag("CoffeeDrop") != null)

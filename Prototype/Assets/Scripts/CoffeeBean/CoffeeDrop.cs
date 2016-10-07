@@ -178,9 +178,13 @@ public class CoffeeDrop : MonoBehaviour
         if (CoffeeDropStep >= 2)
             return false;
 
+        if (handle == null)
+            return false;
+
         PowderType = 0;
         machineHandleCheck = false;
         handle.GetComponent<OutlineHighlighter>().active = true;
+        handle.GetComponent<DragandDrop>().active = true;
         handle = null;
 
         return true;
@@ -191,8 +195,12 @@ public class CoffeeDrop : MonoBehaviour
         if (CoffeeDropStep >= 2)
             return false;
 
+        if (cup == null)
+            return false;
+
         coffeeCupCheck = false;
         cup.GetComponent<OutlineHighlighter>().active = true;
+        cup.GetComponent<DragandDrop>().active = true;
         cup = null;
 
         return true;

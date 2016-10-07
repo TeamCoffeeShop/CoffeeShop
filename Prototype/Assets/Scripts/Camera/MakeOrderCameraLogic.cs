@@ -57,6 +57,7 @@ public class MakeOrderCameraLogic : MonoBehaviour
     public void Return ()
     {
         transform.position = OriginalPosition;
+        MoveToTarget = false;
         transform.rotation = Quaternion.Euler(OriginalRotation);
     }
 
