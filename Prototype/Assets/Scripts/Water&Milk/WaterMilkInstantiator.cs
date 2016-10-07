@@ -20,8 +20,8 @@ public class WaterMilkInstantiator : MonoBehaviour
     //Steam
     private GameObject steam;
 
-    Transform water;
-    Transform milk;
+    public Transform water;
+    public Transform milk;
 
     void OnMouseDrag ()
     {
@@ -83,7 +83,6 @@ public class WaterMilkInstantiator : MonoBehaviour
         {
             water.GetComponent<WaterFallingLogic>().filling = false;
             water = null;
-            milk.GetComponent<WaterFallingLogic>().filling = false;
         }
         else if(WaterMilkType == WaterMilkType.Milk)
         {
