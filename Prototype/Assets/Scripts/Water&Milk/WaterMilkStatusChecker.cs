@@ -21,28 +21,28 @@ public class WaterMilkStatusChecker : MonoBehaviour
             if (gameObject.name == "HotWater")
             {
                 Debug.Log("Hot Water Selected");
-                Instantiator.WaterMilkType = WaterMilkType.HotWater;
+                Instantiator.HotIceType = HotIceType.Hot;
                 Instantiator.Ready = true;
             }
 
             else if (gameObject.name == "IcedWater")
             {
                 Debug.Log("Iced Water Selected");
-                Instantiator.WaterMilkType = WaterMilkType.IcedWater;
+                Instantiator.HotIceType = HotIceType.Ice;
                 Instantiator.Ready = true;
             }
 
             else if (gameObject.name == "HotMilk")
             {
                 Debug.Log("Hot Milk Selected");
-                Instantiator.WaterMilkType = WaterMilkType.HotMilk;
+                Instantiator.WaterMilkType = WaterMilkType.Water;
                 Instantiator.Ready = true;
             }
 
             else if (gameObject.name == "IcedMilk")
             {
                 Debug.Log("Iced Milk Selected");
-                Instantiator.WaterMilkType = WaterMilkType.IcedMilk;
+                Instantiator.WaterMilkType = WaterMilkType.Milk;
                 Instantiator.Ready = true;
             }
         }
