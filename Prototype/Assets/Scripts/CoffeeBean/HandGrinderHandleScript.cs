@@ -13,6 +13,14 @@ public class HandGrinderHandleScript : MonoBehaviour
         machine.PowderContent = 0;
     }
 
+    void OnMouseDrag()
+    {
+        if (machine.totalRotation > machine.stanRotation)
+        {
+            machine.CheckGrind = false;
+        }
+    }
+
     void OnMouseUp ()
     {
         machine.CheckGrind = false;

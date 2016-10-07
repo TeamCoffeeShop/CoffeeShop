@@ -8,6 +8,7 @@ public class HandGrinderScript : MonoBehaviour
 {
     public BarScript coffeeBar;
     public Image rotationImage;
+    public Image arrowImage;
     public bool CheckGrind = false; //bool type for rotation
     public bool CheckGameStop = false; //bool type for checking coffee grinder game
     Vector3 oldEulerAngles; //bool type for rotation check
@@ -42,6 +43,7 @@ public class HandGrinderScript : MonoBehaviour
         coffeeBar.MaxValue = stanRotation;
         coffeeBar.gameObject.SetActive(false);
         rotationImage.enabled = false;
+        arrowImage.enabled = false;
         PowderContent = 0;
         h = GetComponent<OutlineHighlighter>();
         h2 = transform.GetChild(0).GetComponent<OutlineHighlighter>();
@@ -63,12 +65,15 @@ public class HandGrinderScript : MonoBehaviour
             {
                 MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
                 highlightMachineHandle = false;
+                rotationImage.enabled = true;
+                arrowImage.enabled = false;
             }
 
             if(CheckGameStop)
                 //temporary grind checking
-                if (totalRotation > stanRotation)
+                if (totalRotation >= stanRotation)
                 {
+                    CheckGrind = false;
                     //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
                     //Camera.main.transform.Rotate(-90, 0, 0);
                     PowderContent = (int)totalRotation;
@@ -82,8 +87,8 @@ public class HandGrinderScript : MonoBehaviour
             if (CheckGrind)
             {
                 RotationCheck();
-
-            if (!coffeeBeanCheck || (coffeeBeanCheck && machineHandleCheck))
+                coffeeBar.gameObject.SetActive(true);
+                if (!coffeeBeanCheck || (coffeeBeanCheck && machineHandleCheck))
                 NewGrindMotion();
             }
 
@@ -93,6 +98,7 @@ public class HandGrinderScript : MonoBehaviour
             MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
             h2.active = false;
             highlightMachineHandle = true;
+            arrowImage.enabled = true;
         }
         else
         {
