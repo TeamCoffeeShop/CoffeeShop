@@ -62,7 +62,6 @@
      <Compile Include="Assets\Scripts\CoffeeBean\HandGrinderScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\ObjectClickScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeBean\PullAndSelect.cs" />
-     <Compile Include="Assets\Scripts\CoffeeBean\SphereScript.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeBean.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\CoffeeCupBehavior.cs" />
      <Compile Include="Assets\Scripts\CoffeeMenu\MenuSelectionSystem.cs" />
@@ -115,6 +114,7 @@
      <Compile Include="Assets\Scripts\UI\DecoEditUI.cs" />
      <Compile Include="Assets\Scripts\UI\FollowParentRectTransform.cs" />
      <Compile Include="Assets\Scripts\UI\UISystem.cs" />
+     <Compile Include="Assets\Scripts\Water&amp;Milk\MilkFoamSelector.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkInstantiator.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkLevel.cs" />
      <Compile Include="Assets\Scripts\Water&amp;Milk\WaterMilkStatusChecker.cs" />
