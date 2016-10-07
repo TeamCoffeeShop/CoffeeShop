@@ -5,6 +5,8 @@ public class MakeOrderCameraLogic : MonoBehaviour
 {
     Vector3 OriginalPosition;
     Vector3 OriginalRotation;
+    Vector3 TargetPosition;
+    bool MoveToTarget;
     Vector3 Speed;
 
     [Range(0.01f, 0.99f)]
@@ -20,24 +22,33 @@ public class MakeOrderCameraLogic : MonoBehaviour
 
     public void Slide (Vector3 dP)
     {
+        MoveToTarget = false;
         Speed = dP;
     }
 
     void Update ()
     {
         Vector3 pos = transform.position;
-        Speed *= Deaccelerate;
-        pos += Speed;
-        //X Boundary
-        if (pos.x <= XBoundary.x)
+
+        if(MoveToTarget)
         {
-            pos.x = XBoundary.x;
-            Speed.x = 0;
+            pos += (TargetPosition - pos) * Time.deltaTime * 5;
         }
-        else if (pos.x >= XBoundary.y)
+        else
         {
-            pos.x = XBoundary.y;
-            Speed.x = 0;
+            Speed *= Deaccelerate;
+            pos += Speed;
+            //X Boundary
+            if (pos.x <= XBoundary.x)
+            {
+                pos.x = XBoundary.x;
+                Speed.x = 0;
+            }
+            else if (pos.x >= XBoundary.y)
+            {
+                pos.x = XBoundary.y;
+                Speed.x = 0;
+            }
         }
 
         transform.position = pos;
@@ -49,4 +60,9 @@ public class MakeOrderCameraLogic : MonoBehaviour
         transform.rotation = Quaternion.Euler(OriginalRotation);
     }
 
+    public void SetTargetLocation (Vector3 position)
+    {
+        MoveToTarget = true;
+        TargetPosition = position;
+    }
 }

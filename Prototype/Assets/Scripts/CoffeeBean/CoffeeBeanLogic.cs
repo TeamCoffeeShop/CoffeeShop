@@ -17,6 +17,9 @@ public class CoffeeBeanLogic : MonoBehaviour
         if(d.inTarget == 1)
         {
             MinigameManager.Get.handGrinder.AddCoffeeBeanToGrinder(CoffeeBeanType);
+            Vector3 newPos = Camera.main.transform.position;
+            newPos.x = MinigameManager.Get.handGrinder.transform.position.x;
+            MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
             DestroyObject(gameObject);
         }
     }

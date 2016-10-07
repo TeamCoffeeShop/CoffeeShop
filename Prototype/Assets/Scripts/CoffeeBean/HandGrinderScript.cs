@@ -58,6 +58,13 @@ public class HandGrinderScript : MonoBehaviour
 
         if (coffeeBeanCheck && machineHandleCheck)
         {
+            h2.active = true;
+            if (highlightMachineHandle)
+            {
+                MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
+                highlightMachineHandle = false;
+            }
+
             if(CheckGameStop)
                 //temporary grind checking
                 if (totalRotation > stanRotation)
@@ -70,35 +77,29 @@ public class HandGrinderScript : MonoBehaviour
                     totalRotation = 0;
                     ExertCoffeePowder();
                 }
-        }
 
-        CheckGameStop = false;
-
-        //grind motion
-        if (CheckGrind)
-        {
-            RotationCheck();
-            h2.active = false;
+            //grind motion
+            if (CheckGrind)
+            {
+                RotationCheck();
 
             if (!coffeeBeanCheck || (coffeeBeanCheck && machineHandleCheck))
                 NewGrindMotion();
-            else
-            {
-                MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
-                highlightMachineHandle = true;
             }
+
+        }
+        else if (coffeeBeanCheck && !machineHandleCheck)
+        {
+            MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
+            h2.active = false;
+            highlightMachineHandle = true;
         }
         else
         {
-            if(highlightMachineHandle)
-            {
-                MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
-                highlightMachineHandle = false;
-            }
-
-            if (coffeeBeanCheck && machineHandleCheck)
-                h2.active = true;
+            h2.active = false;
         }
+
+        CheckGameStop = false;
     }
 
     void RotationCheck()
@@ -153,7 +154,6 @@ public class HandGrinderScript : MonoBehaviour
         MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
 
         TakeOutCoffeeMachineHandleFromGrinder();
-
         CoffeeType = 0;
     }
 
@@ -169,6 +169,8 @@ public class HandGrinderScript : MonoBehaviour
         Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + new Vector3(0,3,0));
 
         float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(GrinderPos.x, GrinderPos.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+
+        if (angle > 0) angle = 0;
 
         transform.GetChild(0).Rotate(0, -angle, 0);
 

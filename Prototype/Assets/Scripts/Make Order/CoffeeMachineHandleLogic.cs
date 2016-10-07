@@ -23,6 +23,10 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
         else if (d.inTarget == 2)
         {
             MinigameManager.Get.coffeeMachine.PutCoffeeMachinHandleToMachine(gameObject);
+            //move camera to next one
+            Vector3 newPos = Camera.main.transform.position;
+            newPos.x = MinigameManager.Get.coffeeMachine.transform.position.x;
+            MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
             d.active = false;
         }
     }
