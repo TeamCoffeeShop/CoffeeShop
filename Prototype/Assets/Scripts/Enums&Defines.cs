@@ -38,10 +38,13 @@ public enum CoffeeDropType
     CoffeeDrop1,
     CoffeeDrop2
 }
-
+public enum HotIceType
+{
+    None, Hot, Ice
+}
 public enum WaterMilkType
 {
-    None, HotWater, IcedWater, HotMilk, IcedMilk
+    None, Water, Milk
 }
 
 public enum OrderType
