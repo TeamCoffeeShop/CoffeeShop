@@ -53,6 +53,7 @@ public class SceneChangeManager : MonoBehaviour
                 MinigameManager.Get.Canvas_UI.SetActive(true);
                 MinigameManager.Get.MakeOrderCamera.gameObject.SetActive(true);
                 MainGameManager.Get.CafeCamera.gameObject.SetActive(false);
+                InGameTime.SetTimeScale(0.1f);
                 break;
             case CurrentScene.Dialogue:
                 MainGameManager.Get.CafeCamera.LookingAtDialogue();
