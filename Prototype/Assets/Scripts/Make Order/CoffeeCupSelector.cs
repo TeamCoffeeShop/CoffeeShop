@@ -3,33 +3,40 @@ using System.Collections;
 
 public class CoffeeCupSelector : MonoBehaviour
 {
-    OutlineHighlighter h;
     public GameObject CoffeeCupPrefab;
+    private int active = 0;
+    private float time = 0;
+    private Vector3 pos;
 
-    void Awake ()
+    void Start ()
     {
-        h = GetComponent<OutlineHighlighter>();
+        GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.coffeeMachine.transform.FindChild("MachineCollider").gameObject;
+        GetComponent<DragandDrop>().Highlight[0] = MinigameManager.Get.coffeeMachine.GetComponent<OutlineHighlighter>();
     }
 
-    //if coffeecup is not selected, try to select one
+    void OnMouseDown ()
+    {
+        if (active == 0)
+        {
+            time = 1;
+            active = 1;
+            pos = gameObject.transform.position;
+        }
+    }
+
     void Update()
     {
-        //if (MinigameManager.Get.CoffeeManager.step >= 2)
-        //    h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
-        //else
-        //    h.highlightOn = OutlineHighlighter.HighlightOn.none;
-    }
-
-    void OnMouseUp ()
-    {
-        //if the cup is selected
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee == null)
+        if (active == 1)
         {
-            //create new cup
-            GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
-            MinigameManager.Get.CoffeeManager.SelectedCoffee = cup;
-            MinigameManager.Get.CoffeeManager.LockToCamera = true;
-            cup.transform.position = gameObject.transform.position;
+            if (time < 0)
+            {
+                //create new cup
+                GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
+                cup.transform.position = pos;
+                active = 2;
+            }
+            else
+                time -= InGameTime.deltaTime;
         }
     }
 }

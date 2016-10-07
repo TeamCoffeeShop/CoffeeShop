@@ -38,10 +38,13 @@ public enum CoffeeDropType
     CoffeeDrop1,
     CoffeeDrop2
 }
-
+public enum HotIceType
+{
+    None, Hot, Ice
+}
 public enum WaterMilkType
 {
-    None, HotWater, IcedWater, HotMilk, IcedMilk
+    None, Water, Milk
 }
 
 public enum OrderType
@@ -123,7 +126,7 @@ public static class CoffeeOrderSetup
     }
 
     //checks the coffeeordertype
-    public static OrderType DistinguishCreatedMenu (ref GameObject cup)
+    public static OrderType DistinguishCreatedMenu (GameObject cup)
     {
         CoffeeCupBehavior coffee = cup.GetComponent<CoffeeCupBehavior>();
 
@@ -134,28 +137,32 @@ public static class CoffeeOrderSetup
         //distinguish the menu
         else if (coffee.DropType == CoffeeDropType.CoffeeDrop1)
         {
-            if(coffee.WaterMilkType == WaterMilkType.HotWater)
-            {
-                if(coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-                {
-                    //Hot Americano
-                    //coffeedrop1 + hot water 양 70%~100%
-                    return OrderType.HotAmericano;
-                }
-            }
-            else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
-            {
-                if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-                {
-                    //Ice Americano
-                    //coffeedrop1 + iced water 양 70% ~ 100%
-                    return OrderType.IceAmericano;
-                }
-            }
+            //temporary recipe!!
+            return OrderType.HotAmericano;
+
+            //if(coffee.WaterMilkType == WaterMilkType.HotWater)
+            //{
+            //    if(coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
+            //    {
+            //        //Hot Americano
+            //        //coffeedrop1 + hot water 양 70%~100%
+            //        return OrderType.HotAmericano;
+            //    }
+            //}
+            //else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
+            //{
+            //    if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
+            //    {
+            //        //Ice Americano
+            //        //coffeedrop1 + iced water 양 70% ~ 100%
+            //        return OrderType.IceAmericano;
+            //    }
+            //}
         }
         else if (coffee.DropType == CoffeeDropType.CoffeeDrop2)
         {
-
+            //temporary recipe!!
+            return OrderType.IceAmericano;
         }
 
         return OrderType.None;

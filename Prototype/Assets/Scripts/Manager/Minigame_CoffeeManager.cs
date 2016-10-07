@@ -3,51 +3,35 @@ using System.Collections;
 
 public class Minigame_CoffeeManager : MonoBehaviour
 {
-    public GameObject SelectedCoffee;
-    public bool LockToCamera;
     public float LockSpeed = 10;
-
     public bool IsMakingOrderJustStarted = true;
 
     //save finished order
     public void SaveFinishedOrder()
     {
-            Transform list = MainGameManager.Get.Canvas_OrderHUD.transform;
-            if (list && SelectedCoffee)
+            Transform orderHUD = MainGameManager.Get.Canvas_OrderHUD.transform;
+            GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
+            if (orderHUD)
             {
-                //check if coffee is finished
-                if (LegitCoffee())
+                foreach (GameObject cup in cups)
                 {
-                    SelectedCoffee.transform.parent = list.FindChild("Finished Orders");
-                    SelectedCoffee.SetActive(false);
-                    SelectedCoffee.GetComponent<CoffeeCupBehavior>().DistinguishedMenuName = CoffeeOrderSetup.DistinguishCreatedMenu(ref SelectedCoffee);
-                    SelectedCoffee = null;
+                    //check if coffee is finished
+                    if (LegitCoffee(cup.GetComponent<CoffeeCupBehavior>()))
+                    {
+                        cup.transform.parent = orderHUD.FindChild("Finished Orders");
+                        cup.SetActive(false);
+                        cup.GetComponent<CoffeeCupBehavior>().DistinguishedMenuName = CoffeeOrderSetup.DistinguishCreatedMenu(cup);
+                    }
                 }
-
             }
     }
 
     //check if the coffee is legit
-    public bool LegitCoffee()
+    public bool LegitCoffee(CoffeeCupBehavior cup)
     {
-        CoffeeCupBehavior cup = SelectedCoffee.GetComponent<CoffeeCupBehavior>();
-
         if (cup.DropType == CoffeeDropType.None && cup.WaterMilkType == WaterMilkType.None)
             return false;
 
         return true;
-    }
-
-    void Update ()
-    {
-        //move selected coffee to infront of camera
-        if (SelectedCoffee != null && LockToCamera)
-        {
-            Vector3 TargetPos = MinigameManager.Get.MakeOrderCamera.transform.position;
-            TargetPos += MinigameManager.Get.MakeOrderCamera.transform.forward * 10;
-            TargetPos -= MinigameManager.Get.MakeOrderCamera.transform.up * 1.5f;
-
-            SelectedCoffee.transform.position += (TargetPos - SelectedCoffee.transform.position) * Time.deltaTime * LockSpeed;
-        }
     }
 }

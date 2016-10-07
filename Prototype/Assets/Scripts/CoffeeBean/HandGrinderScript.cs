@@ -29,7 +29,7 @@ public class HandGrinderScript : MonoBehaviour
     private bool coffeeBeanCheck = false;
     public bool IsFilled { get { return coffeeBeanCheck; } }
     private bool machineHandleCheck = false;
-    private GameObject MachineHandle;
+    public GameObject MachineHandle;
     private bool highlightMachineHandle = false;
 
     void Awake()
@@ -56,19 +56,20 @@ public class HandGrinderScript : MonoBehaviour
             MachineHandle.transform.rotation = Quaternion.Euler(new Vector3(0, -137.36f, 0));
         }
 
-        if (CheckGameStop && coffeeBeanCheck && machineHandleCheck)//if (totalRotation > stanRotation)
+        if (coffeeBeanCheck && machineHandleCheck)
         {
-            //temporary grind checking
-            if (totalRotation > stanRotation)
-            {
-                //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
-                //Camera.main.transform.Rotate(-90, 0, 0);
-                PowderContent = (int)totalRotation;
-                coffeeBar.gameObject.SetActive(false);
+            if(CheckGameStop)
+                //temporary grind checking
+                if (totalRotation > stanRotation)
+                {
+                    //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
+                    //Camera.main.transform.Rotate(-90, 0, 0);
+                    PowderContent = (int)totalRotation;
+                    coffeeBar.gameObject.SetActive(false);
 
-                totalRotation = 0;
-                ExertCoffeePowder();
-            }
+                    totalRotation = 0;
+                    ExertCoffeePowder();
+                }
         }
 
         CheckGameStop = false;
@@ -77,6 +78,7 @@ public class HandGrinderScript : MonoBehaviour
         if (CheckGrind)
         {
             RotationCheck();
+            h2.active = false;
 
             if (!coffeeBeanCheck || (coffeeBeanCheck && machineHandleCheck))
                 NewGrindMotion();
@@ -93,6 +95,9 @@ public class HandGrinderScript : MonoBehaviour
                 MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
                 highlightMachineHandle = false;
             }
+
+            if (coffeeBeanCheck && machineHandleCheck)
+                h2.active = true;
         }
     }
 
@@ -137,18 +142,25 @@ public class HandGrinderScript : MonoBehaviour
 
     void ExertCoffeePowder ()
     {
-        //realease coffee & handle
+        //realease coffee
         CoffeeBeanOnTop.SetActive(false);
-        machineHandleCheck = false;
         coffeeBeanCheck = false;
 
         //add powder to handle
         MachineHandle.GetComponent<DragandDrop>().active = true;
         MachineHandle.GetComponent<OutlineHighlighter>().active = true;
+        MachineHandle.GetComponent<CoffeeMachineHandleLogic>().CoffeeBeanType = CoffeeType;
         MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
 
-        MachineHandle = null;
+        TakeOutCoffeeMachineHandleFromGrinder();
+
         CoffeeType = 0;
+    }
+
+    public void TakeOutCoffeeMachineHandleFromGrinder ()
+    {
+        machineHandleCheck = false;
+        MachineHandle = null;
     }
 
     Vector3 MousePos;

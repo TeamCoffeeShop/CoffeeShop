@@ -1,27 +1,56 @@
 fileFormatVersion: 2
-guid: 42637c9bd48028246a03fae4f845066d
-timeCreated: 1473196804
+guid: 4f6145c28dd983a42889a629fa476be2
+timeCreated: 1475741614
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group
-    100004: pasted__pCylinder1
-    100006: pCylinder1
-    100008: pCylinder2
-    100010: transform1
-    100012: transform2
+    100002: Bii
+    100004: Extract23
+    100006: Extract29
+    100008: Extract36
+    100010: Extract43
+    100012: Extract44
+    100014: Extract45
+    100016: Extract46
+    100018: pCylinder1
+    100020: pCylinder2
     400000: //RootNode
-    400002: group
-    400004: pasted__pCylinder1
-    400006: pCylinder1
-    400008: pCylinder2
-    400010: transform1
-    400012: transform2
-    2300000: pCylinder2
-    3300000: pCylinder2
-    4300000: pCylinder2
+    400002: Bii
+    400004: Extract23
+    400006: Extract29
+    400008: Extract36
+    400010: Extract43
+    400012: Extract44
+    400014: Extract45
+    400016: Extract46
+    400018: pCylinder1
+    400020: pCylinder2
+    2300000: Bii
+    2300002: Extract23
+    2300004: Extract29
+    2300006: Extract36
+    2300008: Extract43
+    2300010: Extract46
+    2300012: pCylinder1
+    2300014: pCylinder2
+    3300000: Bii
+    3300002: Extract23
+    3300004: Extract29
+    3300006: Extract36
+    3300008: Extract43
+    3300010: Extract46
+    3300012: pCylinder1
+    3300014: pCylinder2
+    4300000: Bii
+    4300002: Extract43
+    4300004: Extract29
+    4300006: Extract36
+    4300008: Extract23
+    4300010: Extract46
+    4300012: pCylinder1
+    4300014: pCylinder2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -30,7 +59,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 

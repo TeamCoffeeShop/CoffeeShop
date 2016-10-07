@@ -6,10 +6,10 @@ public class ResetManager : MonoBehaviour
     public void Reset()
     {
         //remove the coffee cup currently working on
-        if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
-        {
-            Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
-        }
+        //if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
+        //{
+        //    Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
+        //}
 
         //remove all the CoffeeBean objects in the level
         GameObject[] names = GameObject.FindGameObjectsWithTag("DragAndDrop");
