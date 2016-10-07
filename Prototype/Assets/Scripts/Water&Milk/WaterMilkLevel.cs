@@ -24,16 +24,28 @@ public class WaterMilkLevel : MonoBehaviour
         //and go back to the first step
         if (Level > 100)
         {
+            if (Instantiator.WaterMilkType == WaterMilkType.Water)
+            {
+                Instantiator.water.GetComponent<WaterFallingLogic>().filling = false;
+                Instantiator.water = null;
+            }
+
+            if (Instantiator.WaterMilkType == WaterMilkType.Water)
+            {
+                Instantiator.water.GetComponent<WaterFallingLogic>().filling = false;
+                Instantiator.water = null;
+            }
             Debug.Log("Overflow!!");
-            MinigameManager.Get.ResetManager.Reset();
+            
         }
         
         if(WaterMilkText && WaterMilkGauge)
         {
-            float p = Level * 0.01f;
-            WaterMilkText.GetComponent<Text>().text = p.ToString("P");
+            float pT = Level * 0.01f;
+            float p = Level * 0.01f * 0.5f;
+            WaterMilkText.GetComponent<Text>().text = pT.ToString("P");
 
-            WaterMilkGauge.transform.localScale = new Vector3(1, p, 1); 
+            WaterMilkGauge.transform.localScale = new Vector3(0.04f, p, 1); 
         }
 	}
 }
