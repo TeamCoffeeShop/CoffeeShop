@@ -7,6 +7,7 @@ public class DragandDrop : MonoBehaviour
     public Vector2 Xbound = new Vector2(-225, -177);
     public Vector2 Ybound = new Vector2(0.5f, 6);
     public GameObject[] Target;
+    public OutlineHighlighter[] Highlight;
 
     private bool pActive;
     private int InTarget_Return = 0;
@@ -25,44 +26,47 @@ public class DragandDrop : MonoBehaviour
     {
         Grab = true;
 
+        GetComponent<Rigidbody>().isKinematic = true;
+
         if (active)
             //highlight on targets
-            foreach (GameObject target in Target)
-            {
-                OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
-
-                if (h != null)
-                    h.active = true;
-            }
+            foreach (OutlineHighlighter target in Highlight)
+                target.active = true;
     }
 
     void OnMouseDrag ()
     {
-        //moving object according to mouse coordinate
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane p = new Plane(new Vector3(0, 0, -1), 3.51f);
-        float d;
-        p.Raycast(ray, out d);
-        Vector3 curPosition = Camera.main.transform.position + ray.direction * d;
+        if (active)
+        {
+            //moving object according to mouse coordinate
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane p = new Plane(new Vector3(0, 0, -1), 3.51f);
+            float d;
+            p.Raycast(ray, out d);
+            Vector3 curPosition = Camera.main.transform.position + ray.direction * d;
 
-        //X bound
-        if (curPosition.x < Xbound.x)
-            curPosition.x = Xbound.x;
-        else if (curPosition.x > Xbound.y)
-            curPosition.x = Xbound.y;
+            //X bound
+            if (curPosition.x < Xbound.x)
+                curPosition.x = Xbound.x;
+            else if (curPosition.x > Xbound.y)
+                curPosition.x = Xbound.y;
 
-        //Y bound
-        if (curPosition.y < Ybound.x)
-            curPosition.y = Ybound.x;
-        else if (curPosition.y > Ybound.y)
-            curPosition.y = Ybound.y;
+            //Y bound
+            if (curPosition.y < Ybound.x)
+                curPosition.y = Ybound.x;
+            else if (curPosition.y > Ybound.y)
+                curPosition.y = Ybound.y;
 
-        transform.position = curPosition;
+            //if moved so small, cancel
+            //if((curPosition - transform.position).sqrMagnitude > 0.1f)
+                transform.position = curPosition;
+        }
     }
 
     void OnMouseUp()
     {
         Grab = false;
+        GetComponent<Rigidbody>().isKinematic = false;
 
         if (InTarget != 0)
         {
@@ -71,16 +75,11 @@ public class DragandDrop : MonoBehaviour
 
         if(active)
             //highlight off targets
-            foreach (GameObject target in Target)
-            {
-                OutlineHighlighter h = target.GetComponent<OutlineHighlighter>();
-
-                if (h != null)
-                    h.active = false;
-            }
+            foreach (OutlineHighlighter target in Highlight)
+                target.active = false;            
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         int i = 1;
         if(Grab)
@@ -88,6 +87,7 @@ public class DragandDrop : MonoBehaviour
             {
                 if(obj == col.gameObject)
                 {
+                    //Debug.Log("in");
                     InTarget = i;
                     break;
                 }
@@ -95,13 +95,14 @@ public class DragandDrop : MonoBehaviour
             }
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
         if (Grab)
             foreach (GameObject obj in Target)
             {
                 if (obj == col.gameObject)
                 {
+                    //Debug.Log("out");
                     InTarget = 0;
                     InTarget_Return = 0;
                     break;

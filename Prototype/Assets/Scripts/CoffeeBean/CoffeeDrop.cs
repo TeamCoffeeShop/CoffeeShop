@@ -10,13 +10,13 @@ public class CoffeeDrop : MonoBehaviour
 
     //coffee drop variables
     public int PowderType = 0;
-    private GameObject handle;
-    private GameObject cup;
+    public GameObject handle;
+    public GameObject cup;
+    public int CoffeeDropStep = 0;
 
     private int dropTime;
     private bool machineHandleCheck = false;
     private bool coffeeCupCheck = false;
-    private int CoffeeDropStep = 0;
     private int dir = 1;
 
     void Update()
@@ -43,16 +43,14 @@ public class CoffeeDrop : MonoBehaviour
                 //for some reason if there's bug, return 0
                 if (handle == null || cup == null)
                     CoffeeDropStep = 0;
-                ++CoffeeDropStep;
+                else
+                {
+                    handle.GetComponent<OutlineHighlighter>().active = false;
+                    ++CoffeeDropStep;
+                }
                 break;
 
-            case 2: //Minigame Prepare
-                handle.SetActive(true);
-                HandleMotion();
-                ++CoffeeDropStep;
-                break;
-
-            case 3: //Check game start
+            case 2: //Check game start
                 HandleMotion();
                 if (handle.transform.eulerAngles.y <= 150)
                     dir = -dir;
@@ -61,14 +59,14 @@ public class CoffeeDrop : MonoBehaviour
                 handle.transform.Rotate( new Vector3(0,1,0) * Time.deltaTime * dir * 60);              
                 break;
 
-            case 4: //Drop Prepare
+            case 3: //Drop Prepare
                 //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
                 //Camera.main.transform.Rotate(-35, 0, 0);
                 //CheckGameStart = false;
                 ++CoffeeDropStep;
                 break;
 
-            case 5: //Drop
+            case 4: //Drop
                 ExertCoffeeDrop();
                 break;
         }
@@ -83,35 +81,29 @@ public class CoffeeDrop : MonoBehaviour
             dropTime = 0;
 
             //reset handle
-            handle.GetComponent<DragandDrop>().active = true;
-            handle.GetComponent<OutlineHighlighter>().active = true;
             handle.GetComponent<CoffeeMachineHandleLogic>().CoffeeBeanType = 0;
             handle.transform.GetChild(0).gameObject.SetActive(false);
 
-            handle = null;
+            TakeOutCoffeeMachineHandleFromMachine();
 
             //add to cup
-            cup.GetComponent<OutlineHighlighter>().active = true;
-
-            Transform liquid = null;
             switch(PowderType)
             {
                 case 1:
                     cup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop1;
+                    if (cup.transform.childCount != 0)
+                        cup.transform.GetChild(0).gameObject.SetActive(true);
                     break;
                 case 2:
                     cup.GetComponent<CoffeeCupBehavior>().DropType = CoffeeDropType.CoffeeDrop2;
+                    if (cup.transform.childCount != 0)
+                        cup.transform.GetChild(0).gameObject.SetActive(true);
                     break;
                 default:
                     break;
 
             }
-            if(cup.transform.childCount != 0)
-                cup.transform.GetChild(0).gameObject.SetActive(true);
-
-            cup = null;
-
-            PowderType = 0;
+            TakeOutCoffeeCupFromMachine();
             CoffeeDropStep = 0;
         }
     }
@@ -129,7 +121,7 @@ public class CoffeeDrop : MonoBehaviour
             }
 
         }
-        else if (CoffeeDropStep == 3)
+        else if (CoffeeDropStep == 2)
         {
             if (handle.transform.eulerAngles.y < 250 && handle.transform.eulerAngles.y > 190)
                 ++CoffeeDropStep;
@@ -174,7 +166,35 @@ public class CoffeeDrop : MonoBehaviour
 
     public void PutCoffeeCupToMachine (GameObject Cup)
     {
-        coffeeCupCheck = true;
-        cup = Cup;
+        if(!coffeeCupCheck)
+        {
+            coffeeCupCheck = true;
+            cup = Cup;
+        }
+    }
+
+    public bool TakeOutCoffeeMachineHandleFromMachine ()
+    {
+        if (CoffeeDropStep >= 2)
+            return false;
+
+        PowderType = 0;
+        machineHandleCheck = false;
+        handle.GetComponent<OutlineHighlighter>().active = true;
+        handle = null;
+
+        return true;
+    }
+
+    public bool TakeOutCoffeeCupFromMachine()
+    {
+        if (CoffeeDropStep >= 2)
+            return false;
+
+        coffeeCupCheck = false;
+        cup.GetComponent<OutlineHighlighter>().active = true;
+        cup = null;
+
+        return true;
     }
 }

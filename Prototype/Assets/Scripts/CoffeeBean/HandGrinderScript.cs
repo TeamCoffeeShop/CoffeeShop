@@ -29,7 +29,7 @@ public class HandGrinderScript : MonoBehaviour
     private bool coffeeBeanCheck = false;
     public bool IsFilled { get { return coffeeBeanCheck; } }
     private bool machineHandleCheck = false;
-    private GameObject MachineHandle;
+    public GameObject MachineHandle;
     private bool highlightMachineHandle = false;
 
     void Awake()
@@ -142,9 +142,8 @@ public class HandGrinderScript : MonoBehaviour
 
     void ExertCoffeePowder ()
     {
-        //realease coffee & handle
+        //realease coffee
         CoffeeBeanOnTop.SetActive(false);
-        machineHandleCheck = false;
         coffeeBeanCheck = false;
 
         //add powder to handle
@@ -153,8 +152,15 @@ public class HandGrinderScript : MonoBehaviour
         MachineHandle.GetComponent<CoffeeMachineHandleLogic>().CoffeeBeanType = CoffeeType;
         MachineHandle.transform.GetChild(0).gameObject.SetActive(true);
 
-        MachineHandle = null;
+        TakeOutCoffeeMachineHandleFromGrinder();
+
         CoffeeType = 0;
+    }
+
+    public void TakeOutCoffeeMachineHandleFromGrinder ()
+    {
+        machineHandleCheck = false;
+        MachineHandle = null;
     }
 
     Vector3 MousePos;

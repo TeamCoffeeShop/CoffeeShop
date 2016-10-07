@@ -10,12 +10,22 @@ public class CoffeeCupBehavior : MonoBehaviour
     public float WaterMilkLevel;
 
     DragandDrop d;
-    OutlineHighlighter h;
 
     void Awake()
     {
         d = GetComponent<DragandDrop>();
-        h = GetComponent<OutlineHighlighter>();
+    }
+
+    void OnMouseDown()
+    {
+        //take it away from coffeemachine
+        if (MinigameManager.Get.coffeeMachine.cup == gameObject)
+        {
+            if (MinigameManager.Get.coffeeMachine.TakeOutCoffeeCupFromMachine())
+            {
+                d.active = true;
+            }
+        }
     }
 
     void Update()
@@ -25,7 +35,6 @@ public class CoffeeCupBehavior : MonoBehaviour
         {
             MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject);
             d.active = false;
-            h.active = false;
         }
     }
 }

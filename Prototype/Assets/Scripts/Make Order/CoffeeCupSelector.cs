@@ -4,43 +4,39 @@ using System.Collections;
 public class CoffeeCupSelector : MonoBehaviour
 {
     public GameObject CoffeeCupPrefab;
-    public bool active;
+    private int active = 0;
     private float time = 0;
     private Vector3 pos;
 
     void Start ()
     {
-        active = true;
-        GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.coffeeMachine.gameObject;
+        GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.coffeeMachine.transform.FindChild("MachineCollider").gameObject;
+        GetComponent<DragandDrop>().Highlight[0] = MinigameManager.Get.coffeeMachine.GetComponent<OutlineHighlighter>();
     }
 
     void OnMouseDown ()
     {
-        if (active)
+        if (active == 0)
         {
             time = 1;
-            active = false;
+            active = 1;
             pos = gameObject.transform.position;
         }
     }
 
     void Update()
     {
-        if (!active)
+        if (active == 1)
         {
             if (time < 0)
             {
                 //create new cup
-                GetComponent<Collider>().isTrigger = false;
-                GetComponent<Rigidbody>().isKinematic = false;
                 GameObject cup = GameObject.Instantiate(CoffeeCupPrefab);
                 cup.transform.position = pos;
-                time = 100000;
+                active = 2;
             }
             else
-            {
                 time -= InGameTime.deltaTime;
-            }
         }
     }
 }
