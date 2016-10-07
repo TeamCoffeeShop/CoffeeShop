@@ -3,9 +3,14 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum DayOrNight
+{
+    Day, Night
+}
+
 public class TimeOfDay : MonoBehaviour
 {
-
+    public DayOrNight currentStatus;
     //Set time , day and month
     public float currentHour;
     public float currentMin;

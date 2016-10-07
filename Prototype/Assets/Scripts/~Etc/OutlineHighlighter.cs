@@ -31,9 +31,9 @@ public class OutlineHighlighter : MonoBehaviour
     {
         if(active)
             if (highlightOn == HighlightOn.mouseOver)
-                R.material.SetColor("_OutlineColor", Color.green);
-            else if(highlightOn == HighlightOn.alwaysAndOver)
                 R.material.SetColor("_OutlineColor", Color.yellow);
+            else if(highlightOn == HighlightOn.alwaysAndOver)
+                R.material.SetColor("_OutlineColor", Color.green);
     }
 
     void OnMouseExit ()
@@ -42,7 +42,7 @@ public class OutlineHighlighter : MonoBehaviour
             if (highlightOn == HighlightOn.mouseOver)
                 R.material.SetColor("_OutlineColor", Color.black);
             else if (highlightOn == HighlightOn.alwaysAndOver)
-                R.material.SetColor("_OutlineColor", Color.green);
+                R.material.SetColor("_OutlineColor", Color.yellow);
     }
 
     void Update ()
@@ -55,7 +55,7 @@ public class OutlineHighlighter : MonoBehaviour
                 if (highlightOn == HighlightOn.none || highlightOn == HighlightOn.mouseOver)
                     R.material.SetColor("_OutlineColor", Color.black);
                 else if (highlightOn == HighlightOn.always || highlightOn == HighlightOn.alwaysAndOver)
-                    R.material.SetColor("_OutlineColor", Color.green);
+                    R.material.SetColor("_OutlineColor", Color.yellow);
             }
 
         if (active != pactive)
@@ -67,7 +67,7 @@ public class OutlineHighlighter : MonoBehaviour
                 if (highlightOn == HighlightOn.none || highlightOn == HighlightOn.mouseOver)
                     R.material.SetColor("_OutlineColor", Color.black);
                 else if (highlightOn == HighlightOn.always || highlightOn == HighlightOn.alwaysAndOver)
-                    R.material.SetColor("_OutlineColor", Color.green);
+                    R.material.SetColor("_OutlineColor", Color.yellow);
             }
             else
                 R.material.SetColor("_OutlineColor", Color.black);
