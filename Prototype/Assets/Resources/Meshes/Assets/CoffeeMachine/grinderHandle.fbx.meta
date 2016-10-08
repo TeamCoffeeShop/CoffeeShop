@@ -1,25 +1,15 @@
 fileFormatVersion: 2
-guid: c34178d7eb810e949a3a833139a1cc8b
-timeCreated: 1473323141
+guid: 71bc730eb4c169a4ea3a01f4be115acc
+timeCreated: 1475919005
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: EspressoMachine
-    100004: EspressoMachineHandle
     400000: //RootNode
-    400002: EspressoMachine
-    400004: EspressoMachineHandle
     2300000: //RootNode
-    2300002: EspressoMachine
-    2300004: EspressoMachineHandle
     3300000: //RootNode
-    3300002: EspressoMachine
-    3300004: EspressoMachineHandle
-    4300000: CoffeeMachine
-    4300002: EspressoMachine
-    4300004: EspressoMachineHandle
+    4300000: grinderHandle
     9500000: //RootNode
   materials:
     importMaterials: 1

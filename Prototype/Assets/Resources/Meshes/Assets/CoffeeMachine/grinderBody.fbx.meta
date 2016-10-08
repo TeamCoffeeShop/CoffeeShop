@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4a190d0c70dc68142a02b6d1848e919e
-timeCreated: 1475551258
+guid: 51ba806db4c9c2a4da5cc0b432f01034
+timeCreated: 1475919004
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Pillow02
+    4300000: grinderBody
     9500000: //RootNode
   materials:
     importMaterials: 1

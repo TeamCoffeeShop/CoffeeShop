@@ -23,7 +23,7 @@ public class CoffeeDrop : MonoBehaviour
     {
         //stick handle into position
         if (handle != null)
-            handle.transform.position = transform.position + new Vector3(0, 1.9f, 0);
+            handle.transform.position = transform.position + new Vector3(0, 2.4f, 0);
 
         //stick cup into position
         if (cup != null)
