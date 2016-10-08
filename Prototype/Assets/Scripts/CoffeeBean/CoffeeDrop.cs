@@ -81,9 +81,7 @@ public class CoffeeDrop : MonoBehaviour
             dropTime = 0;
 
             //reset handle
-            handle.GetComponent<CoffeeMachineHandleLogic>().CoffeeBeanType = 0;
-            handle.transform.GetChild(0).gameObject.SetActive(false);
-
+            handle.GetComponent<CoffeeMachineHandleLogic>().DiscardPowderFromHandle();
             TakeOutCoffeeMachineHandleFromMachine();
 
             //add to cup

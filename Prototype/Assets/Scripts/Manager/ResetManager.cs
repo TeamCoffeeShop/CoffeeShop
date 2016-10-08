@@ -11,11 +11,12 @@ public class ResetManager : MonoBehaviour
         //    Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
         //}
 
-        //empty coffeegrinder, machine
+        //empty coffeegrinder, machine, machine handle
         MinigameManager.Get.handGrinder.TakeOutCoffeeMachineHandleFromGrinder();
         MinigameManager.Get.handGrinder.DiscardCoffeeBean();
         MinigameManager.Get.coffeeMachine.TakeOutCoffeeCupFromMachine();
         MinigameManager.Get.coffeeMachine.TakeOutCoffeeMachineHandleFromMachine();
+        MinigameManager.Get.coffeeMachineHandle.GetComponent<CoffeeMachineHandleLogic>().DiscardPowderFromHandle();
 
         //remove all the CoffeeBean objects in the level
         GameObject[] names = GameObject.FindGameObjectsWithTag("DragAndDrop");
@@ -56,9 +57,9 @@ public class ResetManager : MonoBehaviour
 
         //reset status of water/milk
         //See WaterMilkInstantiator.cs and WaterMilkStatusChecker.cs for more details
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().CurrentAmount = 0;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().WaterMilkType = WaterMilkType.None;
-        GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
+        //GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().CurrentAmount = 0;
+        //GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().WaterMilkType = WaterMilkType.None;
+        //GameObject.Find("Instantiator").GetComponent<WaterMilkInstantiator>().Ready = false;
 
         //reset camera to original position
         MinigameManager.Get.MakeOrderCamera.Return();

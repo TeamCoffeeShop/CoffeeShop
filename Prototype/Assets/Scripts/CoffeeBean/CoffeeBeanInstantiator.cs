@@ -135,7 +135,7 @@ public class CoffeeBeanInstantiator : MonoBehaviour
         ShakeReady = false;
         GameObject coffeebean = (GameObject)Instantiate(CurrentCoffeeBean, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
         coffeebean.GetComponent<DragandDrop>().Highlight[0] = MinigameManager.Get.handGrinder.GetComponent<OutlineHighlighter>();
-        coffeebean.GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.handGrinder.transform.FindChild("BeanCollider").gameObject;
+        coffeebean.GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.handGrinder.transform.FindChild("Collider").gameObject;
         MinigameManager.Get.CoffeeManager.IsMakingOrderJustStarted = false;
     }
 

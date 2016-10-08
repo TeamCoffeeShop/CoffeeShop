@@ -43,7 +43,7 @@ public class WaterMilkLevel : MonoBehaviour
         {
             float pT = Level * 0.01f;
             float p = Level * 0.01f * 0.5f;
-            WaterMilkText.GetComponent<Text>().text = pT.ToString("P");
+            WaterMilkText.GetComponent<Text>().text = pT.ToString("P0");
 
             WaterMilkGauge.transform.localScale = new Vector3(0.04f, p, 1); 
         }
