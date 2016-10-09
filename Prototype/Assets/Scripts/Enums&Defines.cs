@@ -137,18 +137,17 @@ public static class CoffeeOrderSetup
         //distinguish the menu
         else if (coffee.DropType == CoffeeDropType.CoffeeDrop1)
         {
-            //temporary recipe!!
-            return OrderType.HotAmericano;
+            if(coffee.WaterMilkType == WaterMilkType.Water)
+            {
+                if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
+                {
+                    //temporary recipe!
 
-            //if(coffee.WaterMilkType == WaterMilkType.HotWater)
-            //{
-            //    if(coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-            //    {
-            //        //Hot Americano
-            //        //coffeedrop1 + hot water 양 70%~100%
-            //        return OrderType.HotAmericano;
-            //    }
-            //}
+                    //Hot Americano
+                    //coffeedrop1 + hot water 양 70%~100%
+                    return OrderType.HotAmericano;
+                }
+            }
             //else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
             //{
             //    if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)

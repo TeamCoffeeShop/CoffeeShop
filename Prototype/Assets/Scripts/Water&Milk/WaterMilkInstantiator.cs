@@ -32,7 +32,7 @@ public class WaterMilkInstantiator : MonoBehaviour
         //stick handle into position
         if (cup != null)
         {
-            cup.transform.position = transform.position + new Vector3(0, -2.4f, 0);
+            cup.transform.position = transform.position + new Vector3(0, -3.5f, 0);
         }
     }
 
@@ -59,22 +59,30 @@ public class WaterMilkInstantiator : MonoBehaviour
             default:
                 break;
         }
-        switch(WaterMilkType)
+
+        //stop increasing when max.
+        if(CurrentAmount < MaxAmount)
         {
-            case WaterMilkType.Water:
-                //water showoff
-                if (!water)
-                    water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), new Vector3(-189.88f, 2.216f, 3.177f), Quaternion.identity) as GameObject).transform;
-                CurrentAmount += IncreaseAmount;
-                break;
-            case WaterMilkType.Milk:
-                //water showoff
-                if (!milk)
-                    milk = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Milk"), new Vector3(-189.88f, 2.216f, 3.177f), Quaternion.identity) as GameObject).transform;
-                CurrentAmount += IncreaseAmount;
-                break;
-            default:
-                break;
+            switch (WaterMilkType)
+            {
+                case WaterMilkType.Water:
+                    //water showoff
+                    if (!water)
+                        water = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Water"), transform.position + new Vector3(0, -0.16f, 0), Quaternion.identity) as GameObject).transform;
+                    CurrentAmount += IncreaseAmount;
+                    break;
+                case WaterMilkType.Milk:
+                    //water showoff
+                    if (!milk)
+                        milk = (GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Milk"), transform.position + new Vector3(0, -0.16f, 0), Quaternion.identity) as GameObject).transform;
+                    CurrentAmount += IncreaseAmount;
+                    break;
+                default:
+                    break;
+            }
+
+            if (CurrentAmount > MaxAmount)
+                CurrentAmount = MaxAmount;
         }
     }
 
@@ -90,17 +98,18 @@ public class WaterMilkInstantiator : MonoBehaviour
             }
         }
 
-        //finish water
-        if (WaterMilkType == WaterMilkType.Water)
-        {
-            water.GetComponent<WaterFallingLogic>().filling = false;
-            water = null;
-        }
-        else if(WaterMilkType == WaterMilkType.Milk)
-        {
-            milk.GetComponent<WaterFallingLogic>().filling = false;
-            milk = null;
-        }
+        if(water != null)
+            //finish water
+            if (WaterMilkType == WaterMilkType.Water)
+            {
+                water.GetComponent<WaterFallingLogic>().filling = false;
+                water = null;
+            }
+            else if(WaterMilkType == WaterMilkType.Milk)
+            {
+                milk.GetComponent<WaterFallingLogic>().filling = false;
+                milk = null;
+            }
     }
 
     public void PutCoffeeIntoInstantiator (CoffeeCupBehavior Cup)
