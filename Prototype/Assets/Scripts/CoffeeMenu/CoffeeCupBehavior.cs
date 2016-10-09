@@ -37,4 +37,28 @@ public class CoffeeCupBehavior : MonoBehaviour
             d.active = false;
         }
     }
+
+    public void PutCoffeeDropIntoCup (int powdertype)
+    {
+        switch (powdertype)
+        {
+            case 1:
+                DropType = CoffeeDropType.CoffeeDrop1;
+                break;
+            case 2:
+                DropType = CoffeeDropType.CoffeeDrop2;
+                break;
+            default:
+                break;
+
+        }
+
+        if (DropType != CoffeeDropType.None)
+        {
+            if (transform.childCount != 0)
+                transform.GetChild(0).gameObject.SetActive(true);
+
+            //change the target to instantiator
+        }
+    }
 }

@@ -41,12 +41,9 @@ public class DragandDrop : MonoBehaviour
             foreach (OutlineHighlighter target in Highlight)
             {
                 target.active = true;
-                if (target.name == "HandGrinder")
-                {
-                    arrow.GetComponent<Renderer>().enabled = false;
-                }
             }
         }
+
     }
 
     void OnMouseDrag ()
