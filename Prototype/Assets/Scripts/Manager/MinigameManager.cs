@@ -19,6 +19,7 @@ public class MinigameManager : MonoBehaviour
     public HandGrinderScript handGrinder;
     public CoffeeDrop coffeeMachine;
     public GameObject coffeeMachineHandle;
+    public WaterMilkInstantiator instantiator;
 
     void Awake ()
     {
