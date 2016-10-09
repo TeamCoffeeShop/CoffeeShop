@@ -21,11 +21,13 @@ public class CoffeeDrop : MonoBehaviour
     private int dir = 1;
     private OutlineHighlighter h2;
 
-    void Awake ()
+    public GameObject arrow;
+
+    void Start()
     {
         h2 = transform.FindChild("Button").GetComponent<OutlineHighlighter>();
+        arrow.GetComponent<Renderer>().enabled = false;
     }
-
     void Update()
     {
         //stick handle into position
