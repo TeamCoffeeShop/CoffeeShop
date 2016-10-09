@@ -19,6 +19,12 @@ public class CoffeeDrop : MonoBehaviour
     private bool coffeeCupCheck = false;
     private int dir = 1;
 
+    public GameObject arrow;
+
+    void Start()
+    {
+        arrow.GetComponent<Renderer>().enabled = false;
+    }
     void Update()
     {
         //stick handle into position
@@ -113,6 +119,7 @@ public class CoffeeDrop : MonoBehaviour
             //highlight what's required
             if (machineHandleCheck && !coffeeCupCheck)
             {
+                arrow.GetComponent<Renderer>().enabled = true;
                 GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
                 foreach (GameObject cup in cups)
                     cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
@@ -132,7 +139,10 @@ public class CoffeeDrop : MonoBehaviour
         {
             //go to next step when clicked
             if (machineHandleCheck && coffeeCupCheck)
+            {
                 ++CoffeeDropStep;
+                arrow.GetComponent<Renderer>().enabled = false;
+            }
             //highlight what's required
             else if (machineHandleCheck)
             {
