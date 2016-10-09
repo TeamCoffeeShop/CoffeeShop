@@ -14,10 +14,17 @@ public class CoffeeDrop : MonoBehaviour
     public GameObject cup;
     public int CoffeeDropStep = 0;
 
-    private int dropTime;
+    private float dropTime;
     private bool machineHandleCheck = false;
     private bool coffeeCupCheck = false;
+    private bool highlightCoffeeCup = false;
     private int dir = 1;
+    private OutlineHighlighter h2;
+
+    void Awake ()
+    {
+        h2 = transform.FindChild("Button").GetComponent<OutlineHighlighter>();
+    }
 
     void Update()
     {
@@ -32,6 +39,26 @@ public class CoffeeDrop : MonoBehaviour
         switch (CoffeeDropStep)
         {
             case 0: //check if it's ready to extract coffee drop
+                //highlight what's needed
+                if (!highlightCoffeeCup)
+                    if(machineHandleCheck && !coffeeCupCheck)
+                        {
+                            GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
+                            foreach (GameObject Cup in cups)
+                                Cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
+                            highlightCoffeeCup = true;
+                        }
+
+                //highlight button
+                if (!h2.active)
+                    if (machineHandleCheck && coffeeCupCheck)
+                    {
+                        //turn off highlight for cups
+                        GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
+                        foreach (GameObject Cup in cups)
+                            Cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
+                        h2.active = true;
+                    }
                 break;
 
             case 1: //camera rotate
@@ -46,11 +73,14 @@ public class CoffeeDrop : MonoBehaviour
                 else
                 {
                     handle.GetComponent<OutlineHighlighter>().active = false;
+                    h2.active = false;
+
                     ++CoffeeDropStep;
                 }
                 break;
 
             case 2: //Check game start
+
                 HandleMotion();
                 if (handle.transform.eulerAngles.y <= 150)
                     dir = -dir;
@@ -72,9 +102,29 @@ public class CoffeeDrop : MonoBehaviour
         }
     }
 
+    public void ButtonWasClicked ()
+    {
+        //check if button was clicked or not
+        if (CoffeeDropStep == 0)
+        {
+            //go to next step when clicked
+            if (machineHandleCheck && coffeeCupCheck)
+                ++CoffeeDropStep;
+        }
+        else if (CoffeeDropStep == 2)
+            StopHandleAndStartDrop();
+
+    }
+
+    public void StopHandleAndStartDrop()
+    {
+        if (handle.transform.eulerAngles.y < 250 && handle.transform.eulerAngles.y > 190)
+            ++CoffeeDropStep;
+    }
+
     void ExertCoffeeDrop()
     {
-        dropTime += 1;
+        dropTime += InGameTime.deltaTime;
 
         if (dropTime > dropMaxTime)
         {
@@ -103,43 +153,6 @@ public class CoffeeDrop : MonoBehaviour
             }
             TakeOutCoffeeCupFromMachine();
             CoffeeDropStep = 0;
-        }
-    }
-
-    void OnMouseDown ()
-    {
-        if (CoffeeDropStep == 0)
-        {
-            //highlight what's required
-            if (machineHandleCheck && !coffeeCupCheck)
-            {
-                GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
-                foreach (GameObject cup in cups)
-                    cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
-            }
-
-        }
-        else if (CoffeeDropStep == 2)
-        {
-            if (handle.transform.eulerAngles.y < 250 && handle.transform.eulerAngles.y > 190)
-                ++CoffeeDropStep;
-        }
-    }
-
-    void OnMouseUp ()
-    {
-        if (CoffeeDropStep == 0)
-        {
-            //go to next step when clicked
-            if (machineHandleCheck && coffeeCupCheck)
-                ++CoffeeDropStep;
-            //highlight what's required
-            else if (machineHandleCheck)
-            {
-                GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
-                foreach (GameObject cup in cups)
-                    cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
-            }
         }
     }
 
@@ -181,6 +194,7 @@ public class CoffeeDrop : MonoBehaviour
 
         PowderType = 0;
         machineHandleCheck = false;
+        highlightCoffeeCup = false;
         handle.GetComponent<OutlineHighlighter>().active = true;
         handle.GetComponent<DragandDrop>().active = true;
         handle = null;

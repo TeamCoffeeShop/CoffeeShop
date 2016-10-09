@@ -176,13 +176,12 @@ public class HandGrinderScript : MonoBehaviour
     Vector3 MousePos;
     void NewGrindMotion ()
     {
-        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.GetChild(0).transform.position + new Vector3(0,3,0));
+        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.FindChild("Handle").position);
 
         float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(GrinderPos.x, GrinderPos.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
         if (angle > 0) angle = 0;
-
-        transform.GetChild(0).Rotate(0, -angle, 0);
+        transform.GetChild(0).Rotate(0, 0, -angle);
 
         MousePos = Input.mousePosition;
     }
@@ -197,40 +196,4 @@ public class HandGrinderScript : MonoBehaviour
 
         return angle2 - angle1;
     }
-
-    //for object rotation following mouse
-    ////////////////////////////////////
-    ////////////////////////////////////
-    //Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
-    //int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
-    //float camRayLength = 100f;          // The length of the ray from the camera into the scene.
-    ////////////////////////////////////
-    ////////////////////////////////////
-
-
-    //for coffee grinding motion
-    //void GrindMotion()
-    //{
-    //    // Create a ray from the mouse cursor on screen in the direction of the camera.
-    //    Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-    //    // Create a RaycastHit variable to store information about what was hit by the ray.
-    //    RaycastHit floorHit;
-
-    //    // Perform the raycast and if it hits something on the floor layer...
-    //    if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-    //    {
-    //        // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-    //        Vector3 playerToMouse = floorHit.point - transform.position;
-
-    //        // Ensure the vector is entirely along the floor plane.
-    //        playerToMouse.y = 0;
-
-    //        // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-    //        Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-
-    //        // Set the player's rotation to this new rotation.
-    //        playerRigidbody.MoveRotation(newRotation);
-    //    }
-    //}
 }
