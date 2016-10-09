@@ -49,7 +49,8 @@ public class CoffeeDrop : MonoBehaviour
                             foreach (GameObject Cup in cups)
                                 Cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
                             highlightCoffeeCup = true;
-                        }
+                        arrow.GetComponent<Renderer>().enabled = true;
+                    }
 
                 //highlight button
                 if (!h2.active)
@@ -68,7 +69,7 @@ public class CoffeeDrop : MonoBehaviour
                 //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 //Camera.main.transform.Rotate(35, 0, 0);
                 //handle.transform.Translate(0, 1.2f, 0);
-
+                arrow.GetComponent<Renderer>().enabled = false;
                 //for some reason if there's bug, return 0
                 if (handle == null || cup == null)
                     CoffeeDropStep = 0;
