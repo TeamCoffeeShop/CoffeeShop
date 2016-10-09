@@ -98,6 +98,9 @@ public class HandGrinderScript : MonoBehaviour
             MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
             h2.active = false;
             highlightMachineHandle = true;
+            GameObject handle = GameObject.Find("CoffeeMachineHandle");
+            arrow.transform.position = handle.transform.position;
+            arrow.transform.Translate(new Vector3(3, 0, 0));
             arrow.GetComponent<Renderer>().enabled = true;
         }
         else

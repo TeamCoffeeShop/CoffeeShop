@@ -73,8 +73,8 @@ public class CoffeeCupBehavior : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(true);
 
             //change the target to instantiator
-
             d.Highlight[0] = MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>();
+            Debug.Log(MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>());
             d.Target[0] = d.Highlight[0].transform.FindChild("Collider").gameObject;
         }
     }

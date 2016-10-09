@@ -20,6 +20,8 @@ public class DragandDrop : MonoBehaviour
     private float MoveSpeed = 10;
     private bool FinishedReturning = false;
 
+    public GameObject arrow;
+
     public int inTarget
     {
         get
@@ -37,8 +39,11 @@ public class DragandDrop : MonoBehaviour
         {
             //highlight on targets
             foreach (OutlineHighlighter target in Highlight)
+            {
                 target.active = true;
+            }
         }
+
     }
 
     void OnMouseDrag ()

@@ -59,6 +59,7 @@ public class CoffeeDrop : MonoBehaviour
                 if (!h2.active)
                     if (machineHandleCheck && coffeeCupCheck)
                     {
+                        arrow.GetComponent<Renderer>().enabled = false;
                         //turn off highlight for cups
                         GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
                         foreach (GameObject Cup in cups)
