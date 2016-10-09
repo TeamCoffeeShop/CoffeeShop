@@ -23,6 +23,19 @@ public class WaterMilkInstantiator : MonoBehaviour
     public Transform water;
     public Transform milk;
 
+    //Cup
+    private bool CoffeeCupCheck = false;
+    public CoffeeCupBehavior cup;
+
+    void Update ()
+    {
+        //stick handle into position
+        if (cup != null)
+        {
+            cup.transform.position = transform.position + new Vector3(0, -2.4f, 0);
+        }
+    }
+
     void OnMouseDrag ()
     {
         switch (HotIceType)
@@ -68,15 +81,14 @@ public class WaterMilkInstantiator : MonoBehaviour
     void OnMouseUp()
     {
         //save the amount to the cup
-        //if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
-        //{
-        //    if(CurrentAmount <= MaxAmount)
-        //    {
-        //        CoffeeCupBehavior cup = MinigameManager.Get.CoffeeManager.SelectedCoffee.GetComponent<CoffeeCupBehavior>();
-        //        cup.WaterMilkType = WaterMilkType;
-        //        cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
-        //    }
-        //}
+        if (cup != null)
+        {
+            if (CurrentAmount <= MaxAmount)
+            {
+                cup.WaterMilkType = WaterMilkType;
+                cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
+            }
+        }
 
         //finish water
         if (WaterMilkType == WaterMilkType.Water)
@@ -89,5 +101,32 @@ public class WaterMilkInstantiator : MonoBehaviour
             milk.GetComponent<WaterFallingLogic>().filling = false;
             milk = null;
         }
+    }
+
+    public void PutCoffeeIntoInstantiator (CoffeeCupBehavior Cup)
+    {
+        if (!CoffeeCupCheck)
+        {
+            CoffeeCupCheck = true;
+            cup = Cup;
+
+            //move camera to next one
+            Vector3 newPos = Camera.main.transform.position;
+            newPos.x = transform.position.x;
+            MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
+        }
+    }
+
+    public bool TakeOutCoffeeCupFromInstantiator ()
+    {
+        if (cup == null)
+            return false;
+
+        CoffeeCupCheck = false;
+        cup.GetComponent<OutlineHighlighter>().active = true;
+        cup.GetComponent<DragandDrop>().active = true;
+        cup = null;
+
+        return true;
     }
 }

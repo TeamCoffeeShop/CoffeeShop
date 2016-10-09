@@ -28,6 +28,7 @@ public class CoffeeDrop : MonoBehaviour
         h2 = transform.FindChild("Button").GetComponent<OutlineHighlighter>();
         arrow.GetComponent<Renderer>().enabled = false;
     }
+
     void Update()
     {
         //stick handle into position

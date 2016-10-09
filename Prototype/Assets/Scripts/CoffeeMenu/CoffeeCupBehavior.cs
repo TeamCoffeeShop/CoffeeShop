@@ -26,15 +26,29 @@ public class CoffeeCupBehavior : MonoBehaviour
                 d.active = true;
             }
         }
+        else if (MinigameManager.Get.instantiator.cup == this)
+        {
+            if(MinigameManager.Get.instantiator.TakeOutCoffeeCupFromInstantiator())
+                d.active = true;
+        }
     }
 
     void Update()
     {
-        //machine
         if (d.inTarget == 1)
         {
-            MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject);
-            d.active = false;
+            //machine
+            if(DropType == CoffeeDropType.None)
+            {
+                MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject);
+                d.active = false;
+            }
+            //Instantiator
+            else
+            {
+                MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this);
+                d.active = false;
+            }
         }
     }
 
@@ -59,6 +73,9 @@ public class CoffeeCupBehavior : MonoBehaviour
                 transform.GetChild(0).gameObject.SetActive(true);
 
             //change the target to instantiator
+
+            d.Highlight[0] = MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>();
+            d.Target[0] = d.Highlight[0].transform.FindChild("Collider").gameObject;
         }
     }
 }
