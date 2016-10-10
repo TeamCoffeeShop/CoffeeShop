@@ -8,6 +8,7 @@ public class CoffeeCupBehavior : MonoBehaviour
     public WaterMilkType WaterMilkType;
     public HotIceType HotIceType;
     public float WaterMilkLevel;
+    public CoffeeCupSelector CoffeeCupShelfLink;
 
     DragandDrop d;
     bool BeginFinishing;
@@ -17,8 +18,23 @@ public class CoffeeCupBehavior : MonoBehaviour
         d = GetComponent<DragandDrop>();
     }
 
+    void Start()
+    {
+        d.Target[0] = MinigameManager.Get.coffeeMachine.transform.FindChild("MachineCollider").gameObject;
+        d.Highlight[0] = MinigameManager.Get.coffeeMachine.GetComponent<OutlineHighlighter>();
+        d.Target[1] = MinigameManager.Get.plate.transform.FindChild("Collider").gameObject;
+        d.Highlight[1] = MinigameManager.Get.plate.GetComponent<OutlineHighlighter>();
+    }
+
     void OnMouseDown()
     {
+        //take it away from coffee shelf
+        if (CoffeeCupShelfLink)
+        {
+            CoffeeCupShelfLink.CupInStock = null;
+            CoffeeCupShelfLink = null;
+        }
+
         //take it away from coffeemachine
         if (MinigameManager.Get.coffeeMachine.cup == gameObject)
         {

@@ -5,12 +5,6 @@ public class ResetManager : MonoBehaviour
 {
     public void Reset()
     {
-        //remove the coffee cup currently working on
-        //if (MinigameManager.Get.CoffeeManager.SelectedCoffee != null)
-        //{
-        //    Destroy(MinigameManager.Get.CoffeeManager.SelectedCoffee);
-        //}
-
         //empty coffeegrinder, machine, machine handle
         MinigameManager.Get.handGrinder.TakeOutCoffeeMachineHandleFromGrinder();
         MinigameManager.Get.handGrinder.DiscardCoffeeBean();
