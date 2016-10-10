@@ -71,7 +71,7 @@ public class HandGrinderScript : MonoBehaviour
 
             if(CheckGameStop)
                 //temporary grind checking
-                if (totalRotation >= stanRotation)
+                //if (totalRotation >= stanRotation)
                 {
                     CheckGrind = false;
                     //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
