@@ -20,6 +20,7 @@ public class FinishedOrderList : MonoBehaviour
         {
             //create cup
             OrderLogic order = GameObject.Instantiate(orderDisplayButton).GetComponent<OrderLogic>();
+            order.ChildNumber = FinishedOrders.childCount;
             order.transform.SetParent(FinishedOrders, false);
 
             //set cup details here
@@ -29,14 +30,16 @@ public class FinishedOrderList : MonoBehaviour
             CoffeeOrderSetup.SetOrder(order);
 
             //set Transform (to not stack in one place)
-            PlaceOrder(order, cupPosition);
+            PlaceOrder(order.GetComponent<RectTransform>(), cupPosition);
         }
     }
 
-    void PlaceOrder (OrderLogic order, Vector3 cupPosition)
+    void PlaceOrder (RectTransform order, Vector3 cupPosition)
     {
         //set position to where coffee was saved
-         order.GetComponent<RectTransform>().position = UIEffect.WorldToCanvasPosition(gameObject.GetComponent<RectTransform>(), MinigameManager.Get.MakeOrderCamera.GetComponent<Camera>(),cupPosition);
+        order.position = UIEffect.WorldToCanvasPosition(gameObject.GetComponent<RectTransform>(), Camera.main, cupPosition);
+        //set originalPosition
+        order.GetComponent<OrderLogic>().OriginalPosition = new Vector3(CalculatePosition(order),20,0);
     }
 
     public void DeleteOrder (int ChildNumber)
@@ -47,14 +50,8 @@ public class FinishedOrderList : MonoBehaviour
 
     float CalculatePosition (RectTransform rt)
     {
-        int count = FinishedOrders.transform.childCount;
-        //RectTransform rt = order.GetComponent<RectTransform>();
-
-        //float gap = CalculateGap(rt);
-
-        //rt.Translate(xPos, 0, 0);
-        //xPos += gap;
-        //return (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
-        return (float)count;
+        int count = FinishedOrders.transform.childCount - 1;
+        float size = (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
+        return size * count + 20;
     }
 }

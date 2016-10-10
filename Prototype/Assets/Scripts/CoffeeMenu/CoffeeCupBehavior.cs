@@ -9,6 +9,7 @@ public class CoffeeCupBehavior : MonoBehaviour
     public float WaterMilkLevel;
 
     DragandDrop d;
+    bool BeginFinishing;
 
     void Awake()
     {
@@ -52,7 +53,19 @@ public class CoffeeCupBehavior : MonoBehaviour
         //Finish order
         else if (d.inTarget == 2)
         {
-            MinigameManager.Get.CoffeeManager.SaveFinishedOrder(this);
+            BeginFinishing = true;
+            d.active = false;
+        }
+
+        if(BeginFinishing)
+        {
+            Vector3 dP = d.Target[1].transform.position - transform.position;
+            transform.position += dP * Time.deltaTime * d.MoveSpeed;
+
+            if(dP.sqrMagnitude < 0.1f)
+            {
+                MinigameManager.Get.CoffeeManager.SaveFinishedOrder(this);
+            }
         }
     }
 

@@ -9,6 +9,7 @@ public class DragandDrop : MonoBehaviour
     public Vector2 Ybound = new Vector2(0.5f, 6);
     public GameObject[] Target;
     public OutlineHighlighter[] Highlight;
+    public float MoveSpeed = 10;
 
     private bool pActive;
     private int InTarget_Return = 0;
@@ -17,7 +18,6 @@ public class DragandDrop : MonoBehaviour
     private bool EndOfGrab = false;
     private LayerMask Interactable;
     private Vector3 OriginalPosition;
-    private float MoveSpeed = 10;
     private bool FinishedReturning = false;
 
     GameObject arrowForGrinder;
