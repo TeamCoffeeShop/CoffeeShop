@@ -6,7 +6,6 @@ public class CoffeeCupBehavior : MonoBehaviour
     public CoffeeCupType CupType;
     public CoffeeDropType DropType;
     public WaterMilkType WaterMilkType;
-    public OrderType DistinguishedMenuName;
     public float WaterMilkLevel;
 
     DragandDrop d;
@@ -49,6 +48,11 @@ public class CoffeeCupBehavior : MonoBehaviour
                 MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this);
                 d.active = false;
             }
+        }
+        //Finish order
+        else if (d.inTarget == 2)
+        {
+            MinigameManager.Get.CoffeeManager.SaveFinishedOrder(this);
         }
     }
 

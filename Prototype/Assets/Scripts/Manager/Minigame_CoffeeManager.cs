@@ -7,23 +7,14 @@ public class Minigame_CoffeeManager : MonoBehaviour
     public bool IsMakingOrderJustStarted = true;
 
     //save finished order
-    public void SaveFinishedOrder()
+    public void SaveFinishedOrder(CoffeeCupBehavior cup)
     {
-            Transform orderHUD = MainGameManager.Get.Canvas_OrderHUD.transform;
-            GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
-            if (orderHUD)
-            {
-                foreach (GameObject cup in cups)
-                {
-                    //check if coffee is finished
-                    if (LegitCoffee(cup.GetComponent<CoffeeCupBehavior>()))
-                    {
-                        cup.transform.parent = orderHUD.FindChild("Finished Orders");
-                        cup.SetActive(false);
-                        cup.GetComponent<CoffeeCupBehavior>().DistinguishedMenuName = CoffeeOrderSetup.DistinguishCreatedMenu(cup);
-                    }
-                }
-            }
+        //check if coffee is finished
+        if (LegitCoffee(cup))
+            MainGameManager.Get.Canvas_OrderHUD.CreateOrderInUI(cup.transform.position, CoffeeOrderSetup.DistinguishCreatedMenu(cup));
+
+        //delete cup
+        DestroyObject(cup.gameObject);
     }
 
     //check if the coffee is legit

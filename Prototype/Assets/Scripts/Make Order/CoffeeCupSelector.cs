@@ -12,6 +12,8 @@ public class CoffeeCupSelector : MonoBehaviour
     {
         GetComponent<DragandDrop>().Target[0] = MinigameManager.Get.coffeeMachine.transform.FindChild("MachineCollider").gameObject;
         GetComponent<DragandDrop>().Highlight[0] = MinigameManager.Get.coffeeMachine.GetComponent<OutlineHighlighter>();
+        GetComponent<DragandDrop>().Target[1] = MinigameManager.Get.plate.transform.FindChild("Collider").gameObject;
+        GetComponent<DragandDrop>().Highlight[1] = MinigameManager.Get.plate.GetComponent<OutlineHighlighter>();
     }
 
     void OnMouseDown ()

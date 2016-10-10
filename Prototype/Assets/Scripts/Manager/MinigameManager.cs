@@ -20,6 +20,7 @@ public class MinigameManager : MonoBehaviour
     public CoffeeDrop coffeeMachine;
     public GameObject coffeeMachineHandle;
     public WaterMilkInstantiator instantiator;
+    public PlateLogic plate;
 
     void Awake ()
     {

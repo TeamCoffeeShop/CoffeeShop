@@ -49,7 +49,7 @@ public class SceneChangeManager : MonoBehaviour
             case CurrentScene.Make_Order:
                 MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(false);
-                MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(false);
+                MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);
                 MinigameManager.Get.Canvas_UI.SetActive(true);
                 MinigameManager.Get.MakeOrderCamera.gameObject.SetActive(true);
                 MainGameManager.Get.CafeCamera.gameObject.SetActive(false);
