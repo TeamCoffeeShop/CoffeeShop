@@ -54,7 +54,7 @@ public class DragandDrop : MonoBehaviour
                 {
                     arrowForMachine = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                     arrowForMachine.transform.position = MinigameManager.Get.coffeeMachine.transform.position;
-                    arrowForMachine.transform.Translate(new Vector3(5, 0, 0));
+                    arrowForMachine.transform.Translate(new Vector3(7, 0, 0));
                 }
             }
         }
