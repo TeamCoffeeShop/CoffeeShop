@@ -6,9 +6,12 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
     DragandDrop d;
     public int CoffeeBeanType;
 
+    public GameObject arrowForHandle;
+    public GameObject arrowForGrinder;
     void Awake()
     {
         d = GetComponent<DragandDrop>();
+        arrowForHandle = GameObject.Find("ArrowForHandle");
     }
 
     void Update()
@@ -19,6 +22,7 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
             if (CoffeeBeanType == 0)
             {
                 MinigameManager.Get.handGrinder.PutCoffeeMachinHandleToGrinder(gameObject);
+                arrowForHandle.SetActive(false);
                 d.active = false;
             }
             //machine
