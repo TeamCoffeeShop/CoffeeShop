@@ -8,7 +8,8 @@ public class HandGrinderScript : MonoBehaviour
 {
     public BarScript coffeeBar;
     public Image rotationImage;
-    public GameObject arrow;
+    public GameObject arrowForHandle;
+    public GameObject arrowForGrinder;
     public bool CheckGrind = false; //bool type for rotation
     public bool CheckGameStop = false; //bool type for checking coffee grinder game
     Vector3 oldEulerAngles; //bool type for rotation check
@@ -43,7 +44,8 @@ public class HandGrinderScript : MonoBehaviour
         coffeeBar.MaxValue = stanRotation;
         coffeeBar.gameObject.SetActive(false);
         rotationImage.enabled = false;
-        arrow.GetComponent<Renderer>().enabled = false;
+        arrowForHandle.SetActive(false);
+        arrowForGrinder.SetActive(false);
         PowderContent = 0;
         h = GetComponent<OutlineHighlighter>();
         h2 = transform.GetChild(0).GetComponent<OutlineHighlighter>();
@@ -65,13 +67,12 @@ public class HandGrinderScript : MonoBehaviour
             {
                 MinigameManager.Get.coffeeMachineHandle.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.mouseOver;
                 highlightMachineHandle = false;
-                rotationImage.enabled = true;
-                arrow.GetComponent<Renderer>().enabled = false;
+                rotationImage.enabled = true;      
             }
 
             if(CheckGameStop)
                 //temporary grind checking
-                if (totalRotation >= stanRotation)
+                //if (totalRotation >= stanRotation)
                 {
                     CheckGrind = false;
                     //Camera.main.GetComponent<CameraLogic>().TargetPosition = Camera.main.GetComponent<CameraLogic>().PreviousPosition;
@@ -99,9 +100,9 @@ public class HandGrinderScript : MonoBehaviour
             h2.active = false;
             highlightMachineHandle = true;
             GameObject handle = GameObject.Find("CoffeeMachineHandle");
-            arrow.transform.position = handle.transform.position;
-            arrow.transform.Translate(new Vector3(3, 0, 0));
-            arrow.GetComponent<Renderer>().enabled = true;
+            arrowForHandle.transform.position = handle.transform.position;
+            arrowForHandle.transform.Translate(new Vector3(3, 0, 0));
+            arrowForHandle.SetActive(true);
         }
         else
         {
