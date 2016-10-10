@@ -94,6 +94,7 @@ public class WaterMilkInstantiator : MonoBehaviour
             if (CurrentAmount <= MaxAmount)
             {
                 cup.WaterMilkType = WaterMilkType;
+                cup.HotIceType = HotIceType;
                 cup.WaterMilkLevel = GetComponent<WaterMilkLevel>().Level;
             }
         }
@@ -112,18 +113,20 @@ public class WaterMilkInstantiator : MonoBehaviour
             }
     }
 
-    public void PutCoffeeIntoInstantiator (CoffeeCupBehavior Cup)
+    public bool PutCoffeeIntoInstantiator (CoffeeCupBehavior Cup)
     {
-        if (!CoffeeCupCheck)
-        {
-            CoffeeCupCheck = true;
-            cup = Cup;
+        if (CoffeeCupCheck)
+            return false;
 
-            //move camera to next one
-            Vector3 newPos = Camera.main.transform.position;
-            newPos.x = transform.position.x;
-            MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
-        }
+        CoffeeCupCheck = true;
+        cup = Cup;
+
+        //move camera to next one
+        Vector3 newPos = Camera.main.transform.position;
+        newPos.x = transform.position.x;
+        MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
+
+        return true;
     }
 
     public bool TakeOutCoffeeCupFromInstantiator ()

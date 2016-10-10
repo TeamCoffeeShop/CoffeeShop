@@ -39,19 +39,29 @@ public class FinishedOrderList : MonoBehaviour
         //set position to where coffee was saved
         order.position = UIEffect.WorldToCanvasPosition(gameObject.GetComponent<RectTransform>(), Camera.main, cupPosition);
         //set originalPosition
-        order.GetComponent<OrderLogic>().OriginalPosition = new Vector3(CalculatePosition(order),20,0);
+        order.GetComponent<OrderLogic>().OriginalPosition = CalculatePosition(order, FinishedOrders.childCount - 1);
     }
 
     public void DeleteOrder (int ChildNumber)
     {
+        //if invalid order, return
+        if (ChildNumber >= FinishedOrders.childCount && ChildNumber < 0)
+            return;
+
         OrderLogic order = FinishedOrders.GetChild(ChildNumber).GetComponent<OrderLogic>();
         DestroyObject(order.gameObject);
+
+        //organize orders at back numbers
+        for (int i = ChildNumber; i < FinishedOrders.childCount; ++i)
+        {
+            --FinishedOrders.GetChild(i).GetComponent<OrderLogic>().ChildNumber;
+            FinishedOrders.GetChild(i).GetComponent<OrderLogic>().OriginalPosition = CalculatePosition(FinishedOrders.GetChild(i).GetComponent<RectTransform>(), i - 1);
+        }
     }
 
-    float CalculatePosition (RectTransform rt)
+    Vector3 CalculatePosition (RectTransform rt, int count)
     {
-        int count = FinishedOrders.transform.childCount - 1;
         float size = (rt.localToWorldMatrix * rt.sizeDelta).x + 20;
-        return size * count + 20;
+        return new Vector3(size * count + 20, 20, 0);
     }
 }

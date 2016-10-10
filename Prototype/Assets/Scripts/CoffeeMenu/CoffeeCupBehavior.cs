@@ -6,6 +6,7 @@ public class CoffeeCupBehavior : MonoBehaviour
     public CoffeeCupType CupType;
     public CoffeeDropType DropType;
     public WaterMilkType WaterMilkType;
+    public HotIceType HotIceType;
     public float WaterMilkLevel;
 
     DragandDrop d;
@@ -40,14 +41,14 @@ public class CoffeeCupBehavior : MonoBehaviour
             //machine
             if(DropType == CoffeeDropType.None)
             {
-                MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject);
-                d.active = false;
+                if(MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject))
+                    d.active = false;
             }
             //Instantiator
             else
             {
-                MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this);
-                d.active = false;
+                if(MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this))
+                    d.active = false;
             }
         }
         //Finish order
@@ -91,7 +92,6 @@ public class CoffeeCupBehavior : MonoBehaviour
 
             //change the target to instantiator
             d.Highlight[0] = MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>();
-            Debug.Log(MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>());
             d.Target[0] = d.Highlight[0].transform.FindChild("Collider").gameObject;
         }
     }

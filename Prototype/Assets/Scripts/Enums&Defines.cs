@@ -148,29 +148,23 @@ public static class CoffeeOrderSetup
         {
             if (cup.WaterMilkType == WaterMilkType.Water)
             {
-                if (cup.WaterMilkLevel >= 70 && cup.WaterMilkLevel < 100)
+                if (cup.HotIceType == HotIceType.Hot)
                 {
-                    //temporary recipe!
-
-                    //Hot Americano
-                    //coffeedrop1 + hot water 양 70%~100%
-                    return OrderType.HotAmericano;
+                    if (cup.WaterMilkLevel >= 70 && cup.WaterMilkLevel < 100)
+                        //Hot Americano
+                        //coffeedrop1 + hot water 양 70%~100%
+                        return OrderType.HotAmericano;
+                }
+                else if (cup.HotIceType == HotIceType.Ice)
+                {
+                    if (cup.WaterMilkLevel >= 70 && cup.WaterMilkLevel < 100)
+                    {
+                        //Ice Americano
+                        //coffeedrop1 + iced water 양 70% ~ 100%
+                        return OrderType.IceAmericano;
+                    }
                 }
             }
-            //else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
-            //{
-            //    if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-            //    {
-            //        //Ice Americano
-            //        //coffeedrop1 + iced water 양 70% ~ 100%
-            //        return OrderType.IceAmericano;
-            //    }
-            //}
-        }
-        else if (cup.DropType == CoffeeDropType.CoffeeDrop2)
-        {
-            //temporary recipe!!
-            return OrderType.IceAmericano;
         }
 
         return OrderType.None;
