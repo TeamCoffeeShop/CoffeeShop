@@ -23,7 +23,7 @@ public class OrderingBallonLogic : MonoBehaviour
         if (orderUI.tag == "CompletedOrder")
         {
             //check if the order is correct one
-            if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().originalCup.DistinguishedMenuName)
+            if (customer.GetComponent<Customer>().data.order == orderUI.GetComponent<OrderLogic>().type)
             {
                 OrderUI = orderUI;
                 Colliding = true;
@@ -70,7 +70,6 @@ public class OrderingBallonLogic : MonoBehaviour
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();
             if (logic)
                 MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(logic.ChildNumber);
-            DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 
             customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
@@ -99,7 +98,6 @@ public class OrderingBallonLogic : MonoBehaviour
             OrderLogic logic = orderUI.GetComponent<OrderLogic>();
             if (logic)
                 MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(logic.ChildNumber);
-            DestroyObject(logic.originalCup.gameObject);
             DestroyObject(orderUI);
 
             customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
@@ -114,7 +112,7 @@ public class OrderingBallonLogic : MonoBehaviour
         //follow link position
         if (customer != null)
         {
-            UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, 23, 0), GetComponent<RectTransform>());
+            GetComponent<RectTransform>().position = UIEffect.WorldToCanvasPosition(transform.parent.gameObject.GetComponent<RectTransform>(), Camera.main, customer.transform.position + new Vector3(0, 23, 0));
         }
     }
 

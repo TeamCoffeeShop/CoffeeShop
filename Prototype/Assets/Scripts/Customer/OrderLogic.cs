@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class OrderLogic : MonoBehaviour
 {
+    public OrderType type = OrderType.None;
     public float SelectCancelSpeed = 5;
-    public CoffeeCupBehavior originalCup;
     public int ChildNumber;
 
     Vector3 OriginalPosition;
