@@ -57,4 +57,9 @@ public class RecipeManager : MonoBehaviour
                 break;
         }
     }
+
+    public void ShowRecipe()
+    {
+
+    }
 }
