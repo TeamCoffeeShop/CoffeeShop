@@ -1,6 +1,408 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{2AB0FBAD-A427-4FB9-A8DE-8A1EC9888D55}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}" SchemaVersion="72">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{2AB0FBAD-A427-4FB9-A8DE-8A1EC9888D55}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="SFX" ID="{DABBDF3E-4DD0-4396-9555-B3BE6602B5F2}" ShortID="786715156">
+					<ChildrenList>
+						<Folder Name="MenuSFX" ID="{3E9EF788-0A9B-4115-8FCD-9DEC45FF4952}" ShortID="156093540">
+							<ChildrenList>
+								<Sound Name="Select_Sound" ID="{7D8144F3-67B1-4CAD-A94F-FE422A347F74}" ShortID="579085822" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Select_Sound" ID="{F9C9F14A-123D-4D4D-914B-1842D68AA2EF}" ShortID="386234641">
+											<Language>SFX</Language>
+											<AudioFile>Select_Sound.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Select_Sound" ID="{F9C9F14A-123D-4D4D-914B-1842D68AA2EF}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Cancel_Sound" ID="{9C3EF4AE-2C71-4242-809A-B36AF468EF6F}" ShortID="713916841" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Cancel_Sound" ID="{ABAFBF6B-1DF4-4EA8-BCFD-AB61BAC3EBE9}" ShortID="912091902">
+											<Language>SFX</Language>
+											<AudioFile>Cancel_Sound.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Cancel_Sound" ID="{ABAFBF6B-1DF4-4EA8-BCFD-AB61BAC3EBE9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="CafeSFX" ID="{28FC42D4-2CBD-47DE-AEE3-82FAEBAEEC44}" ShortID="17917332">
+							<ChildrenList>
+								<BlendContainer Name="CustomerUsingDoor" ID="{836EA83B-0E11-4140-AEC5-E532044DBBEC}" ShortID="786804478">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Door_Chimes" ID="{1137F885-13AC-4FC5-BCFD-A41C69D766E5}" ShortID="148056502">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="CustomerUsingDoor_Chimes_01" ID="{8349D3E2-20B5-4487-B185-0D9560539E19}" ShortID="1071183896" Type="SoundFX">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="CustomerUsingDoor_Chimes_01" ID="{E1A6C36D-2EE5-4845-A90F-4820A2A66D79}" ShortID="388548536">
+															<Language>SFX</Language>
+															<AudioFile>CustomerUsingDoor_Chimes_01.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="CustomerUsingDoor_Chimes_01" ID="{E1A6C36D-2EE5-4845-A90F-4820A2A66D79}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="CustomerUsingDoor_Chimes_02" ID="{F5F5EBA8-B29D-4202-9216-98BB3FBC9CB1}" ShortID="70794137" Type="SoundFX">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="CustomerUsingDoor_Chimes_02" ID="{F7FF039E-F5D5-4D55-BBB8-273F9E73BA83}" ShortID="133695983">
+															<Language>SFX</Language>
+															<AudioFile>CustomerUsingDoor_Chimes_02.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="CustomerUsingDoor_Chimes_02" ID="{F7FF039E-F5D5-4D55-BBB8-273F9E73BA83}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="CustomerUsingDoor_Chimes_03" ID="{D1DF2121-4461-477B-B6DD-480D480FB686}" ShortID="607474239" Type="SoundFX">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="CustomerUsingDoor_Chimes_03" ID="{BBD1EB6C-3763-4470-8174-EE30A1062DC8}" ShortID="769514021">
+															<Language>SFX</Language>
+															<AudioFile>CustomerUsingDoor_Chimes_03.wav</AudioFile>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="CustomerUsingDoor_Chimes_03" ID="{BBD1EB6C-3763-4470-8174-EE30A1062DC8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<Sound Name="CustomerUsingDoor_Door" ID="{060A648D-0E81-4E0E-9487-131BD73C9003}" ShortID="487202423" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CustomerUsingDoor_Door" ID="{DEEB8C3B-EEF4-4ED9-A4BA-5AA8C9A24420}" ShortID="1003933818">
+													<Language>SFX</Language>
+													<AudioFile>CustomerUsingDoor_Door.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="CustomerUsingDoor_Door" ID="{DEEB8C3B-EEF4-4ED9-A4BA-5AA8C9A24420}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</BlendContainer>
+								<RandomSequenceContainer Name="CoffeeGrinder" ID="{80534088-22A4-46E1-BF11-64EACC4E993C}" ShortID="932572731">
+									<PropertyList>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Grind_Loop" ID="{F77CCBA1-AD0F-479D-BBA4-1FBB722D6B50}" ShortID="754670552" Type="SoundFX">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Grind_Loop" ID="{1860B807-426A-4E41-872D-7A42A8A58AD6}" ShortID="43204196">
+													<Language>SFX</Language>
+													<AudioFile>Grind_Loop.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Grind_Loop" ID="{1860B807-426A-4E41-872D-7A42A8A58AD6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Grind_Start" ID="{B01874A5-3244-4B76-9A42-C15F4172E356}" ShortID="272741631" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Grind_Start" ID="{9770142B-D530-401D-8A34-4CABB522569A}" ShortID="68609891">
+													<Language>SFX</Language>
+													<AudioFile>Grind_Start.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Grind_Start" ID="{9770142B-D530-401D-8A34-4CABB522569A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<Playlist>
+										<ItemRef Name="Grind_Start" ID="{B01874A5-3244-4B76-9A42-C15F4172E356}"/>
+										<ItemRef Name="Grind_Loop" ID="{F77CCBA1-AD0F-479D-BBA4-1FBB722D6B50}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<Sound Name="chair_pickup" ID="{2B7D5557-FC3D-434C-8B0A-FA237DA7F340}" ShortID="727727087" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="chair_pickup" ID="{5336A9DD-ECF7-4706-AEAE-5C1CC8F6EE31}" ShortID="982523845">
+											<Language>SFX</Language>
+											<AudioFile>chair_pickup.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="chair_pickup" ID="{5336A9DD-ECF7-4706-AEAE-5C1CC8F6EE31}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="chair_putdown" ID="{F06516E2-C05E-490E-AFC1-F2C259F0B73A}" ShortID="82983303" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="chair_putdown" ID="{9CC79DBF-10D0-444C-894F-C61CB6F580E2}" ShortID="673196880">
+											<Language>SFX</Language>
+											<AudioFile>chair_putdown.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="chair_putdown" ID="{9CC79DBF-10D0-444C-894F-C61CB6F580E2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Sold_Something" ID="{DF99EAB3-B3D3-4AE9-8F69-14914D4563D7}" ShortID="589924721" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Sold_Something" ID="{E448CCD5-13CA-472E-A72D-3F862DABB372}" ShortID="53153833">
+											<Language>SFX</Language>
+											<AudioFile>Sold_Something.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Sold_Something" ID="{E448CCD5-13CA-472E-A72D-3F862DABB372}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="DialogueSFX" ID="{FCCCCC79-A605-4872-B1A5-2A9CB6FF35F1}" ShortID="676222265">
+							<ChildrenList>
+								<Sound Name="Heart" ID="{BBCCF26F-AF04-4538-9FBD-644A8077BD01}" ShortID="20604708" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>450</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Heart" ID="{D1FD14A1-180E-4421-94EC-5847C4DA25BD}" ShortID="815182471">
+											<Language>SFX</Language>
+											<AudioFile>Heart.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Heart" ID="{D1FD14A1-180E-4421-94EC-5847C4DA25BD}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="NPCTalk" ID="{474DBB36-5328-4580-8818-9B125D976578}" ShortID="392047174" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{AA799D5D-FE4F-4D99-ADA0-A52F89783504}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="75"/>
+															<Property Name="Min" Type="Real64" Value="-75"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="NPCTalk" ID="{8C23EB32-5236-4A4A-916D-F288900745E4}" ShortID="582998732">
+											<Language>SFX</Language>
+											<AudioFile>NPCTalk.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="NPCTalk" ID="{8C23EB32-5236-4A4A-916D-F288900745E4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SparkleHappy" ID="{3549E447-EA46-4EFD-B0CD-FE2F89781268}" ShortID="681576714" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>70</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-250</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SparkleHappy" ID="{057735E1-CBED-4EDF-8798-28BD7BC5814F}" ShortID="180562611">
+											<Language>SFX</Language>
+											<AudioFile>SparkleHappy.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SparkleHappy" ID="{057735E1-CBED-4EDF-8798-28BD7BC5814F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Surprised" ID="{FF06F234-0819-454D-9358-C2D3EA4AFD2E}" ShortID="718783520" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-150</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Surprised" ID="{61B88FB1-87E1-455A-ACBB-809FDEF7B5CC}" ShortID="82129061">
+											<Language>SFX</Language>
+											<AudioFile>Surprised.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Surprised" ID="{61B88FB1-87E1-455A-ACBB-809FDEF7B5CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="VO" ID="{440E1BD1-0F2E-478B-84FB-91F892812283}" ShortID="424761808"/>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

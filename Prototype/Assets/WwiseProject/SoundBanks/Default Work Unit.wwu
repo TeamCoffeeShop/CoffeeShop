@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{3F2F021A-71AB-43CE-B7DA-53C557B1F7B2}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{C7D4DDD1-E897-4FA9-A797-772EF8F30A4E}" SchemaVersion="72">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{3F2F021A-71AB-43CE-B7DA-53C557B1F7B2}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{C7D4DDD1-E897-4FA9-A797-772EF8F30A4E}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="MusicBank" ID="{4909EFB7-9203-438E-8CD9-59AA8CED7BA9}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Set_Pause_Status_Off" ID="{13BF6C8A-8D76-4563-ABDB-C9FC19B0912E}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Set_Pause_Status_On" ID="{0E6DEDF4-66AD-45E3-9C11-DF63820FE3F9}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Stop_HustleBustle_Music" ID="{D4F213A7-2752-4A84-8206-A1D031348BC9}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_HustleBustle_Music" ID="{BF186284-2929-4E39-8BFA-01A94E6D5DA0}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="SFXBank" ID="{FBB16A5B-72F9-4AE5-A20A-8133783B870E}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Take_Furniture" ID="{1685606C-6CDC-419A-A890-97E7E5C42C0B}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Happy" ID="{A54FCC09-6C5C-4360-8B9D-6C5D2D0D2440}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Sold_Something" ID="{5E33FD96-588E-46D8-98AB-2FB3C94D6C87}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Door" ID="{57A42333-FA2E-47E1-B358-1E7711B424BF}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_CoffeeGrinder" ID="{2BE4E340-4E10-49DE-BCDE-2E190AF6C0FC}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Heart" ID="{DF2B7072-B413-49EA-B44A-2340A0CA3A34}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Place_Furniture" ID="{36787DAB-025B-4B0A-AA1A-853E51422C30}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Select" ID="{66AB7A16-0F39-4B1F-BBBE-A0F7FD4ED639}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Surprised" ID="{8BC1FF8D-39D1-4B7E-B702-3F1674FFB218}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Talk" ID="{CA7FDB21-5821-4BA4-93E8-4DE185E7CD8A}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Play_Cancel" ID="{DDABEC50-4A98-4E3A-A9FB-D3831C37C97C}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Stop_CoffeeGrinder" ID="{5B045F45-A30D-4EA5-BA34-1E74E90FB770}" WorkUnitID="{08267108-AF07-4F32-AD21-857FDC06B357}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

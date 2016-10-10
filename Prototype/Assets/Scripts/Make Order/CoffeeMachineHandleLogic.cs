@@ -14,7 +14,6 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
     void Awake()
     {
         d = GetComponent<DragandDrop>();
-        arrowForHandle = GameObject.Find("ArrowForHandle");
         mousedown = false;
         mousecheck = 0;
     }

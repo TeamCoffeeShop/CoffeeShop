@@ -1,6 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{54F8CEEF-D379-4574-B8EB-F67CC36FED65}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{08267108-AF07-4F32-AD21-857FDC06B357}" SchemaVersion="72">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{54F8CEEF-D379-4574-B8EB-F67CC36FED65}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{08267108-AF07-4F32-AD21-857FDC06B357}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Music_Events" ID="{73B35EB0-B16A-4E88-8927-2D1C04510D13}" ShortID="485603617">
+					<ChildrenList>
+						<Event Name="Play_HustleBustle_Music" ID="{BF186284-2929-4E39-8BFA-01A94E6D5DA0}">
+							<ChildrenList>
+								<Action Name="Play" ID="{A4135D79-70FD-4BF4-87A8-50CBBD91D0B6}" ShortID="1005817793" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{43AD409A-3DDB-4C28-AE67-1DB351E83088}" Global="false">
+											<ObjectRef Name="HustleBustle_Title_Theme" ID="{B376A82B-54DF-4EC0-ABA4-3DEDB81EEDE7}" WorkUnitID="{5E5EDDC7-207E-4093-9512-AF060D32B072}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_HustleBustle_Music" ID="{D4F213A7-2752-4A84-8206-A1D031348BC9}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{F14846F5-F48F-42E8-A99F-810ACB38B559}" ShortID="106694912" Type="Stop" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{7BF77480-F195-43A5-82D9-9601374E065F}" Global="false">
+											<ObjectRef Name="HustleBustle_Title_Theme" ID="{B376A82B-54DF-4EC0-ABA4-3DEDB81EEDE7}" WorkUnitID="{5E5EDDC7-207E-4093-9512-AF060D32B072}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX_Events" ID="{942A9D6F-8313-4683-9B60-30750B7FBBA4}" ShortID="1048896989">
+					<ChildrenList>
+						<Event Name="Play_Door" ID="{57A42333-FA2E-47E1-B358-1E7711B424BF}">
+							<ChildrenList>
+								<Action Name="Play" ID="{21BB01C0-F84C-46B5-86CA-10CFFDD4D873}" ShortID="910758398" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{DAB4C659-468B-4A99-BEA3-8DEF87A11CF1}" Global="false">
+											<ObjectRef Name="CustomerUsingDoor" ID="{836EA83B-0E11-4140-AEC5-E532044DBBEC}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Select" ID="{66AB7A16-0F39-4B1F-BBBE-A0F7FD4ED639}">
+							<ChildrenList>
+								<Action Name="Play" ID="{29779528-8154-4214-B87C-1C8D7FA9A3A8}" ShortID="493867998" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{388844AE-EEBC-45EF-A49D-BA37414753DA}" Global="false">
+											<ObjectRef Name="Select_Sound" ID="{7D8144F3-67B1-4CAD-A94F-FE422A347F74}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="VO_Events" ID="{644DA5DA-676E-4D1C-BCAE-BD67E3F71282}" ShortID="560068109"/>
+				<Folder Name="Global_Events" ID="{491C4119-DA22-4C36-B21D-C37D15513751}" ShortID="477522197">
+					<ChildrenList>
+						<Event Name="Set_Pause_Status_On" ID="{0E6DEDF4-66AD-45E3-9C11-DF63820FE3F9}">
+							<ChildrenList>
+								<Action Name="Set State" ID="{DB000F5A-D47B-4D9B-BFCB-2F9AFB3AC661}" ShortID="931709490" Type="SetState" Scope="All" Global="true">
+									<SetItemParam>
+										<Group Name="Pause" ID="{039501F3-05F9-4302-B474-6F5466A5DF69}"/>
+										<GroupItem Name="PauseON" ID="{A00AD753-C21A-4B26-8811-7EC53E2D5310}"/>
+									</SetItemParam>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Set_Pause_Status_Off" ID="{13BF6C8A-8D76-4563-ABDB-C9FC19B0912E}">
+							<ChildrenList>
+								<Action Name="Set State" ID="{6AC7FDFF-2A87-4F25-8009-49E3B9BAB5B1}" ShortID="658442508" Type="SetState" Scope="All" Global="true">
+									<SetItemParam>
+										<Group Name="Pause" ID="{039501F3-05F9-4302-B474-6F5466A5DF69}"/>
+										<GroupItem Name="PauseOFF" ID="{9D0FB12A-0B0B-410C-9D74-23B94484522C}"/>
+									</SetItemParam>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Play_CoffeeGrinder" ID="{2BE4E340-4E10-49DE-BCDE-2E190AF6C0FC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{7B990AA8-DABB-417B-A8DE-DC65818A96D1}" ShortID="911966549" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2FD4DD4A-4A64-4FCC-8FC9-A17192CB155B}" Global="false">
+									<ObjectRef Name="CoffeeGrinder" ID="{80534088-22A4-46E1-BF11-64EACC4E993C}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Take_Furniture" ID="{1685606C-6CDC-419A-A890-97E7E5C42C0B}">
+					<ChildrenList>
+						<Action Name="Play" ID="{6F7FE2FE-1B75-4077-B2EB-CDA8830607A4}" ShortID="733703358" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{7D41D025-EFB0-48D9-81F7-6AD0C53E3BBB}" Global="false">
+									<ObjectRef Name="chair_pickup" ID="{2B7D5557-FC3D-434C-8B0A-FA237DA7F340}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Place_Furniture" ID="{36787DAB-025B-4B0A-AA1A-853E51422C30}">
+					<ChildrenList>
+						<Action Name="Play" ID="{03B27A22-FA78-472B-9A4F-A659187E0C4C}" ShortID="289094197" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2687BBF4-E79B-47E6-B4DD-DD16966C829E}" Global="false">
+									<ObjectRef Name="chair_putdown" ID="{F06516E2-C05E-490E-AFC1-F2C259F0B73A}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Sold_Something" ID="{5E33FD96-588E-46D8-98AB-2FB3C94D6C87}">
+					<ChildrenList>
+						<Action Name="Play" ID="{920DFA45-889A-4F0C-867C-B9CD3849F4EA}" ShortID="955442393" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{CDE5613D-8C9E-4EB3-8F48-A97DEE0D4469}" Global="false">
+									<ObjectRef Name="Sold_Something" ID="{DF99EAB3-B3D3-4AE9-8F69-14914D4563D7}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_CoffeeGrinder" ID="{5B045F45-A30D-4EA5-BA34-1E74E90FB770}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{36ACFDED-EDF7-4C84-B956-A7661A446A8B}" ShortID="836512894" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{B343086B-3E0D-47D5-B355-2277BD0A5DEA}" Global="false">
+									<ObjectRef Name="CoffeeGrinder" ID="{80534088-22A4-46E1-BF11-64EACC4E993C}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Surprised" ID="{8BC1FF8D-39D1-4B7E-B702-3F1674FFB218}">
+					<ChildrenList>
+						<Action Name="Play" ID="{2953E55F-0E09-49F1-B5CA-641A7EC937B6}" ShortID="114363675" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3BC47B49-96BE-4731-BDA4-E78ACF9419C7}" Global="false">
+									<ObjectRef Name="Surprised" ID="{FF06F234-0819-454D-9358-C2D3EA4AFD2E}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Happy" ID="{A54FCC09-6C5C-4360-8B9D-6C5D2D0D2440}">
+					<ChildrenList>
+						<Action Name="Play" ID="{FA7B5EEE-2813-4E93-8D43-FA20D750E16C}" ShortID="227314404" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{CA7A2462-B1D5-4D21-A332-9665B6C769AC}" Global="false">
+									<ObjectRef Name="SparkleHappy" ID="{3549E447-EA46-4EFD-B0CD-FE2F89781268}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Talk" ID="{CA7FDB21-5821-4BA4-93E8-4DE185E7CD8A}">
+					<ChildrenList>
+						<Action Name="Play" ID="{FB90A9B0-8935-4285-A385-C6A6FCA854D5}" ShortID="561393925" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{24C60F0B-E1B9-4906-B2B4-772DB8C9A841}" Global="false">
+									<ObjectRef Name="NPCTalk" ID="{474DBB36-5328-4580-8818-9B125D976578}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Heart" ID="{DF2B7072-B413-49EA-B44A-2340A0CA3A34}">
+					<ChildrenList>
+						<Action Name="Play" ID="{C61DD14C-628F-4E1B-86F9-012A9022FBE4}" ShortID="183487440" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F39DB37D-8ABF-4999-816C-38EDB36FB411}" Global="false">
+									<ObjectRef Name="Heart" ID="{BBCCF26F-AF04-4538-9FBD-644A8077BD01}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Cancel" ID="{DDABEC50-4A98-4E3A-A9FB-D3831C37C97C}">
+					<ChildrenList>
+						<Action Name="Play" ID="{36CEE129-5283-4D72-8CF8-F2A09259F187}" ShortID="534341825" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{18B123B7-45D7-4480-8E37-2427BF88570C}" Global="false">
+									<ObjectRef Name="Cancel_Sound" ID="{9C3EF4AE-2C71-4242-809A-B36AF468EF6F}" WorkUnitID="{68F6A444-CDD1-42AF-960A-AF93E0D4A055}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

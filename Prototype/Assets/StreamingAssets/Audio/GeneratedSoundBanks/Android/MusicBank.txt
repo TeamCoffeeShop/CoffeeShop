@@ -1,0 +1,18 @@
+Event	ID	Name			Wwise Object Path	Notes
+	223987995	Stop_TBA_Music			\Default Work Unit\Music_Events\Stop_TBA_Music	
+	325086926	Play_SFX_Select			\Default Work Unit\SFX_Events\Play_SFX_Select	
+	906576307	Set_Pause_Status_On			\Default Work Unit\Global_Events\Set_Pause_Status_On	
+	1463610921	Play_TBA_Music			\Default Work Unit\Music_Events\Play_TBA_Music	
+	2790337952	Play_HustleBustle_Music			\Default Work Unit\Music_Events\Play_HustleBustle_Music	
+	3415374087	Set_Pause_Status_Off			\Default Work Unit\Global_Events\Set_Pause_Status_Off	
+	3882309926	Play_CustomerDoor			\Default Work Unit\SFX_Events\Play_CustomerDoor	
+	3897716982	Stop_HustleBustle_Music			\Default Work Unit\Music_Events\Stop_HustleBustle_Music	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	133695983	CustomerUsingDoor_Chimes_02	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\CustomerUsingDoor_Chimes_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_02		260672
+	386234641	Select_Sound	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\Select_Sound_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\MenuSFX\Select_Sound		22272
+	388548536	CustomerUsingDoor_Chimes_01	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\CustomerUsingDoor_Chimes_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_01		355904
+	688451872	HustleBustle	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\HustleBustle-TitleTheme-V1_0_0_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitching\HustleBustle_Title_Theme\HustleBuster-TitleTheme\HustleBustle		6927856
+	769514021	CustomerUsingDoor_Chimes_03	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\CustomerUsingDoor_Chimes_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_03		221888
+	1003933818	CustomerUsingDoor_Door	Z:\Volumes\a.henderson\AleckDefaultSetUp\.cache\Android\SFX\CustomerUsingDoor_Door_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CustomerUsingDoor\CustomerUsingDoor_Door		90176
+

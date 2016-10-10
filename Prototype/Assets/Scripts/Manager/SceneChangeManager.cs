@@ -47,6 +47,8 @@ public class SceneChangeManager : MonoBehaviour
                 InGameTime.SetTimeScale(1);
                 break;
             case CurrentScene.Make_Order:
+                AkSoundEngine.PostEvent("Play_Select", gameObject);
+
                 MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);

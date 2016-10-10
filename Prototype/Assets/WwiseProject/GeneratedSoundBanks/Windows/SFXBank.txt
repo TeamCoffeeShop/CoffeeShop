@@ -1,0 +1,31 @@
+Event	ID	Name			Wwise Object Path	Notes
+	290580311	Stop_CoffeeGrinder			\Default Work Unit\Stop_CoffeeGrinder	
+	613516912	Play_Place_Furniture			\Default Work Unit\Play_Place_Furniture	
+	981134705	Play_Sold_Something			\Default Work Unit\Play_Sold_Something	
+	1042987450	Play_Select			\Default Work Unit\SFX_Events\Play_Select	
+	1301060773	Play_Surprised			\Default Work Unit\Play_Surprised	
+	1351875428	Play_Cancel			\Default Work Unit\Play_Cancel	
+	2391845213	Play_CoffeeGrinder			\Default Work Unit\Play_CoffeeGrinder	
+	2547633870	Play_Door			\Default Work Unit\SFX_Events\Play_Door	
+	2551958582	Play_Heart			\Default Work Unit\Play_Heart	
+	2835868768	Play_Talk			\Default Work Unit\Play_Talk	
+	3707313428	Play_Take_Furniture			\Default Work Unit\Play_Take_Furniture	
+	3748496336	Play_Happy			\Default Work Unit\Play_Happy	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	43204196	Grind_Loop	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Grind_Loop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CoffeeGrinder\Grind_Loop		99436
+	53153833	Sold_Something	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Sold_Something_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\Sold_Something		190840
+	68609891	Grind_Start	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Grind_Start_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CoffeeGrinder\Grind_Start		71900
+	82129061	Surprised	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Surprised_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\DialogueSFX\Surprised		132180
+	133695983	CustomerUsingDoor_Chimes_02	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\CustomerUsingDoor_Chimes_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_02		260672
+	180562611	SparkleHappy	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\SparkleHappy_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\DialogueSFX\SparkleHappy		395296
+	386234641	Select_Sound	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Select_Sound_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\MenuSFX\Select_Sound		22272
+	388548536	CustomerUsingDoor_Chimes_01	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\CustomerUsingDoor_Chimes_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_01		355904
+	582998732	NPCTalk	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\NPCTalk_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\DialogueSFX\NPCTalk		35904
+	673196880	chair_putdown	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\chair_putdown_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\chair_putdown		49728
+	769514021	CustomerUsingDoor_Chimes_03	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\CustomerUsingDoor_Chimes_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CustomerUsingDoor\Door_Chimes\CustomerUsingDoor_Chimes_03		221888
+	815182471	Heart	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Heart_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\DialogueSFX\Heart		71232
+	912091902	Cancel_Sound	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\Cancel_Sound_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\MenuSFX\Cancel_Sound		29132
+	982523845	chair_pickup	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\chair_pickup_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\chair_pickup		28736
+	1003933818	CustomerUsingDoor_Door	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Windows\SFX\CustomerUsingDoor_Door_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\CafeSFX\CustomerUsingDoor\CustomerUsingDoor_Door		90176
+

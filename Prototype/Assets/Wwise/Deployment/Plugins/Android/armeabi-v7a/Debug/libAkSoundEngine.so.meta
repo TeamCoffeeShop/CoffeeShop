@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dd0b9c99e7c22ba47b0d62e12f8f12a7
-timeCreated: 1472647566
+timeCreated: 1476136277
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
@@ -8,6 +8,10 @@ PluginImporter:
   executionOrder: {}
   isPreloaded: 0
   platformData:
+    Android:
+      enabled: 1
+      settings:
+        CPU: ARMv7
     Any:
       enabled: 0
       settings: {}

@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{95C153C9-CBF6-4266-88F8-8FF631AA913E}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{5E5EDDC7-207E-4093-9512-AF060D32B072}" SchemaVersion="72">
 	<InteractiveMusic>
-		<WorkUnit Name="Default Work Unit" ID="{95C153C9-CBF6-4266-88F8-8FF631AA913E}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{5E5EDDC7-207E-4093-9512-AF060D32B072}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="HustleBustle_Title_Theme" ID="{B376A82B-54DF-4EC0-ABA4-3DEDB81EEDE7}" ShortID="73004357">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="MusicCompression" ID="{DC1CB883-746A-44BF-8936-A928BAACF360}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{D5EE4397-0634-46A3-8567-F8A2B6E4470E}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="HustleBuster-TitleTheme" ID="{5953D9A2-B8E8-4189-A280-AC4DA8BFF095}" ShortID="852282794">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="57065.7894736842"/>
+								<Property Name="Tempo" Type="Real64" Value="110"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1DECE166-035D-41A8-8833-F28AA74EBB7C}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="HustleBustle-TitleTheme-V2_0_0" ID="{9716AE42-21B3-4B84-9B43-DA2D0BE1D61B}" ShortID="814659552">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F5828FBF-0366-4855-A8C6-29D373360449}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="HustleBustle-TitleTheme-V2_0_0" ID="{C68945CC-640E-4B4E-BB6F-7955F8A6CC13}" ShortID="689357576">
+											<Language>SFX</Language>
+											<AudioFile>HustleBustle-TitleTheme-V2_0_0.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{EFC3D002-8BD5-4444-B384-729E12DCE58B}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{05DF595C-1EA9-4674-9861-4D642DD7F78C}">
+											<ClipList>
+												<MusicClip Name="HustleBustle-TitleTheme-V2_0_0" ID="{D7A032CA-51FE-4ECC-BB14-DD97ECED518F}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="56727.2789115646"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="HustleBustle-TitleTheme-V2_0_0" ID="{C68945CC-640E-4B4E-BB6F-7955F8A6CC13}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{5D4502B1-E999-40D7-AB5F-C10F4986A9B1}"/>
+								<MusicCue Name="Exit Cue" ID="{B13B626E-50AD-4346-9467-D9E6A0A4935E}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="56727.2789115646"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{E35AAD9F-83DF-4F77-ABF5-BD3AA25EE6D7}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{ABEE9E80-5969-4CAC-B97B-9103AA654135}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{7F14593C-EE2B-4DB2-8C65-347BAC654F53}" ShortID="288658721">
+							<PropertyList>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicPlaylistItem Name="" ID="{BCA65DFF-98C3-4277-8E48-0215A4D43CF1}" ShortID="1044913236">
+									<PropertyList>
+										<Property Name="LoopCount" Type="int16" Value="0"/>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="HustleBuster-TitleTheme" ID="{5953D9A2-B8E8-4189-A280-AC4DA8BFF095}"/>
+								</MusicPlaylistItem>
+							</ChildrenList>
+						</MusicPlaylistItem>
+					</Playlist>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
 	</InteractiveMusic>
 </WwiseDocument>

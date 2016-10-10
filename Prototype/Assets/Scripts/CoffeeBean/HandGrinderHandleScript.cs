@@ -11,6 +11,8 @@ public class HandGrinderHandleScript : MonoBehaviour
         machine.rotationImage.enabled = false;
         machine.totalRotation = 0;
         machine.PowderContent = 0;
+
+        AkSoundEngine.PostEvent("Play_CoffeeGrinder", gameObject);
     }
 
     void OnMouseDrag()
@@ -29,5 +31,7 @@ public class HandGrinderHandleScript : MonoBehaviour
             machine.CheckGameStop = true;
         }
         machine.coffeeBar.gameObject.SetActive(false);
+        AkSoundEngine.PostEvent("Stop_CoffeeGrinder", gameObject);
+
     }
 }

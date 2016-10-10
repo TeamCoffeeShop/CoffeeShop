@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{6E82A76C-BF2C-48EE-AD2B-F2B0C40FDD11}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{8281C454-3A43-409E-9996-11207EF80846}" SchemaVersion="72">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{6E82A76C-BF2C-48EE-AD2B-F2B0C40FDD11}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{8281C454-3A43-409E-9996-11207EF80846}" PersistMode="Standalone"/>
 	</GameParameters>
 </WwiseDocument>

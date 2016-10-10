@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/TeamMocha/WWISE/</ProjectRoot>
+		<SourceFilesRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/TeamMocha/WWISE/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/TeamMocha/WWISE/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/TeamMocha/WWISE/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -15,6 +15,104 @@
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3017428748" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\MusicBank</ObjectPath>
+			<ShortName>MusicBank</ShortName>
+			<Path>MusicBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2790337952" Name="Play_HustleBustle_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Play_HustleBustle_Music"/>
+				<Event Id="3415374087" Name="Set_Pause_Status_Off" ObjectPath="\Events\Default Work Unit\Global_Events\Set_Pause_Status_Off"/>
+				<Event Id="906576307" Name="Set_Pause_Status_On" ObjectPath="\Events\Default Work Unit\Global_Events\Set_Pause_Status_On"/>
+				<Event Id="3897716982" Name="Stop_HustleBustle_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Stop_HustleBustle_Music"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="689357576" Language="SFX">
+					<ShortName>HustleBustle-TitleTheme-V2_0_0.wav</ShortName>
+					<Path>SFX/HustleBustle-TitleTheme-V2_0_0_4B8CC0C5.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="3017475316" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\SFXBank</ObjectPath>
+			<ShortName>SFXBank</ShortName>
+			<Path>SFXBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1351875428" Name="Play_Cancel" ObjectPath="\Events\Default Work Unit\Play_Cancel"/>
+				<Event Id="2391845213" Name="Play_CoffeeGrinder" ObjectPath="\Events\Default Work Unit\Play_CoffeeGrinder"/>
+				<Event Id="2547633870" Name="Play_Door" ObjectPath="\Events\Default Work Unit\SFX_Events\Play_Door"/>
+				<Event Id="3748496336" Name="Play_Happy" ObjectPath="\Events\Default Work Unit\Play_Happy"/>
+				<Event Id="2551958582" Name="Play_Heart" ObjectPath="\Events\Default Work Unit\Play_Heart"/>
+				<Event Id="613516912" Name="Play_Place_Furniture" ObjectPath="\Events\Default Work Unit\Play_Place_Furniture"/>
+				<Event Id="1042987450" Name="Play_Select" ObjectPath="\Events\Default Work Unit\SFX_Events\Play_Select"/>
+				<Event Id="981134705" Name="Play_Sold_Something" ObjectPath="\Events\Default Work Unit\Play_Sold_Something"/>
+				<Event Id="1301060773" Name="Play_Surprised" ObjectPath="\Events\Default Work Unit\Play_Surprised"/>
+				<Event Id="3707313428" Name="Play_Take_Furniture" ObjectPath="\Events\Default Work Unit\Play_Take_Furniture"/>
+				<Event Id="2835868768" Name="Play_Talk" ObjectPath="\Events\Default Work Unit\Play_Talk"/>
+				<Event Id="290580311" Name="Stop_CoffeeGrinder" ObjectPath="\Events\Default Work Unit\Stop_CoffeeGrinder"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="43204196" Language="SFX">
+					<ShortName>Grind_Loop.wav</ShortName>
+					<Path>SFX/Grind_Loop_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="53153833" Language="SFX">
+					<ShortName>Sold_Something.wav</ShortName>
+					<Path>SFX/Sold_Something_9E69E797.wem</Path>
+				</File>
+				<File Id="68609891" Language="SFX">
+					<ShortName>Grind_Start.wav</ShortName>
+					<Path>SFX/Grind_Start_9E69E797.wem</Path>
+				</File>
+				<File Id="82129061" Language="SFX">
+					<ShortName>Surprised.wav</ShortName>
+					<Path>SFX/Surprised_9E69E797.wem</Path>
+				</File>
+				<File Id="133695983" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_02.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_02_9E69E797.wem</Path>
+				</File>
+				<File Id="180562611" Language="SFX">
+					<ShortName>SparkleHappy.wav</ShortName>
+					<Path>SFX/SparkleHappy_9E69E797.wem</Path>
+				</File>
+				<File Id="386234641" Language="SFX">
+					<ShortName>Select_Sound.wav</ShortName>
+					<Path>SFX/Select_Sound_9E69E797.wem</Path>
+				</File>
+				<File Id="388548536" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_01.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_01_9E69E797.wem</Path>
+				</File>
+				<File Id="582998732" Language="SFX">
+					<ShortName>NPCTalk.wav</ShortName>
+					<Path>SFX/NPCTalk_9E69E797.wem</Path>
+				</File>
+				<File Id="673196880" Language="SFX">
+					<ShortName>chair_putdown.wav</ShortName>
+					<Path>SFX/chair_putdown_9E69E797.wem</Path>
+				</File>
+				<File Id="769514021" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_03.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_03_9E69E797.wem</Path>
+				</File>
+				<File Id="815182471" Language="SFX">
+					<ShortName>Heart.wav</ShortName>
+					<Path>SFX/Heart_9E69E797.wem</Path>
+				</File>
+				<File Id="912091902" Language="SFX">
+					<ShortName>Cancel_Sound.wav</ShortName>
+					<Path>SFX/Cancel_Sound_9E69E797.wem</Path>
+				</File>
+				<File Id="982523845" Language="SFX">
+					<ShortName>chair_pickup.wav</ShortName>
+					<Path>SFX/chair_pickup_9E69E797.wem</Path>
+				</File>
+				<File Id="1003933818" Language="SFX">
+					<ShortName>CustomerUsingDoor_Door.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Door_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

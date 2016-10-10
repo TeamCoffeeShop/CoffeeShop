@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{297B5960-60EA-4BAD-BFD4-0B2F9287D6F4}" SchemaVersion="72">
+<WwiseDocument Type="WorkUnit" ID="{F5828FBF-0366-4855-A8C6-29D373360449}" SchemaVersion="72">
 	<Busses>
-		<WorkUnit Name="Default Work Unit" ID="{297B5960-60EA-4BAD-BFD4-0B2F9287D6F4}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{F5828FBF-0366-4855-A8C6-29D373360449}" PersistMode="Standalone">
 			<ChildrenList>
-				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ChildrenList>
+						<Bus Name="Music" ID="{D5EE4397-0634-46A3-8567-F8A2B6E4470E}"/>
+						<Bus Name="VO" ID="{9D72E270-D40A-4DB4-B92B-1C8DABFEB072}"/>
+						<Bus Name="SFX" ID="{52D4924C-0E93-48E6-AD1A-DF9992D38A82}"/>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="Pause" ID="{039501F3-05F9-4302-B474-6F5466A5DF69}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="PauseON" ID="{A00AD753-C21A-4B26-8811-7EC53E2D5310}"/>
+								<State Name="Custom State" ID="{D2C65CEE-1DEF-4104-B76B-FB22DD43773B}" ShortID="1013931044">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="75"/>
+										<Property Name="Volume" Type="Real64" Value="-3"/>
+									</PropertyList>
+								</State>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
+				</Bus>
 				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}"/>
 				<MotionBus Name="Master Motion Bus" ID="{20A630BA-3398-4676-B927-1004DFE41FD8}"/>
 			</ChildrenList>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/AleckDefaultSetUp/</ProjectRoot>
+		<SourceFilesRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/AleckDefaultSetUp/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/AleckDefaultSetUp/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Cabbage\Desktop\CoffeeShop\Prototype\Assets\WwiseProject\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/penguin/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/a.henderson/AleckDefaultSetUp/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -15,6 +15,47 @@
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3017428748" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\MusicBank</ObjectPath>
+			<ShortName>MusicBank</ShortName>
+			<Path>MusicBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3882309926" Name="Play_CustomerDoor" ObjectPath="\Events\Default Work Unit\SFX_Events\Play_CustomerDoor"/>
+				<Event Id="2790337952" Name="Play_HustleBustle_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Play_HustleBustle_Music"/>
+				<Event Id="325086926" Name="Play_SFX_Select" ObjectPath="\Events\Default Work Unit\SFX_Events\Play_SFX_Select"/>
+				<Event Id="1463610921" Name="Play_TBA_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Play_TBA_Music"/>
+				<Event Id="3415374087" Name="Set_Pause_Status_Off" ObjectPath="\Events\Default Work Unit\Global_Events\Set_Pause_Status_Off"/>
+				<Event Id="906576307" Name="Set_Pause_Status_On" ObjectPath="\Events\Default Work Unit\Global_Events\Set_Pause_Status_On"/>
+				<Event Id="3897716982" Name="Stop_HustleBustle_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Stop_HustleBustle_Music"/>
+				<Event Id="223987995" Name="Stop_TBA_Music" ObjectPath="\Events\Default Work Unit\Music_Events\Stop_TBA_Music"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="133695983" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_02.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_02_9E69E797.wem</Path>
+				</File>
+				<File Id="386234641" Language="SFX">
+					<ShortName>Select_Sound.wav</ShortName>
+					<Path>SFX/Select_Sound_9E69E797.wem</Path>
+				</File>
+				<File Id="388548536" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_01.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_01_9E69E797.wem</Path>
+				</File>
+				<File Id="688451872" Language="SFX">
+					<ShortName>HustleBustle-TitleTheme-V1_0_0.wav</ShortName>
+					<Path>SFX/HustleBustle-TitleTheme-V1_0_0_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="769514021" Language="SFX">
+					<ShortName>CustomerUsingDoor_Chimes_03.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Chimes_03_9E69E797.wem</Path>
+				</File>
+				<File Id="1003933818" Language="SFX">
+					<ShortName>CustomerUsingDoor_Door.wav</ShortName>
+					<Path>SFX/CustomerUsingDoor_Door_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

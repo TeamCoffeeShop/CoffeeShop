@@ -1,0 +1,9 @@
+Event	ID	Name			Wwise Object Path	Notes
+	906576307	Set_Pause_Status_On			\Default Work Unit\Global_Events\Set_Pause_Status_On	
+	2790337952	Play_HustleBustle_Music			\Default Work Unit\Music_Events\Play_HustleBustle_Music	
+	3415374087	Set_Pause_Status_Off			\Default Work Unit\Global_Events\Set_Pause_Status_Off	
+	3897716982	Stop_HustleBustle_Music			\Default Work Unit\Music_Events\Stop_HustleBustle_Music	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	689357576	HustleBustle-TitleTheme-V2_0_0	Z:\Volumes\a.henderson\TeamMocha\WWISE\.cache\Android\SFX\HustleBustle-TitleTheme-V2_0_0_4B8CC0C5.wem		\Interactive Music Hierarchy\Default Work Unit\HustleBustle_Title_Theme\HustleBuster-TitleTheme\HustleBustle-TitleTheme-V2_0_0		10006836
+
