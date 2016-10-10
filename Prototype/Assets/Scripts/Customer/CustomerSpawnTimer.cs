@@ -18,7 +18,7 @@ public class CustomerSpawnTimer : MonoBehaviour {
         //follow link position
         if (customer != null)
         {
-            UIEffect.WorldToCanvas(transform.parent.gameObject, customer.transform.position + new Vector3(0, -1, 0), GetComponent<RectTransform>());
+            GetComponent<RectTransform>().position = UIEffect.WorldToCanvasPosition(transform.parent.gameObject.GetComponent<RectTransform>(), Camera.main, customer.transform.position + new Vector3(0, -1, 0));
 
         }
     }

@@ -26,7 +26,7 @@ public class CoffeeDrop : MonoBehaviour
     void Start()
     {
         h2 = transform.FindChild("Button").GetComponent<OutlineHighlighter>();
-        arrow.GetComponent<Renderer>().enabled = false;
+        arrow.SetActive(false);
     }
 
     void Update()
@@ -52,14 +52,14 @@ public class CoffeeDrop : MonoBehaviour
                             foreach (GameObject Cup in cups)
                                 Cup.GetComponent<OutlineHighlighter>().highlightOn = OutlineHighlighter.HighlightOn.always;
                             highlightCoffeeCup = true;
-                        arrow.GetComponent<Renderer>().enabled = true;
+                            arrow.SetActive(true);
                     }
 
                 //highlight button
                 if (!h2.active)
                     if (machineHandleCheck && coffeeCupCheck)
                     {
-                        arrow.GetComponent<Renderer>().enabled = false;
+                        arrow.SetActive(false);
                         //turn off highlight for cups
                         GameObject[] cups = GameObject.FindGameObjectsWithTag("CoffeeCup");
                         foreach (GameObject Cup in cups)
@@ -73,7 +73,7 @@ public class CoffeeDrop : MonoBehaviour
                 //Camera.main.GetComponent<CameraLogic>().TargetPosition = new Vector3(-3, 59, 1);
                 //Camera.main.transform.Rotate(35, 0, 0);
                 //handle.transform.Translate(0, 1.2f, 0);
-                arrow.GetComponent<Renderer>().enabled = false;
+                arrow.SetActive(false);
                 //for some reason if there's bug, return 0
                 if (handle == null || cup == null)
                     CoffeeDropStep = 0;
@@ -169,13 +169,15 @@ public class CoffeeDrop : MonoBehaviour
         handle.transform.rotation = Quaternion.Euler(new Vector3(0, -137.36f, 0));
     }
 
-    public void PutCoffeeCupToMachine (GameObject Cup)
+    public bool PutCoffeeCupToMachine (GameObject Cup)
     {
-        if(!coffeeCupCheck)
-        {
-            coffeeCupCheck = true;
-            cup = Cup;
-        }
+        if(coffeeCupCheck)
+            return false;
+
+        coffeeCupCheck = true;
+        cup = Cup;
+
+        return true;
     }
 
     public bool TakeOutCoffeeMachineHandleFromMachine ()

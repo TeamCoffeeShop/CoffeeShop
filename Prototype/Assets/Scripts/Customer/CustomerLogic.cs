@@ -80,7 +80,7 @@ public class CustomerLogic : MonoBehaviour
         OB.GetComponent<OrderingBallonLogic>().SpawnBar = ST;
 
         //custom cup display
-        CoffeeOrderSetup.SetOrder(ref OB, GetComponent<Customer>().data.order);
+        CoffeeOrderSetup.SetOrder(OB, GetComponent<Customer>().data.order);
     }
 
     public void LeaveCoffeeShop ()

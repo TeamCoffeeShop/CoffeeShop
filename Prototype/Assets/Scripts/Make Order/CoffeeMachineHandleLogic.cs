@@ -6,9 +6,17 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
     DragandDrop d;
     public int CoffeeBeanType;
 
+    public GameObject arrowForHandle;
+    public GameObject arrowForGrinder;
+
+    public bool mousedown;
+    public int mousecheck;
     void Awake()
     {
         d = GetComponent<DragandDrop>();
+        arrowForHandle = GameObject.Find("ArrowForHandle");
+        mousedown = false;
+        mousecheck = 0;
     }
 
     void Update()
@@ -19,6 +27,7 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
             if (CoffeeBeanType == 0)
             {
                 MinigameManager.Get.handGrinder.PutCoffeeMachinHandleToGrinder(gameObject);
+                arrowForHandle.SetActive(false);
                 d.active = false;
             }
             //machine
@@ -36,6 +45,13 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
 
     void OnMouseDown ()
     {
+        if (mousecheck == 0)
+        {
+            mousedown = true;
+            ++mousecheck;
+        }
+        else
+            mousedown = false;
         //take it away from coffeegrinder
         if (MinigameManager.Get.handGrinder.MachineHandle == gameObject)
         {
@@ -53,6 +69,11 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
         }
     }
 
+    void OnMouseUp()
+    {
+        mousedown = false;
+        mousecheck = 0;
+    }
     public void AddPowderToHandle(int coffeeBeanType)
     {
         CoffeeBeanType = coffeeBeanType;

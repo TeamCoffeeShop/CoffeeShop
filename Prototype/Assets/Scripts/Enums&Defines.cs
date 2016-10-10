@@ -110,15 +110,30 @@ public static class CoffeeBehaviourSetup
 public static class CoffeeOrderSetup
 {
     //sets the image for the order
-    public static void SetOrder(ref GameObject cupImage, OrderType order)
+    public static void SetOrder(OrderLogic order)
+    {
+        switch (order.type)
+        {
+            case OrderType.HotAmericano:
+                order.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/HotAmericano_WOText");
+                break;
+            case OrderType.IceAmericano:
+                order.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/ColdAmericano_WOText");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void SetOrder(GameObject orderballon, OrderType order)
     {
         switch (order)
         {
             case OrderType.HotAmericano:
-                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/HotAmericano_WOText");
+                orderballon.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/HotAmericano_WOText");
                 break;
             case OrderType.IceAmericano:
-                cupImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/ColdAmericano_WOText");
+                orderballon.GetComponent<Image>().sprite = Resources.Load<Sprite>("images/UI/Order_WOtext/ColdAmericano_WOText");
                 break;
             default:
                 break;
@@ -126,43 +141,30 @@ public static class CoffeeOrderSetup
     }
 
     //checks the coffeeordertype
-    public static OrderType DistinguishCreatedMenu (GameObject cup)
+    public static OrderType DistinguishCreatedMenu(CoffeeCupBehavior cup)
     {
-        CoffeeCupBehavior coffee = cup.GetComponent<CoffeeCupBehavior>();
-
-        if (coffee == null)
-        {
-            Debug.Log("Error! Coffee is not found!");
-        }
         //distinguish the menu
-        else if (coffee.DropType == CoffeeDropType.CoffeeDrop1)
+        if (cup.DropType == CoffeeDropType.CoffeeDrop1)
         {
-            //temporary recipe!!
-            return OrderType.HotAmericano;
-
-            //if(coffee.WaterMilkType == WaterMilkType.HotWater)
-            //{
-            //    if(coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-            //    {
-            //        //Hot Americano
-            //        //coffeedrop1 + hot water 양 70%~100%
-            //        return OrderType.HotAmericano;
-            //    }
-            //}
-            //else if (coffee.WaterMilkType == WaterMilkType.IcedWater)
-            //{
-            //    if (coffee.WaterMilkLevel >= 70 && coffee.WaterMilkLevel < 100)
-            //    {
-            //        //Ice Americano
-            //        //coffeedrop1 + iced water 양 70% ~ 100%
-            //        return OrderType.IceAmericano;
-            //    }
-            //}
-        }
-        else if (coffee.DropType == CoffeeDropType.CoffeeDrop2)
-        {
-            //temporary recipe!!
-            return OrderType.IceAmericano;
+            if (cup.WaterMilkType == WaterMilkType.Water)
+            {
+                if (cup.HotIceType == HotIceType.Hot)
+                {
+                    if (cup.WaterMilkLevel >= 70 && cup.WaterMilkLevel < 100)
+                        //Hot Americano
+                        //coffeedrop1 + hot water 양 70%~100%
+                        return OrderType.HotAmericano;
+                }
+                else if (cup.HotIceType == HotIceType.Ice)
+                {
+                    if (cup.WaterMilkLevel >= 70 && cup.WaterMilkLevel < 100)
+                    {
+                        //Ice Americano
+                        //coffeedrop1 + iced water 양 70% ~ 100%
+                        return OrderType.IceAmericano;
+                    }
+                }
+            }
         }
 
         return OrderType.None;
@@ -233,7 +235,7 @@ public static class UIEffect
         p.transform.SetParent(Canvas.transform);
         p.GetComponent<Text>().text = number.ToString("N0");
 
-        WorldToCanvas(Canvas, worldposition, p.GetComponent<RectTransform>());
+        p.GetComponent<RectTransform>().position = UIEffect.WorldToCanvasPosition(Canvas.GetComponent<RectTransform>(), Camera.main, worldposition);
 
         return p;
     }
@@ -257,16 +259,25 @@ public static class UIEffect
         return p;
     }
 
-    public static void WorldToCanvas (GameObject canvas, Vector3 worldposition, RectTransform rt)
+    public static Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
     {
-        RectTransform CanvasRt = canvas.GetComponent<RectTransform>();
+        //Vector position (percentage from 0 to 1) considering camera size.
+        //For example (0,0) is lower left, middle is (0.5,0.5)
+        Vector2 temp = camera.WorldToViewportPoint(position);
 
-        Vector2 vPos = Camera.main.WorldToViewportPoint(worldposition);
-        Vector2 result = new Vector2(
-        ((vPos.x * CanvasRt.sizeDelta.x) - (CanvasRt.sizeDelta.x * 0.5f)),
-        ((vPos.y * CanvasRt.sizeDelta.y) - (CanvasRt.sizeDelta.y * 0.5f)));
+        //Calculate position considering our percentage, using our canvas size
+        //So if canvas size is (1100,500), and percentage is (0.5,0.5), current value will be (550,250)
+        temp.x *= canvas.sizeDelta.x;
+        temp.y *= canvas.sizeDelta.y;
 
-        rt.anchoredPosition = result;
+        //The result is ready, but, this result is correct if canvas recttransform pivot is 0,0 - left lower corner.
+        //But in reality its middle (0.5,0.5) by default, so we remove the amount considering cavnas rectransform pivot.
+        //We could multiply with constant 0.5, but we will actually read the value, so if custom rect transform is passed(with custom pivot) , 
+        //returned value will still be correct.
+        //temp.x -= canvas.sizeDelta.x * canvas.pivot.x;
+        //temp.y -= canvas.sizeDelta.y * canvas.pivot.y;
+
+        return temp;
     }
 
     public static void SetPopUpBehavior(Text popup, PopupType type)

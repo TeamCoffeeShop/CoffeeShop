@@ -34,7 +34,7 @@ public class MiniDialogue : MonoBehaviour
     public RectTransform CreateMiniDialogue (string text, Vector2 scale, Vector3 worldposition, Center center = Center.middle)
     {
         RectTransform rt = CreateMiniDialogue(text, scale);
-        UIEffect.WorldToCanvas(gameObject, worldposition, rt);
+        rt.position = UIEffect.WorldToCanvasPosition(gameObject.GetComponent<RectTransform>(), Camera.main, worldposition);
 
         switch (center)
         {

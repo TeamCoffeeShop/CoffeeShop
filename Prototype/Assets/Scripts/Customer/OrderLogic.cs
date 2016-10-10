@@ -4,23 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class OrderLogic : MonoBehaviour
 {
-    public float SelectCancelSpeed = 5;
-    public CoffeeCupBehavior originalCup;
+    public OrderType type = OrderType.None;
+    public float SelectCancelSpeed = 3;
     public int ChildNumber;
+    public Vector3 OriginalPosition;
 
-    Vector3 OriginalPosition;
     bool dragging = false;
     bool trash = false;
     RectTransform rt;
+    float reactionTime;
+    float totalReactionTime = 0.5f;
 
     void Awake ()
     {
         rt = gameObject.GetComponent<RectTransform>();
-    }
-
-    void Start ()
-    {
-        OriginalPosition = rt.position;
     }
 
     public void DragSelectedCup()
@@ -49,8 +46,15 @@ public class OrderLogic : MonoBehaviour
     {
         if(!dragging)
         {
-            //return to its original position
-            rt.position += (OriginalPosition - rt.position) * Time.deltaTime * SelectCancelSpeed;
+            Vector3 dir = OriginalPosition - rt.position;
+
+            if (reactionTime > totalReactionTime)
+                //return to its original position
+                rt.position += dir * Time.deltaTime * SelectCancelSpeed;
+            else
+                rt.position += dir * Time.deltaTime * reactionTime / totalReactionTime * SelectCancelSpeed;
+
+            reactionTime += Time.deltaTime;
         }
     }
 

@@ -6,18 +6,35 @@ public class CoffeeCupBehavior : MonoBehaviour
     public CoffeeCupType CupType;
     public CoffeeDropType DropType;
     public WaterMilkType WaterMilkType;
-    public OrderType DistinguishedMenuName;
+    public HotIceType HotIceType;
     public float WaterMilkLevel;
+    public CoffeeCupSelector CoffeeCupShelfLink;
 
     DragandDrop d;
+    bool BeginFinishing;
 
     void Awake()
     {
         d = GetComponent<DragandDrop>();
     }
 
+    void Start()
+    {
+        d.Target[0] = MinigameManager.Get.coffeeMachine.transform.FindChild("MachineCollider").gameObject;
+        d.Highlight[0] = MinigameManager.Get.coffeeMachine.GetComponent<OutlineHighlighter>();
+        d.Target[1] = MinigameManager.Get.plate.transform.FindChild("Collider").gameObject;
+        d.Highlight[1] = MinigameManager.Get.plate.GetComponent<OutlineHighlighter>();
+    }
+
     void OnMouseDown()
     {
+        //take it away from coffee shelf
+        if (CoffeeCupShelfLink)
+        {
+            CoffeeCupShelfLink.CupInStock = null;
+            CoffeeCupShelfLink = null;
+        }
+
         //take it away from coffeemachine
         if (MinigameManager.Get.coffeeMachine.cup == gameObject)
         {
@@ -40,14 +57,31 @@ public class CoffeeCupBehavior : MonoBehaviour
             //machine
             if(DropType == CoffeeDropType.None)
             {
-                MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject);
-                d.active = false;
+                if(MinigameManager.Get.coffeeMachine.PutCoffeeCupToMachine(gameObject))
+                    d.active = false;
             }
             //Instantiator
             else
             {
-                MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this);
-                d.active = false;
+                if(MinigameManager.Get.instantiator.PutCoffeeIntoInstantiator(this))
+                    d.active = false;
+            }
+        }
+        //Finish order
+        else if (d.inTarget == 2)
+        {
+            BeginFinishing = true;
+            d.active = false;
+        }
+
+        if(BeginFinishing)
+        {
+            Vector3 dP = d.Target[1].transform.position - transform.position;
+            transform.position += dP * Time.deltaTime * d.MoveSpeed;
+
+            if(dP.sqrMagnitude < 0.1f)
+            {
+                MinigameManager.Get.CoffeeManager.SaveFinishedOrder(this);
             }
         }
     }
@@ -74,7 +108,6 @@ public class CoffeeCupBehavior : MonoBehaviour
 
             //change the target to instantiator
             d.Highlight[0] = MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>();
-            Debug.Log(MinigameManager.Get.instantiator.GetComponent<OutlineHighlighter>());
             d.Target[0] = d.Highlight[0].transform.FindChild("Collider").gameObject;
         }
     }

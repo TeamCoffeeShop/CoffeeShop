@@ -9,6 +9,7 @@ public class DragandDrop : MonoBehaviour
     public Vector2 Ybound = new Vector2(0.5f, 6);
     public GameObject[] Target;
     public OutlineHighlighter[] Highlight;
+    public float MoveSpeed = 10;
 
     private bool pActive;
     private int InTarget_Return = 0;
@@ -17,11 +18,10 @@ public class DragandDrop : MonoBehaviour
     private bool EndOfGrab = false;
     private LayerMask Interactable;
     private Vector3 OriginalPosition;
-    private float MoveSpeed = 10;
     private bool FinishedReturning = false;
 
-    public GameObject arrow;
-
+    GameObject arrowForGrinder;
+    GameObject arrowForMachine;
     public int inTarget
     {
         get
@@ -41,6 +41,21 @@ public class DragandDrop : MonoBehaviour
             foreach (OutlineHighlighter target in Highlight)
             {
                 target.active = true;
+            }
+            foreach (GameObject obj in Target)
+            {
+                if (obj.transform.parent.name == "HandGrinder")
+                {
+                    arrowForGrinder = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
+                    arrowForGrinder.transform.position = MinigameManager.Get.handGrinder.transform.position;
+                    arrowForGrinder.transform.Translate(new Vector3(5, 0, 0));
+                }
+                if (obj.transform.parent.name == "CoffeeMachine")
+                {
+                    arrowForMachine = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
+                    arrowForMachine.transform.position = MinigameManager.Get.coffeeMachine.transform.position;
+                    arrowForMachine.transform.Translate(new Vector3(7, 0, 0));
+                }
             }
         }
 
@@ -86,6 +101,12 @@ public class DragandDrop : MonoBehaviour
     {
         Grab = false;
         EndOfGrab = true;
+
+        if (arrowForGrinder)
+            Destroy(arrowForGrinder);
+
+        if (arrowForMachine)
+            Destroy(arrowForMachine);
 
         if (active)
         {

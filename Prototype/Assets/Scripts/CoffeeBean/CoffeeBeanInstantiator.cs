@@ -31,9 +31,11 @@ public class CoffeeBeanInstantiator : MonoBehaviour
     //highlight
     OutlineHighlighter h;
 
+    public GameObject arrow;
     void Awake ()
     {
         h = GetComponent<OutlineHighlighter>();
+        arrow.SetActive(false);
     }
 
     void Start()
@@ -46,15 +48,22 @@ public class CoffeeBeanInstantiator : MonoBehaviour
     {
         if (ShakeReady)
         {
+            arrow.SetActive(false);
             h.highlightOn = OutlineHighlighter.HighlightOn.none;
             Shake();
         }
         else
         {
             if (MinigameManager.Get.CoffeeManager.IsMakingOrderJustStarted)
+            {
                 h.highlightOn = OutlineHighlighter.HighlightOn.alwaysAndOver;
+                arrow.SetActive(true);
+            }
             else
+            {
                 h.highlightOn = OutlineHighlighter.HighlightOn.none;
+                arrow.SetActive(false);
+            }
 
             gameObject.transform.position = OrigianlPosition;
 
@@ -79,8 +88,10 @@ public class CoffeeBeanInstantiator : MonoBehaviour
 
     public void ToggleMode()
     {
-        if(!ShakeReady)
+        if (!ShakeReady)
+        {
             SetMode(Mode.on);
+        }
     }
 
     public void SetMode(Mode mode)
