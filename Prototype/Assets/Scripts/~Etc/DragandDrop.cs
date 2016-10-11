@@ -22,6 +22,9 @@ public class DragandDrop : MonoBehaviour
 
     GameObject arrowForGrinder;
     GameObject arrowForMachine;
+    GameObject arrowForInstantiator;
+    GameObject arrowForPlate;
+
     public int inTarget
     {
         get
@@ -55,6 +58,23 @@ public class DragandDrop : MonoBehaviour
                     arrowForMachine = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                     arrowForMachine.transform.position = MinigameManager.Get.coffeeMachine.transform.position;
                     arrowForMachine.transform.Translate(new Vector3(7, 0, 0));
+                }
+
+                if (obj.transform.parent.name == "Instantiator")
+                {
+                    arrowForInstantiator = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
+                    arrowForInstantiator.transform.position = MinigameManager.Get.instantiator.transform.position;
+                    arrowForInstantiator.transform.Translate(new Vector3(9, 0, 0));
+                }
+
+                if (obj.transform.parent.name == "Plate")
+                {
+                    if (this.name == "Mug(Clone)" || this.name == "Standard" || this.name == "Cappucino")
+                    {
+                        arrowForPlate = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
+                        arrowForPlate.transform.position = MinigameManager.Get.plate.transform.position;
+                        arrowForPlate.transform.Translate(new Vector3(5, 0, 0));
+                    }
                 }
             }
         }
@@ -107,6 +127,12 @@ public class DragandDrop : MonoBehaviour
 
         if (arrowForMachine)
             Destroy(arrowForMachine);
+
+        if (arrowForInstantiator)
+            Destroy(arrowForInstantiator);
+
+        if (arrowForPlate)
+            Destroy(arrowForPlate);
 
         if (active)
         {

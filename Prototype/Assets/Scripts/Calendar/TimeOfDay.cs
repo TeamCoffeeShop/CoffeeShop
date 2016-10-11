@@ -27,7 +27,7 @@ public class TimeOfDay : MonoBehaviour
 
     //This is what we use to set at which time our game starts 
     [Range(0, 1)]
-    public float currentTimeOfDay = 0.0f;
+    public float currentTimeOfDay = 0.3f;
 
     //This is so we can control the speed of our time of day
     private float timeMultiplier = 1.0f;
@@ -52,7 +52,8 @@ public class TimeOfDay : MonoBehaviour
         {
             calendar.day = PlayerPrefs.GetInt("Day");
         }
-
+        currentTimeOfDay += 0.250f; //06:00
+        //currentTimeOfDay += 0.917f; // 22:00
     }
 
     // Update is called once per frame
@@ -77,17 +78,10 @@ public class TimeOfDay : MonoBehaviour
         currentMin = 60 * (currentHour - Mathf.Floor(currentHour));
 
         //restart our time of day to 0
-        if (currentTimeOfDay >= 1)
+        if (currentTimeOfDay >= 0.917f)
         {
-            currentTimeOfDay = 0;
+            currentTimeOfDay = 0.250f;
             calendar.day = calendar.day + 1;
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetInt("Month", calendar.month);
-            PlayerPrefs.SetInt("Day", calendar.day);
-            PlayerPrefs.SetFloat("xp_currentVal", MainGameManager.Get.playerManager.player.xp_currentVal);
-            PlayerPrefs.SetFloat("xp_maxVal", MainGameManager.Get.playerManager.player.xp_maxVal);
-            PlayerPrefs.SetFloat("money", MainGameManager.Get.playerManager.player.money);
-            PlayerPrefs.SetInt("level", MainGameManager.Get.playerManager.player.level);
 
             //reset customers & cups
             Transform HUD = MainGameManager.Get.Canvas_OrderHUD.transform;
