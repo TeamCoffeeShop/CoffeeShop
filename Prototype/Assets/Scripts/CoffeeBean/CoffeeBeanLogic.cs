@@ -12,7 +12,7 @@ public class CoffeeBeanLogic : MonoBehaviour
         d = GetComponent<DragandDrop>();
         arrowForGrinder = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
         arrowForGrinder.transform.position = MinigameManager.Get.handGrinder.transform.position;
-        arrowForGrinder.transform.Translate(new Vector3(5, 0, 0));
+        arrowForGrinder.transform.Translate(new Vector3(0, 5, 0), Space.Self);
     }
 
     void Update ()
