@@ -51,13 +51,13 @@ public class DragandDrop : MonoBehaviour
                 {
                     arrowForGrinder = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                     arrowForGrinder.transform.position = MinigameManager.Get.handGrinder.transform.position;
-                    arrowForGrinder.transform.Translate(new Vector3(5, 0, 0));
+                    arrowForGrinder.transform.Translate(new Vector3(0, 5, 0), Space.Self);
                 }
                 if (obj.transform.parent.name == "CoffeeMachine")
                 {
                     arrowForMachine = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                     arrowForMachine.transform.position = MinigameManager.Get.coffeeMachine.transform.position;
-                    arrowForMachine.transform.Translate(new Vector3(7, 0, 0));
+                    arrowForMachine.transform.Translate(new Vector3(0, 6, 0), Space.Self);
                 }
 
                 if (obj.transform.parent.name == "Instantiator")
