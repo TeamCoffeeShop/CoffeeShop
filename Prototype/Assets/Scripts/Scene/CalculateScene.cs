@@ -24,9 +24,9 @@ public class CalculateScene : MonoBehaviour
             customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
 
         //display data
-        CurrentMoney.text = "Current Money : " + current_money;
-        MaintenanceExpense.text = "Maintenance Expense : " + maintenance_expense;
-        Total.text = "Total : " + total;
+        CurrentMoney.text = current_money.ToString();
+        MaintenanceExpense.text = maintenance_expense.ToString();
+        Total.text =  total.ToString();
     }
 
     public void TurnOff ()

@@ -27,8 +27,8 @@ public class CalendarSystem : MonoBehaviour {
         month = MainGameManager.Get.TimeOfDay.calendar.month;
         day = MainGameManager.Get.TimeOfDay.calendar.day;
 
-        MonthText.text = "Month : "+ month ;
-        DayText.text = "Day : " + day;
+        MonthText.text = month + " / ";
+        DayText.text =  day.ToString();
     }
 	
 	// Update is called once per frame
@@ -37,7 +37,7 @@ public class CalendarSystem : MonoBehaviour {
         month = MainGameManager.Get.TimeOfDay.calendar.month;
         day = MainGameManager.Get.TimeOfDay.calendar.day;
 
-        MonthText.text = "Month : " + month;
-        DayText.text = "Day : " + day;
+        MonthText.text = month + " / ";
+        DayText.text = day.ToString();
     }
 }
