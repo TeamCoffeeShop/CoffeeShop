@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class DragandDrop : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class DragandDrop : MonoBehaviour
 
     void OnMouseDown ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         Grab = true;
         GetComponent<Rigidbody>().isKinematic = true;
 
@@ -83,6 +87,9 @@ public class DragandDrop : MonoBehaviour
 
     void OnMouseDrag ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (active)
         {
             if(pullToCamera)
@@ -119,6 +126,9 @@ public class DragandDrop : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         Grab = false;
         EndOfGrab = true;
 

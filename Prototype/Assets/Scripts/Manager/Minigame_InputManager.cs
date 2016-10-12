@@ -43,6 +43,12 @@ public class Minigame_InputManager : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse0))
                 CameraMove = false;
         }
+
+        //set pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            MainGameManager.Get.Canvas_PauseMenu.TogglePauseMenu();
+        }
     }
 
     public void GoBackToMainLevel ()

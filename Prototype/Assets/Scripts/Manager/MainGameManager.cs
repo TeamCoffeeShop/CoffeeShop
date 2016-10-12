@@ -12,6 +12,7 @@ public class MainGameManager : MonoBehaviour
     public DiaryManager Canvas_Diary;
     public FinishedOrderList Canvas_OrderHUD;
     public GameObject Canvas_Dialogue;
+    public PauseMenu Canvas_PauseMenu;
 
     //camera
     public GameObject DialogueCamera;
