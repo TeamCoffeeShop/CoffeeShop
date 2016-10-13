@@ -154,10 +154,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="JMOAssets">
- <HintPath>C:/Users/Cabbage/Desktop/CoffeeShop/Prototype/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ <HintPath>C:/Users/Cabbage/Desktop/PRJ402/CoffeeShop/Prototype/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>
  <Reference Include="JMOAssets_MatCapWelcome">
- <HintPath>C:/Users/Cabbage/Desktop/CoffeeShop/Prototype/Assets/JMO Assets/Editor/JMOAssets_MatCapWelcome.dll</HintPath>
+ <HintPath>C:/Users/Cabbage/Desktop/PRJ402/CoffeeShop/Prototype/Assets/JMO Assets/Editor/JMOAssets_MatCapWelcome.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
