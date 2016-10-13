@@ -132,6 +132,8 @@
     <Compile Include="Assets\Scripts\Pause\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Recipe\RecipeButton.cs" />
+    <Compile Include="Assets\Scripts\Recipe\RecipeDetail.cs" />
     <Compile Include="Assets\Scripts\Recipe\RecipeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
