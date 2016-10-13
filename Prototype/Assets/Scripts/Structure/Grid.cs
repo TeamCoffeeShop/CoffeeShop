@@ -34,6 +34,7 @@ public class Grid : MonoBehaviour
         {
             if(transform.childCount != 0)
             {
+                AkSoundEngine.PostEvent("Play_Take_Furniture", gameObject);
                 MainGameManager.Get.Floor.SetEditMode(EditMode.selected, this);
             }
         }

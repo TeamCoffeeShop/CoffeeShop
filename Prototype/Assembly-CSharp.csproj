@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
      <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
+     <Compile Include="Assets\MinigameManager.cs" />
      <Compile Include="Assets\NightCalculateScene.cs" />
      <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
      <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
@@ -98,7 +99,6 @@
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
      <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
-     <Compile Include="Assets\Scripts\Manager\MinigameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_CoffeeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Minigame_InputManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NPCManager.cs" />

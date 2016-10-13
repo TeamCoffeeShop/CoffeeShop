@@ -130,6 +130,7 @@ public class DialogueManager : MonoBehaviour {
         {
             npc_text.GetComponent<Text>().text += lineOfText[letter];
             ++letter;
+            AkSoundEngine.PostEvent("Play_Talk", gameObject);
             yield return new WaitForSeconds(typeSpeed);
         }
 

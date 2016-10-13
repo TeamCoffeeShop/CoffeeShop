@@ -46,6 +46,8 @@ public class DecoEditUI : MonoBehaviour
             EditingGrid.GetComponent<Renderer>().material = EditingGrid.Original_Material;
             EditingGrid = null;
 
+            AkSoundEngine.PostEvent("Play_Place_Furniture", gameObject);
+
             //Time
             //InGameTime.SetTimeScale(1);     
 

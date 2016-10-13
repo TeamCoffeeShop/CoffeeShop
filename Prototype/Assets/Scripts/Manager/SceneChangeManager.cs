@@ -48,6 +48,7 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
                 MainGameManager.Get.DialogueCamera.SetActive(false);
                 MainGameManager.Get.CafeCamera.Return();
+                AkSoundEngine.PostEvent("Set_Pause_Status_Off", gameObject);
                 InGameTime.SetTimeScale(1);
                 break;
             case CurrentScene.Make_Order:
@@ -86,6 +87,8 @@ public class SceneChangeManager : MonoBehaviour
 
             case CurrentScene.PauseMenu:
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(true);
+                AkSoundEngine.PostEvent("Set_Pause_Status_On", gameObject);
+
                 InGameTime.SetTimeScale(0);
                 break;
         }
