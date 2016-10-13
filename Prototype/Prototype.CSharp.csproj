@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
+    <Compile Include="Assets\NightCalculateScene.cs" />
     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
     <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
-    <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueCameraLogic.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
@@ -119,7 +119,6 @@
     <Compile Include="Assets\Scripts\Make Order\CoffeeCupSelector.cs" />
     <Compile Include="Assets\Scripts\Make Order\CoffeeMachineButtonLogic.cs" />
     <Compile Include="Assets\Scripts\Make Order\CoffeeMachineHandleLogic.cs" />
-    <Compile Include="Assets\Scripts\Make Order\PlateLogic.cs" />
     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
     <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
@@ -130,11 +129,13 @@
     <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SceneChangeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\Pause\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Recipe\RecipeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
     <Compile Include="Assets\Scripts\UI\BarScript.cs" />
