@@ -53,7 +53,7 @@ public class Minigame_InputManager : MonoBehaviour
 
     public void GoBackToMainLevel ()
     {
-        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
+        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe_Day);
         gameObject.GetComponent<RecipeManager>().Close();
     }
 }

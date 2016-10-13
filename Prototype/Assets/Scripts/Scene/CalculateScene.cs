@@ -31,11 +31,7 @@ public class CalculateScene : MonoBehaviour
 
     public void TurnOff ()
     {
+        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe_Night);
         gameObject.SetActive(false);
-        MainGameManager.Get.currentCanvas = 2;
-        MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
-        MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(true);
-        MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
-        InGameTime.SetTimeScale(0);
     }
 }

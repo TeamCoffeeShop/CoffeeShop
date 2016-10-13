@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum CurrentScene
 {
-    Null = 0, Cafe = 1, Make_Order = 2, Dialogue = 3
+    Null = 0, Cafe_Day = 1, Make_Order = 2, Dialogue = 3, Cafe_Night = 4, Upgrade = 5
     ,PauseMenu = 6
 }
 
@@ -21,7 +21,7 @@ public class SceneChangeManager : MonoBehaviour
     
     void Start ()
     {
-        SetCurrentScene(CurrentScene.Cafe);
+        SetCurrentScene(CurrentScene.Cafe_Day);
     }
 
     public void SetCurrentScene(int scene)
@@ -37,24 +37,16 @@ public class SceneChangeManager : MonoBehaviour
         CS = scene;
         switch (CS)
         {
-            case CurrentScene.Cafe:
-                if (MainGameManager.Get.currentCanvas == 1)
-                {
-                    MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
-                    InGameTime.SetTimeScale(1);
-                }
-                else if(MainGameManager.Get.currentCanvas == 2)
-                {
-                    MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(true);
-                    MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
-                    InGameTime.SetTimeScale(0);
-                }
+            case CurrentScene.Cafe_Day:
+                MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
+                MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);
                 MinigameManager.Get.Canvas_UI.SetActive(false);
                 MinigameManager.Get.MakeOrderCamera.gameObject.SetActive(false);
                 MainGameManager.Get.CafeCamera.gameObject.SetActive(true);
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
+                MainGameManager.Get.DialogueCamera.SetActive(false);
                 MainGameManager.Get.CafeCamera.Return();
                 InGameTime.SetTimeScale(1);
                 break;
@@ -67,6 +59,7 @@ public class SceneChangeManager : MonoBehaviour
                 MinigameManager.Get.MakeOrderCamera.gameObject.SetActive(true);
                 MainGameManager.Get.CafeCamera.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
+                MainGameManager.Get.DialogueCamera.SetActive(false);
                 InGameTime.SetTimeScale(0.1f);
                 break;
             case CurrentScene.Dialogue:
@@ -77,6 +70,17 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(true);
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
                 MinigameManager.Get.Canvas_UI.SetActive(false);
+                InGameTime.SetTimeScale(0);
+                break;
+            case CurrentScene.Cafe_Night:
+                MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(true);
+                MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
+                MinigameManager.Get.Canvas_UI.SetActive(false);
+                MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(false);
+                MinigameManager.Get.MakeOrderCamera.gameObject.SetActive(false);
+                MainGameManager.Get.CafeCamera.gameObject.SetActive(true);
+                MainGameManager.Get.DialogueCamera.SetActive(false);
+                MainGameManager.Get.CafeCamera.Return();
                 InGameTime.SetTimeScale(0);
                 break;
 

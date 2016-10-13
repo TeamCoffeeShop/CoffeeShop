@@ -27,7 +27,7 @@ public class DecoEditUI : MonoBehaviour
         MainGameManager.Get.Floor.IsEditMode = EditMode.selected;
 
         //Time
-        InGameTime.SetTimeScale(0.1f);
+        //InGameTime.SetTimeScale(0.1f);
     }
 
     public void DisableSelected ()
@@ -47,7 +47,7 @@ public class DecoEditUI : MonoBehaviour
             EditingGrid = null;
 
             //Time
-            InGameTime.SetTimeScale(1);     
+            //InGameTime.SetTimeScale(1);     
 
             gameObject.SetActive(false);
         }

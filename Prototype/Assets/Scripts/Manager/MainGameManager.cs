@@ -15,7 +15,6 @@ public class MainGameManager : MonoBehaviour
     public GameObject Canvas_Dialogue;
     public PauseMenu Canvas_PauseMenu;
     public ShopManager Canvas_Shop;
-    public int currentCanvas;
     //camera
     public GameObject DialogueCamera;
     public LookAt CafeCamera;
@@ -34,6 +33,5 @@ public class MainGameManager : MonoBehaviour
     void Awake()
     {
         Get = this;
-        currentCanvas = 1;
     }
 }

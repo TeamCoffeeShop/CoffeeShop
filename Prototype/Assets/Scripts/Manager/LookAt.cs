@@ -52,9 +52,6 @@ public class LookAt : MonoBehaviour
         transform.rotation = OriginalRotation;
         GetComponent<Camera>().orthographic = true;
         GetComponent<BlurOptimized>().enabled = false;
-        MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
-        MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);
-        MainGameManager.Get.DialogueCamera.SetActive(false);
         follow = false;
     }
 }
