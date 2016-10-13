@@ -102,11 +102,11 @@ public class HandGrinderScript : MonoBehaviour
             GameObject handle = GameObject.Find("CoffeeMachineHandle");
             if (!handle.GetComponent<CoffeeMachineHandleLogic>().mousedown)
             {
-                arrowForHandle.transform.position = handle.transform.position;
-                arrowForHandle.transform.Translate(new Vector3(3, 0, 0), Space.Self);
+                arrowForGrinder.transform.position = MinigameManager.Get.coffeeMachineHandle.transform.position;
+                arrowForGrinder.transform.Translate(new Vector3(0, 5, 0), Space.Self);
                 arrowForHandle.SetActive(true);
             }
-            else
+            if(handle.GetComponent<CoffeeMachineHandleLogic>().mousedown)
                 arrowForHandle.SetActive(false);
         }
         else

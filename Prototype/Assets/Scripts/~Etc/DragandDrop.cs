@@ -51,6 +51,7 @@ public class DragandDrop : MonoBehaviour
             }
             foreach (GameObject obj in Target)
             {
+                /*
                 if (obj.transform.parent.name == "HandGrinder")
                 {
                     arrowForGrinder = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
@@ -63,6 +64,7 @@ public class DragandDrop : MonoBehaviour
                     arrowForMachine.transform.position = MinigameManager.Get.coffeeMachine.transform.position;
                     arrowForMachine.transform.Translate(new Vector3(0, 6, 0), Space.Self);
                 }
+                */
 
                 if (obj.transform.parent.name == "Instantiator")
                 {

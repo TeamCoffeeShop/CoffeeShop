@@ -139,6 +139,9 @@ public class WaterMilkInstantiator : MonoBehaviour
         cup.GetComponent<DragandDrop>().active = true;
         cup = null;
 
+        //reset instantiator
+        CurrentAmount = 0;
+
         return true;
     }
 }
