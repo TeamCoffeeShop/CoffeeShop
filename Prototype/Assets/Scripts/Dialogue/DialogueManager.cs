@@ -150,9 +150,9 @@ public class DialogueManager : MonoBehaviour {
         dia_window_transform.offsetMin = new Vector2(40, dia_window_transform.offsetMin.y);
         dia_window_transform.offsetMax = new Vector2(-40, dia_window_transform.offsetMax.y);
 
-        npc_text = GameObject.Find("NPCDialogue_Text");
-        option1 = GameObject.Find("Option1");
-        option2 = GameObject.Find("Option2");
+        npc_text = dialogue_window.transform.FindChild("NPCDialogue_Text").gameObject;
+        option1 = dialogue_window.transform.FindChild("Option1").gameObject;
+        option2 = dialogue_window.transform.FindChild("Option2").gameObject;
 
         dialogue_window.SetActive(false);
     }

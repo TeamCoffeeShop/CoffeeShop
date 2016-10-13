@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Bianca : MonoBehaviour
 {
-    public RuntimeAnimatorController DeapBreath;
+    public RuntimeAnimatorController DeepBreath;
+    public RuntimeAnimatorController ExcitedTalk;
+    public RuntimeAnimatorController HipTalkIdle;
     Animator anim;
 
     void Awake ()
@@ -21,7 +23,16 @@ public class Bianca : MonoBehaviour
         //Temporary code!!!
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            anim.runtimeAnimatorController = DeapBreath;
+            if (anim.runtimeAnimatorController == DeepBreath)
+            {
+                anim.runtimeAnimatorController = ExcitedTalk;
+            }
+            else if (anim.runtimeAnimatorController == ExcitedTalk)
+            {
+                anim.runtimeAnimatorController = HipTalkIdle;
+            }
+            else
+                anim.runtimeAnimatorController = DeepBreath;
             anim.Play(0);
         }
     }
