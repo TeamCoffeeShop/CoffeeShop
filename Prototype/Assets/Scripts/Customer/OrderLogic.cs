@@ -37,7 +37,7 @@ public class OrderLogic : MonoBehaviour
     {
         dragging = false;
         
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Interactable))
         {

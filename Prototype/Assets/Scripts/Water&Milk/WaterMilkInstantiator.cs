@@ -123,6 +123,7 @@ public class WaterMilkInstantiator : MonoBehaviour
             {
                 Destroy(steam);
             }
+
     }
 
     public bool PutCoffeeIntoInstantiator (CoffeeCupBehavior Cup)
@@ -153,6 +154,7 @@ public class WaterMilkInstantiator : MonoBehaviour
 
         //reset instantiator
         CurrentAmount = 0;
+        numOfIce = 0;
 
         return true;
     }
