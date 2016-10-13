@@ -22,6 +22,10 @@ public class DialogueManager : MonoBehaviour {
     // canvas
     public bool isActive;
 
+    //npc to move.
+    public Animator NPC;
+    public RuntimeAnimatorController anim;
+
     private bool isTyping = false;
     private bool cancelTyping = false;
 
@@ -196,7 +200,8 @@ public class DialogueManager : MonoBehaviour {
                         //if (Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
             }
             node_id = selected_option;
-
+            NPC.runtimeAnimatorController = anim;
+            NPC.Play(0);
         }
         // When there is no dialogue, disable dialogue box
         dialogue_window.SetActive(false);       
