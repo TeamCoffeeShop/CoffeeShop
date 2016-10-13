@@ -6,13 +6,15 @@ public class CoffeeBeanLogic : MonoBehaviour
     DragandDrop d;
     public int CoffeeBeanType;
 
-    GameObject arrowForGrinder;
+    //GameObject arrowForGrinder;
     void Awake ()
     {
         d = GetComponent<DragandDrop>();
+        /*
         arrowForGrinder = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
         arrowForGrinder.transform.position = MinigameManager.Get.handGrinder.transform.position;
         arrowForGrinder.transform.Translate(new Vector3(0, 5, 0), Space.Self);
+        */
     }
 
     void Update ()
@@ -25,7 +27,7 @@ public class CoffeeBeanLogic : MonoBehaviour
             newPos.x = MinigameManager.Get.handGrinder.transform.position.x;
             MinigameManager.Get.MakeOrderCamera.SetTargetLocation(newPos);
             DestroyObject(gameObject);
-            Destroy(arrowForGrinder);
+            //Destroy(arrowForGrinder);
         }
     }
 }

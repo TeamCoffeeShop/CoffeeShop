@@ -7,7 +7,6 @@ public class CoffeeMachineHandleLogic : MonoBehaviour
     public int CoffeeBeanType;
 
     public GameObject arrowForHandle;
-    public GameObject arrowForGrinder;
 
     public bool mousedown;
     public int mousecheck;

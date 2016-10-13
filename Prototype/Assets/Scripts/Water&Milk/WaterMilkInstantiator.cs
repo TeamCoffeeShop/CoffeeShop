@@ -57,6 +57,7 @@ public class WaterMilkInstantiator : MonoBehaviour
                 {
                     Ice = GameObject.Instantiate(Resources.Load<GameObject>("Prefab/Ice"));
                     Ice.transform.position = transform.position;
+                    Ice.transform.Translate(new Vector3(0, -0.5f, 0));
                     numOfIce += 1;
                 }
                 break;
@@ -110,10 +111,17 @@ public class WaterMilkInstantiator : MonoBehaviour
                 water.GetComponent<WaterFallingLogic>().filling = false;
                 water = null;
             }
-            else if(WaterMilkType == WaterMilkType.Milk)
+        if(milk != null)
+            if(WaterMilkType == WaterMilkType.Milk)
             {
                 milk.GetComponent<WaterFallingLogic>().filling = false;
                 milk = null;
+            }
+
+        if (steam != null)
+            if (HotIceType == HotIceType.Hot)
+            {
+                Destroy(steam);
             }
     }
 

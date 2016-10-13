@@ -111,4 +111,10 @@ public class CoffeeCupBehavior : MonoBehaviour
             d.Target[0] = d.Highlight[0].transform.FindChild("Collider").gameObject;
         }
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Ice(Clone)")
+            Destroy(col.gameObject);
+    }
 }

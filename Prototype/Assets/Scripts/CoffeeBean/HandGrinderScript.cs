@@ -9,7 +9,6 @@ public class HandGrinderScript : MonoBehaviour
     public BarScript coffeeBar;
     public Image rotationImage;
     public GameObject arrowForHandle;
-    public GameObject arrowForGrinder;
     public bool CheckGrind = false; //bool type for rotation
     public bool CheckGameStop = false; //bool type for checking coffee grinder game
     Vector3 oldEulerAngles; //bool type for rotation check
@@ -45,7 +44,6 @@ public class HandGrinderScript : MonoBehaviour
         coffeeBar.gameObject.SetActive(false);
         rotationImage.enabled = false;
         arrowForHandle.SetActive(false);
-        arrowForGrinder.SetActive(false);
         PowderContent = 0;
         h = GetComponent<OutlineHighlighter>();
         h2 = transform.GetChild(0).GetComponent<OutlineHighlighter>();
