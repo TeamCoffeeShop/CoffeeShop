@@ -77,7 +77,6 @@
      <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
      <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
      <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
-     <Compile Include="Assets\Scripts\Customer\OrderingBallonLogic.cs" />
      <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\Scripts\Dialogue\DialogueCameraLogic.cs" />
      <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
@@ -95,7 +94,6 @@
      <Compile Include="Assets\Scripts\Make Order\CoffeeCupSelector.cs" />
      <Compile Include="Assets\Scripts\Make Order\CoffeeMachineButtonLogic.cs" />
      <Compile Include="Assets\Scripts\Make Order\CoffeeMachineHandleLogic.cs" />
-     <Compile Include="Assets\Scripts\Make Order\PlateLogic.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Manager\LookAt.cs" />
      <Compile Include="Assets\Scripts\Manager\MainGameManager.cs" />
@@ -106,6 +104,7 @@
      <Compile Include="Assets\Scripts\Manager\ResetManager.cs" />
      <Compile Include="Assets\Scripts\Manager\SceneChangeManager.cs" />
      <Compile Include="Assets\Scripts\Manager\TimeManager.cs" />
+     <Compile Include="Assets\Scripts\Pause\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Recipe\RecipeManager.cs" />

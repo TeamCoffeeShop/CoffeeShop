@@ -8,6 +8,7 @@ public class CustomerLogic : MonoBehaviour
     public RuntimeAnimatorController Seated_Motion;
     public GameObject OrderingBallon;
     public GameObject SpawnTimer;
+    public OrderType Order;
     //public Grid Seat;
     public int SeatX = -1, SeatZ = -1;
 
@@ -69,15 +70,15 @@ public class CustomerLogic : MonoBehaviour
     void OrderStart ()
     {
         OB = Instantiate(OrderingBallon);
-        OB.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
-        OB.GetComponent<OrderingBallonLogic>().customer = transform;
+        OB.transform.SetParent(gameObject.transform, false);
+        OB.transform.localPosition = new Vector3(0,22,0);
 
-        ST = Instantiate(SpawnTimer);
-        ST.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
-        ST.GetComponent<CustomerSpawnTimer>().customer = transform;
-        ST.GetComponent<BarScript>().MaxValue = customerspawntime;
+        //ST = Instantiate(SpawnTimer);
+        //ST.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
+        //ST.GetComponent<CustomerSpawnTimer>().customer = transform;
+        //ST.GetComponent<BarScript>().MaxValue = customerspawntime;
 
-        OB.GetComponent<OrderingBallonLogic>().SpawnBar = ST;
+        //OB.GetComponent<OrderingBallonLogic>().SpawnBar = ST;
 
         //custom cup display
         CoffeeOrderSetup.SetOrder(OB, GetComponent<Customer>().data.order);

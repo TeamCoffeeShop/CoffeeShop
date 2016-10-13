@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class OutlineHighlighter : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class OutlineHighlighter : MonoBehaviour
 
     void OnMouseEnter ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if(active)
             if (highlightOn == HighlightOn.mouseOver)
                 R.material.SetColor("_OutlineColor", Color.yellow);
@@ -38,6 +42,9 @@ public class OutlineHighlighter : MonoBehaviour
 
     void OnMouseExit ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if(active)
             if (highlightOn == HighlightOn.mouseOver)
                 R.material.SetColor("_OutlineColor", Color.black);
@@ -47,6 +54,9 @@ public class OutlineHighlighter : MonoBehaviour
 
     void Update ()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if(active)
             if (highlightOn != phighlightOn)
             {

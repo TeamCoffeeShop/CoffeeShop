@@ -30,7 +30,7 @@ public class TimeOfDay : MonoBehaviour
     public float currentTimeOfDay = 0.3f;
 
     //This is so we can control the speed of our time of day
-    private float timeMultiplier = 1.0f;
+    public float timeMultiplier = 1.0f;
 
     // Use this for initialization
     void Start()

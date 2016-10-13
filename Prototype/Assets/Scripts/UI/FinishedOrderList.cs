@@ -18,12 +18,12 @@ public class FinishedOrderList : MonoBehaviour
     {
         if (type != OrderType.None)
         {
-            //create cup
+            //create cup order
             OrderLogic order = GameObject.Instantiate(orderDisplayButton).GetComponent<OrderLogic>();
             order.ChildNumber = FinishedOrders.childCount;
             order.transform.SetParent(FinishedOrders, false);
 
-            //set cup details here
+            //set cup order details here
             order.type = type;
 
             //distinguish image by the droptype

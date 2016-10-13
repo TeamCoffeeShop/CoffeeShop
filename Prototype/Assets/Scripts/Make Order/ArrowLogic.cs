@@ -15,8 +15,11 @@ public class ArrowLogic : MonoBehaviour
 
 	void Update ()
     {
-        transform.Rotate(Time.deltaTime * Speed, 0, 0);
+        if(InGameTime.timeScale != 0)
+        {
+            transform.Rotate(InGameTime.deltaTime / InGameTime.timeScale * Speed, 0, 0);
+            time += InGameTime.deltaTime / InGameTime.timeScale * 3;
+        }
         transform.localPosition = OriginalPos + new Vector3(0, Mathf.Sin(time) * height, 0);
-        time += Time.deltaTime * 3;
 	}
 }
