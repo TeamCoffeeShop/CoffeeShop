@@ -38,6 +38,10 @@ public class WaterMilkInstantiator : MonoBehaviour
 
     void OnMouseDrag ()
     {
+        //if no cup, return
+        if (cup == null)
+            return;
+
         switch (HotIceType)
         {
             case HotIceType.Hot:
