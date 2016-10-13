@@ -54,5 +54,6 @@ public class Minigame_InputManager : MonoBehaviour
     public void GoBackToMainLevel ()
     {
         MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe);
+        gameObject.GetComponent<RecipeManager>().Close();
     }
 }

@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
+    <Compile Include="Assets\NightCalculateScene.cs" />
     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Assets\Scripts\Recipe\RecipeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
     <Compile Include="Assets\Scripts\UI\BarScript.cs" />

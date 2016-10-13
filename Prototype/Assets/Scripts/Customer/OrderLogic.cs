@@ -36,22 +36,19 @@ public class OrderLogic : MonoBehaviour
     public void EndDraggingCup()
     {
         dragging = false;
-
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 20, Interactable))
+        if (Physics.Raycast(ray, out hit, Interactable))
         {
             if(hit.collider.transform.parent != null)
                 if (hit.collider.transform.parent.tag == "Customer")
                 {
-                    CustomerLogic customer = hit.collider.transform.parent.GetComponent<CustomerLogic>();
-                    if (type == customer.Order)
-                        FinishOrder(customer, true);
-                    //else
-                    //    GivePenalty(hit.collider.gameObject);
+                    Customer customer = hit.collider.transform.parent.GetComponent<Customer>();
+                    Debug.Log(type + "" + customer.data.order);
+                    FinishOrder(customer, type == customer.data.order);
                 }
         }
-
 
         //throw away
         //if (trash)
@@ -74,56 +71,55 @@ public class OrderLogic : MonoBehaviour
         }
     }
 
-    void FinishOrder(CustomerLogic customer, bool correctOrder)
+    void FinishOrder(Customer customer, bool correctOrder)
     {
-        float price = CoffeeOrderSetup.PriceTagForMenu(customer.Order);
-        float xp = CoffeeOrderSetup.XPForMenu(customer.Order);
+        float price;
+        float xp;
 
-        //increase xp
-        MainGameManager.Get.playerManager.AddXP(xp);
-        //popup
-        Text popup = UIEffect.CPopUp(xp, transform.position).GetComponent<Text>();
-        UIEffect.SetPopUpBehavior(popup, PopupType.xp);
+        if (correctOrder)
+        {
+            price = CoffeeOrderSetup.PriceTagForMenu(customer.data.order);
+            xp = CoffeeOrderSetup.XPForMenu(customer.data.order);
 
-        //increase money
-        MainGameManager.Get.playerManager.AddMoneyGradually(price);
-        //popup
-        popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
-        UIEffect.SetPopUpBehavior(popup, PopupType.gold);
+            //increase xp
+            MainGameManager.Get.playerManager.AddXP(xp);
+            //popup
+            Text popup = UIEffect.CPopUp(xp, transform.position).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.xp);
 
-        customer.LeaveCoffeeShop();
-        
-        //delete coffee
-        MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
-        DestroyObject(gameObject);
+            //increase money
+            MainGameManager.Get.playerManager.AddMoneyGradually(price);
+            //popup
+            popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.gold);
+
+            customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
+
+            //delete coffee
+            MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
+            DestroyObject(gameObject);
+        }
+        else
+        {
+            price = 200;
+            xp = 5;
+
+            //increase xp
+            MainGameManager.Get.playerManager.SubtractXP(xp);
+
+            //increase money
+            MainGameManager.Get.playerManager.SubtractMoneyGradully(price);
+            //popup
+            Text popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
+            UIEffect.SetPopUpBehavior(popup, PopupType.penalty);
+
+            customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
+
+            //delete coffee
+            MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
+            DestroyObject(gameObject);
+        }
+
+
     }
-
-    //void GivePenalty(GameObject orderUI)
-    //{
-    //    int xp = 5;
-    //    int price = 200;
-
-    //    if (customer)
-    //    {
-    //        //increase xp
-    //        MainGameManager.Get.playerManager.SubtractXP(xp);
-
-    //        //increase money
-    //        MainGameManager.Get.playerManager.SubtractMoneyGradully(price);
-    //        //popup
-    //        Text popup = UIEffect.CPopUp(price, transform.position + new Vector3(0, GetComponent<RectTransform>().sizeDelta.y + 10, 0)).GetComponent<Text>();
-    //        UIEffect.SetPopUpBehavior(popup, PopupType.penalty);
-
-    //        //delete coffee
-    //        OrderLogic logic = orderUI.GetComponent<OrderLogic>();
-    //        if (logic)
-    //            MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(logic.ChildNumber);
-    //        DestroyObject(orderUI);
-
-    //        customer.GetComponent<CustomerLogic>().LeaveCoffeeShop();
-
-    //        Cursor.visible = true;
-    //    }
-
-    //}
 }

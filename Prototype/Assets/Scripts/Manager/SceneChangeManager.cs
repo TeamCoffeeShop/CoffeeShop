@@ -38,7 +38,17 @@ public class SceneChangeManager : MonoBehaviour
         switch (CS)
         {
             case CurrentScene.Cafe:
-                MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
+                if (MainGameManager.Get.currentCanvas == 1)
+                {
+                    MainGameManager.Get.Canvas_UI.gameObject.SetActive(true);
+                    InGameTime.SetTimeScale(1);
+                }
+                else if(MainGameManager.Get.currentCanvas == 2)
+                {
+                    MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(true);
+                    MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
+                    InGameTime.SetTimeScale(0);
+                }
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(true);
                 MinigameManager.Get.Canvas_UI.SetActive(false);

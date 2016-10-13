@@ -8,7 +8,6 @@ public class CustomerLogic : MonoBehaviour
     public RuntimeAnimatorController Seated_Motion;
     public GameObject OrderingBallon;
     public GameObject SpawnTimer;
-    public OrderType Order;
     //public Grid Seat;
     public int SeatX = -1, SeatZ = -1;
 
