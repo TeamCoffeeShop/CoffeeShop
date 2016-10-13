@@ -13,6 +13,8 @@ public class Minigame_CoffeeManager : MonoBehaviour
         if (LegitCoffee(cup))
             MainGameManager.Get.Canvas_OrderHUD.CreateOrderInUI(cup.transform.position, CoffeeOrderSetup.DistinguishCreatedMenu(cup));
 
+        //AkSoundEngine.PostEvent("Play_Successful_Step", gameObject);
+
         //delete cup
         DestroyObject(cup.gameObject);
     }
