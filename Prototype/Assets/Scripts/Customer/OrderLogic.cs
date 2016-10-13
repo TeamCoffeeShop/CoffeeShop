@@ -42,7 +42,7 @@ public class OrderLogic : MonoBehaviour, IDragHandler, IEndDragHandler
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Interactable))
         {
-            if(hit.collider.transform.parent != null)
+            if (hit.collider.transform.parent != null)
                 if (hit.collider.transform.parent.tag == "Customer")
                 {
                     Customer customer = hit.collider.transform.parent.GetComponent<Customer>();
@@ -53,7 +53,7 @@ public class OrderLogic : MonoBehaviour, IDragHandler, IEndDragHandler
 
         //throw away
         //if (trash)
-        //    MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
+           // MainGameManager.Get.Canvas_OrderHUD.DeleteOrder(ChildNumber);
     }
 
     void Update ()

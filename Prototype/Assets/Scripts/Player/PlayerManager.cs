@@ -6,7 +6,7 @@ using System.IO;
 
 public class PlayerManager : MonoBehaviour {
 
-    public Player player;
+    public Player player = new Player();
     public float MoneyIncreasingSpeed = 10;
     float ExpectedMoney;
 
@@ -17,15 +17,19 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-            player = load_player(PlayerDataFilePath);
-
+            //player = load_player(PlayerDataFilePath);
+        player.money = 1000;
             ExpectedMoney = player.money;
-            PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
-            PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
-            PlayerPrefs.SetFloat("money", player.money);
+        player.xp_currentVal = 0;
+        player.xp_maxVal = 100;
+        player.level = 1;
+        player.income = 0;
+
+        PlayerPrefs.SetFloat("xp_currentVal", player.xp_currentVal);
+        PlayerPrefs.SetFloat("xp_maxVal", player.xp_maxVal);
+        PlayerPrefs.SetFloat("money", player.money);
         PlayerPrefs.SetFloat("income", player.income);
-            player.level = 1;
-            PlayerPrefs.SetInt("level", player.level);     
+        PlayerPrefs.SetInt("level", player.level);     
     }
 	
 	// Update is called once per frame
