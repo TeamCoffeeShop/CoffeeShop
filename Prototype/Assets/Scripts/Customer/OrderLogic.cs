@@ -9,6 +9,7 @@ public class OrderLogic : MonoBehaviour
     public float SelectCancelSpeed = 3;
     public int ChildNumber;
     public Vector3 OriginalPosition;
+    public Vector2 TouchPosition;
 
     //bool trash = false;
     RectTransform rt;
@@ -37,7 +38,7 @@ public class OrderLogic : MonoBehaviour
     {
         dragging = false;
         
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        Ray ray = Camera.main.ScreenPointToRay(TouchPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Interactable))
         {
@@ -57,6 +58,9 @@ public class OrderLogic : MonoBehaviour
 
     void Update ()
     {
+        if (Input.touchCount != 0)
+            TouchPosition = Input.GetTouch(0).position;
+
         if(!dragging)
         {
             Vector3 dir = OriginalPosition - rt.position;
