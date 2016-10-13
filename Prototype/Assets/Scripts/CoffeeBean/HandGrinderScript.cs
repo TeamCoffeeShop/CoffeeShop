@@ -103,7 +103,7 @@ public class HandGrinderScript : MonoBehaviour
             if (!handle.GetComponent<CoffeeMachineHandleLogic>().mousedown)
             {
                 arrowForHandle.transform.position = handle.transform.position;
-                arrowForHandle.transform.Translate(new Vector3(3, 0, 0), Space.Self);
+                arrowForHandle.transform.Translate(new Vector3(0, 3, 0), Space.Self);
                 arrowForHandle.SetActive(true);
             }
             else

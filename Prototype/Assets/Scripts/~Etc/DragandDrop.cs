@@ -68,7 +68,7 @@ public class DragandDrop : MonoBehaviour
                 {
                     arrowForInstantiator = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                     arrowForInstantiator.transform.position = MinigameManager.Get.instantiator.transform.position;
-                    arrowForInstantiator.transform.Translate(new Vector3(9, 0, 0));
+                    arrowForInstantiator.transform.Translate(new Vector3(0, 2, 0), Space.Self);
                 }
 
                 if (obj.transform.parent.name == "Plate")
@@ -77,7 +77,7 @@ public class DragandDrop : MonoBehaviour
                     {
                         arrowForPlate = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefab/Arrow"));
                         arrowForPlate.transform.position = MinigameManager.Get.plate.transform.position;
-                        arrowForPlate.transform.Translate(new Vector3(5, 0, 0));
+                        arrowForPlate.transform.Translate(new Vector3(0, 2, 0), Space.Self);
                     }
                 }
             }
