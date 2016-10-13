@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour {
 
     //npc to move.
     public Animator NPC;
-    public RuntimeAnimatorController anim;
+    public RuntimeAnimatorController[] anim;
 
     private bool isTyping = false;
     private bool cancelTyping = false;
@@ -200,7 +200,7 @@ public class DialogueManager : MonoBehaviour {
                         //if (Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
             }
             node_id = selected_option;
-            NPC.runtimeAnimatorController = anim;
+            NPC.runtimeAnimatorController = anim[Random.Range(0,3)];
             NPC.Play(0);
         }
         // When there is no dialogue, disable dialogue box

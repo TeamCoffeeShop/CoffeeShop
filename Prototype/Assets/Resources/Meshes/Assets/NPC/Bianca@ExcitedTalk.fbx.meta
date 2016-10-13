@@ -365,7 +365,7 @@ ModelImporter:
     4300026: RM_:pSphere2
     4300028: RM_:pPlane21
     4300030: RM_:pCube16
-    7400000: Take 001
+    7400000: ExcitedTalk
     9500000: //RootNode
     13700000: RM_:M_Bianca
     13700002: RM_:pCube16
@@ -403,7 +403,379 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ExcitedTalk
+      takeName: Take 001
+      firstFrame: 71
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: RM_:All
+        weight: 1
+      - path: RM_:All/RM_:hair
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pCube16
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane11
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane12
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane13
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane14
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane15
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane17
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane18
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane19
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane20
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane21
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane22
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pPlane23
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pSphere2
+        weight: 1
+      - path: RM_:All/RM_:hair/RM_:pTorus1
+        weight: 1
+      - path: RM_:All/RM_:M_Bianca
+        weight: 1
+      - path: RR_:j_World
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_l_Femur
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_l_Femur/RR_:j_l_Knee
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_l_Femur/RR_:j_l_Knee/RR_:j_l_Ankle
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_l_Femur/RR_:j_l_Knee/RR_:j_l_Ankle/RR_:j_l_Ball
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_l_Femur/RR_:j_l_Knee/RR_:j_l_Ankle/RR_:j_l_Ball/RR_:j_l_Toe_ignore
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_r_Femur
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_r_Femur/RR_:j_r_Knee
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_r_Femur/RR_:j_r_Knee/RR_:j_r_Ankle
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_r_Femur/RR_:j_r_Knee/RR_:j_r_Ankle/RR_:j_r_Ball
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_r_Femur/RR_:j_r_Knee/RR_:j_r_Ankle/RR_:j_r_Ball/RR_:j_r_Toe_ignore
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Chest_Helper
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav/RR_:j_l_Shoulder
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav/RR_:j_l_Shoulder/RR_:j_l_Elbow
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav/RR_:j_l_Shoulder/RR_:j_l_Elbow/RR_:j_l_Wrist_Helper
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav/RR_:j_l_Shoulder/RR_:j_l_Elbow/RR_:j_l_Wrist_Helper/RR_:j_l_Wrist
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_l_Clav/RR_:j_l_Shoulder/RR_:j_l_Elbow/RR_:j_l_Wrist_Helper/RR_:j_l_Wrist/RR_:j_l_Wrist_ignore
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_Neck_01
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_Neck_01/RR_:j_Neck_02
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_Neck_01/RR_:j_Neck_02/RR_:j_Head
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_Neck_01/RR_:j_Neck_02/RR_:j_Head/RR_:j_Head_ignore
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav/RR_:j_r_Shoulder
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav/RR_:j_r_Shoulder/RR_:j_r_Elbow
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav/RR_:j_r_Shoulder/RR_:j_r_Elbow/RR_:j_r_Wrist_Helper
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav/RR_:j_r_Shoulder/RR_:j_r_Elbow/RR_:j_r_Wrist_Helper/RR_:j_r_Wrist
+        weight: 1
+      - path: RR_:j_World/RR_:j_Pelvis/RR_:j_Spine_01/RR_:j_Spine_02/RR_:j_Spine_03/RR_:j_Spine_04/RR_:j_r_Clav/RR_:j_r_Shoulder/RR_:j_r_Elbow/RR_:j_r_Wrist_Helper/RR_:j_r_Wrist/RR_:j_r_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls
+        weight: 1
+      - path: RR_:prnt_controls/RR_:crv_spine
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_IK_j_Pelvis
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_IK_j_Spine_04
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:ctrl_j_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:ctrl_j_l_Shoulder/RR_:ctrl_j_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:ctrl_j_l_Shoulder/RR_:ctrl_j_l_Elbow/RR_:ctrl_j_l_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:ctrl_j_l_Shoulder/RR_:ctrl_j_l_Elbow/RR_:ctrl_j_l_Wrist_Helper/RR_:ctrl_j_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:ctrl_j_l_Shoulder/RR_:ctrl_j_l_Elbow/RR_:ctrl_j_l_Wrist_Helper/RR_:ctrl_j_l_Wrist/RR_:ctrl_j_l_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:FK_j_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:FK_j_l_Shoulder/RR_:FK_j_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:FK_j_l_Shoulder/RR_:FK_j_l_Elbow/RR_:FK_j_l_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:FK_j_l_Shoulder/RR_:FK_j_l_Elbow/RR_:FK_j_l_Wrist_Helper/RR_:FK_j_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:FK_j_l_Shoulder/RR_:FK_j_l_Elbow/RR_:FK_j_l_Wrist_Helper/RR_:FK_j_l_Wrist/RR_:FK_j_l_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:IK_j_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:IK_j_l_Shoulder/RR_:IK_j_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:IK_j_l_Shoulder/RR_:IK_j_l_Elbow/RR_:IK_j_l_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:IK_j_l_Shoulder/RR_:IK_j_l_Elbow/RR_:IK_j_l_Wrist_Helper/RR_:IK_j_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_l_Clav/RR_:IK_j_l_Shoulder/RR_:IK_j_l_Elbow/RR_:IK_j_l_Wrist_Helper/RR_:IK_j_l_Wrist/RR_:IK_j_l_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_Neck_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_Neck_01/RR_:ctrl_j_Neck_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_Neck_01/RR_:ctrl_j_Neck_02/RR_:ctrl_j_Head
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_Neck_01/RR_:ctrl_j_Neck_02/RR_:ctrl_j_Head/RR_:ctrl_j_Head_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:ctrl_j_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:ctrl_j_r_Shoulder/RR_:ctrl_j_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:ctrl_j_r_Shoulder/RR_:ctrl_j_r_Elbow/RR_:ctrl_j_r_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:ctrl_j_r_Shoulder/RR_:ctrl_j_r_Elbow/RR_:ctrl_j_r_Wrist_Helper/RR_:ctrl_j_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:ctrl_j_r_Shoulder/RR_:ctrl_j_r_Elbow/RR_:ctrl_j_r_Wrist_Helper/RR_:ctrl_j_r_Wrist/RR_:ctrl_j_r_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:FK_j_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:FK_j_r_Shoulder/RR_:FK_j_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:FK_j_r_Shoulder/RR_:FK_j_r_Elbow/RR_:FK_j_r_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:FK_j_r_Shoulder/RR_:FK_j_r_Elbow/RR_:FK_j_r_Wrist_Helper/RR_:FK_j_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:FK_j_r_Shoulder/RR_:FK_j_r_Elbow/RR_:FK_j_r_Wrist_Helper/RR_:FK_j_r_Wrist/RR_:FK_j_r_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:IK_j_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:IK_j_r_Shoulder/RR_:IK_j_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:IK_j_r_Shoulder/RR_:IK_j_r_Elbow/RR_:IK_j_r_Wrist_Helper
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:IK_j_r_Shoulder/RR_:IK_j_r_Elbow/RR_:IK_j_r_Wrist_Helper/RR_:IK_j_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ctrl_j_r_Clav/RR_:IK_j_r_Shoulder/RR_:IK_j_r_Elbow/RR_:IK_j_r_Wrist_Helper/RR_:IK_j_r_Wrist/RR_:IK_j_r_Wrist_ignore
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis/RR_:IK_j_Spine_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis/RR_:IK_j_Spine_01/RR_:IK_j_Spine_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis/RR_:IK_j_Spine_01/RR_:IK_j_Spine_02/RR_:IK_j_Spine_03
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis/RR_:IK_j_Spine_01/RR_:IK_j_Spine_02/RR_:IK_j_Spine_03/RR_:IK_j_Spine_04
+        weight: 1
+      - path: RR_:prnt_controls/RR_:IK_j_Pelvis/RR_:IK_j_Spine_01/RR_:IK_j_Spine_02/RR_:IK_j_Spine_03/RR_:IK_j_Spine_04/RR_:IK_j_Neck_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:ik_spine_hndl
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow/RR_:offset_FK_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow/RR_:offset_FK_l_Elbow/RR_:ctrl_FK_l_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow/RR_:offset_FK_l_Elbow/RR_:ctrl_FK_l_Elbow/RR_:prnt_FK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow/RR_:offset_FK_l_Elbow/RR_:ctrl_FK_l_Elbow/RR_:prnt_FK_l_Wrist/RR_:offset_FK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_l_Shoulder/RR_:offset_FK_l_Shoulder/RR_:ctrl_FK_l_Shoulder/RR_:prnt_FK_l_Elbow/RR_:offset_FK_l_Elbow/RR_:ctrl_FK_l_Elbow/RR_:prnt_FK_l_Wrist/RR_:offset_FK_l_Wrist/RR_:ctrl_FK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow/RR_:offset_FK_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow/RR_:offset_FK_r_Elbow/RR_:ctrl_FK_r_Elbow
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow/RR_:offset_FK_r_Elbow/RR_:ctrl_FK_r_Elbow/RR_:prnt_FK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow/RR_:offset_FK_r_Elbow/RR_:ctrl_FK_r_Elbow/RR_:prnt_FK_r_Wrist/RR_:offset_FK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_FK_r_Shoulder/RR_:offset_FK_r_Shoulder/RR_:ctrl_FK_r_Shoulder/RR_:prnt_FK_r_Elbow/RR_:offset_FK_r_Elbow/RR_:ctrl_FK_r_Elbow/RR_:prnt_FK_r_Wrist/RR_:offset_FK_r_Wrist/RR_:ctrl_FK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_l_Wrist/RR_:offset_IK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_l_Wrist/RR_:offset_IK_l_Wrist/RR_:ctrl_IK_l_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_l_Wrist/RR_:offset_IK_l_Wrist/RR_:ctrl_IK_l_Wrist/RR_:ik_l_arm_hndl
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_l_Wrist/RR_:offset_IK_l_Wrist/RR_:ctrl_IK_l_Wrist/RR_:ik_l_arm_hndl/RR_:ik_l_hand_hndl
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_r_Wrist/RR_:offset_IK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_r_Wrist/RR_:offset_IK_r_Wrist/RR_:ctrl_IK_r_Wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_r_Wrist/RR_:offset_IK_r_Wrist/RR_:ctrl_IK_r_Wrist/RR_:ik_r_arm_hndl
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_IK_r_Wrist/RR_:offset_IK_r_Wrist/RR_:ctrl_IK_r_Wrist/RR_:ik_r_arm_hndl/RR_:ik_r_arm_wrist
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_prop/RR_:offset_l_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_prop/RR_:offset_l_arm_prop/RR_:ctrl_l_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_PV/RR_:offset_l_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_arm_PV/RR_:offset_l_arm_PV/RR_:ctrl_l_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_Clav/RR_:offset_l_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_l_Clav/RR_:offset_l_Clav/RR_:ctrl_l_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02/RR_:offset_Neck_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02/RR_:offset_Neck_02/RR_:ctrl_Neck_02
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02/RR_:offset_Neck_02/RR_:ctrl_Neck_02/RR_:prnt_Head
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02/RR_:offset_Neck_02/RR_:ctrl_Neck_02/RR_:prnt_Head/RR_:offset_Head
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_Pelvis/RR_:offset_Pelvis/RR_:ctrl_Pelvis/RR_:prnt_Spine_01/RR_:offset_Spine_01/RR_:ctrl_Spine_01/RR_:prnt_Spine_02/RR_:offset_Spine_02/RR_:ctrl_Spine_02/RR_:prnt_Spine_03/RR_:offset_Spine_03/RR_:ctrl_Spine_03/RR_:prnt_Spine_04/RR_:offset_Spine_04/RR_:ctrl_Spine_04/RR_:prnt_Neck_01/RR_:offset_Neck_01/RR_:ctrl_Neck_01/RR_:prnt_Neck_02/RR_:offset_Neck_02/RR_:ctrl_Neck_02/RR_:prnt_Head/RR_:offset_Head/RR_:ctrl_Head
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_prop/RR_:offset_r_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_prop/RR_:offset_r_arm_prop/RR_:ctrl_r_arm_prop
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_PV/RR_:offset_r_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_arm_PV/RR_:offset_r_arm_PV/RR_:ctrl_r_arm_PV
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_Clav/RR_:offset_r_Clav
+        weight: 1
+      - path: RR_:prnt_controls/RR_:prnt_r_Clav/RR_:offset_r_Clav/RR_:ctrl_r_Clav
+        weight: 1
+      - path: RR_:prnt_World
+        weight: 1
+      - path: RR_:prnt_World/RR_:offset_Root
+        weight: 1
+      - path: RR_:prnt_World/RR_:offset_Root/RR_:ctrl_Root
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
