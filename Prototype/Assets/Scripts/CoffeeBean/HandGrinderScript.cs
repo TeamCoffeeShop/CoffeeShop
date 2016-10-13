@@ -185,12 +185,15 @@ public class HandGrinderScript : MonoBehaviour
     Vector3 MousePos;
     void NewGrindMotion ()
     {
-        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.FindChild("Handle").position);
+        Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.FindChild("Handle").position + new Vector3(0, 3.5f, 0));
+        //Vector3 GrinderPos = Camera.main.WorldToScreenPoint(transform.FindChild("Handle").position);
 
         float angle = Mathf.Rad2Deg * GetAngleInRadian(new Vector2(MousePos.x, MousePos.y), new Vector2(GrinderPos.x, GrinderPos.y), new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 
         if (angle > 0) angle = 0;
-        transform.GetChild(0).Rotate(0, 0, -angle);
+        transform.GetChild(0).Rotate(0, -angle, 0);
+        //transform.GetChild(0).Rotate(0, 0, -angle);
+
 
         MousePos = Input.mousePosition;
     }

@@ -45,7 +45,7 @@ public class Minigame_InputManager : MonoBehaviour
         }
 
         //set pause
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetTouch())
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             MainGameManager.Get.Canvas_PauseMenu.TogglePauseMenu();
         }
