@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class OrderLogic : MonoBehaviour
+public class OrderLogic : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public OrderType type = OrderType.None;
     public float SelectCancelSpeed = 3;
     public int ChildNumber;
     public Vector3 OriginalPosition;
-    public Vector2 TouchPosition;
 
     //bool trash = false;
     RectTransform rt;
@@ -24,21 +24,21 @@ public class OrderLogic : MonoBehaviour
         Interactable = LayerMask.GetMask("Interactable");
     }
 
-    public void DragSelectedCup()
+    public void OnDrag(PointerEventData eventData)
     {
         dragging = true;
 
         //drag the object
-        rt.position = Input.mousePosition;
+        rt.position = eventData.position;// Input.mousePosition;
         Vector3 size = rt.localToWorldMatrix * rt.sizeDelta;
         rt.position -= new Vector3(size.x * 0.5f, size.y * 0.5f, 0);
     }
 
-    public void EndDraggingCup()
+    public void OnEndDrag(PointerEventData eventData)
     {
         dragging = false;
-        
-        Ray ray = Camera.main.ScreenPointToRay(TouchPosition);
+
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, Interactable))
         {
@@ -58,9 +58,6 @@ public class OrderLogic : MonoBehaviour
 
     void Update ()
     {
-        if (Input.touchCount != 0)
-            TouchPosition = Input.GetTouch(0).position;
-
         if(!dragging)
         {
             Vector3 dir = OriginalPosition - rt.position;
