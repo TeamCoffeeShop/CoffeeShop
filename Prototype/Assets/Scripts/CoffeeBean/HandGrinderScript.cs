@@ -129,7 +129,7 @@ public class HandGrinderScript : MonoBehaviour
         if (oldEulerAngles != transform.GetChild(0).rotation.eulerAngles)
         {
             //player should rotate at least certain degree to grind the coffee bean
-            if (Mathf.Abs(transform.GetChild(0).rotation.eulerAngles.z - oldEulerAngles.z) >= stanDegree)
+            if (Mathf.Abs(transform.GetChild(0).rotation.eulerAngles.y - oldEulerAngles.y) >= stanDegree)
             {
                 oldEulerAngles = transform.GetChild(0).rotation.eulerAngles;
                 totalRotation += 1;
