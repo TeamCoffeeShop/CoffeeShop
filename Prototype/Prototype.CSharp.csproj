@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_AutoRotate.cs" />
     <Compile Include="Assets\JMO Assets\MatCap Shaders\Demo\Assets\MC_SwitchTexture.cs" />
-    <Compile Include="Assets\NightCalculateScene.cs" />
     <Compile Include="Assets\Scripts\CafeDeco\CafeDeco.cs" />
     <Compile Include="Assets\Scripts\Calendar\CalendarSystem.cs" />
     <Compile Include="Assets\Scripts\Calendar\ClockSystem.cs" />
@@ -99,7 +98,6 @@
     <Compile Include="Assets\Scripts\Customer\CustomerContainer.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerLogic.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerSaveLoad.cs" />
-    <Compile Include="Assets\Scripts\Customer\CustomerSpawnTimer.cs" />
     <Compile Include="Assets\Scripts\Customer\CustomerSystem.cs" />
     <Compile Include="Assets\Scripts\Customer\OrderLogic.cs" />
     <Compile Include="Assets\Scripts\Dialogue\Dialogue.cs" />
@@ -138,6 +136,7 @@
     <Compile Include="Assets\Scripts\Recipe\RecipeManager.cs" />
     <Compile Include="Assets\Scripts\Scene\CalculateScene.cs" />
     <Compile Include="Assets\Scripts\Scene\MainMenuScene.cs" />
+    <Compile Include="Assets\Scripts\Scene\NightCalculateScene.cs" />
     <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Structure\FloorGridLogic.cs" />
     <Compile Include="Assets\Scripts\Structure\Grid.cs" />
@@ -288,6 +287,9 @@
     <None Include="Assets\Resources\Xmls\DialogueEx.xml" />
     <None Include="Assets\Resources\Xmls\PlayerInfo.xml" />
     <None Include="Assets\Resources\Xmls\TutorialFlowIdea.txt" />
+    <None Include="Assets\Resources\Xmls\dia1.txt" />
+    <None Include="Assets\Resources\Xmls\dia2.txt" />
+    <None Include="Assets\Resources\Xmls\dia3.txt" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />

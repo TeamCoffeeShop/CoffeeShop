@@ -21,7 +21,7 @@ public class SceneChangeManager : MonoBehaviour
     
     void Start ()
     {
-        SetCurrentScene(CurrentScene.Cafe_Day);
+        SetCurrentScene(CurrentScene.Dialogue);
     }
 
     public void SetCurrentScene(int scene)
@@ -68,7 +68,16 @@ public class SceneChangeManager : MonoBehaviour
                 break;
             case CurrentScene.Dialogue:
                 MainGameManager.Get.CafeCamera.LookingAtDialogue();
-                MainGameManager.Get.DialogueManager.RunDialogue();
+                if (MainGameManager.Get.DialogueManager.dialogueNum == 0)
+                {
+                    MainGameManager.Get.DialogueManager.RunDialogue();
+                    MainGameManager.Get.DialogueManager.dialogueNum += 1;
+                }
+                else
+                {
+                    MainGameManager.Get.DialogueManager.NPCDialogueInit();
+                    MainGameManager.Get.DialogueManager.RunNPCDialogue();
+                }
                 MainGameManager.Get.Canvas_UI.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_OrderHUD.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_Dialogue.gameObject.SetActive(true);

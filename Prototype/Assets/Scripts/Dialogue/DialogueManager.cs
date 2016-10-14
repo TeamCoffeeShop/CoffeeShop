@@ -5,8 +5,10 @@ using System.Collections.Generic; //List
 
 public class DialogueManager : MonoBehaviour {
 
+    public int dialogueNum;
     //Dialogue box
     private Dialogue dia = new Dialogue();
+    private Dialogue NPCDia = new Dialogue();
     private GameObject dialogue_window; //Dialogue Panel
     private GameObject npc_text; //NPC Dialogue
     private GameObject option1; //Option 1
@@ -18,6 +20,7 @@ public class DialogueManager : MonoBehaviour {
 
     // .txt file 
     public TextAsset textFile;
+    public TextAsset npctext;
 
     // canvas
     public bool isActive;
@@ -34,6 +37,7 @@ public class DialogueManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        dialogueNum = 0;
         DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
         MakeDialogueBox();
         string[] textLines;
@@ -47,6 +51,20 @@ public class DialogueManager : MonoBehaviour {
 
         //RunDialogue();
 	}
+
+    public void NPCDialogueInit()
+    {
+        DialogueWindowPrefab = Resources.Load<GameObject>("Prefab/Dialogue_Prefab");
+        MakeDialogueBox();
+        string[] textLines;
+
+        //If there is text file, get strings
+        if (npctext != null)
+        {
+            textLines = (npctext.text.Split('\n'));
+            ClassifyNPCDialogue(textLines);
+        }
+    }
 
     private void ClassifyDialogue(string[] texts)
     {
@@ -98,6 +116,62 @@ public class DialogueManager : MonoBehaviour {
                     diaNode.Noption2 = null;
                     diaNode.tempText = texts[i];
                     dia.Nodes.Add(diaNode);
+                    ++order;
+                }
+            }
+        }
+    }
+
+    private void ClassifyNPCDialogue(string[] texts)
+    {
+        int order = 0;
+        for (int i = 0; i < texts.Length; ++i)
+        {
+            //int bracketIndex = texts[i].IndexOf("]");
+
+            // Special action
+            if (texts[i].Contains("["))
+            {
+                // Get function Name
+                //string functionName = texts[i].Substring(1, bracketIndex - 1);
+                //diaNode.mi = this.GetType().GetMethod(functionName);
+            }
+            else // Simple narration
+            {
+                if (texts[i].Contains("CHOICES:"))
+                {
+                    int nodeid = i - 1;
+                    order = i;
+                    for (int j = 0; j < 2; ++j)
+                    {
+                        i = i + 1;
+                        int arrowIndex = texts[i].IndexOf(">");
+
+                        DialogueOption option = new DialogueOption();
+                        option.tempText = texts[i].Substring(arrowIndex + 1, texts[i].Length - 1);
+                        option.destinationNodeID = order;
+
+                        if (j == 0)
+                        {
+                            NPCDia.Nodes[nodeid].Noption1 = option;
+                        }
+                        else
+                            NPCDia.Nodes[nodeid].Noption2 = option;
+
+                    }
+                }
+                else
+                {
+                    // Make Node
+                    DialogueNode diaNode = new DialogueNode();
+                    diaNode.NodeID = order;
+                    DialogueOption nextoption = new DialogueOption();
+                    nextoption.destinationNodeID = order + 1;
+                    nextoption.tempText = "NEXT";
+                    diaNode.Noption1 = nextoption;
+                    diaNode.Noption2 = null;
+                    diaNode.tempText = texts[i];
+                    NPCDia.Nodes.Add(diaNode);
                     ++order;
                 }
             }
@@ -205,5 +279,35 @@ public class DialogueManager : MonoBehaviour {
         }
         // When there is no dialogue, disable dialogue box
         dialogue_window.SetActive(false);       
+    }
+
+    public void RunNPCDialogue()
+    {
+        StartCoroutine(runNPC());
+    }
+
+    private IEnumerator runNPC()
+    {
+        dialogue_window.SetActive(true);
+
+        //create an indexer, set it to 0 - the start node
+        int node_id = 0;
+
+        //while the next node is not an exit node, traverse the dialogue tree based on user input
+        while (node_id != NPCDia.Nodes.Count)
+        {
+            display_node(NPCDia.Nodes[node_id]);
+            selected_option = -2;
+            while (selected_option == -2)
+            {
+                yield return new WaitForSeconds(0.25f);
+                //if (Input.GetMouseButtonDown(0)/*Input.GetTouch*/)
+            }
+            node_id = selected_option;
+            NPC.runtimeAnimatorController = anim[Random.Range(0, 3)];
+            NPC.Play(0);
+        }
+        // When there is no dialogue, disable dialogue box
+        dialogue_window.SetActive(false);
     }
 }
