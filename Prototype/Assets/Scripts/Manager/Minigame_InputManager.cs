@@ -55,14 +55,17 @@ public class Minigame_InputManager : MonoBehaviour
 
         //cheat code
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.C))
-        {
             Instantiate(HotCheat).transform.position = new Vector3(-203.23f,0,3.76f);
-        }
 
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.V))
-        {
             Instantiate(ColdCheat).transform.position = new Vector3(-201.23f, 0, 3.76f);
-        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+            InGameTime.SetTimeScale(InGameTime.timeScale * 10);
+        if (Input.GetKeyUp(KeyCode.T))
+            InGameTime.SetTimeScale(InGameTime.timeScale * 0.1f);
+
+
     }
 
     public void GoBackToMainLevel ()

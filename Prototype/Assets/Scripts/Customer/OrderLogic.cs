@@ -46,7 +46,6 @@ public class OrderLogic : MonoBehaviour, IDragHandler, IEndDragHandler
                 if (hit.collider.transform.parent.tag == "Customer")
                 {
                     Customer customer = hit.collider.transform.parent.GetComponent<Customer>();
-                    Debug.Log(type + "" + customer.data.order);
                     FinishOrder(customer, type == customer.data.order);
                 }
         }

@@ -47,21 +47,13 @@ public class CustomerLogic : MonoBehaviour
         }
         else
         {
-            // TEMPORARY
-            //if (GetComponent<Animator>().enabled == true)
-            {
-                timer += (InGameTime.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
-                
-                if(ST)
-                {
-                    ST.GetComponent<BarScript>().Value = timer;
+            timer += (InGameTime.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
+            ST.transform.GetChild(0).GetComponent<BarScript>().Value = timer;
 
-                    ////Delete customer when spawn time has passed
-                    if (timer >= ST.GetComponent<BarScript>().MaxValue)
-                    {
-                        LeaveCoffeeShop();
-                    }
-                }
+            ////Delete customer when spawn time has passed
+            if (timer >= ST.transform.GetChild(0).GetComponent<BarScript>().MaxValue)
+            {
+                LeaveCoffeeShop();
             }
         }
     }
@@ -72,13 +64,11 @@ public class CustomerLogic : MonoBehaviour
         OB.transform.SetParent(gameObject.transform, false);
         OB.transform.localPosition = new Vector3(0,22,0);
 
-        //ST = Instantiate(SpawnTimer);
-        //ST.transform.SetParent(MainGameManager.Get.Canvas_OrderHUD.transform, false);
-        //ST.GetComponent<CustomerSpawnTimer>().customer = transform;
-        //ST.GetComponent<BarScript>().MaxValue = customerspawntime;
-
-        //OB.GetComponent<OrderingBallonLogic>().SpawnBar = ST;
-
+        ST = Instantiate(SpawnTimer);
+        ST.transform.SetParent(gameObject.transform, false);
+        ST.transform.localPosition = new Vector3(0,23,0);
+        ST.transform.GetChild(0).GetComponent<BarScript>().MaxValue = 1;
+        
         //custom cup display
         CoffeeOrderSetup.SetOrder(OB, GetComponent<Customer>().data.order);
     }
@@ -86,17 +76,7 @@ public class CustomerLogic : MonoBehaviour
     public void LeaveCoffeeShop ()
     {
         MainGameManager.Get.Floor.Grids[SeatX,SeatZ].transform.GetChild(0).GetComponent<CafeDeco>().Filled = false;
-        if(ST != null)
-        {
-            DestroyObject(ST.GetComponent<CustomerSpawnTimer>().customer.gameObject);
-            DestroyObject(ST);
-        }
-        if(OB != null)
-        {
-            DestroyObject(OB);
-        }
-
-        DestroyObject(this.gameObject);
+        DestroyObject(gameObject);
     }
 
     class A_GRID
