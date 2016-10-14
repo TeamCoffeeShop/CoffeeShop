@@ -15,7 +15,7 @@ public class CustomerLogic : MonoBehaviour
     float walkSpeed = 20;
 
     private GameObject OB;
-    private GameObject ST;
+    private Transform ST;
 
     private float timer = 0.0f;
     private float customerspawntime = 5.0f;
@@ -48,10 +48,12 @@ public class CustomerLogic : MonoBehaviour
         else
         {
             timer += (InGameTime.deltaTime / MainGameManager.Get.TimeOfDay.secondInFullDay) * 24.0f;
-            ST.transform.GetChild(0).GetComponent<BarScript>().Value = timer;
+            //Temporary value!!
+            ST.localScale = new Vector3(timer / 5,1,1);
 
-            ////Delete customer when spawn time has passed
-            if (timer >= ST.transform.GetChild(0).GetComponent<BarScript>().MaxValue)
+            //Delete customer when spawn time has passed
+            //Temporary value!!
+            if (timer >= 5)
             {
                 LeaveCoffeeShop();
             }
@@ -64,10 +66,12 @@ public class CustomerLogic : MonoBehaviour
         OB.transform.SetParent(gameObject.transform, false);
         OB.transform.localPosition = new Vector3(0,22,0);
 
-        ST = Instantiate(SpawnTimer);
-        ST.transform.SetParent(gameObject.transform, false);
-        ST.transform.localPosition = new Vector3(0,23,0);
-        ST.transform.GetChild(0).GetComponent<BarScript>().MaxValue = 1;
+        GameObject timer = Instantiate(SpawnTimer);
+        timer.transform.SetParent(gameObject.transform, false);
+        timer.transform.localPosition = new Vector3(0, 27, 0);
+
+        //bar
+        ST = timer.transform.GetChild(1).transform;
         
         //custom cup display
         CoffeeOrderSetup.SetOrder(OB, GetComponent<Customer>().data.order);
