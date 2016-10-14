@@ -50,6 +50,7 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.CafeCamera.Return();
                 AkSoundEngine.PostEvent("Set_Pause_Status_Off", gameObject);
                 InGameTime.SetTimeScale(1);
+                Time.timeScale = 1;
                 break;
             case CurrentScene.Make_Order:
                 AkSoundEngine.PostEvent("Play_Select", gameObject);
@@ -61,7 +62,9 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.CafeCamera.gameObject.SetActive(false);
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
                 MainGameManager.Get.DialogueCamera.SetActive(false);
+                MinigameManager.Get.MakeOrderCamera.Return();
                 InGameTime.SetTimeScale(0.1f);
+                Time.timeScale = 1;
                 break;
             case CurrentScene.Dialogue:
                 MainGameManager.Get.CafeCamera.LookingAtDialogue();
@@ -72,6 +75,7 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(false);
                 MinigameManager.Get.Canvas_UI.SetActive(false);
                 InGameTime.SetTimeScale(0);
+                Time.timeScale = 1;
                 break;
             case CurrentScene.Cafe_Night:
                 MainGameManager.Get.CanvasNight_UI.gameObject.SetActive(true);
@@ -83,13 +87,15 @@ public class SceneChangeManager : MonoBehaviour
                 MainGameManager.Get.DialogueCamera.SetActive(false);
                 MainGameManager.Get.CafeCamera.Return();
                 InGameTime.SetTimeScale(0);
+                Time.timeScale = 1;
                 break;
 
             case CurrentScene.PauseMenu:
                 MainGameManager.Get.Canvas_PauseMenu.gameObject.SetActive(true);
                 AkSoundEngine.PostEvent("Set_Pause_Status_On", gameObject);
 
-                InGameTime.SetTimeScale(0);
+                Time.timeScale = 0;
+                //InGameTime.SetTimeScale(0);
                 break;
         }
     }

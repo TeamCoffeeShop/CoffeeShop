@@ -14,7 +14,7 @@ public class MakeOrderCameraLogic : MonoBehaviour
 
     public Vector2 XBoundary;
 
-    void Start ()
+    void Awake ()
     {
         OriginalPosition = transform.position;
         OriginalRotation = transform.rotation.eulerAngles;
@@ -30,24 +30,27 @@ public class MakeOrderCameraLogic : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if(MoveToTarget)
+        if(Time.timeScale != 0)
         {
-            pos += (TargetPosition - pos) * Time.deltaTime * 5;
-        }
-        else
-        {
-            Speed *= Deaccelerate;
-            pos += Speed;
-            //X Boundary
-            if (pos.x <= XBoundary.x)
+            if (MoveToTarget)
             {
-                pos.x = XBoundary.x;
-                Speed.x = 0;
+                pos += (TargetPosition - pos) * Time.deltaTime * 5;
             }
-            else if (pos.x >= XBoundary.y)
+            else
             {
-                pos.x = XBoundary.y;
-                Speed.x = 0;
+                Speed *= Deaccelerate;
+                pos += Speed;
+                //X Boundary
+                if (pos.x <= XBoundary.x)
+                {
+                    pos.x = XBoundary.x;
+                    Speed.x = 0;
+                }
+                else if (pos.x >= XBoundary.y)
+                {
+                    pos.x = XBoundary.y;
+                    Speed.x = 0;
+                }
             }
         }
 

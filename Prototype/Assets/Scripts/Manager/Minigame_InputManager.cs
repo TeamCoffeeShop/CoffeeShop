@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Minigame_InputManager : MonoBehaviour
 {
     public bool CameraMove;
+    public GameObject HotCheat;
+    public GameObject ColdCheat;
+
     private float prevX;
     private Plane P;
     private float d;
@@ -48,6 +51,17 @@ public class Minigame_InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             MainGameManager.Get.Canvas_PauseMenu.TogglePauseMenu();
+        }
+
+        //cheat code
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.C))
+        {
+            Instantiate(HotCheat).transform.position = new Vector3(-203.23f,0,3.76f);
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.V))
+        {
+            Instantiate(ColdCheat).transform.position = new Vector3(-201.23f, 0, 3.76f);
         }
     }
 
