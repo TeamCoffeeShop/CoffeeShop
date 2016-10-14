@@ -99,37 +99,39 @@ public class FloorGridLogic : MonoBehaviour
         GameObject Table01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Table 1");
         GameObject Table02 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Table 2");
         GameObject Bamboo = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Plant_bamboo");
-        GameObject Cactus = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Plant_cactus");
-        GameObject Tikitorch = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Tikitorch");
+        GameObject plant1 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_WaterPlant 1");
+        GameObject HangingLight = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_HangingLight");
         GameObject Counter01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Counter 1");
         GameObject Divider01 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Divider 1");
+        GameObject Divider02 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Divider 2");
+        GameObject Divider03 = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_Divider 3");
         GameObject CatPalace = Resources.Load<GameObject>("Prefab/CafeDeco/CafeDeco_CatPalace");
 
 
         Grids[7, 1].GetComponent<Grid>().AddItemToGrid(Seat);
-        Grids[6, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 90, 0);
-        Grids[7, 3].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, 180, 0);
-        Grids[8, 2].GetComponent<Grid>().AddItemToGrid(Seat).transform.Rotate(0, -90, 0);
+        Grids[6, 2].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[7, 3].GetComponent<Grid>().AddItemToGrid(Seat);
+        Grids[8, 2].GetComponent<Grid>().AddItemToGrid(Seat);
         Grids[7, 2].GetComponent<Grid>().AddItemToGrid(Table01);
 
         Grids[2, 6].GetComponent<Grid>().AddItemToGrid(Seat2);
-        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 90, 0);
-        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, 180, 0);
-        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat2).transform.Rotate(0, -90, 0);
+        Grids[1, 7].GetComponent<Grid>().AddItemToGrid(Seat2);
+        Grids[2, 8].GetComponent<Grid>().AddItemToGrid(Seat2);
+        Grids[3, 7].GetComponent<Grid>().AddItemToGrid(Seat2);
         Grids[2, 7].GetComponent<Grid>().AddItemToGrid(Table02);
 
-        Grids[9, 9].GetComponent<Grid>().AddItemToGrid(Tikitorch);
-        Grids[9, 7].GetComponent<Grid>().AddItemToGrid(Tikitorch);
+        Grids[9, 9].GetComponent<Grid>().AddItemToGrid(HangingLight).transform.Rotate(0, -90, 0);
+        Grids[9, 7].GetComponent<Grid>().AddItemToGrid(HangingLight).transform.Rotate(0, -90, 0);
 
 
         Grids[0, 1].GetComponent<Grid>().AddItemToGrid(Counter01).transform.Rotate(0, 180, 0);
         Grids[1, 1].GetComponent<Grid>().AddItemToGrid(Counter01).transform.Rotate(0, 180, 0);
         Grids[2, 0].GetComponent<Grid>().AddItemToGrid(Bamboo);
 
-        Grids[5, 6].GetComponent<Grid>().AddItemToGrid(Cactus);
-        Grids[5, 7].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
-        Grids[5, 8].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
-        Grids[5, 9].GetComponent<Grid>().AddItemToGrid(Divider01).transform.Rotate(0, -90, 0);
+        Grids[5, 6].GetComponent<Grid>().AddItemToGrid(plant1).transform.Rotate(0,180,0);
+        Grids[5, 7].GetComponent<Grid>().AddItemToGrid(Divider01);
+        Grids[5, 8].GetComponent<Grid>().AddItemToGrid(Divider02);
+        Grids[5, 9].GetComponent<Grid>().AddItemToGrid(Divider03);
 
         Grids[0, 0].GetComponent<Grid>().AddItemToGrid(CatPalace);
     }
