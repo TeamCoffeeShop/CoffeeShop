@@ -128,8 +128,8 @@ public class DragandDrop : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //    return;
 
         Grab = false;
         EndOfGrab = true;

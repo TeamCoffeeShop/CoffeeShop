@@ -65,7 +65,10 @@ public class Minigame_InputManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.T))
             InGameTime.SetTimeScale(InGameTime.timeScale * 0.1f);
 
-
+        if (Input.GetKeyDown(KeyCode.D))
+            MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Dialogue);
+        if (Input.GetKeyDown(KeyCode.A))
+            MainGameManager.Get.SceneChangeManager.SetCurrentScene(CurrentScene.Cafe_Day);
     }
 
     public void GoBackToMainLevel ()
