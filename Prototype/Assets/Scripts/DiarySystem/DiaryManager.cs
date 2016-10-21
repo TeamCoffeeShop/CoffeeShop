@@ -14,6 +14,11 @@ public class DiaryManager : MonoBehaviour
     GameObject[] DateDetailButton;
     GameObject[] NPCDetailButton;
 
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void TurnOn ()
     {
         InGameTime.SetTimeScale(0);

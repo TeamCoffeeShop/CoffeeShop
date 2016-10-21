@@ -21,7 +21,7 @@ public class SceneChangeManager : MonoBehaviour
     
     void Start ()
     {
-        SetCurrentScene(CurrentScene.Dialogue);
+        SetCurrentScene(CurrentScene.Cafe_Night/*Dialogue*/);
     }
 
     public void SetCurrentScene(int scene)
